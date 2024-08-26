@@ -2,6 +2,7 @@ package com.farmstory.util;
 
 public class SQL {
 
+
 		//board
 	
 		//cart	
@@ -28,5 +29,5 @@ public class SQL {
 												+ "`regDate`= NOW()";
 
 	
-	
+
 }

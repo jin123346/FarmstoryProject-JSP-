@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/user/login.css">
+    <link rel="stylesheet" href="../css/user/register.css">
+	  <link rel="stylesheet" href="../css/user/terms.css">
     <link rel="stylesheet" href="../css/footer.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
@@ -22,7 +24,9 @@
         <header id="header">
             <div class="headerIn">
                 <div class="logo">
-                    <a href="#"><img src="../images/logo.png" alt="farmStory logo"></a>
+
+          	        <a href="#"><img src="../images/logo.png" alt="farmStory logo"></a>
+
                 </div><!-- .logo -->
                  <ul class="utill">
                     <li><a href="#">HOME</a></li>

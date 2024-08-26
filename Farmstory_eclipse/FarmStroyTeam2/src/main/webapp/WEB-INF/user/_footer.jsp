@@ -11,8 +11,6 @@
                 </span><!-- .tel -->
                 <p class="fcopy">Copyright(C)홍길동 All rights reserved.</p><!-- .fcopy -->
             </div><!-- .finfo -->
-            
-
             </div><!-- .footerIn -->
         </footer><!-- footer -->
 

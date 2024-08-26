@@ -12,51 +12,39 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class DBHelper {
-	protected Connection conn = null;
-	protected PreparedStatement psmt = null;
-	protected Statement stmt = null;
-	protected ResultSet rs = null;
+
+
+	protected Connection conn=null;
+	protected Statement stmt=null;
+	protected PreparedStatement pstmt=null;
+	protected ResultSet rs=null;
+
 	
-	public Connection getConnection() throws NamingException, SQLException{
-		
-		Context ctx = (Context) new InitialContext().lookup("java:comp/env");
-		DataSource ds = (DataSource) ctx.lookup("jdbc/farmstory");
-		return ds.getConnection();
-	}
 	
-	public void closeAll() {
+	protected Connection getConnection() throws NamingException, SQLException{
+	
+			Context initCtx = new InitialContext();
+			Context ctx =(Context) initCtx.lookup("java:comp/env");
+			//2단계 - 커넥션 풀에서 커넥션 객체 가져오기
+			DataSource ds = (DataSource)ctx.lookup("jdbc/farmstory");
+			return ds.getConnection();
+			
 		
-		if(rs != null) {
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if(stmt != null) {
-			try {
-				stmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if(psmt != null) {
-			try {
-				psmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if(conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
 		
 	}
+	protected void closeAll() throws SQLException {
+		if(rs !=null) {
+			rs.close();
+		}
+		if(stmt !=null) {
+			stmt.close();
+		}
+		if(pstmt !=null) {
+			pstmt.close();
+		}
+		if(conn !=null) {
+			conn.close();
+		}
+	}
+
 }

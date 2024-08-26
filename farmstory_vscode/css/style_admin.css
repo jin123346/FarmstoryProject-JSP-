@@ -1,6 +1,6 @@
 /* layout style */
 /* reset */
-*{margin: 0; padding:0; font-family: "Inter", sans-serif; font-size: 12px; font-weight: 400;}
+*{margin: 0; padding:0; font-family: "Inter", sans-serif; font-size: 12px; font-weight: 700;}
 html{color:#111; position:relative;}
 html, body{height:100%;}
 body{font-size:12px; line-height:18px; font-family: 'Noto Sans KR', sans-serif;}
@@ -163,6 +163,7 @@ main .section{
 /* main_container */
 .main_container{
     margin-left: 10px;
+    height: auto;
 }
 
 
@@ -171,6 +172,7 @@ main .section{
     width: 100%;
     height: 45px;
     text-align: left;
+
 }
 
 .main_top span{
@@ -267,6 +269,47 @@ main .section{
 }
 
 #productList  tbody  tr{
+    height: 89px;
+}
+
+#product_img1{
+    width: 60px;
+    height: 60px;
+}
+
+/* product - order list.html  */
+#orderList{
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    height: 193px;
+   
+}
+
+
+
+#orderList table{
+    width: 784px;
+    border-top : 2px solid #333333;
+   
+}
+
+
+
+#orderList th{
+    height: 42px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#orderList td{
+    height: 42px;
+    border-bottom: 1px dotted #999999;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#orderList  tbody  tr{
     height: 89px;
 }
 

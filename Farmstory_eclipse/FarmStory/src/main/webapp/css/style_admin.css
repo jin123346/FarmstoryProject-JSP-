@@ -25,7 +25,7 @@ a, a:link, a:visited, a:active, a:hover{text-decoration: none; color: inherit;}
 header{
     width: 100%;
     height: auto;
-    background: url(../admin/images/admin_bg.jpg);
+    background: url(./images/admin_logo.jpg);
     background-position: bottom;
 }
 

@@ -1,36 +1,13 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="sssashortcut icon" href="/images/fav.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style_prodReg.css">
+
     <link rel="stylesheet" href="../css/style_admin.css">
     <title>Administrator</title>
-
-    <script>
-       const login= document.getElementById('login');
-       const register= document.getElementById('register');
-        const  grade = ${grade};
-        window.onload = function(){
-            
-            if(grade=='admin'){
-                login.innerText="로그아웃";
-                login.style.href="/FarmStory/member/logout.do";
-                register.innerText="관리자";
-                register.style.href="/FarmStory/admin/index.do";
-            }else{
-                login.innerText="로그아웃";
-                login.style.href="/FarmStory/member/logout.do";
-                register.innerText="마이페이지";
-                register.style.href="/FarmStory/main.do";
-            }
-           
-
-        }
-
-
-    </script>
 </head>
 <body>
     <!-- wrapper -->

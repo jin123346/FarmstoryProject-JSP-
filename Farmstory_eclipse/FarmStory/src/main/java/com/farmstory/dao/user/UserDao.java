@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.farmstory.dto.user.UserDTO;
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.SQL;
+import com.farmstory.util.USERSQL;
 
 public class UserDao extends DBHelper{
 	private static UserDao instance = new UserDao();
@@ -21,10 +22,45 @@ public class UserDao extends DBHelper{
 	private UserDao () {}
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	public int selectCountUser(String type,String value) {
+
+		
+		int result = 0;
+
+		StringBuilder sql = new StringBuilder(USERSQL.SELECT_COUNT_USER);
+		
+		if(type.equals("uid")) {
+			sql.append(USERSQL.WHERE_UID);
+		}else if(type.equals("nick")){
+			sql.append(USERSQL.WHERE_NICK);
+		}else if(type.equals("email")) {
+			sql.append(USERSQL.WHERE_EMAIL);
+		}else if(type.equals("hp")) {
+			sql.append(USERSQL.WHERE_HP);
+		}
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, value);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			closeAll();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
+	
 	public void insertUser(UserDTO dto) {
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(SQL.INSERT_USER);
+			pstmt = conn.prepareStatement(USERSQL.INSERT_USER);
 			pstmt.setString(1, dto.getUid());
 			pstmt.setString(2, dto.getPass());
 			pstmt.setString(3, dto.getName());

@@ -1,4 +1,4 @@
-package com.farmstory.controller.user;
+package com.farmstory.controller.member;
 
 import java.io.IOException;
 
@@ -50,9 +50,12 @@ public class LoginController extends HttpServlet{
 			//회원이 맞을 경우 -> 세션처리 후 
 			HttpSession session = req.getSession();
 			session.setAttribute("sessUser", user);
-			
-			resp.sendRedirect("/FarmStory/main.do");
-			
+			if(user.getGradeNo().equals("00")) {
+				resp.sendRedirect("/FarmStory/main.do?grade=admin");
+			}else {
+				resp.sendRedirect("/FarmStory/main.do?grade=none");
+			}
+	
 		}else {
 			
 			//회원이 아닐경우

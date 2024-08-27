@@ -6,6 +6,8 @@ public class FileListDTO {
 	private String pList_oName;
 	private String pList_sName;
 	private String rdate;
+	
+	
 	public int getpList_fno() {
 		return pList_fno;
 	}

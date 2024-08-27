@@ -47,11 +47,18 @@ public class ProductDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public void setPrice(String price) {
+		this.price = Integer.parseInt(price);
+	}
 	public int getStock() {
 		return stock;
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+	
+	public void setStock(String stock) {
+		this.stock = Integer.parseInt(stock);
 	}
 	public int getPoint() {
 		return point;
@@ -59,17 +66,26 @@ public class ProductDTO {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+	public void setPoint(String point) {
+		this.point = Integer.parseInt(point);
+	}
 	public int getDiscount() {
 		return discount;
 	}
 	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
+	public void setDiscount(String discount) {
+		this.discount = Integer.parseInt(discount);
+	}
 	public int getDelivery() {
 		return delivery;
 	}
 	public void setDelivery(int delivery) {
 		this.delivery = delivery;
+	}
+	public void setDelivery(String delivery) {
+		this.delivery = Integer.parseInt(delivery);
 	}
 	public int getpList_fNo() {
 		return pList_fNo;

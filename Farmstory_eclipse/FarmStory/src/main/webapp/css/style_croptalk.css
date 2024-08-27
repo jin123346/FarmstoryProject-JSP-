@@ -1,0 +1,300 @@
+* {
+    margin: 0; padding:0; font-family: "Inter", sans-serif; font-size: 12px; font-weight: 400;
+}
+
+a { text-decoration-line: none; color: inherit; }
+
+ul, ol {
+    list-style: none;
+}
+
+header {
+    width: 980px;
+    height: 142px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+}
+/* 헤더 위 점 줄  */
+.topline {
+    width: 100%;
+    margin: 0 auto;
+    top: 0%;
+}
+/* 헤더 홈/로그인/회원가입/고객센터 */
+.utill {
+    display: flex;
+    position: absolute;
+    line-height: 14.52px;
+    margin: 0;
+    right: 0.2px;
+    top: 17px;
+}
+
+.utill > li{
+    color: #111;
+}
+.utill > li:nth-child(1) > a::after {
+    content: "ㅣ";
+}
+.utill > li:nth-child(2) > a::after {
+    content: "ㅣ";
+}
+.utill > li:nth-child(3) > a::after {
+    content: "ㅣ";
+}
+
+/* 메인로고 팜스토리 */
+.main_logo > img {
+    position: absolute;
+    right: 393px;
+    top: 22px;
+}
+/* 서브로고 3만원이상 무료배송,팜카드 10% 적립 */
+.sub_logo {
+    position: absolute;
+    right: 0;
+    top: 59px;
+}
+/* 헤더 메뉴 nav 구간  */
+.menu_nav {
+    position: absolute;
+    width: 980px;
+    height: 50px;
+    margin: 0 auto;
+    top: 92px;
+}
+.menu {
+    display: flex;
+}
+.menu_nav >.menu .navmenu {
+    height: 50px;
+    width: 196px;
+    box-sizing: border-box;
+    object-fit: none; 
+}
+
+.navmenu {
+    background: url(../images/head_menu_line.png) no-repeat;
+    background-position-y: -3px;
+}
+
+.menu > li:nth-child(1) > a:hover {
+    content: url(../images/head_menu1_ov.png);
+    background: url(../images/head_menu_line.png) no-repeat;
+    background-position-y: -8px;
+}
+.menu > li:nth-child(2) > a:hover {
+    content: url(../images/head_menu2_ov.png);
+    background: url(../images/head_menu_line.png) no-repeat;
+    background-position-y: -8px;
+}
+.menu > li:nth-child(3) > a:hover {
+    content: url(../images/head_menu3_ov.png);
+    background: url(../images/head_menu_line.png) no-repeat;
+    background-position-y: -8px;
+}
+.menu > li:nth-child(4) > a:hover {
+    content: url(../images/head_menu4_ov.png);
+    background: url(../images/head_menu_line.png) no-repeat;
+    background-position-y: -8px;
+}
+.menu > li:nth-child(5) > a:hover {
+    content: url(../images/head_menu5_ov.png);
+    background: url(../images/head_menu_line.png) no-repeat;
+    background-position-y: -8px;
+}
+/* 30% 이미지 */
+.discount {
+    position: absolute;
+    width: 37px;
+    height: 34px;
+    left: 294px;
+    bottom: 32px;
+}
+
+/* 메인 배너, Market 글씨 */
+.main_banner{
+    width: 980px;
+    height: 184px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: url(../images/sub_top_bg.jpg);
+}
+
+.main_banner > img {
+    margin-top: 137px;
+    margin-left: 10px;
+}
+ /* 메인 container */
+.container {
+    display: flex;
+    width: 980px;
+    height: 650px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+/* aside 메뉴 */
+.side_menu {
+    width: 176px;
+    height: 650px;
+    box-sizing: border-box;
+    position: relative;
+    background: url(../images/sub_aside_bg_line.png) no-repeat;
+    background-position-x: 170px;
+}
+
+.side_logo {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+.side_menu > div {
+    margin-top: 81px;
+    width: 175px;
+    height: 233px;
+    background-position: cover;
+    z-index: 1;
+    
+
+}
+
+.side_logo {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+.side_menu > div {
+    margin-top: 81px;
+    width: 175px;
+    height: 233px;
+    background: url(../images/sub_aside_bg_lnb.png);
+}
+
+.sm1 {
+    margin-top: 27px;
+    margin-bottom: 2px;
+}
+
+.sm1:hover {
+    content: url(../images/sub_cate3_lnb1_ov.png);
+    margin-top: 26px;
+}
+.sm2:hover {
+    content: url(../images/sub_cate3_lnb2_ov.png);
+}
+.sm3:hover {
+    content: url(../images/sub_cate3_lnb3_ov.png);
+}
+
+/* 메인 콘텐츠 */
+.main_content {
+    width: 802px;
+    height: 650px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.content_nav {
+    width: 762px;
+    height: 72px;
+    box-sizing: border-box;
+    margin-left: 40px;
+    position: relative;
+    border-bottom: 1px solid #c2c2c2;
+}
+
+
+.content_nav > img {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+}
+/* 홈 > 메뉴 > 장보기 로케이션 */
+.location {
+    position: absolute;
+    right: 0.2px;
+    bottom: 7px;
+}
+
+.location > li {
+    float: left;
+    margin-left: 2px;
+    position: relative;
+    color: #8C8C8C;
+    font-size: 12px;
+}
+
+.location > li:nth-child(1)::before {
+    position: absolute;
+    content: url(../images/sub_page_nav_ico.gif);
+    left: -10px;
+    top: -1px;
+} 
+
+.location > li:nth-child(2)::before {
+    content: ">"; 
+    margin-right: 3px;
+    color: #8C8C8C;
+} 
+
+.location > li:nth-child(3) {
+    font-weight: 700;
+    color: #91BA15;
+}
+
+.location > li:nth-child(3)::before {
+    font-weight: 400;
+    color: #8C8C8C;
+    content: ">";
+    margin-right: 3px;
+} 
+/* 메인 컨텐츠 - 게시판 글목록/글쓰기/글보기/글수정 화면 출력 */
+.main_content > span {
+    position: absolute;
+    top: 113px;
+    left: 40px;
+    letter-spacing: -1px;
+}
+
+
+/* 푸터 영역 */
+footer {
+    width: 980px;
+    height: 130px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    background: url(../images/footer_top_line.png) no-repeat;
+    background-position: top;
+    background-position-y: -4px;
+}
+
+footer > img {
+    float: left;
+}
+
+footer > span:nth-child(2) {
+    font-size: 10.83px;
+    line-height: 18px;
+    word-spacing: -3px;
+    position: absolute;
+    width: 720.68px;
+    top: 27px;
+    right:  15.8px;
+    color: #585858;
+}
+
+footer > span:nth-child(3) {
+    font-family: Inter;
+    font-size: 10.88px;
+    font-weight: 700;
+    line-height: 13.16px;
+    text-align: left;
+    position: absolute;
+    bottom: 33px;
+    right: 534px;
+    color: #888888;
+}

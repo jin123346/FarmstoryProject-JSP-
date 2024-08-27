@@ -5,7 +5,7 @@
     <section>
         <div class="main_container">
             <div class="main_top"><h2>상품등록</h2></div>
-            <form action="/FarmStory/product/writer.do" type="post" enctype="multipart/form-data">
+            <form action="/FarmStory/product/register.do" type="post" enctype="multipart/form-data">
            	 <div class="reg_table">
 	                <table id="product">
 	                    <tr>

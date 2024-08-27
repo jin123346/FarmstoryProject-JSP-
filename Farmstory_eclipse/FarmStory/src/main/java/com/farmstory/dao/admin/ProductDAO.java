@@ -28,7 +28,70 @@ public class ProductDAO extends DBHelper {
 
 	
 	public int insertProduct(ProductDTO dto) {
-		return 0;
+		
+		int pno=0;
+		
+		String sql = "insert into `product` set prodCateNo=?,"
+											  + "pName=?,"
+											  + "price=?,"
+											  + "stock=?,"
+											  + "point=?,"
+											  + "discount=?,"
+											  + "delivery=?,"
+											  + "pList_fNo=?,"
+											  + "pBasic_fNo=?,"
+											  + "pDesc_fNo=?,"
+											  + "rdate=now(),"
+											  + "pDesc=?";
+		
+		try {
+			
+			conn = getConnection();
+			conn.setAutoCommit(false);
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getProdCateNo());
+			pstmt.setString(2, dto.getpName());
+			pstmt.setInt(3, dto.getPrice());
+			pstmt.setInt(4, dto.getStock());
+			pstmt.setInt(5, dto.getPoint());
+			pstmt.setInt(6, dto.getDiscount());
+			pstmt.setInt(7, dto.getDelivery());
+			pstmt.setInt(8, dto.getpList_fNo());
+			pstmt.setInt(9, dto.getpBasic_fNo());
+			pstmt.setInt(10, dto.getpDesc_fNo());
+			pstmt.setString(11, dto.getRdate());
+			pstmt.setString(12, dto.getpDesc());
+			pstmt.executeUpdate();
+			
+			stmt =conn.createStatement();
+			rs = stmt.executeQuery("select Max(`pNo`) from `product` ");
+			if(rs.next()) {
+				pno = rs.getInt(1);
+			}
+			conn.commit();
+
+		} catch(Exception e) {
+			logger.error(e.getMessage());
+			
+			try {
+				conn.rollback();
+			}catch(SQLException e1) {
+				logger.error(e1.getMessage());
+			}
+			
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error(e.getMessage());
+			}
+		}
+		
+		
+		
+		
+		return pno;
 	}
 	
 	public ProductDTO selectProduct(String pNo) {

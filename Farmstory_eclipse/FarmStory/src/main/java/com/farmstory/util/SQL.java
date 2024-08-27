@@ -57,6 +57,21 @@ public class SQL {
 	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
 	
 	
+	// admin 
+	// product list
+	public static final String INSERT_PRODUCT_LIST = "insert into `product` set "
+														   + "`pList_oName`=?,"
+														   + "`pNo`=?,"
+														   + "`prodCateName`=?,"
+														   + "`pName`=?,"
+														   + "`price`=?,"
+														   + "`stock`=?,"
+														   + "`rdate`=?";
+
+	
+	
+	
+	
 
 
 }

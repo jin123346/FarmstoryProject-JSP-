@@ -1,10 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<<script>
+	const success=${success};
+	
+	if(success==100){
+		alert('로그인에 실패했습니다.\n다시 시도해주세요');
+	}
+</script>
  
         <main>
             <div class="mainIn">
                 <section class="login">
-                    <form action="#">
+                    <form action="#" method="post">
                         <table border="0">
                             <tr>
                                 <td><img src="../images/login_ico_id.png" alt="아이디"></td>
@@ -28,24 +35,5 @@
             </div>
         </main>
 
+	<%@ include file="./_footer.jsp" %>
 
-        <footer id="footer">
-
-            <div class="footerIn cf">
-            <img src="../images/footer_logo.png" alt="farmStory footer" class="flogo">
-            <div class="finfo">
-                <span class="tel">(주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br>
-                    등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동 <br>
-                    대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01&#41; 234-5678 / 경기도 성남시 잘한다구 신난다동 345
-                </span><!-- .tel -->
-                <p class="fcopy">Copyright(C)홍길동 All rights reserved.</p><!-- .fcopy -->
-            </div><!-- .finfo -->
-            
-
-            </div><!-- .footerIn -->
-        </footer><!-- footer -->
-
-    </div>
-    
-</body>
-</html>

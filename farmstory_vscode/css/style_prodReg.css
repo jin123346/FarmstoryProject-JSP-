@@ -1,0 +1,367 @@
+
+
+/* tbname */
+
+.tbname{
+    width: 784px;
+    height: 17px;
+    box-sizing: border-box;
+}
+
+
+.tbname span{
+    width: 784px;
+    height: 17px;
+    line-height: 17px;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+}
+
+.tbname span:nth-child(1){
+  
+    float: left;
+    
+}
+.tbname span:nth-child(2){
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: absolute;
+}
+
+/* product register table */
+
+.reg_table{
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    height: 577px;
+}
+
+
+.reg_table table{
+    width: 784px;
+    height: 534px;
+    border-top : 2px solid #333333;
+}
+
+.reg_table th,td{
+    border-bottom: 1px dotted #999999;
+}
+
+.reg_table th{
+    width: 100px;
+    text-align: left;
+    text-indent: 12px;
+}
+
+
+.reg_table td{
+    text-indent: 6px;
+}
+
+
+.reg_table input{
+    width: 151px;
+    height: 19px;
+    border-radius: 2.5px;
+    border: 1px solid #767676;
+    
+}
+
+
+
+/* select  */
+#prodtype{
+    width: 46px;
+    height: 18px;
+    border: 1px solid #767676;
+    background-color: #efefefef;
+    appearance: none; 
+    text-indent: 3px;
+    line-height: 18px;
+}
+
+#discount{
+    width: 44px;
+    height: 18px;
+    border: 1px solid #767676;
+    background: #efefef;
+    appearance: none;
+    text-indent: 3px;
+    line-height: 18px;
+
+ 
+}
+
+
+/* label */
+
+
+
+.checklb {
+    all: unset;
+    width: 80px;
+    height: 20px;
+    box-sizing: border-box;
+    /* padding: 3px 8px; */
+    font-size: 10.44PX;
+    line-height: 20px;
+    text-align: center;
+    background-position: bottom;
+    border-radius: 2.5px;
+    color: black;
+    font-weight: 400;
+    cursor: pointer;
+    }
+    input.file1 {
+        display: none;
+     }
+  
+
+
+
+/* Adjust the '원' symbol */
+.checklb::after {
+    margin-left: 2px;                /* Slight space between the number and the '원' symbol */
+    font-size: 12px;                 /* Match the font-size */
+    vertical-align: middle;          /* Ensure '원' is vertically centered */
+    line-height: normal;
+    display: inline-block;
+}
+
+/* Adjust the checkbox input
+input[type="checkbox"] {
+    -webkit-appearance: none; 
+    -moz-appearance: none;     
+    appearance: none; 
+    margin:0px;               
+    padding-right: 0;                
+    width: 13px;                    
+    height: 13px; 
+    background-color: #fff;    
+    border: 1px solid #ccc;    
+    border-radius: 50%;                  
+} */
+
+
+
+/* fileupload */
+.file_upload_tr {
+    height:166px ;
+}
+
+.file_group {
+    margin-bottom: 4px; /* Space between each file input */
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+}
+
+.file_upload_form label {
+    font-size: 14px; /* Font size for labels */
+    margin-bottom: 4px; /* Space between label and input */
+    color: #333; /* Text color for the label */
+    margin-left: 12px;
+    text-indent: 0px;
+}
+
+/* Style the custom file input */
+.cf_input {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+    
+}
+
+.ci{
+   
+    background-color:#EFEFEF;
+    width: 80px;
+    height: 20px;
+    border: 1px solid black;
+}
+.cf_input input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    
+    
+}
+
+.cf_input span {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 64px;
+    height: 14px;
+    cursor: pointer;
+    border: 1px solid #767676;
+    background-color:#EFEFEF;
+    width: 80px;
+    height: 20px;
+   
+    border-radius: 2.5px;
+    color:  #000000;
+    font-size: 12px;
+    text-indent: 0px;
+    margin-left: 12px;
+    padding-left: 8px;
+    line-height: 16px;
+
+    font-weight: 400;
+}
+
+.cf_input > p{
+    left: 96px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+
+/* btn- group */
+.reg_table .btn_group {
+    width: 784px;
+    height: 51px;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn_group > .deletebtn{
+    width: 48px;
+    height: 14px;
+    width: auto;
+    float: left;
+    position: relative;
+    margin-top: 11px;
+    align-self: self-start;
+}
+
+/* register product */
+.reg_table .btn_group_register{
+    width: 784px;
+    height: 51px;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: row;
+    flex-flow: row-reverse;
+    align-items: center;
+}
+
+.btn_group_register > .cancelbtn{
+    box-sizing: border-box;
+    float: right;
+    justify-content: none;
+    width: 50px;
+    height: 28px;
+    border-radius: 20px;
+    border: 1px solid #cccccc;
+    text-align: center;
+    line-height: 28px;
+    
+    margin-right: 3px;
+    align-items: center;
+}
+
+
+.btn_group_register > .insertbtn {
+    width: 74px;
+    height: 31px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid #cccccc;
+    text-align: center;
+    line-height: 31px;
+  
+    background: #EFEFEF;
+    
+}
+
+
+
+
+/* pages */
+.pages{
+    width: 784px;
+    height: 35px;
+    text-align: center;
+}
+
+.pages ul li{
+    display: inline-flex;
+    text-align: center;
+}
+
+.pages ul li:first-child::before{
+    content: "<";    
+}
+
+.pages ul li:nth-child(5)::after{
+    content: '>';
+}
+
+
+
+
+/* footer */
+footer{
+    width: 100%;
+    height: auto;
+}
+
+.fIn{
+    width: 980px;
+    height: 41px;
+    background:  #353535;
+    margin: 0 auto;
+    color: #ffffff;
+
+}
+
+.fttxt{
+    font-family: Inter;
+    font-size: 11.63px;
+    font-weight: 400;
+    line-height:12px;
+    text-align: left;
+    margin-left: 12px;
+    padding-top: 12px;
+}
+
+.fttxt span{
+    float: left;
+}
+
+.copy{
+    font-family: Inter;
+    font-size: 11.25px;
+    font-weight: 400;
+    line-height:13.62px;
+    text-align: left;
+
+}
+
+.copy p{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+    right: 12px;
+}
+
+.copy p span::after{
+    content: "@copy";
+}
+.copy p span{
+    margin-right: 2px;
+}

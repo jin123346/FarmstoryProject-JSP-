@@ -25,7 +25,7 @@ public class DBHelper {
 			Context initCtx = new InitialContext();
 			Context ctx =(Context) initCtx.lookup("java:comp/env");
 			//2단계 - 커넥션 풀에서 커넥션 객체 가져오기
-			DataSource ds = (DataSource)ctx.lookup("jdbc/farmstory");
+			DataSource ds = (DataSource)ctx.lookup("jdbc/farmstroy");
 			return ds.getConnection();
 			
 		
@@ -47,3 +47,4 @@ public class DBHelper {
 	}
 
 }
+

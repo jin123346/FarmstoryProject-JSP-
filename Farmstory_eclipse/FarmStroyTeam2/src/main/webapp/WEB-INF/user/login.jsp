@@ -1,10 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<<script>
+	const success=${success};
+	
+	if(success==100){
+		alert('로그인에 실패했습니다.\n다시 시도해주세요');
+	}
+</script>
  
         <main>
             <div class="mainIn">
                 <section class="login">
-                    <form action="#">
+                    <form action="#" method="post">
                         <table border="0">
                             <tr>
                                 <td><img src="../images/login_ico_id.png" alt="아이디"></td>

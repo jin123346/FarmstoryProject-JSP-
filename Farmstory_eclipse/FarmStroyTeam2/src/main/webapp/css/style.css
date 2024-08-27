@@ -1,17 +1,7 @@
 /* layout style */
 /* reset */
 *{margin: 0; padding:0; font-family: "Inter", sans-serif; font-size: 12px; font-weight: 400;}
-html{color:#111; position:relative;}
-html, body{height:100%;}
-body{font-size:12px; line-height:18px; font-family: 'Noto Sans KR', sans-serif;}
-a, address, blockquote, br, fieldset, legend, label, form, input, select, textarea, button, cite, code, dl, dt, dd, h1, h2, h3, h4, h5, h6, p, div, iframe, ul, ol, li, hr, img {margin: 0; padding: 0;}
-a{color:#111; text-decoration: none;}
-img{border:none; vertical-align: top;}
-ul, ol{list-style:none;}
-address{font-style: normal;}
 
-/* hyper link */
-a, a:link, a:visited, a:active, a:hover{text-decoration: none; color: inherit;}
  
 #wrapper{
     width: 100%;
@@ -20,7 +10,7 @@ a, a:link, a:visited, a:active, a:hover{text-decoration: none; color: inherit;}
 /* header */
 #header{
     width: 100%;
-    height: auto;
+    height: 142px;
     box-sizing: border-box;
 }
 .headerIn{
@@ -82,7 +72,7 @@ a, a:link, a:visited, a:active, a:hover{text-decoration: none; color: inherit;}
 
 
 /* header nav */
-
+/* 
 .gnb_wrap{
     width: 980px;
     height: 50px;
@@ -120,7 +110,7 @@ header .gnb > li .badge{
     box-sizing: border-box;
     left:94px;
     top: -13px;
-}
+} */
 
 
 /* main */
@@ -193,21 +183,21 @@ main .main_banner{
 main .main_banner .bannerimg{
     box-sizing: border-box;
     position: absolute;
-    bottom: 8px;
+    bottom: -28px;
     left: 10px;
 }
 
 main .main_banner .bannertit{
     box-sizing: border-box;
     position: absolute;
-    top: 31px;
+    top: 60px;
     left: 10px;
 } 
 
 main .main_banner .bannertxt{
     box-sizing: border-box;
     position: absolute;
-    top: 10px;
+    top: 43px;
     right: 10px;
 }
 

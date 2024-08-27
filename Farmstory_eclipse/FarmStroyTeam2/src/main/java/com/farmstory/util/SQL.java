@@ -14,6 +14,19 @@ public class SQL {
 	
 	//terms
 	
+	
+	
 	//user	
+	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

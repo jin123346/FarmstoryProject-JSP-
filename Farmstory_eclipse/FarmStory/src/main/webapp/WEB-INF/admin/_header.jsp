@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="sssashortcut icon" href="/FarmStory/images/fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="/FarmStory/css/style_admin.css">
     <link rel="stylesheet" href="/FarmStory/css/style_prodReg.css">
     <title>Administrator</title>
+
 </head>
 <body>
     <!-- wrapper -->
     <div id="wrapper">
         <header>
+
        
             <div class="headerIn">
                 <div class="top">
@@ -57,5 +60,6 @@
                             </ul>
                         </div>
                     </aside> <!-- aside end-->
+
                 </div><!-- .aside end-->
-       
+

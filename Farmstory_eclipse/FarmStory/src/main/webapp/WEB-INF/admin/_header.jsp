@@ -42,19 +42,19 @@
                             <ul>
                                 <li>상품관리
                                     <ul>
-                                        <li>상품목록</li>
-                                        <li>상품등록</li>
+                                        <li><a href="#">상품목록</a></li>
+                                        <li><a href="/FarmStory/admin/product/register.do">상품등록</a></li>
                                     </ul>
                                 </li>
     
                                 <li>주문관리
                                     <ul>
-                                        <li>주문목록</li>
+                                        <li><a href="#">주문목록</a></li>
                                     </ul>
                                 </li>
                                 <li>회원관리
                                     <ul>
-                                        <li>회원목록</li>
+                                        <li><a href="#">회원목록</a></li>
                                     </ul>
                                 </li>
                             </ul>

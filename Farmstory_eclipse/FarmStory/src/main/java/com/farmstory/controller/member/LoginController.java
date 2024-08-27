@@ -24,7 +24,6 @@ public class LoginController extends HttpServlet{
 	UserService service = UserService.INSTANCE;
 	
 	
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String success=req.getParameter("success");

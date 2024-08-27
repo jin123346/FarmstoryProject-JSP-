@@ -1,6 +1,7 @@
 package com.farmstory.dao.user;
 
 import java.sql.SQLException;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,14 +12,14 @@ import com.farmstory.util.DBHelper;
 import com.farmstory.util.SQL;
 import com.farmstory.util.USERSQL;
 
-public class UserDAO extends DBHelper{
-	private static UserDAO instance = new UserDAO();
+public class UserDao extends DBHelper{
+	private static UserDao instance = new UserDao();
 	
-	public static UserDAO getInstance() {
+	public static UserDao getInstance() {
 		return instance;
 	}
 	
-	private UserDAO () {}
+	private UserDao () {}
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public int selectCountUser(String type,String value) {

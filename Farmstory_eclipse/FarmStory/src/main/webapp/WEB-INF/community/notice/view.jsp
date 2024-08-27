@@ -82,43 +82,76 @@
                                 <strong>나도요리사</strong> 
                             </p>
                         </nav>
-                         <section class="write">
-                <h3>글쓰기</h3>
-                <article>
-                    <form action="/FarmStory/community/notice/write.do" method="post" enctype="multipart/form-data">
-                    	<input type="hidden" name="b_writer" value="${sessUser.uid}">
-                        <table>
-                            <tr>
-                                <td>제목</td>
-                                <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
-                            </tr>
-                            <tr>
-                                <td>내용</td>
-                                <td>
-                                    <textarea name="b_contents"></textarea>                                
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>첨부</td>
-                                <td>
-                               		<p style="margin-bottom: 6px; ">
-                                		최대 2개 파일 첨부 가능, 각 파일당 최대 10MB 까지 업로드
-                                	</p>
-                                	<input type="file" name="file1"/>
-                                	<input type="file" name="file2"/>
-                                </td>
-                            </tr>
-                        </table>
-                        <div>
-                            <a href="/FarmStory/community/notice/list.do" class="btnCancel">취소</a>
-                            <input type="submit"  class="btnWrite" value="작성완료">
-                        </div>
-                    </form>
-                </article>
-            </section>
-                    </div><!-- .articleIn -->
-                </article><!-- .article -->
-            </section>
+                 	<section class="view">
+				<h3>글보기</h3>
+				<table>
+					<tr>
+						<td>제목</td>
+						<td><input type="text" name="title"
+							value="${articleDTO.title}" readonly /></td>
+					</tr>
+					<!-- 첨부파일이 있으면 나타나게끔  -->
+					<c:if test="${articleDTO.file > 0}">
+						<tr>
+							<td>첨부파일</td>
+							<td><c:forEach var="file" items="${articleDTO.files}">
+									<p style="margin: 4px 0">
+										<a href="/jboard/article/fileDownload.do?fno=${file.fno}">${file.oName}</a>
+										<span>${file.download}회 다운로드</span>
+									</p>
+								</c:forEach></td>
+						</tr>
+					</c:if>
+					<tr>
+						<td>내용</td>
+						<td><textarea name="content" readonly>${articleDTO.title}</textarea>
+						</td>
+					</tr>
+				</table>
+				<div>
+					<a href="#" class="btnDelete">삭제</a> <a href="#" class="btnModify">수정</a>
+					<a href="/FarmStory/community/notice/list.do" class="btnList">목록</a>
+				</div>
+
+				<!-- 댓글리스트 -->
+				<section class="commentList">
+					<h3>댓글목록</h3>
+					<c:forEach var="comment" items="${comments}">
+						<article class="comment">
+							<span> <span>${comment.rdate}</span> <span>${comment.nick}</span>
+							</span>
+							<textarea name="comment" readonly>${comment.content}</textarea>
+							<!-- 자기가 쓴 글만 삭제/수정 가능하게끔 -->
+							<c:if test="${sessUser.uid eq comment.writer}">
+								<div>
+									<!-- HTML 사용자 정의 속성을 이용한 삭제/수정 -->
+									<a href="#" class="commentRemove" data-no="${comment.no}">삭제</a>
+									<a href="#" class="commentCancel" data-no="${comment.no}">수정</a>
+									<a href="#" class="commentModify" data-no="${comment.no}">수정완료</a>
+								</div>
+							</c:if>
+						</article>
+					</c:forEach>
+					<!-- 댓글이 없을때만 나오게끔 -->
+					<c:if test="${empty comments}">
+						<p class="empty">등록된 댓글이 없습니다.</p>
+					</c:if>
+				</section>
+
+				<!-- 댓글입력폼 -->
+				<section class="commentForm">
+					<h3>댓글쓰기</h3>
+					<form name="commentForm">
+						<input type="hidden" name="parent" value="${articleDTO.no}" /> <input
+							type="hidden" name="writer" value="${sessUser.uid}" />
+						<textarea name="comment"></textarea>
+						<div>
+							<a href="#" class="btnCancel">취소</a> <input type="submit"
+								class="btnWrite" value="작성완료" />
+						</div>
+					</form>
+				</section>
+			</section>
         </main><!-- #main -->
         <!-- footer -->
         <footer id="footer">

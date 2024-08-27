@@ -25,6 +25,7 @@
                     <a href="#"><img src="/FarmStory/images/logo.png" alt="farmStory logo"></a>
                 </div><!-- .logo -->
                  <ul class="utill">
+
                     <li><a href="/FarmStory/main.do">HOME</a></li>
                     <li><a href="/FarmStory/member/login.do">로그인</a></li>
                     <li><a href="/FarmStory/member/terms.do">회원가입</a></li>

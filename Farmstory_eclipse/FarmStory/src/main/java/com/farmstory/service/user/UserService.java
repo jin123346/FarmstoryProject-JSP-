@@ -1,6 +1,7 @@
 package com.farmstory.service.user;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
@@ -16,7 +17,7 @@ import javax.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.farmstory.dao.user.UserDAO;
+import com.farmstory.dao.user.UserDao;
 import com.farmstory.dto.user.UserDTO;
 
 public enum UserService {
@@ -24,7 +25,7 @@ public enum UserService {
 	INSTANCE;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	private UserDAO dao = UserDAO.getInstance();
+	private UserDao dao = UserDao.getInstance();
 
 public String sendEmailCode(String email) {
 		

@@ -10,10 +10,39 @@
     <link rel="stylesheet" href="/FarmStory/css/footer.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FarmStroy</title>
-    <!-- 
-        작업내용 
-        2024/08/26  하진희 login html, css update
-    -->
+    <script>
+	
+    
+    const  grade = '${requestScope.grade}';
+   
+     window.onload = function(){
+    	 	const login= document.getElementById('login');
+    	    const register= document.getElementById('register');
+    	    console.log(login);
+    	 
+    	    if(grade ==='admin'){
+    	    	alert('grade admin')
+    	        login.innerText="로그아웃";
+    	        login.href="/FarmStory/member/logout.do";
+    	        register.innerText="관리자";
+    	        register.href="/FarmStory/admin/index.do";
+    	    }else{
+    	    	alert('grade 55')
+    	        login.innerText="로그아웃";
+    	        login.href="/FarmStory/member/logout.do";
+    	        register.innerText="마이페이지";
+    	        register.href="/FarmStory/main.do";
+    	    }
+        
+        
+
+     }
+
+
+
+</script>
+    
+    
 </head>
 <body>
     <div id="wrapper">
@@ -24,10 +53,12 @@
                     <a href="#"><img src="/FarmStory/images/logo.png" alt="farmStory logo"></a>
                 </div><!-- .logo -->
                  <ul class="utill">
-                    <li><a href="/FarmStory/main.do">HOME</a></li>
-                    <li><a href="/FarmStory/member/login.do">로그인</a></li>
-                    <li><a href="/FarmStory/member/terms.do">회원가입</a></li>
-                    <li><a href="#">고객센터</a></li>
+
+                    <li><a href="/FarmStory/main.do" id="home">HOME</a></li>
+                    <li><a href="/FarmStory/member/login.do" id="login">로그인</a></li>
+                    <li><a href="/FarmStory/member/terms.do" id="register">회원가입</a></li>
+                    <li><a href="#" id="cs">고객센터</a></li>
+
                 </ul><!-- .utill -->
                 <div class="h_txt">
                     <img src="/FarmStory/images/head_txt_img.png" alt="3만원이상 무료배송·팜카드 10%적립">

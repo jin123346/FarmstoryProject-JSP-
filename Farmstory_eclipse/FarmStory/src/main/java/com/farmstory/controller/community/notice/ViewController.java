@@ -23,12 +23,21 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ViewController extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
+	private BoardService service = BoardService.INSTANCE;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String boardNo = req.getParameter("boardNo");
+		
+		// 데이터 조회
+		BoardDTO boardDTO = service.selectBoard(boardNo);
+		
+		
+		// 공유 참조
+		req.setAttribute("boardDTO", boardDTO);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/view.jsp");
 		dispatcher.forward(req, resp);

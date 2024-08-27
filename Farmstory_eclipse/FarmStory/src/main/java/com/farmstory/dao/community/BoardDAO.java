@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.community.BoardDTO;
+import com.farmstory.dto.community.BoardFileDTO;
 import com.farmstory.util.BOARDSQL;
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.SQL;
@@ -99,7 +100,55 @@ public class BoardDAO extends DBHelper {
 	
 	// 글 조회
 	public BoardDTO selectBoard(String boardNo) {
-		return null;
+
+		BoardDTO dto = null; // BoardDTO 선언
+		List<BoardFileDTO> boardFiles = new ArrayList<>(); // 파일이 2개 생성된다고 생각하고 LIST
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(BOARDSQL.SELECT_BOARD);
+			pstmt.setString(1, boardNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				if(dto == null) {
+					dto = new BoardDTO(); // BoardDTO 생성
+					dto.setBoardNo(rs.getInt(1));
+					dto.setB_cateNo(rs.getString(2));
+					dto.setTitle(rs.getString(3));
+					dto.setB_contents(rs.getString(4));
+					dto.setB_comNo(rs.getInt(5));
+					dto.setB_fNo(rs.getInt(6));
+					dto.setB_hit(rs.getInt(7));
+					dto.setB_regip(rs.getString(8));
+					dto.setB_writer(rs.getString(9));
+					dto.setB_rdate(rs.getString(10));
+				}
+				
+				BoardFileDTO boardFileDTO = new BoardFileDTO();
+				boardFileDTO.setB_fNo(rs.getInt(11));
+				boardFileDTO.setB_pNo(rs.getInt(12));
+				boardFileDTO.setB_oName(rs.getString(13));
+				boardFileDTO.setB_sName(rs.getString(14));
+				boardFileDTO.setB_rdate(rs.getString(15));
+				boardFileDTO.setB_download(rs.getInt(16));
+				boardFiles.add(boardFileDTO);
+			}
+			
+			dto.setBoardFiles(boardFiles);
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dto;
 	}
 	
 	// 글 목록

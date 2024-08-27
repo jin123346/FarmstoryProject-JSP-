@@ -1,5 +1,7 @@
 package com.farmstory.dto.community;
 
+import java.util.List;
+
 public class BoardDTO {
 
 	private int boardNo;
@@ -15,7 +17,7 @@ public class BoardDTO {
 	
 	// 추가 필드
 	private String nick;
-	
+	private List<BoardFileDTO> boardFiles;
 	
 	
 	public String getNick() {
@@ -24,6 +26,14 @@ public class BoardDTO {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
+	public List<BoardFileDTO> getBoardFiles() {
+		return boardFiles;
+	}
+	public void setBoardFiles(List<BoardFileDTO> boardFiles) {
+		this.boardFiles = boardFiles;
+	}
+	
+	
 	public int getBoardNo() {
 		return boardNo;
 	}

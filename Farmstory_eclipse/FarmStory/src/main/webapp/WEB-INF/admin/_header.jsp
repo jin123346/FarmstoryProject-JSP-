@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="sssashortcut icon" href="/images/fav.ico" type="image/x-icon">
+    <link rel="sssashortcut icon" href="/FarmStory/images/fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="/FarmStory/css/style_admin.css">
     <link rel="stylesheet" href="/FarmStory/css/style_prodReg.css">
     <title>Administrator</title>
@@ -13,15 +13,15 @@
     <!-- wrapper -->
     <div id="wrapper">
         <header>
-        /FarmStory/src/main/webapp/WEB-INF/admin/images/admin_bg.jpg
+       
             <div class="headerIn">
                 <div class="top">
-                    <img src="/FarmStory/admin/images/admin_logo.jpg" alt="">
+                    <img src="/FarmStory/images/admin/admin_logo.jpg" alt="">
                 </div>
                 <div class="utill">
                     <ul>
-                        <li><a href="#" class="util_home">HOME</a></li>
-                        <li><a href="#" class="util_logout">로그아웃</a></li>
+                        <li><a href="/FarmStory/admin/index.do" class="util_home">HOME</a></li>
+                        <li><a href="/FarmStory/member/logout.do" class="util_logout">로그아웃</a></li>
                         <li><a href="#" class="util_cs">고객센터</a></li>
                     </ul>
                 </div>

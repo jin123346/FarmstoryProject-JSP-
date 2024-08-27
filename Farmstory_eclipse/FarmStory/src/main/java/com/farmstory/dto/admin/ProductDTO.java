@@ -15,6 +15,8 @@ public class ProductDTO {
 	private int pDesc_fNo;
 	private String rdate;
 	private String pDesc;
+
+	
 	public int getpNo() {
 		return pNo;
 	}
@@ -99,12 +101,15 @@ public class ProductDTO {
 	public void setpDesc(String pDesc) {
 		this.pDesc = pDesc;
 	}
+
 	@Override
 	public String toString() {
 		return "ProductDTO [pNo=" + pNo + ", p_sellerNo=" + p_sellerNo + ", prodCateNo=" + prodCateNo + ", pName="
 				+ pName + ", price=" + price + ", stock=" + stock + ", point=" + point + ", discount=" + discount
 				+ ", delivery=" + delivery + ", pList_fNo=" + pList_fNo + ", pBasic_fNo=" + pBasic_fNo + ", pDesc_fNo="
 				+ pDesc_fNo + ", rdate=" + rdate + ", pDesc=" + pDesc + "]";
+		}
+
 	}
 	
 	
@@ -115,4 +120,4 @@ public class ProductDTO {
 	
 	
 
-}
+

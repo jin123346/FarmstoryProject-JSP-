@@ -16,7 +16,7 @@
     width: 103px; height: 45px; margin:16px 0 0 16px;
     /* position: absolute; top: 16px; left: 16px;  */ /* 포지션으로 위치 잡을 경우 위치 값 */
 }
-.aside_bg{width: 176px; height: 650px; background: url('../images/sub_aside_bg_lnb.png') 0 20px no-repeat;}
+.aside_bg{width: 176px; height: 650px; background: url('.././images/sub_aside_bg_lnb.png') 0 20px no-repeat;}
 
 /* lnb */
 

@@ -24,9 +24,9 @@
                     <a href="#"><img src="/FarmStory/images/logo.png" alt="farmStory logo"></a>
                 </div><!-- .logo -->
                  <ul class="utill">
-                    <li><a href="#">HOME</a></li>
+                    <li><a href="/FarmStory/main.do">HOME</a></li>
                     <li><a href="/FarmStory/member/login.do">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
+                    <li><a href="/FarmStory/member/terms.do">회원가입</a></li>
                     <li><a href="#">고객센터</a></li>
                 </ul><!-- .utill -->
                 <div class="h_txt">
@@ -34,14 +34,14 @@
                 </div><!-- .h_txt -->
                 <nav class="gnb_wrap">
                     <ul class="gnb">
-                        <li><a href="#"><img src="/FarmStory/images/head_menu1.png" alt="팜스토리소개"></a></li>
+                        <li><a href="/FarmStory/intro/introduction.do"><img src="/FarmStory/images/head_menu1.png" alt="팜스토리소개"></a></li>
                         <li><a href="#">
                             <img src="/FarmStory/images/head_menu_badge.png" alt="30%" class="discount"/>
                             <img src="/FarmStory/images/head_menu2.png" alt="장보기">
                         </a></li>
                         <li><a href="#"><img src="/FarmStory/images/head_menu3.png" alt="농작물이야기"></a></li>
                         <li><a href="#"><img src="/FarmStory/images/head_menu4.png" alt="이벤트"></a></li>
-                        <li><a href="#"><img src="/FarmStory/images/head_menu5.png" alt="커뮤니티"></a></li>
+                        <li><a href="/FarmStory/community/notice/list.do"><img src="/FarmStory/images/head_menu5.png" alt="커뮤니티"></a></li>
                     </ul><!-- .gnb -->
                 </nav><!-- .gnb_wrap -->
             </div><!-- .headerIn -->

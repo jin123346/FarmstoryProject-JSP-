@@ -1,4 +1,4 @@
-package com.farmstory.controller;
+package com.farmstory.controller.admin;
 
 import java.io.IOException;
 
@@ -12,26 +12,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/main.do")
-public class MainController extends HttpServlet{
-
+@WebServlet("/admin/index.do")
+public class AdminController  extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String grade = req.getParameter("grade");
-		req.setAttribute("grade", grade);
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
-		logger.debug(dispatcher+"");
-		dispatcher.forward(req, resp);
+		RequestDispatcher dispacher = req.getRequestDispatcher("/WEB-INF/admin/index.jsp");
+		dispacher.forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 	}
+
 
 }

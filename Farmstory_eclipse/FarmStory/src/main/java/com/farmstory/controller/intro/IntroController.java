@@ -1,9 +1,6 @@
-package com.farmstory.controller;
+package com.farmstory.controller.intro;
 
 import java.io.IOException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,26 +9,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/main.do")
-public class MainController extends HttpServlet{
+@WebServlet("/intro/introduction.do")
+public class IntroController extends HttpServlet{
 
-	private static final long serialVersionUID = 1L;
 	
-	Logger logger = LoggerFactory.getLogger(this.getClass());
+	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String grade = req.getParameter("grade");
-		req.setAttribute("grade", grade);
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
-		logger.debug(dispatcher+"");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/introduction/introduction.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-	}
 
+	}
+	
 }

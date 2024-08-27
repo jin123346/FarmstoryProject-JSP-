@@ -3,13 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../images/fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/introduction/direction.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>길찾기</title>
    
 </head>
@@ -51,7 +51,7 @@
         <main id="main cf">
             <section class="mainIn cf">
                 <div class="sub_bg">
-                    <img src="../images/sub_top_tit1.png" alt="COMMUNITY" class="sub_tit">
+                    <span class="sub_tit"><img src="../images/sub_top_tit1.png" alt=""></span><!-- .sub_tit -->
                 </div>
                 <aside class="aside">
                     <div class="sidebar">
@@ -60,8 +60,8 @@
                         </div><!-- .aside_cate -->
                         <div class="aside_bg">
                             <ul class="cate_lnb">
-                                <li> <a href="#">인사말</a></li>
-                                <li> <a href="#">찾아오는길</a></li>
+                                <li> <a href="/FarmStory/intro/introduction.do">인사말</a></li>
+                                <li> <a href="/FarmStory/intro/direction.do">찾아오는길</a></li>
                           
                             </ul><!-- .cate_lnb -->
                         </div><!-- .aside_bg -->

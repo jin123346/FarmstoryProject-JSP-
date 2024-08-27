@@ -25,7 +25,7 @@ a, a:link, a:visited, a:active, a:hover{text-decoration: none; color: inherit;}
 header{
     width: 100%;
     height: auto;
-    background: url(../admin/images/admin_bg.jpg);
+    background: url(/FarmStory/images/admin/admin_bg.jpg);
     background-position: bottom;
 }
 
@@ -44,6 +44,7 @@ header{
 
 /* utill */
 .utill{
+	font-weight: 400;
     float: right;
     margin-top: -32px;
 }
@@ -143,6 +144,12 @@ aside div{
 
 .adm_list > ul > li > ul > li::before{
     content: "└";
+}
+
+.adm_list a:hover{
+	color: #000; /* Black color for the active link */
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 /* section */

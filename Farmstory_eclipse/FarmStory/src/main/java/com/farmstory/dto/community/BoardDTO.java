@@ -13,7 +13,17 @@ public class BoardDTO {
 	private String b_writer;
 	private String b_rdate;
 	
+	// 추가 필드
+	private String nick;
 	
+	
+	
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -73,6 +83,9 @@ public class BoardDTO {
 	}
 	public void setB_rdate(String b_rdate) {
 		this.b_rdate = b_rdate;
+	}
+	public void setB_rdateSubString(String b_rdate) {
+		this.b_rdate = b_rdate.substring(0, 10);
 	}
 	
 	@Override

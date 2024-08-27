@@ -21,7 +21,7 @@ public class SQL {
 													+ "`b_oName`=?,"
 													+ "`b_sName`=?,"
 													+ "`b_rdate`=NOW()";
-	public static final String UPDATE_BOARD_FILE_DOWNLOAD_COUNT = "update boardfile set `download` = `download` + 1 where `fno`=?";
+	public static final String UPDATE_BOARD_FILE_DOWNLOAD_COUNT = "update boardfile set `b_download` = `b_download` + 1 where `b_fNo`=?";
 	
 	
 	

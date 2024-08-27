@@ -85,7 +85,7 @@
                          <section class="write">
                 <h3>글쓰기</h3>
                 <article>
-                    <form action="/FarmStroyTeam2/community/notice/write.do" method="post" enctype="multipart/form-data">
+                    <form action="/FarmStory/community/notice/write.do" method="post" enctype="multipart/form-data">
                     	<input type="hidden" name="b_writer" value="${sessUser.uid}">
                         <table>
                             <tr>
@@ -110,7 +110,7 @@
                             </tr>
                         </table>
                         <div>
-                            <a href="/FarmStroyTeam2/community/notice/list.do" class="btnCancel">취소</a>
+                            <a href="/FarmStory/community/notice/list.do" class="btnCancel">취소</a>
                             <input type="submit"  class="btnWrite" value="작성완료">
                         </div>
                     </form>

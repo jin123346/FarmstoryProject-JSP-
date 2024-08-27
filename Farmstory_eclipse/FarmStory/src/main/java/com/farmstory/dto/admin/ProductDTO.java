@@ -15,26 +15,7 @@ public class ProductDTO {
 	private int pDesc_fNo;
 	private String rdate;
 	private String pDesc;
-	
-	// 추가필드 사진 (상품목록 이미지 | plistimgfile 테이블)
-	private String pList_oName; 
-	
-	public String getpList_oName() {
-		return pList_oName;
-	}
-	public void setpList_oName(String pList_oName) {
-		this.pList_oName = pList_oName;
-	}
-	
-	// 추가필드 사진 (제품 카테고리 구분 (과일) | prodcate 테이블)
-	private String prodCateName; 
-	
-	public String getProdCateName() {
-		return prodCateName;
-	}
-	public void setProdCateName(String prodCateName) {
-		this.prodCateName = prodCateName;
-	}
+
 	
 	public int getpNo() {
 		return pNo;
@@ -120,13 +101,23 @@ public class ProductDTO {
 	public void setpDesc(String pDesc) {
 		this.pDesc = pDesc;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "ProductDTO [pNo=" + pNo + ", p_sellerNo=" + p_sellerNo + ", prodCateNo=" + prodCateNo + ", pName="
 				+ pName + ", price=" + price + ", stock=" + stock + ", point=" + point + ", discount=" + discount
 				+ ", delivery=" + delivery + ", pList_fNo=" + pList_fNo + ", pBasic_fNo=" + pBasic_fNo + ", pDesc_fNo="
-				+ pDesc_fNo + ", rdate=" + rdate + ", pDesc=" + pDesc + ", pList_oName=" + pList_oName
-				+ ", prodCateName=" + prodCateName + "]";
+				+ pDesc_fNo + ", rdate=" + rdate + ", pDesc=" + pDesc + "]";
+		}
+
 	}
-}
+	
+	
+
+	
+	
+	
+	
+	
+
+

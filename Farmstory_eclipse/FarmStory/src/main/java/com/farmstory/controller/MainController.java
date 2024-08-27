@@ -21,6 +21,9 @@ public class MainController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String grade = req.getParameter("grade");
+		req.setAttribute("grade", grade);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
 		logger.debug(dispatcher+"");
 		dispatcher.forward(req, resp);

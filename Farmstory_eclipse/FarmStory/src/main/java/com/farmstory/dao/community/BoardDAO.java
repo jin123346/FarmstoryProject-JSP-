@@ -1,12 +1,14 @@
 package com.farmstory.dao.community;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.community.BoardDTO;
+import com.farmstory.util.BOARDSQL;
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.SQL;
 
@@ -32,7 +34,7 @@ public class BoardDAO extends DBHelper {
 			conn.setAutoCommit(false); // 데이터베이스 연결 객체 conn의 자동 커밋 기능을 비활성화하는 역할(트랜잭션)
 			
 			stmt = conn.createStatement();
-			pstmt = conn.prepareStatement(SQL.INSERT_BOARD);
+			pstmt = conn.prepareStatement(BOARDSQL.INSERT_BOARD);
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getB_contents());
 			pstmt.setInt(3, dto.getB_fNo());
@@ -40,7 +42,7 @@ public class BoardDAO extends DBHelper {
 			pstmt.setString(5, dto.getB_writer());
 			pstmt.executeUpdate();
 			
-			rs = stmt.executeQuery(SQL.SELECT_MAX_BOARD_NO);  // no의 auto-increment를 이용하여 가장 최신글은 no값이 가장 큰 것을 이용해서 글 번호를 가져옴
+			rs = stmt.executeQuery(BOARDSQL.SELECT_MAX_BOARD_NO);  // no의 auto-increment를 이용하여 가장 최신글은 no값이 가장 큰 것을 이용해서 글 번호를 가져옴
 			
 			if(rs.next()) {
 				no = rs.getInt(1);
@@ -67,6 +69,34 @@ public class BoardDAO extends DBHelper {
 		return no;
 	}
 	
+
+	//	전체 게시물 갯수 구하기
+	public int selectCountTotal() {
+		
+		int total = 0;
+		
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(BOARDSQL.SELECT_COUNT_TOTAL);
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return total;
+	}
+	
 	// 글 조회
 	public BoardDTO selectBoard(String boardNo) {
 		return null;
@@ -74,7 +104,44 @@ public class BoardDAO extends DBHelper {
 	
 	// 글 목록
 	public List<BoardDTO> selectBoards(int start) {
-		return null;
+
+		List<BoardDTO> boards = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(BOARDSQL.SELECT_BOARDS);
+			pstmt.setInt(1, start);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				BoardDTO dto = new BoardDTO();
+				dto.setBoardNo(rs.getInt(1));
+				dto.setB_cateNo(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setB_contents(rs.getString(4));
+				dto.setB_comNo(rs.getInt(5));
+				dto.setB_fNo(rs.getInt(6));
+				dto.setB_hit(rs.getInt(7));
+				dto.setB_regip(rs.getString(8));
+				dto.setB_writer(rs.getString(9));
+				dto.setB_rdateSubString(rs.getString(10));
+				dto.setNick(rs.getString(11));
+				
+				boards.add(dto);
+			}
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return boards;
 	}
 	
 	// 글 수정

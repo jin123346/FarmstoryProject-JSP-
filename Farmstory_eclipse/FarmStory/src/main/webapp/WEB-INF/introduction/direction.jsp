@@ -1,57 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../images/fav.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/introduction/direction.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>길찾기</title>
-   
-</head>
-<body>
-    <div id="wrapper">
-
-        <header id="header">
-            <div class="headerIn">
-                <div class="topline">
-                    <img src="../images/head_top_line.png" alt="topline"/>
-                </div><!-- .topLine -->
-                <div class="logo">
-                    <a href="#"><img src="../images/logo.png" alt="farmStory logo"></a>
-                </div><!-- .logo -->
-                 <ul class="utill">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul><!-- .utill -->
-                <div class="h_txt">
-                    <img src="../images/head_txt_img.png" alt="3만원이상 무료배송·팜카드 10%적립">
-                </div><!-- .h_txt -->
-                <nav class="gnb_wrap">
-                    <ul class="gnb">
-                        <li><a href="#"><img src="../images/head_menu1.png" alt="팜스토리소개"></a></li>
-                        <li><a href="#">
-                            <img src="../images/head_menu_badge.png" alt="30%" class="discount"/>
-                            <img src="../images/head_menu2.png" alt="장보기">
-                        </a></li>
-                        <li><a href="#"><img src="../images/head_menu3.png" alt="농작물이야기"></a></li>
-                        <li><a href="#"><img src="../images/head_menu4.png" alt="이벤트"></a></li>
-                        <li><a href="#"><img src="../images/head_menu5.png" alt="커뮤니티"></a></li>
-                    </ul><!-- .gnb -->
-                </nav><!-- .gnb_wrap -->
-            </div><!-- .headerIn -->
-        </header><!-- #header -->
+<%@ include file="../_header.jsp" %>
  
         <main id="main cf">
             <section class="mainIn cf">
                 <div class="sub_bg">
-                    <img src="../images/sub_top_tit1.png" alt="COMMUNITY" class="sub_tit">
+                    <span class="sub_tit"><img src="../images/sub_top_tit1.png" alt=""></span><!-- .sub_tit -->
                 </div>
                 <aside class="aside">
                     <div class="sidebar">
@@ -60,8 +13,8 @@
                         </div><!-- .aside_cate -->
                         <div class="aside_bg">
                             <ul class="cate_lnb">
-                                <li> <a href="#">인사말</a></li>
-                                <li> <a href="#">찾아오는길</a></li>
+                                <li> <a href="/FarmStory/intro/introduction.do">인사말</a></li>
+                                <li> <a href="/FarmStory/intro/direction.do">찾아오는길</a></li>
                           
                             </ul><!-- .cate_lnb -->
                         </div><!-- .aside_bg -->
@@ -92,9 +45,38 @@
                                 </li>
                                 <li>
                                     <span class="txt1">찾아오시는 길</span>
-                                    <div class="map">
-                                        map
-                                    </div>
+                                    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1185526bec189e0f0c285b8af341b4a5"></script>
+                                    <div id="map" style="width:760px;height:400px;"></div>
+                                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                                    <script>
+                                    var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+                                        center : new kakao.maps.LatLng(35.179665, 129.0747635), // 지도의 중심좌표 
+                                        level : 3 // 지도의 확대 레벨 
+                                    });
+                                    
+                                    var markerPosition  = new kakao.maps.LatLng(35.179665, 129.0747635); 
+
+	                                 // 마커를 생성합니다
+	                                 var marker = new kakao.maps.Marker({
+	                                     position: markerPosition
+	                                 });
+	
+	                                 // 마커가 지도 위에 표시되도록 설정합니다
+	                                 marker.setMap(map);
+	                                 var mapTypeControl = new kakao.maps.MapTypeControl();
+
+		                              // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+		                              // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+		                              map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+	
+		                              // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+		                              var zoomControl = new kakao.maps.ZoomControl();
+		                              map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+		                              
+		                              
+	                                 
+									</script>
+									  
                                 </li>
                             </ul>  
                         </div><!--direction -->

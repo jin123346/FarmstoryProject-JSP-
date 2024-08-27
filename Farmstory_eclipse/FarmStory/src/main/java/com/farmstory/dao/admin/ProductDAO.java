@@ -1,14 +1,16 @@
 package com.farmstory.dao.admin;
 
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.farmstory.dto.admin.ProductDTO;
+
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.SQL;
 
@@ -21,7 +23,9 @@ public class ProductDAO extends DBHelper {
 	private ProductDAO() {}
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	private PreparedStatement psmt;
+
 	
 	public int insertProduct(ProductDTO dto) {
 		return 0;
@@ -31,7 +35,8 @@ public class ProductDAO extends DBHelper {
 		return null;
 	}
 	
-	public List<ProductDTO> selectProducts() throws SQLException {
+
+	public List<ProductDTO> selectProducts() {
 		
 		List<ProductDTO> products = new ArrayList<>();
 		
@@ -44,10 +49,10 @@ public class ProductDAO extends DBHelper {
 			
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();
-				dto.setpList_oName(rs.getString(1));
+				dto.setpList_fNo(rs.getInt(1));
 				dto.setpNo(rs.getInt(2));
 				dto.setpName(rs.getString(3));
-				dto.setProdCateName(rs.getString(4));
+				//dto.se(rs.getString(4));
 				dto.setPrice(rs.getInt(5));
 				dto.setStock(rs.getInt(6)); 
 				dto.setRdate(rs.getString(7));
@@ -65,18 +70,22 @@ public class ProductDAO extends DBHelper {
 			}
 			
 		}finally {
-			closeAll();
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error(e.getMessage());
+			}
 		}
 		
 		
 		return products;
 	}
+
 	
 	public void updateProduct(ProductDTO dto) {}
 	public void deleteProduct(int pNo) {}
 
-	
-	
-	
-	
 }
+	
+	
+

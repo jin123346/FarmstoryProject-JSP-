@@ -31,7 +31,7 @@
                  <ul class="utill">
                     <li><a href="#">HOME</a></li>
                     <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
+                    <li><a href="/FarmStory/member/terms.do">회원가입</a></li>
                     <li><a href="#">고객센터</a></li>
                 </ul><!-- .utill -->
                 <div class="h_txt">

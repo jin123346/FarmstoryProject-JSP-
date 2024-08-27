@@ -1,10 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
-<<script>
+<script>
 	const success=${success};
 	
 	if(success==100){
 		alert('로그인에 실패했습니다.\n다시 시도해주세요');
+	}else if(success==101){
+		alert('성공적으로 로그아웃 되었습니다.');
+		
 	}
 </script>
  

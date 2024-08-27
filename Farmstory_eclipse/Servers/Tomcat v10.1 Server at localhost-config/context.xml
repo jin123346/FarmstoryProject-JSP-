@@ -29,7 +29,7 @@
     -->
     
     <Resource  
-    	name="jdbc/farmstroy"
+    	name="jdbc/farmstory"
     	auth="Container"
     	type="javax.sql.DataSource"
     	driverClassName="com.mysql.cj.jdbc.Driver"

@@ -113,7 +113,7 @@
                             </div>
             
                             <!-- 글쓰기 버튼 -->
-                            <a href="#" class="btnWrite">글쓰기</a>
+                            <a href="/FarmStroyTeam2/community/notice/write.do" class="btnWrite">글쓰기</a>
                         </section>
                     </div><!-- .articleIn -->
                 </article><!-- .article -->

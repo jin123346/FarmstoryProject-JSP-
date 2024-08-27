@@ -85,8 +85,8 @@
                          <section class="write">
                 <h3>글쓰기</h3>
                 <article>
-                    <form action="/jboard/article/write.do" method="post" enctype="multipart/form-data">
-                    	<input type="hidden" name="writer" value="${sessUser.uid}">
+                    <form action="/FarmStroyTeam2/community/notice/write.do" method="post" enctype="multipart/form-data">
+                    	<input type="hidden" name="b_writer" value="${sessUser.uid}">
                         <table>
                             <tr>
                                 <td>제목</td>
@@ -95,7 +95,7 @@
                             <tr>
                                 <td>내용</td>
                                 <td>
-                                    <textarea name="content"></textarea>                                
+                                    <textarea name="b_contents"></textarea>                                
                                 </td>
                             </tr>
                             <tr>
@@ -110,7 +110,7 @@
                             </tr>
                         </table>
                         <div>
-                            <a href="#" class="btnCancel">취소</a>
+                            <a href="/FarmStroyTeam2/community/notice/list.do" class="btnCancel">취소</a>
                             <input type="submit"  class="btnWrite" value="작성완료">
                         </div>
                     </form>

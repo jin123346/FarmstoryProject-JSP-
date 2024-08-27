@@ -18,6 +18,10 @@ public class BOARDSQL {
 												+ "JOIN `user` AS b ON a.b_writer = b.uid "
 												+ "ORDER BY `boardNo` DESC "
 												+ "LIMIT ?, 10";
+	public static final String SELECT_BOARD = "select * from `board` AS a "
+												+ "LEFT JOIN `boardfile` AS b ON a.`boardNo` = b.b_pNo "
+												+ "WHERE `boardNo`=?";
+	
 	
 	// file
 	public static final String SELECT_BOARD_FILE = "select * from `boardfile` where b_fNo=?";
@@ -26,7 +30,28 @@ public class BOARDSQL {
 													+ "`b_oName`=?,"
 													+ "`b_sName`=?,"
 													+ "`b_rdate`=NOW()";
-	public static final String UPDATE_BOARD_FILE_DOWNLOAD_COUNT = "update `boardfile` set `download` = `download` + 1 where `b_fNo`=?";
+	public static final String UPDATE_BOARD_FILE_DOWNLOAD_COUNT = "update `boardfile` set `b_download` = `b_download` + 1 where `b_fNo`=?";
+	
+	
+	// comment
+	public static final String SELECT_COMMENT = "select * from `comment` where `comNo`=?";
+	
+	public static final String SELECT_COMMENTS = "SELECT a.*, b.nick from `comment` AS a "
+												+ "JOIN `user` AS b ON a.com_writer = b.uid "
+												+ "where `com_parent`=? "
+												+ "order by comNo";
+	
+	public static final String INSERT_COMMENT = "insert into `comment` set "
+												+ "`com_parent`=?,"
+												+ "`com_content`=?,"
+												+ "`com_writer`=?,"
+												+ "`com_regip`=?,"
+												+ "`com_rdate`=NOW()";
+	
+	public static final String UPDATE_COMMENT = "update `comment` set `com_content`=? where `comNo`=?";
+	
+	public static final String DELETE_COMMENT = "delete from `comment` where `comNo`=?";
+
 	
 	
 	

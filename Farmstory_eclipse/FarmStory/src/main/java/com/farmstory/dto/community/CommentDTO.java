@@ -9,17 +9,35 @@ public class CommentDTO {
 	private String com_regip; 
 	private String com_rdate;
 	
+	// 추가필드
+	private String nick;
+	
+	public String getNick() {
+		return nick;
+	}
+	
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+	
 	public int getComNo() {
 		return comNo;
 	}
 	public void setComNo(int comNo) {
 		this.comNo = comNo;
 	}
+	// 댓글 번호 string set 추가 
+	public void setComNo(String comNo) {
+		this.comNo = Integer.parseInt(comNo);
+	}
 	public int getCom_parent() {
 		return com_parent;
 	}
 	public void setCom_parent(int com_parent) {
 		this.com_parent = com_parent;
+	}
+	public void setCom_parent(String com_parent) {
+		this.com_parent = Integer.parseInt(com_parent);
 	}
 	public String getCom_content() {
 		return com_content;
@@ -44,6 +62,10 @@ public class CommentDTO {
 	}
 	public void setCom_rdate(String com_rdate) {
 		this.com_rdate = com_rdate;
+	}
+	// 댓글 등록일 날짜 자르기 
+	public void setCom_rdateSubstring(String com_rdate) {
+		this.com_rdate = com_rdate.substring(0, 10);
 	}
 	
 	@Override

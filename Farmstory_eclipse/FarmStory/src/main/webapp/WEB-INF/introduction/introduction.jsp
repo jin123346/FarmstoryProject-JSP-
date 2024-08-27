@@ -53,7 +53,7 @@
         <main id="main" class="cf">
             <section class="mainIn cf">
                 <div class="sub_bg">
-                    <span class="sub_tit"><img src="/images/sub_top_tit1.png" alt=""></span><!-- .sub_tit -->
+                    <span class="sub_tit"><img src="../images/sub_top_tit1.png" alt=""></span><!-- .sub_tit -->
                 </div><!-- .sub_bg -->
         
                 <aside class="aside">
@@ -63,8 +63,8 @@
                         </div><!-- .aside_cate -->
                         <div class="aside_bg">
                             <ul class="cate_lnb1">
-                                <li> <a href="#" class="lnb1">인삿말</a></li>
-                                <li> <a href="#" class="lnb2">찾아오시는길</a></li>
+                                <li> <a href="/FarmStory/intro/introduction.do" class="lnb1">인삿말</a></li>
+                                <li> <a href="/FarmStory/intro/direction.do" class="lnb2">찾아오시는길</a></li>
                             </ul><!-- .cate_lnb -->
                         </div><!-- .aside_bg -->
                     </div><!-- .sidebar -->
@@ -82,7 +82,7 @@
                                 <strong>인삿말</strong> 
                             </p>
                         </nav>
-                        <a href="#"><img src="/images/sub_page1_article_txt.png" alt="건강한 먹거리"class="content"></a>
+                        <a href="#"><img src="../images/sub_page1_article_txt.png" alt="건강한 먹거리"class="content"></a>
                         <div class="txt">
                             <p>항상 저희 팜스토리를 성원해 주시고 관심을 가져주시는 모든 분들께 감사의 인사를 드리며<br>
                             가정에 건강과 행복이 가득하시길 기원합니다.</p><br>

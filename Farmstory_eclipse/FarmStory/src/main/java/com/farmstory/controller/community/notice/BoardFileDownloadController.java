@@ -33,7 +33,7 @@ public class BoardFileDownloadController extends HttpServlet {
 		service.updateBoardFileDownloadCount(b_fNo);
 		
 		// 파일 다운로드
-		service.BoardFileDownload(req, resp);
+		service.boardFileDownload(req, resp);
 		
 		
 	

@@ -9,10 +9,10 @@ import com.farmstory.dto.user.UserDTO;
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.SQL;
 
-public class UserDAO extends DBHelper{
-	private static UserDAO instance = new UserDAO();
+public class UserDao extends DBHelper{
+	private static UserDao instance = new UserDao();
 	
-	public static UserDAO getInstance() {
+	public static UserDao getInstance() {
 		return instance;
 	}
 	

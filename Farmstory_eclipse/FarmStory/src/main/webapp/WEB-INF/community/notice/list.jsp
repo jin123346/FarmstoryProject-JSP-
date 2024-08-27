@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -93,27 +94,35 @@
                                         <th>날짜</th>
                                         <th>조회</th>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><a href="#">테스트 제목입니다.</a>&nbsp;[3]</td>
-                                        <td>길동이</td>
-                                        <td>20-05-12</td>
-                                        <td>12</td>
-                                    </tr>
+                                    <c:forEach var="board" items="${boards}">
+	                                    <tr>
+	                                        <td>${pageStartNum}</td>
+	                                        <td><a href="/FarmStory/community/notice/view.do?no=${board.boardNo}">${board.b_contents}</a>&nbsp;[3]</td>
+	                                        <td>${board.nick}</td>
+	                                        <td>${board.b_rdate}</td>
+	                                        <td>${board.b_hit}</td>
+	                                    </tr>
+	                                    <!-- 한번 반복할때마다 pageStartNum을 1씩 차감 -->
+				                        <c:set var="pageStartNum" value="${pageStartNum-1}"/>
+			                        </c:forEach>
                                 </table>
                             </article>
             
                             <!-- 페이지 네비게이션 -->
-                            <div class="paging">
-                                <a href="#" class="prev">이전</a>
-                                <a href="#" class="num current">1</a>                
-                                <a href="#" class="num">2</a>                
-                                <a href="#" class="num">3</a>                
-                                <a href="#" class="next">다음</a>
-                            </div>
+			                <div class="paging">
+			               		<c:if test="${pageGroup.start > 1}">
+			                   		<a href="/FarmStory/community/notice/list.do?pg=${pageGroup.start-1}" class="prev">이전</a>
+			               		</c:if>
+			                    <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
+			                    	<a href="/FarmStory/community/notice/list.do?pg=${i}" class="num">${i}</a>
+			                    </c:forEach>
+			                    <c:if test="${pageGroup.end < lastPageNum}">
+			                   		<a href="/FarmStory/community/notice/list.do?pg=${pageGroup.end+1}" class="next">다음</a>
+			                    </c:if>
+							</div>
             
                             <!-- 글쓰기 버튼 -->
-                            <a href="/FarmStroyTeam2/community/notice/write.do" class="btnWrite">글쓰기</a>
+                            <a href="/FarmStory/community/notice/write.do" class="btnWrite">글쓰기</a>
                         </section>
                     </div><!-- .articleIn -->
                 </article><!-- .article -->

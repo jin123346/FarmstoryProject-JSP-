@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.community.BoardFileDTO;
+import com.farmstory.util.BOARDSQL;
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.SQL;
 
@@ -26,7 +27,7 @@ public class BoardFileDAO extends DBHelper {
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(SQL.INSERT_BOARD_FILE);
+			pstmt = conn.prepareStatement(BOARDSQL.INSERT_BOARD_FILE);
 			pstmt.setInt(1, dto.getB_pNo());
 			pstmt.setString(2, dto.getB_oName());
 			pstmt.setString(3, dto.getB_sName());
@@ -45,7 +46,7 @@ public class BoardFileDAO extends DBHelper {
 		try {
 
 			conn = getConnection();
-			pstmt = conn.prepareStatement(SQL.SELECT_BOARD_FILE);
+			pstmt = conn.prepareStatement(BOARDSQL.SELECT_BOARD_FILE);
 			pstmt.setString(1, b_fNo);
 			
 			rs = pstmt.executeQuery();
@@ -77,10 +78,14 @@ public class BoardFileDAO extends DBHelper {
 		return null;
 	}
 	
-	public void updateBoardFile(String b_fNo) {
+	public void updateBoardFile(int b_fNo) {
+			
+		}
+		
+	public void updateBoardFileDownloadCount(String b_fNo) {
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(SQL.UPDATE_BOARD_FILE_DOWNLOAD_COUNT);
+			pstmt = conn.prepareStatement(BOARDSQL.UPDATE_BOARD_FILE_DOWNLOAD_COUNT);
 			pstmt.setString(1, b_fNo);
 			pstmt.executeUpdate();
 			
@@ -90,6 +95,7 @@ public class BoardFileDAO extends DBHelper {
 			try {
 				closeAll();
 			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 	}
@@ -97,7 +103,5 @@ public class BoardFileDAO extends DBHelper {
 	public void deleteBoardFile(int b_fNo) {
 		
 	}
-	
-	
-	
+ 	
 }

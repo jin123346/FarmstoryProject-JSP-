@@ -20,6 +20,7 @@ public class UserDao extends DBHelper{
 	}
 	
 	private UserDao () {}
+	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public int selectCountUser(String type,String value) {

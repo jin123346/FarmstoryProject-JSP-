@@ -134,7 +134,7 @@
                         </table>
         
                         <div>
-                            <a href="/FarmStroy/member/login.do" class="btnCancel">취소</a>
+                            <a href="/FarmStory/member/login.do" class="btnCancel">취소</a>
                             <input type="submit"   class="btnSubmit" value="회원가입"/>
                         </div>    
                     </form>

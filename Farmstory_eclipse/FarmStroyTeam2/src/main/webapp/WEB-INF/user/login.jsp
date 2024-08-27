@@ -35,6 +35,5 @@
             </div>
         </main>
 
-
 	<%@ include file="./_footer.jsp" %>
-       
+

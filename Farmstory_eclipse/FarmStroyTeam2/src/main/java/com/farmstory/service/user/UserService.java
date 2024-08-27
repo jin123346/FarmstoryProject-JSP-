@@ -26,4 +26,5 @@ public enum UserService {
 	}
 	public void updateUser(UserDTO dto) {dao.updateUser(dto);	}
 	public void deleteUser(String uid) {	dao.deleteUser(uid);}
+
 }

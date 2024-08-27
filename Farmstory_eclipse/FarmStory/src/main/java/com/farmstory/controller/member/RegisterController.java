@@ -1,4 +1,4 @@
-package com.farmstory.controller.user;
+package com.farmstory.controller.member;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/user/register.do")
+@WebServlet("/member/register.do")
 public class RegisterController extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -27,7 +27,7 @@ public class RegisterController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String uid = req.getParameter("uid");
-		String pass = req.getParameter("pass");
+		String pass = req.getParameter("pass1");
 		String name = req.getParameter("name");
 		String nick = req.getParameter("nick");
 		String email = req.getParameter("email");
@@ -50,7 +50,7 @@ public class RegisterController extends HttpServlet{
 		
 		service.insertUser(dto);
 		
-		resp.sendRedirect("/farmstory/user/login.do");
+		resp.sendRedirect("/FarmStory/member/login.do");
 	}
 	
 }

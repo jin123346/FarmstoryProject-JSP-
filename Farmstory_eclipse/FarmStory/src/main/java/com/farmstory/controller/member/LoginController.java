@@ -1,4 +1,4 @@
-package com.farmstory.controller.user;
+package com.farmstory.controller.member;
 
 import java.io.IOException;
 

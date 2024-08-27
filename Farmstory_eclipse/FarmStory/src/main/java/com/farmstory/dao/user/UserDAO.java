@@ -59,7 +59,7 @@ public class UserDAO extends DBHelper{
 	public void insertUser(UserDTO dto) {
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(SQL.INSERT_USER);
+			pstmt = conn.prepareStatement(USERSQL.INSERT_USER);
 			pstmt.setString(1, dto.getUid());
 			pstmt.setString(2, dto.getPass());
 			pstmt.setString(3, dto.getName());

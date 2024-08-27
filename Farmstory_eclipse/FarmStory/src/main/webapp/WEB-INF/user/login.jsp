@@ -11,7 +11,7 @@
         <main>
             <div class="mainIn">
                 <section class="login">
-                    <form action="#" method="post">
+                    <form action="/FarmStory/member/login.do" method="post">
                         <table border="0">
                             <tr>
                                 <td><img src="../images/login_ico_id.png" alt="아이디"></td>
@@ -29,7 +29,7 @@
                         <p>
                             아직 회원이 아니시면 회원으로 가입하세요.
                         </p>
-                        <a href="#">회원가입</a>
+                        <a href="/FarmStory/member/terms.do">회원가입</a>
                     </div>
                 </section>
             </div>

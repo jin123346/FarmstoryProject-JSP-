@@ -13,6 +13,7 @@
     <!-- wrapper -->
     <div id="wrapper">
         <header>
+        /FarmStory/src/main/webapp/WEB-INF/admin/images/admin_bg.jpg
             <div class="headerIn">
                 <div class="top">
                     <img src="/FarmStory/admin/images/admin_logo.jpg" alt="">

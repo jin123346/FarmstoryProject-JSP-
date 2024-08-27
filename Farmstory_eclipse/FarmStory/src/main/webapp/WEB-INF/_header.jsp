@@ -25,7 +25,7 @@
                 </div><!-- .logo -->
                  <ul class="utill">
                     <li><a href="#">HOME</a></li>
-                    <li><a href="/FarmStroyTeam2/member/login.do">로그인</a></li>
+                    <li><a href="/FarmStory/member/login.do">로그인</a></li>
                     <li><a href="#">회원가입</a></li>
                     <li><a href="#">고객센터</a></li>
                 </ul><!-- .utill -->

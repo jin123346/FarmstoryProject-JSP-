@@ -39,7 +39,7 @@ public class USERSQL {
 		//user	
 		public static final String INSERT_USER = "insert into `user` set"
 												+ "`uid`=?, "
-												+ "`pass`=?, "
+												+ "`pass`=sha2(?,256), "
 												+ "`name`=?, "
 												+ "`nick`=?, "
 												+ "`email`=?, "

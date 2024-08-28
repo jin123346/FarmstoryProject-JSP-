@@ -196,14 +196,60 @@ public class BoardDAO extends DBHelper {
 	// 글 수정
 	public void updateBoard(BoardDTO dto) {
 		
+		try {
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(BOARDSQL.UPDATE_BOARD);
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getB_contents());
+			pstmt.setInt(3, dto.getB_fNo());
+			pstmt.setString(4, dto.getB_regip());
+			pstmt.setString(5, dto.getB_writer());
+			pstmt.setInt(6, dto.getBoardNo());
+			pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 	}
 	
 	// 글 삭제
-	public int deleteBoard(int boardNo) {
-		return 0;
+	public void deleteBoard(int boardNo) {
+
 	}
 	
-	
+	// 글 목록 조회수 증가
+	public void update_board_hit(String boardNo) {
+		
+		try {
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(BOARDSQL.UPDATE_BOARD_HIT);
+			pstmt.setString(1, boardNo);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 	
 	
 }

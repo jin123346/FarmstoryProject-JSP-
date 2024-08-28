@@ -40,6 +40,9 @@ public class BoardDTO {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
+	public void setBoardNo(String boardNo) {
+		this.boardNo = Integer.parseInt(boardNo);
+	}
 	public String getB_cateNo() {
 		return b_cateNo;
 	}

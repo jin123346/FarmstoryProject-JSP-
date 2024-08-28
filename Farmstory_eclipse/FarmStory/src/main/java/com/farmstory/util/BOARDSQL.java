@@ -21,6 +21,16 @@ public class BOARDSQL {
 	public static final String SELECT_BOARD = "select * from `board` AS a "
 												+ "LEFT JOIN `boardfile` AS b ON a.`boardNo` = b.b_pNo "
 												+ "WHERE `boardNo`=?";
+	public static final String UPDATE_BOARD = "update `board` set "
+									            + "`title`=?,"
+									            + "`b_contents`=?,"
+									            + "`b_fNo`=?,"
+									            + "`b_regip`=?,"
+									            + "`b_writer`=?,"
+									            + "`b_rdate`=NOW() "
+									            + "where `boardNo`=?"; 
+	public static final String UPDATE_BOARD_HIT = "update `board` set `b_hit`= `b_hit` + 1 where `boardNo`=?"; 
+	
 	
 	
 	// file

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/style_market_view.css">
+    
 </head>
 <body>
     <div id="wrapper">
@@ -84,34 +86,34 @@
                             <table>
                                 <tr>
                                     <th>상품명</th>
-                                    <td class="product">딸기 500g</td>
+                                    <td class="product">${productDto.pName}</td>
                                 </tr>
                                 <tr>
                                     <th>상품코드</th>
-                                    <td class="product">01</td>
+                                    <td class="product">${productDto.pNo}</td>
                                 </tr>
                                 <tr>
                                     <th>배송비</th>
-                                    <td class="deliver">5,000원 <span>3만원 이상 무료배송</span></td>
+                                    <td class="deliver">${productDto.delivery}원  <span>3만원 이상 무료배송</span></td>
                                 </tr>
                                 <tr>
                                     <th>판매가격</th>
-                                    <td class="sell_price">4,000원</td>
+                                    <td class="sell_price">${productDto.price}</td>
                                 </tr>
                                 <tr>
                                     <th>구매수량</th>
                                     <td class="count">
-                                        <input type="number" value="1"  />
+                                        <input type="number" value="1" id="numberInput"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>합계</th>
-                                    <td class="sum">4,000원</td>
+                                    <td class="sum" id="totalPrice">${productDto.price}</td>
                                 </tr>
                             </table>
                              <div class="buttons">
                                 <a href="#" type="button" class="add_to_cart">장바구니</a>
-                                <a href="#"  type="button" class="buy_now">바로구매</a>
+                                <a href="/FarmStory/market/order.do?pNo=${productDto.pNo}"  type="button" class="buy_now">바로구매</a>
                             </div> <!-- .buttons -->
                         </div> <!-- .product_info -->
                     </div>
@@ -147,7 +149,18 @@
                 </article><!-- .article -->
             </section>
         </main><!-- #main -->
-        
+        <script>
+		const numberInput = document.getElementById('numberInput');
+		const totalPrice = document.getElementById('totalPrice');
+		
+		numberInput.addEventListener('input', () => {
+			
+		const inNum = numberInput.value;
+			
+		totalPrice.innerText = inNum * ${productDto.price};
+			
+		});
+	</script>
         <footer id="footer">
             <div class="footerIn cf">
             <img src="../images/footer_logo.png" alt="farmStory footer" class="flogo">

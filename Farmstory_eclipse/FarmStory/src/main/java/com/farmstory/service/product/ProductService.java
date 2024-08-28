@@ -65,7 +65,9 @@ public enum ProductService {
 	}
 	
 	public void insertProduct() {}
-	public void selectProduct() {}
+	public ProductDTO selectProduct(String pNo) {
+		return dao.selectProduct(pNo);
+	}
 	
 	public List<ProductDTO> selectProducts(int start) {
 		return dao.selectProducts(start);

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/style_cart.css">
 </head>
 <body>
+    <!-- #header -->
     <header id="header">
         <div class="headerIn">
             <div class="topline">
@@ -43,7 +44,7 @@
                 </ul><!-- .gnb -->
             </nav><!-- .gnb_wrap -->
         </div><!-- #headerIn -->
-    </header><!-- #header -->
+    </header><!-- #header end -->
 
     <!-- #main -->
     <main id="main" class="cf">
@@ -64,21 +65,18 @@
                 </div><!-- .sidebar -->
             </aside><!-- .aside -->
             <article class="article">
-                <div class="articleIn">
-
+                <div class="articleIn cf">
                     <nav>
-                        <h2>
-                            <img src="../images/sub_nav_tit_cate2_tit1.png" alt="장보기">
-                        </h2>
+                        <h2><img src="../images/sub_nav_tit_cate2_tit1.png" alt="장보기"></h2>
                         <p class="location">
                             <img src="../images/sub_page_nav_ico.gif" alt="메뉴">
                             <span>HOME </span>
                             <span>장보기 </span>
                             <strong>장보기</strong> 
-                        </p>
+                        </p><!-- .location -->
                     </nav>
                     
-                    <span class="all">장바구니 전체(10)</span>
+                    <h3 class="tb_tit">장바구니 전체(10)</h3><!-- .tb_tit -->
                     <table class="tb1">
                         <colgroup>
                             <col style="width: 11%">
@@ -138,7 +136,7 @@
                             <td>4,000</td>
                             <td><strong>3,600</strong>원</td>
                         </tr>
-                    </table>
+                    </table><!-- .tb1 -->
                     <button class="btnSD"><a href="#">선택삭제</a></button>
                     <div class="order_final">
                         <table class="tb2">
@@ -169,9 +167,9 @@
                                 <td>전체주문금액</td>
                                 <td>22,000</td>
                             </tr>
-                        </table>
+                        </table><!-- .tb2 -->
                         <button class="btn_order"><a href="#">주문하기</a></button>
-                    </div> <!-- .order_final-->
+                    </div><!-- .order_final -->
 
                 </div><!-- .articleIn -->
             </article><!-- .article -->

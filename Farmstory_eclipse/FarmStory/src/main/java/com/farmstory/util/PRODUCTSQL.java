@@ -3,10 +3,6 @@ package com.farmstory.util;
 public class PRODUCTSQL {
 
 
-	//product
-	
-	
-	
 
 	
 	//file
@@ -40,4 +36,6 @@ public class PRODUCTSQL {
 												+ "where `prodCateName` = ? "
 												+ "ORDER BY `pNo` desc limit ?, 5 ";
 
+	public static final String SELECT_PRODUCT = "select * from `product` where `pNo` = ?";
+	
 }

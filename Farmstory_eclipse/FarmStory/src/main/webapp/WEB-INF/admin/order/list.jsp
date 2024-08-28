@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <%@ include file="../_header.jsp" %>
                 
 <div class="section list">
@@ -22,18 +24,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="orderItem" items="${orderItems }">
                         <tr>
-                            <td><input type="checkbox" name="product_list_checkbox" id="plcheck"></td>
-                            <td>1001</td>
-                            <td>사과500g</td>
-                            <td>4,000원</td>
-                            <td>2</td>
-                            <td>3,000원</td>
-                            <td>11,000원</td>
-                            <td>김유신</td>
-                            <td>2023-01-01 13:06:14</td>
-                            <td><a href="#">[상세확인]</a></td>
+                            <td><input type="checkbox" name="order_list_checkbox" id="olcheck"></td>
+                            <td>${orderItem.oderNo }</td>
+                            <td>${orderItem.pName }</td>
+                            <td>${orderItem.itemPrice }원</td>
+                            <td>${orderItem.itemQty}</td>
+                            <td>${orderItem.getO_delivery() }</td>
+                            <td>${orderItem.total }</td>
+                            <td>${orderItem.name }</td>
+                            <td>${orderItem.orderDate }</td>
+                            <td><a href="/FarmStory/market/view.do?pNo=${orderItem.pNo }">[상세확인]</a></td>
                         </tr>
+                       </c:forEach>
                     </tbody>
                 </table><!--Order-->
                 <div class="btn_group">

@@ -160,6 +160,7 @@ public class ProductDAO extends DBHelper {
 			}
 		}catch(Exception e) {
 			logger.error(e.getMessage());
+
 			try {
 				conn.rollback();
 			}catch(SQLException e1) {
@@ -171,6 +172,7 @@ public class ProductDAO extends DBHelper {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+
 		}
 		return products;
 	}

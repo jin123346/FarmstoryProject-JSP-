@@ -131,6 +131,7 @@ public class ProductDAO extends DBHelper {
 			conn = getConnection();
 			stmt =conn.createStatement();
 			rs=stmt.executeQuery(SQL.SELECT_PRODUCT_LIST);
+			logger.debug(SQL.SELECT_PRODUCT_LIST);
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();
 				FileListDTO fdto = new FileListDTO();
@@ -148,6 +149,7 @@ public class ProductDAO extends DBHelper {
 				dto.setRdateSubString(rs.getString(12));
 				dto.setpDesc(rs.getString(13));
 				
+				
 				fdto.setpList_fno(rs.getInt(1));
 				fdto.setpNo(rs.getInt(2));
 				fdto.setpList_oName(rs.getString(3));
@@ -160,12 +162,6 @@ public class ProductDAO extends DBHelper {
 			}
 		}catch(Exception e) {
 			logger.error(e.getMessage());
-
-			try {
-				conn.rollback();
-			}catch(SQLException e1) {
-				logger.error(e1.getMessage());
-			}
 		}finally {
 				try {
 					closeAll();

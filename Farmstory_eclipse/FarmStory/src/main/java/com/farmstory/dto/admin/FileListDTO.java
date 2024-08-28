@@ -7,7 +7,15 @@ public class FileListDTO {
 	private String pList_sName;
 	private String rdate;
 	
+	// 추가 필드
+	private String imgPath;
 	
+	public String getImgPath() {
+		return imgPath;
+	}
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
 	public int getpList_fno() {
 		return pList_fno;
 	}
@@ -38,13 +46,11 @@ public class FileListDTO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
+	
 	@Override
 	public String toString() {
 		return "FileListDTO [pList_fno=" + pList_fno + ", pNo=" + pNo + ", pList_oName=" + pList_oName
-				+ ", pList_sName=" + pList_sName + ", rdate=" + rdate + "]";
+				+ ", pList_sName=" + pList_sName + ", rdate=" + rdate + ", imgPath=" + imgPath + "]";
 	}
-	
-	
-	
 
 }

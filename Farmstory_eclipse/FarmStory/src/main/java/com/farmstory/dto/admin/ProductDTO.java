@@ -1,5 +1,7 @@
 package com.farmstory.dto.admin;
 
+import java.util.List;
+
 public class ProductDTO {
 	private int pNo;
 	private String p_sellerNo;
@@ -15,6 +17,26 @@ public class ProductDTO {
 	private int pDesc_fNo;
 	private String rdate;
 	private String pDesc;
+	
+	private FileListDTO filelistdto;
+	private FileDTO filedto;
+
+	public FileListDTO getFilelistdto() {
+		return filelistdto;
+	}
+	public void setFilelistdto(FileListDTO filelistdto) {
+		this.filelistdto = filelistdto;
+	}
+
+	// 추가 필드 prodCateName (제품 카테고리 이믈)
+	private String prodCateName;
+	
+	public String getProdCateName() {
+		return prodCateName;
+	}
+	public void setProdCateName(String prodCateName) {
+		this.prodCateName = prodCateName;
+	}
 
 	
 	public int getpNo() {
@@ -67,7 +89,6 @@ public class ProductDTO {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	
 	public void setStock(String stock) {
 		this.stock = Integer.parseInt(stock);
 	}
@@ -122,21 +143,25 @@ public class ProductDTO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
+	public void setRdateSubString(String rdate) {
+		this.rdate = rdate.substring(0, 10);
+	}
 	public String getpDesc() {
 		return pDesc;
 	}
 	public void setpDesc(String pDesc) {
 		this.pDesc = pDesc;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "ProductDTO [pNo=" + pNo + ", p_sellerNo=" + p_sellerNo + ", prodCateNo=" + prodCateNo + ", pName="
 				+ pName + ", price=" + price + ", stock=" + stock + ", point=" + point + ", discount=" + discount
 				+ ", delivery=" + delivery + ", pList_fNo=" + pList_fNo + ", pBasic_fNo=" + pBasic_fNo + ", pDesc_fNo="
-				+ pDesc_fNo + ", rdate=" + rdate + ", pDesc=" + pDesc + "]";
-		}
-
+				+ pDesc_fNo + ", rdate=" + rdate + ", pDesc=" + pDesc + ", filelistdto=" + filelistdto
+				+ ", prodCateName=" + prodCateName + "]";
+	}
+	
 	}
 	
 	

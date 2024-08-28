@@ -16,9 +16,6 @@ public enum ProductService {
 	
 	private ProductDAO dao = ProductDAO.getInstance();
 	
-
-
-	
 	public int insertProduct(ProductDTO dto) {
 		
 		return dao.insertProduct(dto);
@@ -31,8 +28,8 @@ public enum ProductService {
 		return dao.selectProduct(pNo);
 	}
 	
-	public List<ProductDTO> selectProducts(String prodCateNo) throws NamingException, SQLException {
-		return dao.selectProducts(prodCateNo);
+	public List<ProductDTO> selectProducts() {
+		return dao.selectProducts();
 	}
 	
 

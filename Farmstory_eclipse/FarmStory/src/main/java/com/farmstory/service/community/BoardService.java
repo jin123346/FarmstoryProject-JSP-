@@ -89,7 +89,7 @@ public enum BoardService {
 	}
 	
 	// 글 삭제
-	public void deleteBoard(int boardNo) {
+	public void deleteBoard(String boardNo) {
 		dao.deleteBoard(boardNo);
 	}
 	
@@ -97,7 +97,6 @@ public enum BoardService {
 	public void update_board_hit(String boardNo) {
 		dao.update_board_hit(boardNo);
 	}
-	
 	
 	
 }

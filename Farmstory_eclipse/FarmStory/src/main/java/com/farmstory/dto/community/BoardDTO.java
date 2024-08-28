@@ -18,6 +18,7 @@ public class BoardDTO {
 	// 추가 필드
 	private String nick;
 	private List<BoardFileDTO> boardFiles;
+	private int commentCount;
 	
 	
 	public String getNick() {
@@ -32,6 +33,13 @@ public class BoardDTO {
 	public void setBoardFiles(List<BoardFileDTO> boardFiles) {
 		this.boardFiles = boardFiles;
 	}
+	public int getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
+	
 	
 	
 	public int getBoardNo() {

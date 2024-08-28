@@ -53,6 +53,11 @@ public enum BoardFileService {
 		dao.deleteBoardFile(b_fNo);
 	}
 	
+	// 게시글 삭제시 파일 삭제
+	public void deleteBoardFiles(String boardNo) {
+		dao.deleteBoardFiles(boardNo);
+	}
+	
 	public List<BoardFileDTO> boardFileUpload(HttpServletRequest req) {
 		
 		List<BoardFileDTO> boardFiles = new ArrayList<>();
@@ -147,4 +152,7 @@ public enum BoardFileService {
 			
 		}
 	}
+	
+	
+	
 }

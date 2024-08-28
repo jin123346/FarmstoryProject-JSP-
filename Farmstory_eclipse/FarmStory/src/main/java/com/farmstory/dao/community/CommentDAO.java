@@ -159,9 +159,27 @@ public class CommentDAO extends DBHelper {
 		
 		return result;
 	}
-	
-	
-	
+
+	// 게시글 삭제시 댓글 삭제 
+	public void deleteComments(String boardNo) {
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(BOARDSQL.DELETE_COMMENTS);
+			pstmt.setString(1, boardNo);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 	
 	
 	

@@ -45,11 +45,11 @@
 	   					textareaEditMode(true);
 	   				}else{
 	   					// 수정완료
-	    				const no = commentModify.dataset.no;
+	    				const comNo = commentModify.dataset.comNo;
 	    				const comment = textarea.value;
 	    				
 	    				const formData = new FormData();
-	    				formData.append("no", no);
+	    				formData.append("comNo", comNo);
 	    				formData.append("comment", comment);
 	    				
 	    				fetch('/FarmStory/comment/modify.do', {
@@ -99,9 +99,9 @@
 	      					return;
 	      				}
 	      				const article = e.target.closest('article');
-	      				const no = e.target.dataset.no; // a태그 data-no 속성값 가져오기
+	      				const comNo = e.target.dataset.comNo; // a태그 data-no 속성값 가져오기
 	      				
-	      				fetch('/FarmStory/comment/delete.do?no='+no)
+	      				fetch('/FarmStory/comment/delete.do?comNo='+comNo)
 	      					.then(resp => resp.json())
 	      					.then(data => {
 	      						console.log(data);
@@ -278,7 +278,7 @@
 					</tr>
 				</table>
 				<div>
-					<a href="#" class="btnDelete">삭제</a> 
+					<a href="/FarmStory/community/notice/delete.do?boardNo=${boardDTO.boardNo}" class="btnDelete">삭제</a> 
 					<a href="/FarmStory/community/notice/modify.do?boardNo=${boardDTO.boardNo}" class="btnModify">수정</a>
 					<a href="/FarmStory/community/notice/list.do" class="btnList">목록</a>
 				</div>

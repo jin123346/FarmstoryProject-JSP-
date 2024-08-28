@@ -103,5 +103,25 @@ public class BoardFileDAO extends DBHelper {
 	public void deleteBoardFile(int b_fNo) {
 		
 	}
- 	
+
+	// 게시글 삭제시 파일 삭제
+	public void deleteBoardFiles(String boardNo) {
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(BOARDSQL.DELETE_BOARD_FILES);
+			pstmt.setString(1, boardNo);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 }

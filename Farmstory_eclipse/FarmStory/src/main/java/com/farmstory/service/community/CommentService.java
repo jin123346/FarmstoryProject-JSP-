@@ -31,4 +31,9 @@ public enum CommentService {
 		return dao.deleteComment(comNo);
 	}
 	
+	// 게시글 삭제시 댓글 삭제 
+	public void deleteComments(String boardNo) {
+		dao.deleteComments(boardNo);
+	}
+	
 }

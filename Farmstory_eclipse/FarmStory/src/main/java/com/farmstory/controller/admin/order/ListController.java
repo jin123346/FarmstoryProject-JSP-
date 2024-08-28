@@ -51,7 +51,7 @@ public class ListController extends HttpServlet{
 		
 		// 데이터 조회하기
 		List<OrderItemDTO> orderitems = orderservice.selectOrderItems(currentPage);
-		logger.debug("orderitems : "+orderitems.toString());
+		logger.debug("orderitmes : "+orderitems.toString());
 		
 		// 데이터 공유 참조(View에서 데이터 출력)
 		req.setAttribute("orderitems", orderitems);

@@ -36,10 +36,6 @@ public enum FileService {
 			String uploadPath = ctx.getRealPath("/thumbs/product");
 			logger.debug(uploadPath);
 			
-			File uploadDir = new File(uploadPath);
-			if(!uploadDir.exists()) {
-				uploadDir.mkdir();
-			}
 			
 			try {
 				
@@ -57,7 +53,7 @@ public enum FileService {
 						
 						String sName = UUID.randomUUID().toString()+ext;
 						logger.debug("oName : "+oName + ", sName : "+sName+", feildName : "+fieldName);
-						
+						part.write(uploadPath+File.separator+sName);
 						
 						//파일저장
 						 FileDTO dto = new FileDTO();

@@ -17,9 +17,19 @@ public class ProductDTO {
 	private int pDesc_fNo;
 	private String rdate;
 	private String pDesc;
-	
+	private String sName;
 	private FileListDTO filelistdto;
-	private FileDTO filedto;
+	
+	
+	public String sName() {
+		return sName;
+	}
+	public void setpListimgPath(String sName) {
+		this.sName = sName;
+	}
+	
+
+	
 
 	public FileListDTO getFilelistdto() {
 		return filelistdto;

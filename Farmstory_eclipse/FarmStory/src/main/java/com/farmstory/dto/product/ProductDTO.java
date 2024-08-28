@@ -13,7 +13,15 @@ public class ProductDTO {
 	private int pBasic_fNo;
 	private int pDesc_fNo;
 	private String prodCateName;
+	private String pListimgPath;
 	
+	
+	public String getpListimgPath() {
+		return pListimgPath;
+	}
+	public void setpListimgPath(String pListimgPath) {
+		this.pListimgPath = pListimgPath;
+	}
 	public int getRow() {
 		return row;
 	}

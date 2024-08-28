@@ -73,7 +73,6 @@
 		                              var zoomControl = new kakao.maps.ZoomControl();
 		                              map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 		                              
-		                              
 	                                 
 									</script>
 									  

@@ -57,6 +57,14 @@ public class PRODUCTSQL {
 	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
 	
 	
+	//product
+	
+	public static final String SELECT_COUNT_TOTAL = "select COUNT(*) from `product`";
+	
+	public static final String SELECT_PRODUCTS = "SELECT ROW_NUMBER() OVER(ORDER BY `pNo` DESC)"
+												+ ", a.*, b.prodCateName FROM `product` as a "
+												+ "left join `prodCate` as b on a.prodCateNo = b.prodCateNo"
+												+ " ORDER BY `pNo` desc limit ?, 5";
 
 
 }

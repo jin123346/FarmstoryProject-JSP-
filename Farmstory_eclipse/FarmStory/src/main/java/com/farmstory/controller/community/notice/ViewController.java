@@ -30,11 +30,14 @@ public class ViewController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
 		String boardNo = req.getParameter("boardNo");
+		
+		// 조회수 증가 
+		service.update_board_hit(boardNo);
 		
 		// 데이터 조회
 		BoardDTO boardDTO = service.selectBoard(boardNo);
-		
 		
 		// 공유 참조
 		req.setAttribute("boardDTO", boardDTO);

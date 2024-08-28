@@ -33,7 +33,7 @@ public class CommentDAO extends DBHelper {
 				pstmt.setString(2, dto.getCom_content());
 				pstmt.setString(3, dto.getCom_writer());
 				pstmt.setString(4, dto.getCom_regip());
-				pstmt.executeQuery();
+				pstmt.executeUpdate();
 				
 				rs = pstmt.getGeneratedKeys();
 				if(rs.next()) {

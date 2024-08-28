@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -82,42 +83,44 @@
                                 <strong>나도요리사</strong> 
                             </p>
                         </nav>
-                <section class="write">
-                	<h3>글쓰기</h3>
-                	<article>
-                    <form action="/FarmStory/community/notice/write.do" method="post" enctype="multipart/form-data">
-                    	<input type="hidden" name="b_writer" value="${sessUser.uid}">
-                        <table>
-                            <tr>
-                                <td>제목</td>
-                                <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
-                            </tr>
-                            <tr>
-                                <td>내용</td>
-                                <td>
-                                    <textarea name="b_contents"></textarea>                                
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>첨부</td>
-                                <td>
-                               		<p style="margin-bottom: 6px; ">
-                                		최대 2개 파일 첨부 가능, 각 파일당 최대 10MB 까지 업로드
-                                	</p>
-                                	<input type="file" name="file1"/>
-                                	<input type="file" name="file2"/>
-                                </td>
-                            </tr>
-                        </table>
-                        <div>
-                            <a href="/FarmStory/community/notice/list.do" class="btnCancel">취소</a>
-                            <input type="submit"  class="btnWrite" value="작성완료">
-                        </div>
-                    </form>
-                </article>
-            </section>
-                    </div><!-- .articleIn -->
-                </article><!-- .article -->
+                         <section class="modify">
+			                <h3>글수정</h3>
+			                <article>
+			                    <form action="/FarmStory/community/notice/modify.do" method="post" enctype="multipart/form-data">
+			                        <table>
+			                            <tr>
+			                                <td>제목</td>
+			                                <input type="hidden" name="boardNo" value="${boardDTO.boardNo}" />
+			                                <td><input type="text" name="title" value="${boardDTO.title}" /></td>
+			                            </tr>
+			                            <tr>
+			                                <td>내용</td>
+			                                <td>
+			                                    <textarea name="b_contents">${boardDTO.b_contents}</textarea>                                
+			                                </td>
+			                            </tr>
+										<tr>
+			                               	<td>첨부</td>
+			                                <td>
+			                               		<p style="margin-bottom: 6px; ">
+			                                		최대 2개 파일 첨부 가능, 각 파일당 최대 10MB 까지 업로드
+			                                	</p>
+			                                	<c:forEach var="file" items="${boardDTO.boardFiles}">
+				                                	<p style="margin: 4px 0">
+														${file.b_oName} <a href="/FarmStory/community/notice/BoardFileDelete.do?b_fNo=${file.b_fNo}" style="color:red;">X</a>
+													</p>
+			                                	</c:forEach>
+			                                	<input type="file" name="file1"/>
+			                                	<input type="file" name="file2"/>
+			                                </td>
+			                           	</tr> 
+			                        </table>
+			                        <div>
+			                            <a href="/FarmStory/community/notice/list.do" class="btnCancel">취소</a>
+			                            <input type="submit"  class="btnWrite" value="수정완료">
+			                        </div>
+			                    </form>
+			                </article>
             </section>
         </main><!-- #main -->
         <!-- footer -->

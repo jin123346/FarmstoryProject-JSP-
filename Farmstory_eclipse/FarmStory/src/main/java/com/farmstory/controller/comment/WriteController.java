@@ -35,14 +35,14 @@ public class WriteController extends HttpServlet{
 
 		// 폼 데이터 수신
 		String com_parent = req.getParameter("com_parent");
-		String com_content = req.getParameter("com_content");
+		String comment = req.getParameter("comment");
 		String com_writer = req.getParameter("com_writer");
 		String com_regip = req.getRemoteAddr();
 		
 		// DTO 생성
 		CommentDTO dto = new CommentDTO();
 		dto.setCom_parent(com_parent);
-		dto.setCom_content(com_content);
+		dto.setCom_content(comment);
 		dto.setCom_writer(com_writer);
 		dto.setCom_regip(com_regip);
 		logger.debug(dto.toString());

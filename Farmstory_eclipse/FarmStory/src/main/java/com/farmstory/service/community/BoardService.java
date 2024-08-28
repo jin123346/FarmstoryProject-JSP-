@@ -93,7 +93,10 @@ public enum BoardService {
 		dao.deleteBoard(boardNo);
 	}
 	
-	
+	// 글 목록 조회수 증가
+	public void update_board_hit(String boardNo) {
+		dao.update_board_hit(boardNo);
+	}
 	
 	
 	

@@ -3,8 +3,41 @@ package com.farmstory.util;
 public class PRODUCTSQL {
 
 
-	//product
+	//order
 	
+	public final static String SELECT_ORDERITEM_COUNT_TOTAL = "select count(*) from `orderitem`";
+			
+//	public final static String SELECT_ORDERITEMS = "SELECT a.orderItemNo ,"
+//																+ "a.orderNo, "
+//																+ "a.itemPrice, "
+//																+ "pName, "
+//																+ "a.itemQty, "
+//																+ "b.o_delivery, "
+//																+ "u.name, "
+//																+ "a.orderDate ,"
+//																+ "a.pNo"
+//													+ "FROM orderitem AS a "
+//													+ "JOIN `order` AS b ON a.orderNo = b.orderNo "
+//													+ "JOIN product AS c ON c.pNo = a.pNo "
+//													+ "JOIN user AS u ON u.uid=b.o_uid "
+//													+ "order BY orderNo DESC "
+//													+ "LIMIT ?,10";
+	public final static String SELECT_ORDERITEMS = "SELECT a.orderItemNo, "
+										            + "a.orderNo, "
+										            + "a.itemPrice, "
+										            + "c.pName, "
+										            + "a.itemQty, "
+										            + "b.o_delivery, "
+										            + "u.`name`, "
+										            + "a.orderDate, "
+										            + "a.pNo "
+										            + "FROM `orderitem` AS a "
+										            + "JOIN `order` AS b ON a.orderNo = b.orderNo "
+										            + "JOIN `product` AS c ON c.pNo = a.pNo "
+										            + "JOIN `user` AS u ON u.uid = b.o_uid "
+										            + "ORDER BY a.orderNo DESC "
+										            + "LIMIT 0, 10;";
+
 	
 	
 

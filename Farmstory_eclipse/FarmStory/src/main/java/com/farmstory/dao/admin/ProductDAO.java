@@ -148,14 +148,14 @@ public class ProductDAO extends DBHelper {
 			
 		}catch(Exception e) {
 			logger.error(e.getMessage());
+		
+		}finally {
 			
 			try {
-				conn.rollback();
-			}catch(SQLException e1) {
-				logger.error(e1.getMessage());
-			}
-		}finally {
 				closeAll();
+			} catch (SQLException e) {
+				logger.error(e.getMessage());
+			}
 		}
 		return products;
 	}

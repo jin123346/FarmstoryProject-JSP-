@@ -21,7 +21,32 @@ public class ProductDAO extends DBHelper{
 	
 	
 	public void insertProduct() {}
-	public void selectProduct() {}
+	public ProductDTO selectProduct(String pNo) {
+		
+		ProductDTO dto = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(PRODUCTSQL.SELECT_PRODUCT);
+			pstmt.setString(1, pNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new ProductDTO();
+				dto.setpNo(rs.getInt(1));
+				dto.setpName(rs.getString(3));
+				dto.setPrice(rs.getInt(4));
+				dto.setDelivery(rs.getInt(8));
+				dto.setpBasic_fNo(rs.getInt(10));
+			}
+			closeAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return dto;
+	}
 	
 	public int selectCountTotal() {
 		int total = 0;

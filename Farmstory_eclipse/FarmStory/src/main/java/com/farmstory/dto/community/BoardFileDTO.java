@@ -22,6 +22,9 @@ public class BoardFileDTO {
 	public void setB_pNo(int b_pNo) {
 		this.b_pNo = b_pNo;
 	}
+	public void setB_pNo(String b_pNo) {
+		this.b_pNo = Integer.parseInt(b_pNo);
+	}
 	public String getB_oName() {
 		return b_oName;
 	}

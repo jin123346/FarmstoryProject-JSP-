@@ -7,35 +7,25 @@ public class PRODUCTSQL {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	//file
 	
 	public final static String Select_List_File_fno = "select pList_fNo from pListimgfile where pno=?";
 	
 	public final static String Select_basic_File_fno = "select pBasic_fNo from pBasicimgfile where pno=?";
+  public final static String Select_Desc_File_fno = "select pDesc_fNo from pDescimgfile where pno=?";
 
-	public final static String Select_Desc_File_fno = "select pDesc_fNo from pDescimgfile where pno=?";
+  
+	//product
+	
+	public static final String SELECT_COUNT_TOTAL = "select COUNT(*) from `product`";
+	
+	public static final String SELECT_PRODUCTS = "SELECT ROW_NUMBER() OVER(ORDER BY `pNo` DESC)"
+												+ ", a.*, b.prodCateName FROM `product` as a "
+												+ "left join `prodCate` as b on a.prodCateNo = b.prodCateNo"
+												+ " ORDER BY `pNo` desc limit ?, 5";
+
 
 	public final static String INSERT_LIST_IMG_FILE= "insert into `pListImgFile` set pno=?, pList_oName =? , pList_sName=?, rdate = now()";
 	public final static String INSERT_BASIC_IMG_FILE= "insert into `pBasicImgFile` set pno=?, pBasic_oName =? , pBasic_sName=?, rdate = now()";

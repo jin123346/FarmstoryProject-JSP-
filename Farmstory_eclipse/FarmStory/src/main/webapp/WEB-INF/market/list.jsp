@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -103,55 +104,37 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="productDto" items="${productDto}">
                                 <tr>
                                     <td class="pic"><img src="../images/market_item1.jpg" alt="사과 500g"></td>
-                                    <td class="type">과일</td>
-                                    <td class="pro_name">사과 500g</td>
-                                    <td class="sale">10%</td>
-                                    <td class="point">400P</td>
-                                    <td class="price"><strong>3,600원</strong><span class="original_price">4,000원</span></td>
+                                    <td class="type">${productDto.prodCateName}</td>
+                                    <td class="pro_name">${productDto.pName}</td>
+                                    <td class="sale">${productDto.discount}%</td>
+                                    <td class="point">${productDto.point}p</td>
+                                    <td class="price"><strong>${(productDto.price)-(productDto.price / productDto.discount)}원</strong><span class="original_price">${productDto.price}원</span></td>
                                 </tr>
-                                <tr>
-                                    <td class="pic"><img src="../images/market_item2.jpg" alt="전남 완주 배 5kg"></td>
-                                    <td class="type">과일</td>
-                                    <td class="pro_name">전남 완주 배 5kg</td>
-                                    <td class="sale">10%</td>
-                                    <td class="point">400P</td>
-                                    <td class="price"><strong>3,600원</strong><span class="original_price">4,000원</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="pic"><img src="../images/market_item3.jpg" alt="방울 토마토"></td>
-                                    <td class="type">과일</td>
-                                    <td class="pro_name">방울 토마토</td>
-                                    <td class="sale">10%</td>
-                                    <td class="point">400P</td>
-                                    <td class="price"><strong>3,600원</strong><span class="original_price">4,000원</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="pic"><img src="../images/market_item4.jpg" alt="무농약 현미"></td>
-                                    <td class="type">곡류</td>
-                                    <td class="pro_name">무농약 현미</td>
-                                    <td class="sale">10%</td>
-                                    <td class="point">400P</td>
-                                    <td class="price"><strong>3,600원</strong><span class="original_price">4,000원</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="pic"><img src="../images/market_item5.jpg" alt="팜스토리 하루야채 샐러드"></td>
-                                    <td class="type">야채</td>
-                                    <td class="pro_name">팜스토리 하루야채 샐러드</td>
-                                    <td class="sale">10%</td>
-                                    <td class="point">400P</td>
-                                    <td class="price"><strong>3,600원</strong><span class="original_price">4,000원</span></td>
-                                </tr>
+                           	</c:forEach>
                             </tbody>
                         </table>
                         <div class="pages">
                             <ul>
-                                <li><a href="#" class="no current">&nbsp;[1]</a></li>
-                                <li><a href="#" class="no">[2]</a></li>
-                                <li><a href="#" class="no">[3]</a></li>
-                                <li><a href="#" class="no">[4]</a></li>
-                                <li><a href="#" class="no last_no">[5]&nbsp;</a></li>
+                                <li>
+                                	<c:set var="page" value="1"/>
+                                	<c:if test="${page ne pageGroupP.start}">
+                                		<a href="/FarmStory/market/list.do?pg=${pageGroupP.start - 1}" class="no current">&#60;</a>
+                           			</c:if>
+                           		</li>
+                                <li>
+                                	<c:forEach var="i" begin="${pageGroupP.start}" end="${pageGroupP.end}">
+                                		<a href="/FarmStory/market/list.do?pg=${i}" class="no">[${i}]</a>
+                                	</c:forEach>
+                                </li>
+                                <li>
+                                	<c:set var="page" value="${lastPageNum}" />
+                                	<c:if test="${page > pageGroupP.end }">
+                               			<a href="/FarmStory/market/list.do?pg=${pageGroupP.end + 1}" class="no last_no">&#62;</a>
+                               		</c:if>
+                                </li>
                             </ul>
                         </div>
                     </div><!-- .articleIn -->

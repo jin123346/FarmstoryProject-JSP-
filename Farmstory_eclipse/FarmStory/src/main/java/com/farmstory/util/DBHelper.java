@@ -27,8 +27,10 @@ public class DBHelper {
 			//2단계 - 커넥션 풀에서 커넥션 객체 가져오기
 			DataSource ds = (DataSource)ctx.lookup("jdbc/farmstory");
 			return ds.getConnection();
+			
+		
+		
 	}
-	
 	protected void closeAll() throws SQLException {
 		if(rs !=null) {
 			rs.close();

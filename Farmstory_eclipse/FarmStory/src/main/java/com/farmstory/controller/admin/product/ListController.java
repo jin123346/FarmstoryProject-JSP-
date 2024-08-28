@@ -11,7 +11,6 @@ import javax.naming.NamingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.farmstory.dto.admin.FileDTO;
 import com.farmstory.dto.admin.FileListDTO;
 import com.farmstory.dto.admin.ProductDTO;
 import com.farmstory.service.admin.ProductService;
@@ -40,10 +39,11 @@ public class ListController extends HttpServlet{
 		// 데이터 조회
 		List<ProductDTO> products = service.selectProducts();
 		
+
 		for(ProductDTO dto : products) {
 			FileListDTO filedto = dto.getFilelistdto();
 			String sName = filedto.getpList_sName();
-;			
+
 		}
 		// 공유 참조 
 		req.setAttribute("products", products);

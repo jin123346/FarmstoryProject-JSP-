@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../_header.jsp" %>
+<title>장바구니</title>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -46,9 +49,9 @@
         </div><!-- #headerIn -->
     </header><!-- #header end -->
 
-    <!-- #main -->
-    <main id="main" class="cf">
-        <section class="mainIn cf">
+<!-- #main -->
+<main id="main" class="cf">
+	<section class="mainIn cf">
             <div class="sub_bg">
                 <img src="../images/sub_top_tit2.png" alt="MARKET" class="sub_tit">
             </div><!-- .sub_bg -->
@@ -174,19 +177,7 @@
                 </div><!-- .articleIn -->
             </article><!-- .article -->
         </section>
-    </main><!-- #main -->
+</main><!-- #main -->
     
-    <footer id="footer">
-        <div class="footerIn cf">
-        <img src="../images/footer_logo.png" alt="farmStory footer" class="flogo">
-        <div class="finfo">
-            <span class="tel">(주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br>
-                등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동 <br>
-                대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01&#41; 234-5678 / 경기도 성남시 잘한다구 신난다동 345
-            </span><!-- .tel -->
-            <p class="fcopy">Copyright(C)홍길동 All rights reserved.</p><!-- .fcopy -->
-        </div><!-- .finfo -->
-        </div><!-- .footerIn -->
-    </footer><!-- footer -->
-</body>
-</html>
+<%@ include file="../_footer.jsp" %>
+

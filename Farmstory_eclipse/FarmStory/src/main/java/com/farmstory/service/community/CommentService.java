@@ -19,7 +19,7 @@ public enum CommentService {
 		return dao.selectComment(comNo);
 	}
 	
-	public List<CommentDTO> selectComments(String com_parent){
+	public List<CommentDTO> selectComments(int com_parent){
 		return dao.selectComments(com_parent);
 	}
 	
@@ -29,6 +29,11 @@ public enum CommentService {
 	
 	public int deleteComment(String comNo) {
 		return dao.deleteComment(comNo);
+	}
+	
+	// 게시글 삭제시 댓글 삭제 
+	public void deleteComments(String boardNo) {
+		dao.deleteComments(boardNo);
 	}
 	
 }

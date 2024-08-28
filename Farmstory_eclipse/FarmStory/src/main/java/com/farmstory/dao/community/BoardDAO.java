@@ -176,6 +176,7 @@ public class BoardDAO extends DBHelper {
 				dto.setB_writer(rs.getString(9));
 				dto.setB_rdateSubString(rs.getString(10));
 				dto.setNick(rs.getString(11));
+				dto.setCommentCount(rs.getInt(12));
 				
 				boards.add(dto);
 			}
@@ -224,8 +225,26 @@ public class BoardDAO extends DBHelper {
 	}
 	
 	// 글 삭제
-	public void deleteBoard(int boardNo) {
+	public void deleteBoard(String boardNo) {
 
+		try {
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(BOARDSQL.DELETE_BOARD);
+			pstmt.setString(1, boardNo);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	// 글 목록 조회수 증가

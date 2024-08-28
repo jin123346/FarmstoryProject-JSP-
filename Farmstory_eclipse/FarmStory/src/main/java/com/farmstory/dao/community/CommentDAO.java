@@ -35,7 +35,7 @@ public class CommentDAO extends DBHelper {
 				pstmt.setString(4, dto.getCom_regip());
 				pstmt.executeUpdate();
 				
-				rs = pstmt.getGeneratedKeys();
+				rs = pstmt.getGeneratedKeys(); // 우리가 설정한 pk값을 가져올 수 있음
 				if(rs.next()) {
 					pk = rs.getInt(1);
 				}
@@ -58,7 +58,7 @@ public class CommentDAO extends DBHelper {
 		CommentDTO dto = null;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(BOARDSQL.SELECT_COMMENT);
+			pstmt = conn.prepareStatement(BOARDSQL.SELECT_COMMENTS_NO);
 			pstmt.setInt(1, comNo);
 			
 			rs = pstmt.executeQuery();
@@ -84,13 +84,13 @@ public class CommentDAO extends DBHelper {
 		return dto;
 	}
 	
-	public List<CommentDTO> selectComments(String com_parent){
+	public List<CommentDTO> selectComments(int com_parent){
 
 		List<CommentDTO> comments = new ArrayList<>();
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(BOARDSQL.SELECT_COMMENTS);
-			pstmt.setString(1, com_parent);
+			pstmt.setInt(1, com_parent);
 			
 			rs = pstmt.executeQuery();
 			
@@ -159,9 +159,27 @@ public class CommentDAO extends DBHelper {
 		
 		return result;
 	}
-	
-	
-	
+
+	// 게시글 삭제시 댓글 삭제 
+	public void deleteComments(String boardNo) {
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(BOARDSQL.DELETE_COMMENTS);
+			pstmt.setString(1, boardNo);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 	
 	
 	

@@ -24,9 +24,9 @@
                    	<c:forEach var="product" items="${products}">
                         <tr>
                             <td><input type="checkbox" name="product_list_checkbox" id="plcheck"></td>
-                            <td><img src="../images/=?imagePath=${product.imagePath}" alt="${product.pName}" width="60" height="60" /></td>
+                            <td><img src="${product.pListimgPath}" alt="${product.pName}" width="60" height="60" /></td>
                             <!-- <td><img src="../images/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td> -->
-                            <td>${product.prodCateNo}</td>
+                            <td>${product.pNo}</td>
                             <td>${product.pName}</td>
                             <td>${product.prodCateName}</td>
                             <td>${product.price}</td>

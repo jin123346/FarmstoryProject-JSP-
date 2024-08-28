@@ -1,119 +1,14 @@
 @charset "UTF-8";
 
-/*
--------------------------------------------------
--------------------------------------------------
-Order Style Sheet
-Version : 1.00
-Author : 김민희
-First update : 2024. 08. 18.
-Last update : 2024. 08. 23.
--------------------------------------------------
--------------------------------------------------
-*/
+/* 장보기 > 주문하기 order.html */
 
-/* reset */
-*{margin: 0; padding:0; font-family: "Inter", sans-serif; font-size: 12px; font-weight: 400;}
-html{color:#111; position:relative;}
-html, body{height:100%; }
-body{font-size:12px; line-height:18px; font-family: 'Noto Sans KR', sans-serif;}
-a, address, blockquote, br, fieldset, legend, label, form, input, select, textarea, button, cite, code, dl, dt, dd, h1, h2, h3, h4, h5, h6, p, div, iframe, ul, ol, li, hr, img {margin: 0; padding: 0;}
-a{color:#111; text-decoration: none;}
-img{border:none; vertical-align: top;}
-ul, ol{list-style:none;}
-address{font-style: normal;}
-
-/* hyper link */
-a, a:link, a:visited, a:active, a:hover{text-decoration: none; color: inherit;}
-
-/* #wrapper ----------------------------------------------------------- */
-#wrpper{width: 100%; height: auto; overflow: hidden; box-sizing: border-box; position: relative;}
-
-
-/* #header 헤더 -------------------------------------------------------- */
-#header{width: 100%; height: 142px; position: relative;}
-.headerIn{width: 980px;  margin:0 auto; position: relative;}
-
-.topline {top: 0%;}
-.logo{position: absolute; top:22px; left: 50%; margin-left: -95px;}
-
-/* utill (HOME|로그인|회원가입|고객센터) */
-.utill{display: flex; position: absolute; top: 17px; right: 0.2px;}
-.utill li::before{content: "ㅣ";}
-.utill li:nth-child(1):before{display: none;}
-
-/* h_txt (3만원이상 무료배송·팜카드 10%적립) */
-.h_txt{position: absolute; top:59px; right: 0;}
-
-/* gnb_wrap */
-.gnb_wrap{overflow: hidden;}
-.gnb_wrap .gnb{display: flex; position: absolute; top: 92px;}
-
-.gnb_wrap .gnb li{background: url('../images/head_menu_line.png') no-repeat;}
-.gnb_wrap .gnb li a{display: block; float: left; width: 196px; height: 50px;}
-.gnb_wrap .gnb li a img{box-sizing: border-box; margin-top: 10px;}
-
-/* 30% 이미지 */
-.gnb_wrap .gnb li:nth-child(2){position: relative;}
-.gnb_wrap .gnb li .discount{position: absolute; top: -22px; right: 61px;}
-
-/* #main 메인 -------------------------------------------------------- */
-#main{width: 100%; height: auto; position: relative; }
-.mainIn{width: 980px;  margin:0 auto; overflow: hidden;}
-
-.sub_bg{position: relative; height: 184px; background: url('../images/sub_top_bg.jpg') no-repeat center;}
-.sub_bg .sub_tit{position: absolute; top: 137px; left: 10px; width: 186px; height: 37px;}
-
-/* aside 영역 (왼쪽) -------------------------------------------------- */
-.aside{position: relative; float: left; width: 178px; height: auto; 
-    background: url('../images/sub_aside_bg_line.png') right 0 no-repeat;
-}
-.aside_cate{position: absolute; top: 16px; left: 16px; width: 103px; height: 45px;}
-.aside_bg{width: 176px; height: 650px; background: url('../images/sub_aside_bg_lnb.png') right 81px no-repeat;}
-
-/* lnb */
-.aside_bg .cate_lnb{}
-.aside_bg .cate_lnb li{} 
-.aside_bg .cate_lnb li a{position: absolute; left: 0; top:107px; text-indent: -9999px; display: block; width: 176px; height: 29px; 
-                    background: url('../images/sub_cate2_lnb1_ov.png') no-repeat; }
-
-
-/* article 영역 (오른쪽)  ---------------------------------------------- */
-.article{position: relative; float:left; width: 802px; height: auto;}
-.articleIn{width: 802px; margin-left: 40px;}
-
-h3{margin-top: 43px;}
-h3::after{display: block; content: ""; clear: both; width: 762px; height: 1px; background: #c2c2c2; margin-top: 5px;}
-
-.article .nav_tit img{}
- 
-
-/* location */
-.location{float:right; margin-top:51px; height: 17px;
-    background: url('../images/sub_page_nav_ico.gif') no-repeat; margin-left: 15px;
-    font-family: Inter; font-size: 12px; font-weight: 400; line-height: 14.52px; text-align: left;}
-.location span{color:#0a0101;}
-.location span:after{display: inline-block; content: ">" ; clear: both;}
-.location strong{color:#91BA15;}
-
-/* 장바구니 전체(10) */
-.all {
-    /* position: absolute;
-    height: 14px;
-    top: 113px;
-    left: 40px;
-    line-height: 14.52px;
-    letter-spacing: 0; */
-}
-h4{margin-top:40px; line-height: 14.52px; letter-spacing: 0;}
+/* 테이블 타이틀(h3) - 주문상춤 전체(10) */
+.tb_tit {height: 14px; line-height: 14.52px; letter-spacing: 0; margin: 41px 0 12px 0;}
 
 /* 테이블 */
 .tb1 {
-    /* position: absolute; */
     width: 762px;
     height: 332px;
-    top: 139px;
-    left: 40px;
     border-top: 1px solid #111;
     box-sizing: border-box;
     border-collapse: collapse;
@@ -174,15 +69,42 @@ h4{margin-top:40px; line-height: 14.52px; letter-spacing: 0;}
 
 
 /* 주문 테이블 div 영역 */
-/* .order_tb{display: flex;} */
-.order_tb{margin-top: 10px;}
-.order_tb::after{display: block; content: ""; clear: both;}
-.order_info{float: left; width: 447.19px; }
+.order_info{margin-top: 10px;}
+.order_info::after{display: block; content: ""; clear: both;}
+.order_info{float: left; border: 1px solid #ddd;}
+.order_info .order_tit{margin-bottom: 12px;}
+
+
+.order_tb{
+    border-top: 1px solid #be0808;
+    text-align: left;
+    width: 447.19px;
+    height: 440.75px;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    text-align: left;
+
+}
+
+/* 주문정보 입력 테이블 */
+.order_tb tr {width: 105.19px; height: 41px;
+    border-bottom: 1px solid #d7d7d7;}
+.order_tb tr th{height: 41px;  background: #f7f7f7;}
+.order_tb tr td{width: 342px;}
+
+
+.order_tb .post_search{}
+.order_tb .btn_form {display: block; text-indent: -9999px;}
+.order_tb tr td input[type="checkbox"]{width:62px;}
 
 
 
 .order_final {
-    float: left;
+    float: right;
     width: 305px;
     height: 262px;
     box-sizing: border-box;

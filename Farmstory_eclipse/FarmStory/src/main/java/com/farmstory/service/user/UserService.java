@@ -81,8 +81,7 @@ public String sendEmailCode(String email) {
 		return dao.selectUser(uid, pass);
 	}
 	public List<UserDTO> selectUsers() {	
-		List<UserDTO> users = dao.selectUsers();
-		return users;
+		return dao.selectUsers();
 	}
 	public void updateUser(UserDTO dto) {dao.updateUser(dto);	}
 	public void deleteUser(String uid) {	dao.deleteUser(uid);}

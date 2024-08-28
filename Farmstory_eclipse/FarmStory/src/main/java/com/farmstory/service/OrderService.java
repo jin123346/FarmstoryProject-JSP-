@@ -1,18 +1,17 @@
-package com.farmstory.service.community;
+package com.farmstory.service;
 
 import java.util.List;
 
-import com.farmstory.dao.community.BoardDAO;
-import com.farmstory.dto.community.BoardDTO;
+import com.farmstory.dao.admin.OrderDAO;
+import com.farmstory.dto.admin.OrderItemDTO;
 import com.farmstory.dto.community.PageGroupDTO;
 
-public enum BoardService {
-
-	INSTANCE;
+public enum OrderService {
 	
-	private BoardDAO dao = BoardDAO.getInstance();
+	INSTACNE;
 	
-
+	private OrderDAO dao = OrderDAO.getInstance();
+	
 	// 전체 게시물 갯수에서 마지막 페이지 번호 구하기 
 	public int getLastPageNum(int total) {
 		
@@ -62,41 +61,17 @@ public enum BoardService {
 		int start = (currentPage - 1) * 10;
 		return total - start;
 	}
+	
+	public int selectOrderItemCountTotal() {
+		return dao.selectOrderItemCountTotal();
+	}
+	
+	
+	public List<OrderItemDTO> selectOrderItems(int pg){return dao.selectOrderItems(pg);}
+	public void insertOrder() {	}
+	public void selectOrder() {	}
+	public void selectOrders() {	}
+	public void updateOrder() {	}
+	public void deleteOrder() {	}
 
-	
-	public int selectCountTotal() {
-		return dao.selectCountTotal();
-	}
-	
-	// 글 등록
-	public int insertBoard(BoardDTO dto) {
-		return dao.insertBoard(dto);
-	}
-	
-	// 글 조회
-	public BoardDTO selectBoard(String boardNo) {
-		return dao.selectBoard(boardNo);
-	}
-	
-	// 글 목록
-	public List<BoardDTO> selectBoards(int start) {
-		return dao.selectBoards(start);
-	}
-	
-	// 글 수정
-	public void updateBoard(BoardDTO dto) {
-		dao.updateBoard(dto);
-	}
-	
-	// 글 삭제
-	public void deleteBoard(String boardNo) {
-		dao.deleteBoard(boardNo);
-	}
-	
-	// 글 목록 조회수 증가
-	public void update_board_hit(String boardNo) {
-		dao.update_board_hit(boardNo);
-	}
-	
-	
 }

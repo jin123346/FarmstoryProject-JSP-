@@ -49,7 +49,7 @@
     
                                 <li>주문관리
                                     <ul>
-                                        <li><a href="#">주문목록</a></li>
+                                        <li><a href="/FarmStory/admin/order/list.do">주문목록</a></li>
                                     </ul>
                                 </li>
                                 <li>회원관리

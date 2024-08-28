@@ -1,7 +1,7 @@
 package com.farmstory.dao.user;
 
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -126,25 +126,33 @@ public class UserDao extends DBHelper{
 	}
 	
 	public List<UserDTO> selectUsers() {
-		
+		List<UserDTO> users = new ArrayList<UserDTO>();
 		try {
 			conn = getConnection();
+			stmt = conn.createStatement();
 			
+			rs = stmt.executeQuery(USERSQL.SELECT_USERS);
 			
+			while(rs.next()) {
+				UserDTO dto = new UserDTO();
+				dto.setUid(rs.getString(1));
+				System.out.println(rs.getString(3));
+				dto.setName(rs.getString(3));
+				dto.setNick(rs.getString(4));
+				dto.setEmail(rs.getString(5));
+				dto.setHp(rs.getString(6));
+				dto.setRegDate(rs.getString(10));
+				dto.setGradeNo(rs.getString(11));
+				users.add(dto);
+			}
 			
-			
+			closeAll();
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-		} finally {
-			try {
-				closeAll();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}		}
+		}
 		
-		return null;
+		return users;
 	}
 	
 	public void updateUser(UserDTO dto) {

@@ -21,6 +21,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 @WebServlet("/admin/product/list.do")
@@ -38,41 +39,27 @@ public class ListController extends HttpServlet{
 		// 데이터 조회
 		List<ProductDTO> products = service.selectProducts();
 		
-		for(ProductDTO productdto : products) {
-			FileListDTO filedto = productdto.getFilelistdto();
-			filedto.setImgPath();
+
+		for(ProductDTO dto : products) {
+			FileListDTO filedto = dto.getFilelistdto();
+			String sName = filedto.getpList_sName();
+
 		}
-		
-		
-		// 업로드된 이미지 파일을 저장할 경로 지정
-		String thumbs = getServletContext().getRealPath("/thumbs") + File.separator + "thumbs";
-		logger.debug("thumbs1 :", thumbs);
-		
-		File uploadDir = new File(thumbs);
-		if (!uploadDir.exists()) {
-		    uploadDir.mkdirs(); // 필요한 디렉토리들을 모두 생성
-		}
-		
-		logger.debug("thumbs2 :", thumbs);
-		
-		
-		
+		// 공유 참조 
+		req.setAttribute("products", products);
+		logger.debug(products.toString());
+
+
 		// 요청 파라미터 추출
 		String prodCateNo = req.getParameter("prodCateNo");
 		
 		logger.debug("prodCateNo :", prodCateNo);
-		
-		
-		
 		logger.debug("products :", products);
 		
+	
 		
 		
 		
-		
-		
-		// 공유 참조 
-		req.setAttribute("products", products);
 		
 		// 포워드
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/admin/product/list.jsp");

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -79,10 +80,10 @@
                             </p>
                         </nav>
                         <ul class="tabs">
-                            <li><a href="#" class="tabs_item">전체(10)</a></li>
-                            <li><a href="#" class="tabs_item item">과일</a></li>
-                            <li><a href="#" class="tabs_item item">야채</a></li>
-                            <li><a href="#" class="tabs_item item">곡류</a></li>
+                            <li><a href="/FarmStory/market/list.do" class="tabs_item">전체(3)</a></li>
+                            <li><a href="/FarmStory/market/list.do?cateName=과일" class="tabs_item item">과일</a></li>
+                            <li><a href="/FarmStory/market/list.do?cateName=야채" class="tabs_item item">야채</a></li>
+                            <li><a href="/FarmStory/market/list.do?cateName=곡류" class="tabs_item item">곡류</a></li>
                         </ul>
                         <table class="product_table">
                             <colgroup>
@@ -108,10 +109,10 @@
                                 <tr>
                                     <td class="pic"><img src="../images/market_item1.jpg" alt="사과 500g"></td>
                                     <td class="type">${productDto.prodCateName}</td>
-                                    <td class="pro_name">${productDto.pName}</td>
+                                    <td class="pro_name"><a href="/FarmStory/market/view.do?pNo=${productDto.pNo}">${productDto.pName}</a></td>
                                     <td class="sale">${productDto.discount}%</td>
                                     <td class="point">${productDto.point}p</td>
-                                    <td class="price"><strong>${(productDto.price)-(productDto.price / productDto.discount)}원</strong><span class="original_price">${productDto.price}원</span></td>
+                                    <td class="price"><strong>${(productDto.price) - service.disPrice(productDto)}원</strong><span class="original_price">${productDto.price}원</span></td>
                                 </tr>
                            	</c:forEach>
                             </tbody>
@@ -126,7 +127,7 @@
                            		</li>
                                 <li>
                                 	<c:forEach var="i" begin="${pageGroupP.start}" end="${pageGroupP.end}">
-                                		<a href="/FarmStory/market/list.do?pg=${i}" class="no">[${i}]</a>
+                                		<a href="/FarmStory/market/list.do?pg=${i}&&" class="no">[${i}]</a>
                                 	</c:forEach>
                                 </li>
                                 <li>

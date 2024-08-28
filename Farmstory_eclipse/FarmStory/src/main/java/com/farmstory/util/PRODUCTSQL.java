@@ -20,10 +20,13 @@ public class PRODUCTSQL {
 	//product
 	
 	public static final String SELECT_COUNT_TOTAL = "select COUNT(*) from `product`";
+	public static final String SELECT_COUNT_TOTAL_A = "select COUNT(*) from `product` as a "
+														+ "join `prodcate` as b on a.prodCateNo = b.prodCateNo "
+														+ " where `prodCateName`=?";
 	
 	public static final String SELECT_PRODUCTS = "SELECT ROW_NUMBER() OVER(ORDER BY `pNo` DESC)"
 												+ ", a.*, b.prodCateName FROM `product` as a "
-												+ "left join `prodCate` as b on a.prodCateNo = b.prodCateNo"
+												+ "join `prodcate` as b on a.prodCateNo = b.prodCateNo"
 												+ " ORDER BY `pNo` desc limit ?, 5";
 
 
@@ -31,5 +34,10 @@ public class PRODUCTSQL {
 	public final static String INSERT_BASIC_IMG_FILE= "insert into `pBasicImgFile` set pno=?, pBasic_oName =? , pBasic_sName=?, rdate = now()";
 	public final static String INSERT_DESC_IMG_FILE= "insert into `pDescImgFile` set pno=?, pDesc_oName =? , pDesc_sName=?, rdate = now()";
 	
+	public static final String SELECT_PRODUCTSA = "SELECT ROW_NUMBER() OVER(ORDER BY `pNo` DESC)"
+												+ ", a.*, b.prodCateName FROM `product` as a "
+												+ "join `prodcate` as b on a.prodCateNo = b.prodCateNo "
+												+ "where `prodCateName` = ? "
+												+ "ORDER BY `pNo` desc limit ?, 5 ";
 
 }

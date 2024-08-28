@@ -266,10 +266,6 @@ h2::after{display: block; content: ""; clear: both; width: 762px; height: 1px; b
     text-align: right;
 }
 
-.view > .commentList > article .commentCancel {
-	display: none;
-}
-
 .view > .commentList > .empty {
     padding: 20px 0;
     text-align: center;
@@ -346,7 +342,7 @@ h2::after{display: block; content: ""; clear: both; width: 762px; height: 1px; b
 /* 버튼 공통 */
 .btnNext   { display: inline-block; padding: 8px; border: 1px solid #bebebe; background: #e9e9e9; color: #111;}
 .btnSubmit { display: inline-block; padding: 7px; border: 1px solid #bebebe; background: #e9e9e9; color: #111;}
-.btnWrite  { display: inline-block; padding: 7px; border: 1px solid #3b3c3f; background: #4b545e; color: #fff;}
+.btnWrite  { display: inline-block; padding: 7px; border: 1px solid #3b3c3f; background: #4b545e; color: #fff !important;}
 .btnCancel { display: inline-block; padding: 8px; border: 1px solid #bebebe; background: #fdfdfd; color: #111;}
 .btnDelete { display: inline-block; padding: 8px; border: 1px solid #bebebe; background: #fdfdfd; color: #111;}
 .btnModify { display: inline-block; padding: 8px; border: 1px solid #bebebe; background: #fdfdfd; color: #111;}

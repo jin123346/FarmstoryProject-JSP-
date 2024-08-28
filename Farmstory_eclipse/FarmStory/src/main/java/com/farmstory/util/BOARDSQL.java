@@ -48,23 +48,16 @@ public class BOARDSQL {
 	
 	
 	// comment
-	public static final String SELECT_COMMENT = "select * from `comment` where `comNo`=?";
+	// comment
+	public static final String INSERT_COMMENT = "INSERT INTO `comment` SET `com_parent`=?, `com_content`=?, `com_writer` =?, `com_regip`=?, com_rdate=NOW()";
+	public static final String INSERT_COMMENT_SELECT = "INSERT INTO `comment` SET `com_parent`=?, `com_content`=?, `com_writer` =?, `com_regip`=?, com_rdate=NOW()";
+	public static final String SELECT_COMMENTS = "SELECT c.* , u.NICK FROM comment AS c JOIN `user` AS u ON  u.uid=c.com_writer where com_parent=? order by c.comNo";
+	public static final String SELECT_COMMENTS_NO= "SELECT * FROM comment where comNo= ?";
+
 	
-	public static final String SELECT_COMMENTS = "SELECT a.*, b.nick from `comment` AS a "
-												+ "JOIN `user` AS b ON a.com_writer = b.uid "
-												+ "where `com_parent`=? "
-												+ "order by comNo";
-	
-	public static final String INSERT_COMMENT = "insert into `comment` set "
-												+ "`com_parent`=?,"
-												+ "`com_content`=?,"
-												+ "`com_writer`=?,"
-												+ "`com_regip`=?,"
-												+ "`com_rdate`=NOW()";
-	
-	public static final String UPDATE_COMMENT = "update `comment` set `com_content`=? where `comNo`=?";
-	
-	public static final String DELETE_COMMENT = "delete from `comment` where `comNo`=?";
+	public static final String UPDATE_COMMENT= "UPDATE `comment` SET com_content = ?, com_rdate = now()  where `comNo` = ?";
+	public static final String DELETE_COMMENT= "delete from `comment` where `comNo` =?";
+		
 
 	public static final String DELETE_COMMENTS = "delete from `comment` where com_parent =?";
 	

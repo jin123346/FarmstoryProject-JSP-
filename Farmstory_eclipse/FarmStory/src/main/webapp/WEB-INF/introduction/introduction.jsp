@@ -1,59 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>인사말</title>
-    <!-- <link rel="shortcut icon" href="../images/fav.ico" type="image/x-icon"> -->
-    <link rel="shortcut icon" href="../images/fav.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/introduction/introduction.css">
-</head>
-<body>
-    <div id="wrapper">
-        <header id="header">
-            <div class="headerIn">
-
-                <div class="topline">
-                    <img src="../images/head_top_line.png" alt="topline"/>
-                </div><!-- .topLine -->
-
-                <div class="logo">
-                    <a href="#"><img src="../images/logo.png" alt="farmStory logo"></a>
-                </div><!-- .logo -->
-                 <ul class="utill">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul><!-- .utill -->
-                <div class="h_txt">
-                    <img src="../images/head_txt_img.png" alt="3만원이상 무료배송·팜카드 10%적립">
-                </div><!-- .h_txt -->
-                <nav class="gnb_wrap">
-                    <ul class="gnb">
-                        <li><a href="#"><img src="../images/head_menu1.png" alt="팜스토리소개"></a></li>
-                        <li><a href="#">
-                            <img src="../images/head_menu_badge.png" alt="30%" class="discount"/>
-                            <img src="../images/head_menu2.png" alt="장보기">
-                        </a></li>
-                        <li><a href="#"><img src="../images/head_menu3.png" alt="농작물이야기"></a></li>
-                        <li><a href="#"><img src="../images/head_menu4.png" alt="이벤트"></a></li>
-                        <li><a href="#"><img src="../images/head_menu5.png" alt="커뮤니티"></a></li>
-                    </ul><!-- .gnb -->
-                </nav><!-- .gnb_wrap -->
-            </div><!-- .headerIn -->
-        </header><!-- #header -->
+<%@ include file="../_header.jsp" %>
 
     <!-- 메인 콘텐츠 -->
         <main id="main" class="cf">
             <section class="mainIn cf">
                 <div class="sub_bg">
-                    <span class="sub_tit"><img src="/images/sub_top_tit1.png" alt=""></span><!-- .sub_tit -->
+                    <span class="sub_tit"><img src="../images/sub_top_tit1.png" alt=""></span><!-- .sub_tit -->
                 </div><!-- .sub_bg -->
         
                 <aside class="aside">
@@ -63,8 +15,8 @@
                         </div><!-- .aside_cate -->
                         <div class="aside_bg">
                             <ul class="cate_lnb1">
-                                <li> <a href="#" class="lnb1">인삿말</a></li>
-                                <li> <a href="#" class="lnb2">찾아오시는길</a></li>
+                                <li> <a href="/FarmStory/intro/introduction.do" class="lnb1">인삿말</a></li>
+                                <li> <a href="/FarmStory/intro/direction.do" class="lnb2">찾아오시는길</a></li>
                             </ul><!-- .cate_lnb -->
                         </div><!-- .aside_bg -->
                     </div><!-- .sidebar -->
@@ -82,7 +34,7 @@
                                 <strong>인삿말</strong> 
                             </p>
                         </nav>
-                        <a href="#"><img src="/images/sub_page1_article_txt.png" alt="건강한 먹거리"class="content"></a>
+                        <a href="#"><img src="../images/sub_page1_article_txt.png" alt="건강한 먹거리"class="content"></a>
                         <div class="txt">
                             <p>항상 저희 팜스토리를 성원해 주시고 관심을 가져주시는 모든 분들께 감사의 인사를 드리며<br>
                             가정에 건강과 행복이 가득하시길 기원합니다.</p><br>

@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="sssashortcut icon" href="/FarmStory/images/fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="/FarmStory/css/style_admin.css">
     <link rel="stylesheet" href="/FarmStory/css/style_prodReg.css">
     <title>Administrator</title>
+
 </head>
 <body>
     <!-- wrapper -->
     <div id="wrapper">
         <header>
+
        
             <div class="headerIn">
                 <div class="top">
@@ -39,23 +42,24 @@
                             <ul>
                                 <li>상품관리
                                     <ul>
-                                        <li>상품목록</li>
-                                        <li>상품등록</li>
+                                        <li><a href="#">상품목록</a></li>
+                                        <li><a href="/FarmStory/admin/product/register.do">상품등록</a></li>
                                     </ul>
                                 </li>
     
                                 <li>주문관리
                                     <ul>
-                                        <li>주문목록</li>
+                                        <li><a href="#">주문목록</a></li>
                                     </ul>
                                 </li>
                                 <li>회원관리
                                     <ul>
-                                        <li>회원목록</li>
+                                        <li><a href="#">회원목록</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </aside> <!-- aside end-->
+
                 </div><!-- .aside end-->
-       
+

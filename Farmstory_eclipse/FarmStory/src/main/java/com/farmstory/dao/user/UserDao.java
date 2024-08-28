@@ -20,6 +20,7 @@ public class UserDao extends DBHelper{
 	}
 	
 	private UserDao () {}
+	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public int selectCountUser(String type,String value) {
@@ -128,6 +129,11 @@ public class UserDao extends DBHelper{
 		
 		try {
 			conn = getConnection();
+			
+			
+			
+			
+			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		} finally {

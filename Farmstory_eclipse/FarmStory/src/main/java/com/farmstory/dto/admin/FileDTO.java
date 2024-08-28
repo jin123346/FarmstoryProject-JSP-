@@ -8,10 +8,17 @@ public class FileDTO {
 	private String rdate;
 	
 	private String fieldName;
+	private String pfileCate;
 	
 	
 
 	
+	public String getPfileCate() {
+		return pfileCate;
+	}
+	public void setPfileCate(String pfileCate) {
+		this.pfileCate = pfileCate;
+	}
 	private FileBasicDTO fileBaseDto;
 	private FileDescDTO fileDescDto;
 	private FileListDTO fileListDto;
@@ -72,6 +79,11 @@ public class FileDTO {
 	}
 	public void setFileListDto(FileListDTO fileListDto) {
 		this.fileListDto = fileListDto;
+	}
+	
+	public String toStringdto() {
+		return "FileDTO [fileBaseDto=" + fileBaseDto + ", fileDescDto=" + fileDescDto + ", fileListDto=" + fileListDto
+				+ "]";
 	}
 	@Override
 	public String toString() {

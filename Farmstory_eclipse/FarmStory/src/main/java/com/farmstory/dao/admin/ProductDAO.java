@@ -26,7 +26,30 @@ public class ProductDAO extends DBHelper {
 
 	private PreparedStatement psmt;
 
-	
+	public void updateProductFno(int pList_fNo,int pDesc_fNo,int pBasic_fNo,int pNo) {
+		String sql = "update `product` set pList_fNo=?, pDesc_fNo=?,pBasic_fNo=? where pNo=?";
+		
+		try {
+			conn=getConnection();
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, pList_fNo);
+			pstmt.setInt(2, pDesc_fNo);
+			pstmt.setInt(3, pBasic_fNo);
+			pstmt.setInt(4, pNo);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error(e.getMessage());
+
+			}
+			
+		}
+	}
 	public int insertProduct(ProductDTO dto) {
 		
 		int pno=0;
@@ -41,8 +64,8 @@ public class ProductDAO extends DBHelper {
 											  + "pList_fNo=?,"
 											  + "pBasic_fNo=?,"
 											  + "pDesc_fNo=?,"
-											  + "rdate=now(),"
-											  + "pDesc=?";
+											  + "pDesc=?,"
+											  + "rdate=NOW()";
 		
 		try {
 			
@@ -60,8 +83,7 @@ public class ProductDAO extends DBHelper {
 			pstmt.setInt(8, dto.getpList_fNo());
 			pstmt.setInt(9, dto.getpBasic_fNo());
 			pstmt.setInt(10, dto.getpDesc_fNo());
-			pstmt.setString(11, dto.getRdate());
-			pstmt.setString(12, dto.getpDesc());
+			pstmt.setString(11, dto.getpDesc());
 			pstmt.executeUpdate();
 			
 			stmt =conn.createStatement();

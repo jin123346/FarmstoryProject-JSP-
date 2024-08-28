@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.admin.FileDTO;
 import com.farmstory.util.DBHelper;
+import com.farmstory.util.PRODUCTSQL;
 
 public class FileDAO extends DBHelper {
 	private static FileDAO instance = new FileDAO();
@@ -21,33 +22,37 @@ public class FileDAO extends DBHelper {
 	
 	
 	
-	public void insertFile(FileDTO dto) {
+	public int insertFile(FileDTO dto) {
 		int result=0;
 		
 			String sql=null;
 			if(dto.getFieldName().equals("product_list_image")) {
-				sql = "insert into `pListImgFile` set pList_oName =? , pList_sName=?, rdate = now()";
-				
+				sql =PRODUCTSQL.INSERT_LIST_IMG_FILE;
+				logger.debug(sql);
 				
 			}else if(dto.getFieldName().equals("product_description_image")) {
-				sql = "insert into `pDescImgFile` set pDesc_oName =? , pDesc_sName=?, rdate = now()";
-	
+				sql=PRODUCTSQL.INSERT_DESC_IMG_FILE;
 				
 			}else if(dto.getFieldName().equals("basic_info_image")) {
-				sql = "insert into `pBasicImgFile` set pBasic_oName =? , pBasic_sName=?, rdate = now()";
+				sql = PRODUCTSQL.INSERT_BASIC_IMG_FILE;
 	
-			}
+			}				
+			logger.debug(sql);
+
 			if(sql==null) {
 				
-				return;
+				return result;
 			}
 			try {
 				conn=getConnection();
 				pstmt=conn.prepareStatement(sql);
 				stmt=conn.createStatement();
-				pstmt.setString(1, dto.getoName());
-				pstmt.setString(2, dto.getsName());
-				result +=pstmt.executeUpdate();
+				pstmt.setInt(1, dto.getpNo());
+				pstmt.setString(2, dto.getoName());
+				pstmt.setString(3, dto.getsName());
+				result = pstmt.executeUpdate();
+				
+				
 				
 				
 			} catch (Exception e) {
@@ -60,15 +65,67 @@ public class FileDAO extends DBHelper {
 				}
 			
 		}
+		return result;
+	}
+	public int selectListFile_fNo(int pno) {
+		int fno=0;
+		try {
+			conn  = getConnection();
+			pstmt = conn.prepareStatement(PRODUCTSQL.Select_List_File_fno);
+			pstmt.setInt(1, pno);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				fno = rs.getInt(1);
+				
+			}
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error("Select_List_File_fno"+e.getMessage());
+			}
+		}
+		
+		return fno;
+		
 		
 	}
-	public void selectListFile() {}
 	public void selectListFiles() {}
 	public void updateListFile() {}
 	public void deleteListFile() {}
 	
 	public void insertBasicFile() {}
-	public void selectBasicFile() {}
+	public int selectBasicFile_fno(int pno) {
+		int fno=0;
+		try {
+			conn  = getConnection();
+			pstmt = conn.prepareStatement(PRODUCTSQL.Select_basic_File_fno);
+			pstmt.setInt(1, pno);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				fno = rs.getInt(1);
+				
+			}
+			
+		} catch (Exception e) {
+			logger.error("Select_basic_File_fno"+e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error("Select_basic_File_fno"+e.getMessage());
+			}
+		}
+		
+		return fno;
+	}
 	public void selectBasicFiles() {}
 	public void updateBasicFile() {}
 	public void deleteBasicFile() {}
@@ -76,7 +133,32 @@ public class FileDAO extends DBHelper {
 	
 	
 	public void insertDescFile() {}
-	public void selectDescFile() {}
+	public int selectDescFile_fno(int pno) {
+		int fno=0;
+		try {
+			conn  = getConnection();
+			pstmt = conn.prepareStatement(PRODUCTSQL.Select_Desc_File_fno);
+			pstmt.setInt(1, pno);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				fno = rs.getInt(1);
+				
+			}
+			
+		} catch (Exception e) {
+			logger.error("Select_Desc_File_fno"+e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error("Select_Desc_File_fno"+e.getMessage());
+			}
+		}
+		
+		return fno;
+	}
 	public void selectDescFiles() {}
 	public void updateDescFile() {}
 	public void deleteDescFile() {}

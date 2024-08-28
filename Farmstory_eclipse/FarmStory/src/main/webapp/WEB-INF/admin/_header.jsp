@@ -42,7 +42,7 @@
                             <ul>
                                 <li>상품관리
                                     <ul>
-                                        <li><a href="#">상품목록</a></li>
+                                        <li><a href="/FarmStory/admin/product/list.do">상품목록</a></li>
                                         <li><a href="/FarmStory/admin/product/register.do">상품등록</a></li>
                                     </ul>
                                 </li>

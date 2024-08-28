@@ -20,7 +20,43 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><img src="../images/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td>
+                            <td><img src="/FarmStory/images/admin/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td>
+                            <td>1011</td>
+                            <td>사과500g</td>
+                            <td>과일</td>
+                            <td>4,000원</td>
+                            <td>100</td>
+                            <td>2023-01-01</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/FarmStory/images/admin/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td>
+                            <td>1011</td>
+                            <td>사과500g</td>
+                            <td>과일</td>
+                            <td>4,000원</td>
+                            <td>100</td>
+                            <td>2023-01-01</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/FarmStory/images/admin/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td>
+                            <td>1011</td>
+                            <td>사과500g</td>
+                            <td>과일</td>
+                            <td>4,000원</td>
+                            <td>100</td>
+                            <td>2023-01-01</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/FarmStory/images/admin/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td>
+                            <td>1011</td>
+                            <td>사과500g</td>
+                            <td>과일</td>
+                            <td>4,000원</td>
+                            <td>100</td>
+                            <td>2023-01-01</td>
+                        </tr>
+                        <tr>
+                            <td><img src="/FarmStory/images/admin/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td>
                             <td>1011</td>
                             <td>사과500g</td>
                             <td>과일</td>

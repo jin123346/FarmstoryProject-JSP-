@@ -5,7 +5,7 @@
     <section>
         <div class="main_container">
             <div class="main_top"><h2>상품등록</h2></div>
-            <form action="/FarmStory/product/register.do" type="post" enctype="multipart/form-data">
+            <form action="/FarmStory/admin/product/register.do" method="post" enctype="multipart/form-data">
            	 <div class="reg_table">
 	                <table id="product">
 	                    <tr>
@@ -29,7 +29,7 @@
 	                    </tr>
 	                    <tr>
 	                        <th>포인트</th>
-	                        <td><input type="text" name="point" placeholder="100" readonly>포인트 가격의 1%</td>
+	                        <td><input type="number" name="point" placeholder="100" readonly>포인트 가격의 1%</td>
 	                    </tr>
 	                    <tr>
 	                        <th>할인</th>
@@ -74,7 +74,7 @@
 	                                    <label for="product_list_image">상품목록 이미지(약 120 × 120)</label>
 	                                    <div class="cf_input">
 	                                        <input type="file" class="ci" id="product_list_image" name="product_list_image">
-	                                        <span>Choose File</span><p>No file chosen</p>
+	                                        <span>Choose File</span><p id="product_list_image_name">No file chosen</p>
 	                                    </div>
 	                                </div>
 	                        
@@ -82,7 +82,7 @@
 	                                    <label for="basic_info_image">기본정보 이미지(약 240 × 240)</label>
 	                                    <div class="cf_input">
 	                                        <input type="file" id="basic_info_image" name="basic_info_image">
-	                                        <span>Choose File</span><p>No file chosen</p>
+	                                        <span>Choose File</span><p id="basic_info_image_name">No file chosen</p>
 	                                    </div>
 	                                </div>
 	                        
@@ -90,13 +90,19 @@
 	                                    <label for="product_description_image">상품설명 이미지(약 750 × Auto)</label>
 	                                    <div class="cf_input">
 	                                        <input type="file" id="product_description_image" name="product_description_image">
-	                                        <span>Choose File</span><p>No file chosen</p>
+	                                        <span>Choose File</span><p id="product_description_image_name">No file chosen</p>
+
 	                                    </div>
 	                                </div>
 	                            </div>
 	                        </td>
 	                    </tr>
-	
+						<script>
+							function showFileName(input, targetId) {
+							    const fileName = input.files.length > 0 ? input.files[0].name : "No file chosen";
+							    document.getElementById(targetId).textContent = fileName;
+							}
+						</script>
 	                </table>
 	                <div class="btn_group_register"> 
 	                        <button type="submit" class="insertbtn">상품등록</button>

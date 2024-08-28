@@ -79,6 +79,11 @@ public enum FileService {
 		}
 		
 		public void insertFile(FileDTO dto) { dao.insertFile(dto);}
+		public int selectListFile_fNo(int pno) { return dao.selectListFile_fNo(pno);}
+		public int selectBasicFile_fNo(int pno) { return dao.selectBasicFile_fno(pno);}
+		public int selectDescFile_fNo(int pno) { return dao.selectDescFile_fno(pno);}
+
+		
 		public void selectListFile() {}
 		public void selectListFiles() {}
 		public void updateListFile() {}

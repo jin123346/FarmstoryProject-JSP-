@@ -3,60 +3,43 @@ package com.farmstory.util;
 public class PRODUCTSQL {
 
 
-	// board
-	public static final String INSERT_BOARD = "insert into `board` set "
-											   + "`title`=?,"
-											   + "`b_contents`=?,"
-											   + "`b_fNo`=?,"
-											   + "`b_regip`=?,"
-											   + "`b_writer`=?,"
-											   + "`b_rdate`=NOW()";
-	public static final String SELECT_MAX_BOARD_NO = "select MAX(`boardNo`) from `board`";
-	
-	
-	// file
-	public static final String SELECT_BOARD_FILE = "select * from boardfile where b_fNo=?";
-	public static final String INSERT_BOARD_FILE = "insert into boardfile set "
-													+ "`b_pNo`=?,"
-													+ "`b_oName`=?,"
-													+ "`b_sName`=?,"
-													+ "`b_rdate`=NOW()";
-	public static final String UPDATE_BOARD_FILE_DOWNLOAD_COUNT = "update boardfile set `download` = `download` + 1 where `fno`=?";
+	//product
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//file
+	
+	public final static String Select_List_File_fno = "select pList_fNo from pListimgfile where pno=?";
+	
+	public final static String Select_basic_File_fno = "select pBasic_fNo from pBasicimgfile where pno=?";
 
-		//cart	
-		
-		//point	
-		
-		//order	
-		
-		//file	
-		
-		//terms
-		
-		//user	
-		public static final String INSERT_USER = "insert into `user` set"
-												+ "`uid`=?, "
-												+ "`pass`=?, "
-												+ "`name`=?, "
-												+ "`nick`=?, "
-												+ "`email`=?, "
-												+ "`hp`=?, "
-												+ "`zip`=?, "
-												+ "`addr1`=?, "
-												+ "`addr2`=?, "
-												+ "`regDate`= NOW()";
+	public final static String Select_Desc_File_fno = "select pDesc_fNo from pDescimgfile where pno=?";
 
+	public final static String INSERT_LIST_IMG_FILE= "insert into `pListImgFile` set pno=?, pList_oName =? , pList_sName=?, rdate = now()";
+	public final static String INSERT_BASIC_IMG_FILE= "insert into `pBasicImgFile` set pno=?, pBasic_oName =? , pBasic_sName=?, rdate = now()";
+	public final static String INSERT_DESC_IMG_FILE= "insert into `pDescImgFile` set pno=?, pDesc_oName =? , pDesc_sName=?, rdate = now()";
 	
-
-	
-	
-
-	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
-	
-	
-
 
 }

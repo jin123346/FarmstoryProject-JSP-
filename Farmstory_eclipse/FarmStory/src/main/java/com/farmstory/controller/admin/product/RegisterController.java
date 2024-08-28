@@ -26,10 +26,14 @@ public class RegisterController extends HttpServlet{
 	FileService fileservice = FileService.INSTANCE;
 	ProductService productservice = ProductService.INSTANCE;
 	
+	
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/admin/product/register.jsp");
+		logger.debug(dispatcher.toString());
 		dispatcher.forward(req, resp);
 	}
 	
@@ -38,41 +42,28 @@ public class RegisterController extends HttpServlet{
 		String pName =req.getParameter("prodName");
 		String price =req.getParameter("price");
 		String prodCateNo= req.getParameter("prodType"); 
+		
 		String stock = req.getParameter("stock");
-		String point = req.getParameter("point");
 		String discount = req.getParameter("discount");
 		String delivery = req.getParameter("deliverfee");
 		String pDesc = req.getParameter("pDesc");
+		logger.debug(pName);
+		logger.debug("pname "+pName+"price"+price+"stock"+stock+"prodCateNo"+prodCateNo+"delivery"+delivery);
 		
-		
-		/*
-		 * String pList_fNo = req.getParameter("product_list_image"); String pBasic_fNo
-		 * = req.getParameter("basic_info_image"); String pDesc_fNo =
-		 * req.getParameter("product_description_image");
-		 */
 		
 		List<FileDTO> files = fileservice.fileUpload(req);
+		logger.debug(files.toString());
 		int pList_fNo=0;
 		int pDesc_fNo=0;
 		int pBasic_fNo=0;
-		for(FileDTO filedto : files) {
-			if(filedto.getFieldName().equals("product_list_image")) {
-				pList_fNo=filedto.getFno();
-				
-			}else if(filedto.getFieldName().equals("product_description_image")) {
-				pDesc_fNo=filedto.getFno();
-				
-			}else if(filedto.getFieldName().equals("basic_info_image")) {
-				pBasic_fNo=filedto.getFno();
-	
-			}
-		}
+		
+		int point = (int) Math.ceil(Double.parseDouble(price)*0.01);
 		ProductDTO product = new ProductDTO();
 		product.setpName(pName);
 		product.setPrice(price);
 		product.setProdCateNo(prodCateNo);
-		product.setStock(stock);
 		product.setPoint(point);
+		product.setStock(stock);
 		product.setDiscount(discount);
 		product.setDelivery(delivery);
 		product.setpDesc(pDesc);
@@ -82,13 +73,22 @@ public class RegisterController extends HttpServlet{
 		
 		int pno = productservice.insertProduct(product);
 		
+		logger.debug(pno+"");
+		
 		for(FileDTO filedto : files) {
 			
 			filedto.setpNo(pno);
 			fileservice.insertFile(filedto);
+			logger.debug(filedto.toString());
+			
 		
 		}
+		pList_fNo = fileservice.selectListFile_fNo(pno);
+		pDesc_fNo = fileservice.selectDescFile_fNo(pno);
+		pBasic_fNo=fileservice.selectBasicFile_fNo(pno);
 		
+		
+		productservice.updateProductFno(pList_fNo,pDesc_fNo,pBasic_fNo,pno);
 		
 		
 		resp.sendRedirect("/FarmStory/admin/product/list.do");

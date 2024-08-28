@@ -1,6 +1,8 @@
 package com.farmstory.controller.admin.product;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -18,6 +20,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 @WebServlet("/admin/product/list.do")
 public class ListController extends HttpServlet{
@@ -30,22 +33,39 @@ public class ListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
+		// 데이터 조회
+		List<ProductDTO> products = service.selectProducts();
+		
+		
+		
+		
+		// 업로드된 이미지 파일을 저장할 경로 지정
+		String thumbs = getServletContext().getRealPath("/thumbs") + File.separator + "thumbs";
+		logger.debug("thumbs1 :", thumbs);
+		
+		File uploadDir = new File(thumbs);
+		if (!uploadDir.exists()) {
+		    uploadDir.mkdirs(); // 필요한 디렉토리들을 모두 생성
+		}
+		
+		logger.debug("thumbs2 :", thumbs);
+		
+		
+		
 		// 요청 파라미터 추출
 		String prodCateNo = req.getParameter("prodCateNo");
 		
+		logger.debug("prodCateNo :", prodCateNo);
 		
-		// 페이지 그룹 계산
 		
 		
-		// 데이터 조회
-		List<ProductDTO> products = null;
-		try {
-			products = service.selectProducts(prodCateNo);
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		logger.debug("products :", products);
+		
+		
+		
+		
+		
 		
 		// 공유 참조 
 		req.setAttribute("products", products);

@@ -46,11 +46,13 @@ public class ListController extends HttpServlet{
 		// 데이터 조회하기
 		List<BoardDTO> boards = service.selectBoards(start);
 		
+		
 		// 데이터 공유 참조(View에서 데이터 출력)
 		req.setAttribute("boards", boards);
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageGroup", pageGroup);
 		req.setAttribute("pageStartNum", pageStartNum);
+		req.setAttribute("currentPage", currentPage);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/list.jsp");
 		dispatcher.forward(req, resp);

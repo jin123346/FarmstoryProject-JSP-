@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.community.BoardDTO;
 import com.farmstory.dto.community.BoardFileDTO;
+import com.farmstory.dto.community.CommentDTO;
 import com.farmstory.service.community.BoardFileService;
 import com.farmstory.service.community.BoardService;
+import com.farmstory.service.community.CommentService;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -23,7 +25,8 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ViewController extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
-	private BoardService service = BoardService.INSTANCE;
+	private BoardService boardService = BoardService.INSTANCE;
+	private CommentService commentService = CommentService.INSTANCE;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -34,13 +37,17 @@ public class ViewController extends HttpServlet{
 		String boardNo = req.getParameter("boardNo");
 		
 		// 조회수 증가 
-		service.update_board_hit(boardNo);
+		boardService.update_board_hit(boardNo);
 		
 		// 데이터 조회
-		BoardDTO boardDTO = service.selectBoard(boardNo);
+		BoardDTO boardDTO = boardService.selectBoard(boardNo);
 		
+		// 댓글 조회
+		List<CommentDTO> comments = commentService.selectComments(boardNo);
+				
 		// 공유 참조
 		req.setAttribute("boardDTO", boardDTO);
+		req.setAttribute("comments", comments);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/view.jsp");
 		dispatcher.forward(req, resp);

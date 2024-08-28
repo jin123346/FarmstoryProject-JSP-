@@ -10,8 +10,15 @@ public class FileDTO {
 	private String fieldName;
 	private String pfileCate;
 	
+	// 추가필드
+	private String imgPath;
 	
-
+	public String getImgPath() {
+		return imgPath;
+	}
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
 	
 	public String getPfileCate() {
 		return pfileCate;
@@ -22,9 +29,6 @@ public class FileDTO {
 	private FileBasicDTO fileBaseDto;
 	private FileDescDTO fileDescDto;
 	private FileListDTO fileListDto;
-	
-	
-	
 	
 	public int getFno() {
 		return fno;
@@ -85,10 +89,12 @@ public class FileDTO {
 		return "FileDTO [fileBaseDto=" + fileBaseDto + ", fileDescDto=" + fileDescDto + ", fileListDto=" + fileListDto
 				+ "]";
 	}
+	
 	@Override
 	public String toString() {
 		return "FileDTO [fno=" + fno + ", pNo=" + pNo + ", oName=" + oName + ", sName=" + sName + ", rdate=" + rdate
-				+ ", fieldName=" + fieldName + "]";
+				+ ", fieldName=" + fieldName + ", pfileCate=" + pfileCate + ", imgPath=" + imgPath + ", fileBaseDto="
+				+ fileBaseDto + ", fileDescDto=" + fileDescDto + ", fileListDto=" + fileListDto + "]";
 	}
 	
 	

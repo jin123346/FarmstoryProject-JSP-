@@ -11,6 +11,8 @@ import javax.naming.NamingException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.farmstory.dto.admin.FileListDTO;
 import com.farmstory.dto.admin.ProductDTO;
 
 import com.farmstory.util.DBHelper;
@@ -123,39 +125,54 @@ public class ProductDAO extends DBHelper {
 	}
 	
 
-	public List<ProductDTO> selectProducts(String prodCateNo) throws NamingException, SQLException{
-		
+	public List<ProductDTO> selectProducts() {
 		List<ProductDTO> products = new ArrayList<>();
-		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_PRODUCT);
-			psmt.setString(1, prodCateNo);
-			
-			rs = psmt.executeQuery();
-			
+			stmt =conn.createStatement();
+			rs=stmt.executeQuery(SQL.SELECT_PRODUCT_LIST);
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();
-				dto.setProdCateNo(rs.getString(1));
-				dto.setpName(rs.getString(2));
-				dto.setProdCateNo(rs.getString(3));
+				FileListDTO fdto = new FileListDTO();
+				dto.setpNo(rs.getInt(1));
+				dto.setProdCateNo(rs.getString(2));     
+				dto.setpName(rs.getString(3));
 				dto.setPrice(rs.getInt(4));
 				dto.setStock(rs.getInt(5)); 
-				dto.setRdate(rs.getString(6));
-				products.add(dto);
+				dto.setPoint(rs.getInt(6)); 
+				dto.setDiscount(rs.getInt(7));
+				dto.setDelivery(rs.getInt(8)); 
+				dto.setpList_fNo(rs.getInt(9)); 
+				dto.setpBasic_fNo(rs.getInt(10)); 
+				dto.setpDesc_fNo(rs.getInt(11)); 
+				dto.setRdateSubString(rs.getString(12));
+				dto.setpDesc(rs.getString(13));
 				
+				fdto.setpList_fno(rs.getInt(1));
+				fdto.setpNo(rs.getInt(2));
+				fdto.setpList_oName(rs.getString(3));
+				fdto.setpList_sName(rs.getString(4));
+				fdto.setRdate(rs.getString(5));
+				
+				dto.setFilelistdto(fdto);
+				products.add(dto);
+				logger.debug(dto.toString());
 			}
-			
 		}catch(Exception e) {
 			logger.error(e.getMessage());
-		
-		}finally {
-			
+
 			try {
-				closeAll();
-			} catch (SQLException e) {
-				logger.error(e.getMessage());
+				conn.rollback();
+			}catch(SQLException e1) {
+				logger.error(e1.getMessage());
 			}
+		}finally {
+				try {
+					closeAll();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
 		}
 		return products;
 	}

@@ -11,6 +11,7 @@ import com.farmstory.service.community.CommentService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,7 +29,9 @@ public class ModifyController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-	
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/write.jsp");
+		dispatcher.forward(req, resp);
+		
 	} 
 	
 	@Override

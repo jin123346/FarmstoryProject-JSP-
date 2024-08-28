@@ -14,10 +14,13 @@ public class BOARDSQL {
 											   + "`b_rdate`=NOW()";
 	public static final String SELECT_MAX_BOARD_NO = "select MAX(`boardNo`) from `board`";
 	// 글목록 & 글쓴이를 닉네임으로 조회
-	public static final String SELECT_BOARDS = "select a.*, b.nick from `board` AS a "
-												+ "JOIN `user` AS b ON a.b_writer = b.uid "
-												+ "ORDER BY `boardNo` DESC "
-												+ "LIMIT ?, 10";
+	public static final String SELECT_BOARDS = "SELECT a.*, b.nick, " +
+											    "(SELECT COUNT(*) FROM `comment` c WHERE c.com_parent = a.boardNo) AS commentCount " +
+											    "FROM `board` AS a " +
+											    "JOIN `user` AS b ON a.b_writer = b.uid " +
+											    "ORDER BY `boardNo` DESC " +
+											    "LIMIT ?, 10";
+
 	public static final String SELECT_BOARD = "select * from `board` AS a "
 												+ "LEFT JOIN `boardfile` AS b ON a.`boardNo` = b.b_pNo "
 												+ "WHERE `boardNo`=?";
@@ -30,7 +33,7 @@ public class BOARDSQL {
 									            + "`b_rdate`=NOW() "
 									            + "where `boardNo`=?"; 
 	public static final String UPDATE_BOARD_HIT = "update `board` set `b_hit`= `b_hit` + 1 where `boardNo`=?"; 
-	
+	public static final String DELETE_BOARD = "delete from `board` where `boardNo`=?";
 	
 	
 	// file
@@ -41,6 +44,7 @@ public class BOARDSQL {
 													+ "`b_sName`=?,"
 													+ "`b_rdate`=NOW()";
 	public static final String UPDATE_BOARD_FILE_DOWNLOAD_COUNT = "update `boardfile` set `b_download` = `b_download` + 1 where `b_fNo`=?";
+	public static final String DELETE_BOARD_FILES = "delete from `boardfile` where b_pNo =?";
 	
 	
 	// comment
@@ -62,7 +66,7 @@ public class BOARDSQL {
 	
 	public static final String DELETE_COMMENT = "delete from `comment` where `comNo`=?";
 
-	
+	public static final String DELETE_COMMENTS = "delete from `comment` where com_parent =?";
 	
 	
 

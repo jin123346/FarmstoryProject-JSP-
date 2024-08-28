@@ -33,7 +33,7 @@ public enum FileService {
 			
 			
 			ServletContext ctx = req.getServletContext();
-			String uploadPath = ctx.getRealPath("/uploads/product");
+			String uploadPath = ctx.getRealPath("/thumbs/product");
 			logger.debug(uploadPath);
 			
 			File uploadDir = new File(uploadPath);

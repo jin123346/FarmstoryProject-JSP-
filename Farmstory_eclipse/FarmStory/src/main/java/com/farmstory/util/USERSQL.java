@@ -48,6 +48,8 @@ public class USERSQL {
 												+ "`addr1`=?, "
 												+ "`addr2`=?, "
 												+ "`regDate`= NOW()";
+		
+		public static final String SELECT_USERS = "select * from `user`";
 
 		public static final String SELECT_COUNT_USER = "SELECT COUNT(*) FROM `user`";
 		public static final String WHERE_UID = "WHERE `uid`=?";

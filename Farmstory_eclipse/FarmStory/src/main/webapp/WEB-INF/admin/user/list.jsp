@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <div class="section list">
     <section>
         <div class="main_container">
@@ -9,7 +9,7 @@
                 <table class="user">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" name="product_list_checkbox" id="plcheck"></th>
+                            <th><input type="checkbox" name="user_list_checkbox" id="plcheck"></th>
                             <th>아이디</th>
                             <th>이름</th>
                             <th>별명</th>
@@ -21,61 +21,30 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="userDto" items="${userDto}">
                         <tr>
-                            <td><input type="checkbox" name="product_list_checkbox" id="plcheck"></td>
-                            <td>a101</td>
-                            <td>김유신</td>
-                            <td>유신101</td>
-                            <td>yushin101@naver.com</td>
-                            <td>010-1234-1001</td>
+                            <td><input type="checkbox" name="uid_list_checkbox" id="plcheck"></td>
+                            <td>${userDto.uid}</td>
+                            <td>${userDto.name}</td>
+                            <td>${userDto.nick}</td>
+                            <td>${userDto.email}</td>
+                            <td>${userDto.hp}</td>
                             <td>
-                                <select name="grade" id="grade">
+                            <select name="grade" id="grade">
                                     <option value="1">1</option>
-                                    <option value="1">2</option>
-                                    <option value="1">3</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                 </select>
-                            </td>
-                            <td>2023-01-01 13:06:14</td>
+                            
+                            ${userDto.gradeNo}</td>
+                            <td>${userDto.regDate}</td>
                             <td><a href="#">[상세확인]</a></td>
                         </tr>
-                        <tr>
-                            <td><input type="checkbox" name="product_list_checkbox" id="plcheck"></td>
-                            <td>a102</td>
-                            <td>김춘추</td>
-                            <td>춘추102</td>
-                            <td>yushin101@naver.com</td>
-                            <td>010-1234-1001</td>
-                            <td>
-                                <select name="grade" id="grade">
-                                    <option value="1">1</option>
-                                    <option value="1">2</option>
-                                    <option value="1">3</option>
-                                </select>
-                            </td>
-                            <td>2023-01-01 13:06:14</td>
-                            <td><a href="#">[상세확인]</a></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="product_list_checkbox" id="plcheck"></td>
-                            <td>a102</td>
-                            <td>김춘추</td>
-                            <td>춘추102</td>
-                            <td>yushin101@naver.com</td>
-                            <td>010-1234-1001</td>
-                            <td>
-                                <select name="grade" id="grade">
-                                    <option value="1">1</option>
-                                    <option value="1">2</option>
-                                    <option value="1">3</option>
-                                </select>
-                            </td>
-                            <td>2023-01-01 13:06:14</td>
-                            <td><a href="#">[상세확인]</a></td>
-                        </tr>
+                      </c:forEach>
                     </tbody>
                 </table>
                 <div class="btn_group">
-                        <a href="#"  class="deletebtn">선택삭제</a>
+                        <a href="/FarmStory/admin/user/list.do"  class="deletebtn">선택삭제</a>
                 </div><!--btn_group end-->
 
                 <div class="pages">

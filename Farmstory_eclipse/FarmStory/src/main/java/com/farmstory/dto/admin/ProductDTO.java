@@ -35,6 +35,17 @@ public class ProductDTO {
 	public void setProdCateNo(String prodCateNo) {
 		this.prodCateNo = prodCateNo;
 	}
+	public int getProdCateNoAsInt() {
+        try {
+            return Integer.parseInt(prodCateNo);
+        } catch (NumberFormatException e) {
+            // 기본값이나 오류 처리
+            return 0; // 또는 예외를 던지거나 로그를 기록하는 방식으로 처리할 수 있음
+        }
+    }
+	public void setProdCateNo(int prodCateNo) {
+        this.prodCateNo = Integer.toString(prodCateNo);
+    }
 	public String getpName() {
 		return pName;
 	}

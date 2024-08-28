@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import javax.naming.NamingException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.farmstory.dto.admin.ProductDTO;
@@ -36,26 +38,25 @@ public class ProductDAO extends DBHelper {
 	}
 	
 
-	public List<ProductDTO> selectProducts() {
+	public List<ProductDTO> selectProducts(String prodCateNo) throws NamingException, SQLException{
 		
 		List<ProductDTO> products = new ArrayList<>();
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.INSERT_PRODUCT_LIST);
-			//psmt.setInt(1, pNo);
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCT);
+			psmt.setString(1, prodCateNo);
 			
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();
-				dto.setpList_fNo(rs.getInt(1));
-				dto.setpNo(rs.getInt(2));
-				dto.setpName(rs.getString(3));
-				//dto.se(rs.getString(4));
-				dto.setPrice(rs.getInt(5));
-				dto.setStock(rs.getInt(6)); 
-				dto.setRdate(rs.getString(7));
+				dto.setProdCateNo(rs.getString(1));
+				dto.setpName(rs.getString(2));
+				dto.setProdCateNo(rs.getString(3));
+				dto.setPrice(rs.getInt(4));
+				dto.setStock(rs.getInt(5)); 
+				dto.setRdate(rs.getString(6));
 				products.add(dto);
 				
 			}
@@ -68,16 +69,9 @@ public class ProductDAO extends DBHelper {
 			}catch(SQLException e1) {
 				logger.error(e1.getMessage());
 			}
-			
 		}finally {
-			try {
 				closeAll();
-			} catch (SQLException e) {
-				logger.error(e.getMessage());
-			}
 		}
-		
-		
 		return products;
 	}
 

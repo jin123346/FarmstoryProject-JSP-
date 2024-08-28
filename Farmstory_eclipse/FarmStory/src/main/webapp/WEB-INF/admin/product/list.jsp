@@ -9,6 +9,7 @@
                 <table class="product">
                     <thead>
                         <tr>
+                        	<th><input type="checkbox" name="product_list_checkbox" class="check"></th>
                             <th>사진</th>
                             <th>상품번호</th>
                             <th>상품명</th>
@@ -19,20 +20,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                   	<c:forEach var="product" items="${products}">
                         <tr>
                             <td><img src="../images/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td>
-                            <td>1011</td>
-                            <td>사과500g</td>
-                            <td>과일</td>
-                            <td>4,000원</td>
-                            <td>100</td>
-                            <td>2023-01-01</td>
+                            <td><input type="checkbox" name="product_list_checkbox" id="plcheck"></td>
+                            <td>${product.prodCateNo}</td>
+                            <td>${product.pName}</td>
+                            <td>${product.prodCateName}</td>
+                            <td>${product.price}</td>
+                            <td>${product.stock}</td>
+                            <td>${product.rdate}</td>
                         </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
                 <div class="btn_group">
                         <a href="#"  class="deletebtn">선택삭제</a>
-                        <a href="#"  class="insertbtn">상품등록</a>
+                        <a href="/FarmStory/product/register.do"  class="insertbtn">상품등록</a>
                 </div><!--btn_group end-->
 
                 <div class="pages">

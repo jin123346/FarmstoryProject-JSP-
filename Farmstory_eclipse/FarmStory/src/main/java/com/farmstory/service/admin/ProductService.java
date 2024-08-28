@@ -5,6 +5,8 @@ import java.sql.SQLException;
 
 import java.util.List;
 
+import javax.naming.NamingException;
+
 import com.farmstory.dao.admin.ProductDAO;
 import com.farmstory.dto.admin.ProductDTO;
 
@@ -25,8 +27,8 @@ public enum ProductService {
 		return dao.selectProduct(pNo);
 	}
 	
-	public List<ProductDTO> selectProducts() {
-		return dao.selectProducts();
+	public List<ProductDTO> selectProducts(String prodCateNo) throws NamingException, SQLException {
+		return dao.selectProducts(prodCateNo);
 	}
 	
 
@@ -36,6 +38,7 @@ public enum ProductService {
 	public void deleteProduct(int pNo) {
 		dao.deleteProduct(pNo);
 	}
+
 
 }
 

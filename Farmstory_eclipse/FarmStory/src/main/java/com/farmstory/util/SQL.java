@@ -59,14 +59,26 @@ public class SQL {
 	
 	// admin 
 	// product list
+	public static final String SELECT_PRODUCT = "SELECT "
+												+ "a.prodCateNo, "
+												+ "a.pName, "
+												+ "b.prodCateName, "
+												+ "a.price, "
+												+ "a.stock, "
+												+ "a.rdate "
+												+ "FROM `product` AS a "
+												+ "left JOIN `prodcate` AS b "
+												+ "ON a.prodCateNo = b.prodCateNo "
+												+ "WHERE a.prodCateNo=?";
+										
 	public static final String INSERT_PRODUCT_LIST = "insert into `product` set "
-														   + "`pList_oName`=?,"
-														   + "`pNo`=?,"
-														   + "`prodCateName`=?,"
-														   + "`pName`=?,"
-														   + "`price`=?,"
-														   + "`stock`=?,"
-														   + "`rdate`=?";
+												   + "`pList_oName`=?,"
+												   + "`pNo`=?,"
+												   + "`prodCateName`=?,"
+												   + "`pName`=?,"
+												   + "`price`=?,"
+												   + "`stock`=?,"
+												   + "`rdate`=?";
 
 	
 	

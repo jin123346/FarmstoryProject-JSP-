@@ -11,6 +11,7 @@ import javax.naming.NamingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.farmstory.dto.admin.FileListDTO;
 import com.farmstory.dto.admin.ProductDTO;
 import com.farmstory.service.admin.ProductService;
 
@@ -37,7 +38,10 @@ public class ListController extends HttpServlet{
 		// 데이터 조회
 		List<ProductDTO> products = service.selectProducts();
 		
-		
+		for(ProductDTO productdto : products) {
+			FileListDTO filedto = productdto.getFilelistdto();
+			filedto.setImgPath();
+		}
 		
 		
 		// 업로드된 이미지 파일을 저장할 경로 지정

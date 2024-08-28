@@ -186,20 +186,7 @@
     text-align: center;
 }
 
-.pages ul li:first-child::before{
-    content: "<";    
-    color: #999999;
-    position: absolute;
-    right: 431px;
-    top: 1px; 
-}
 
-.pages ul li:nth-child(5)::after{
-    content: ">";
-    color: #999999; 
-    position: absolute;
-    top: 1px;
-}
 
 
 .no {

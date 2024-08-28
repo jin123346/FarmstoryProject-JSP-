@@ -20,7 +20,11 @@ public enum ProductService {
 
 	
 	public int insertProduct(ProductDTO dto) {
+		
 		return dao.insertProduct(dto);
+	}
+	public void updateProductFno(int pList_fNo,int pDesc_fNo,int pBasic_fNo,int pNo) {
+		 dao.updateProductFno( pList_fNo, pDesc_fNo, pBasic_fNo,pNo);
 	}
 	
 	public ProductDTO selectProduct(String pNo) {

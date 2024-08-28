@@ -19,7 +19,7 @@ public enum CommentService {
 		return dao.selectComment(comNo);
 	}
 	
-	public List<CommentDTO> selectComments(String com_parent){
+	public List<CommentDTO> selectComments(int com_parent){
 		return dao.selectComments(com_parent);
 	}
 	

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/FarmStory/css/footer.css">
     <link rel="stylesheet" href="FarmStory/css/introduction/introduction.css">
     <link rel="stylesheet" href="../css/introduction/direction.css">
-    <link rel="stylesheet" href="../css/croptalk.css">
+    <link rel="stylesheet" href="../css/community.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FarmStroy</title>
     <script>
@@ -51,6 +51,9 @@
 
         <header id="header">
             <div class="headerIn">
+            	<div class="topline">
+                    <img src="../../images/head_top_line.png" alt="topline"/>
+                </div><!-- .topLine -->
                 <div class="logo">
                     <a href="#"><img src="/FarmStory/images/logo.png" alt="farmStory logo"></a>
                 </div><!-- .logo -->

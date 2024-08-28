@@ -39,7 +39,7 @@ public class ListController extends HttpServlet{
 		
 		// Limit용 시작 번호 구하기
 		int start = service.getStartNum(currentPage);
-		
+		 
 		// 페이지 시작 번호 구하기(목록에서 순서번호로 활용)
 		int pageStartNum = service.getPageStartNum(total, currentPage);
 		

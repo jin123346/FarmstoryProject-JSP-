@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.community.BoardDTO;
 import com.farmstory.dto.community.BoardFileDTO;
-import com.farmstory.dto.community.CommentDTO;
 import com.farmstory.service.community.BoardFileService;
 import com.farmstory.service.community.BoardService;
 import com.farmstory.service.community.CommentService;
@@ -21,11 +20,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/community/notice/view.do")
-public class ViewController extends HttpServlet{
+@WebServlet("/community/notice/delete.do")
+public class DeleteController extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
 	private BoardService boardService = BoardService.INSTANCE;
+	private BoardFileService fileService = BoardFileService.INSTANCE;
 	private CommentService commentService = CommentService.INSTANCE;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -36,28 +36,30 @@ public class ViewController extends HttpServlet{
 		
 		String boardNo = req.getParameter("boardNo");
 		
-		// 조회수 증가 
-		boardService.update_board_hit(boardNo);
-		
 		// 데이터 조회
 		BoardDTO boardDTO = boardService.selectBoard(boardNo);
 		
-		// 댓글 조회
-		List<CommentDTO> comments = commentService.selectComments(Integer.parseInt(boardNo));
-				
 		// 공유 참조
 		req.setAttribute("boardDTO", boardDTO);
-		req.setAttribute("comments", comments);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/view.jsp");
-		dispatcher.forward(req, resp);
+		// 파일 삭제
+		fileService.deleteBoardFiles(boardNo);
+		
+		// 댓글 삭제
+		commentService.deleteComments(boardNo);
+		
+		// 게시물 삭제 
+		boardService.deleteBoard(boardNo);
+		
+		resp.sendRedirect("/FarmStory/community/notice/list.do");
 		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-
+		
+		
 	}
 	
 }

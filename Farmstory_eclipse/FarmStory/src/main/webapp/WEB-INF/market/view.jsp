@@ -13,6 +13,59 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/style_market_view.css">
     
+    <script>
+		window.onload = function(){
+			
+		const numberInput = document.getElementById('numberInput');
+		const totalPrice = document.getElementById('totalPrice');
+		
+		numberInput.addEventListener('input', () => {
+			
+		const inNum = numberInput.value;
+			
+		totalPrice.innerText = inNum * ${productDto.price};
+		});
+		
+		
+		const cart = document.getElementsByClassName('add_to_cart')[0];
+		const buyNow = document.getElementsByClassName('buy_now')[0];
+		
+		cart.addEventListener('click', function(e){
+				e.preventDefault();
+		
+				
+				const inNum = numberInput.value;
+				
+				fetch('/FarmStory/market/view.do', {
+						method: 'POST',
+						headers: {'content-Type': 'application/json'},
+						body: JSON.stringify({
+							uid: '${sessUser.uid}',
+							prodNo: ${productDto.pNo},
+							cartProdQty: inNum
+						})
+				})
+				.then(resp=>resp.json())
+				.then(data=>{
+					console.log(data);
+					if(data.result > 0){
+						alert('장바구니에 추가되었습니다!');
+						
+					}else{
+						alert('장바구니 추가에 실패하였습니다!');
+					}
+					
+					
+				})
+				.catch(err=>{
+					console.log(err);
+				});
+				
+			
+		});
+		}
+	
+	</script>
 </head>
 <body>
     <div id="wrapper">
@@ -113,7 +166,7 @@
                             </table>
                              <div class="buttons">
                                 <a href="#" type="button" class="add_to_cart">장바구니</a>
-                                <a href="/FarmStory/market/order.do?pNo=${productDto.pNo}"  type="button" class="buy_now">바로구매</a>
+                                <a href="/FarmStory/market/order.do?pNo=${productDto.pNo}&&uid=${sessUser.uid}"  type="button" class="buy_now">바로구매</a>
                             </div> <!-- .buttons -->
                         </div> <!-- .product_info -->
                     </div>
@@ -149,18 +202,6 @@
                 </article><!-- .article -->
             </section>
         </main><!-- #main -->
-        <script>
-		const numberInput = document.getElementById('numberInput');
-		const totalPrice = document.getElementById('totalPrice');
-		
-		numberInput.addEventListener('input', () => {
-			
-		const inNum = numberInput.value;
-			
-		totalPrice.innerText = inNum * ${productDto.price};
-			
-		});
-	</script>
         <footer id="footer">
             <div class="footerIn cf">
             <img src="../images/footer_logo.png" alt="farmStory footer" class="flogo">

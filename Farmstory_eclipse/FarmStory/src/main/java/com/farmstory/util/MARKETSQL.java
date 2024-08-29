@@ -1,6 +1,6 @@
 package com.farmstory.util;
 
-public class SQL {
+public class MARKETSQL {
 
 
 	// board
@@ -21,13 +21,17 @@ public class SQL {
 													+ "`b_oName`=?,"
 													+ "`b_sName`=?,"
 													+ "`b_rdate`=NOW()";
-	public static final String UPDATE_BOARD_FILE_DOWNLOAD_COUNT = "update boardfile set `b_download` = `b_download` + 1 where `b_fNo`=?";
+	public static final String UPDATE_BOARD_FILE_DOWNLOAD_COUNT = "update boardfile set `download` = `download` + 1 where `fno`=?";
 	
 	
 	
 
 		//cart	
-		
+		public static final String INSERT_CART = "insert into `cart` set"
+												+ "`c_uid`=?, "
+												+ "`prodNo`=?, "
+												+ "`cartProdQty`=?, "
+												+ "`cartProdDate`=NOW()";
 		//point	
 		
 		//order	
@@ -35,11 +39,11 @@ public class SQL {
 		//file	
 		
 		//terms
-		
+		public static final String SELECT_TERMS = "select * from `terms`";
 		//user	
 		public static final String INSERT_USER = "insert into `user` set"
 												+ "`uid`=?, "
-												+ "`pass`=?, "
+												+ "`pass`=sha2(?,256), "
 												+ "`name`=?, "
 												+ "`nick`=?, "
 												+ "`email`=?, "
@@ -48,30 +52,19 @@ public class SQL {
 												+ "`addr1`=?, "
 												+ "`addr2`=?, "
 												+ "`regDate`= NOW()";
+		
+		public static final String SELECT_USERS = "select * from `user`";
+
+		public static final String SELECT_COUNT_USER = "SELECT COUNT(*) FROM `user`";
+		public static final String WHERE_UID = "WHERE `uid`=?";
+		public static final String WHERE_NICK = "WHERE `nick`=?";
+		public static final String WHERE_EMAIL = "WHERE `email`=?";
+		public static final String WHERE_HP = "WHERE `hp`=?";
 
 	
-
 	
-	public static final String SELECT_USER_CART = "select * from `user` where uid=?";
 
 	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
-	
-	
-	// admin 
-	// product list
-	public static final String SELECT_PRODUCT_LIST = "SELECT * FROM product AS p JOIN plistimgfile AS l ON p.pNo=l.pNo";
-										
-	public static final String INSERT_PRODUCT_LIST = "insert into `product` set "
-												   + "`pList_oName`=?,"
-												   + "`pNo`=?,"
-												   + "`prodCateName`=?,"
-												   + "`pName`=?,"
-												   + "`price`=?,"
-												   + "`stock`=?,"
-												   + "`rdate`=?";
-
-	
-	
 	
 	
 

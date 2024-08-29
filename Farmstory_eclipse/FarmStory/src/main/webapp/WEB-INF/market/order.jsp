@@ -108,26 +108,6 @@
                             <td>4,000</td>
                             <td><strong>3,600</strong>원</td>
                         </tr>
-                        <tr>
-                            <td><img src="../images/market_item1.jpg" alt="사과 샘플"/></td>
-                            <td>과일</td>
-                            <td>사과 500g</td>
-                            <td>1</td>
-                            <td>10%</td>
-                            <td>40p</td>
-                            <td>4,000</td>
-                            <td><strong>3,600</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td><img src="../images/market_item1.jpg" alt="사과 샘플"/></td>
-                            <td>과일</td>
-                            <td>사과 500g</td>
-                            <td>1</td>
-                            <td>10%</td>
-                            <td>40p</td>
-                            <td>4,000</td>
-                            <td><strong>3,600</strong>원</td>
-                        </tr>
                     </table><!-- .tb1 -->
 
                     
@@ -141,13 +121,13 @@
                             <tr>
                                 <th>주문자</th>
                                 <td>
-                                    <input type="text" class="uid" placeholder="홍길동">
+                                    <input type="text" class="uid" placeholder="${userDto.name}" readonly>
                                 </td>
                             </tr>
                             <tr>
                                 <th>휴대폰</th>
                                 <td>
-                                    <input type="text" class="hp" placeholder="010-1234-1001">
+                                    <input type="text" class="hp" placeholder="${userDto.hp}" readonly>
                                 </td>
                             </tr>
                             <tr class="use cf">

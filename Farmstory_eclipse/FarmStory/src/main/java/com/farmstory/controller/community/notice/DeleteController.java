@@ -53,7 +53,9 @@ public class DeleteController extends HttpServlet{
 		// 게시물 삭제 
 		boardService.deleteBoard(boardNo);
 		
+
 		resp.sendRedirect("/FarmStory/community/notice/list.do?group="+group+"&cate="+cate);
+
 		
 	}
 	

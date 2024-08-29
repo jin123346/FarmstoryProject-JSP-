@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+    <title>Login</title>
+
 <script>
 	const success=${success};
 	
@@ -32,7 +34,11 @@
                         <p>
                             아직 회원이 아니시면 회원으로 가입하세요.
                         </p>
-                        <a href="/FarmStory/member/terms.do">회원가입</a>
+                       
+                        
+                        <a href="/FarmStory/member/findId.do">&nbsp회원가입</a>
+                        <a href="/FarmStory/member/FindPass.do">&nbsp비밀번호찾기</a>
+                        <a href="/FarmStory/member/terms.do">아이디찾기</a>
                     </div>
                 </section>
             </div>

@@ -100,12 +100,12 @@ public class OrderDAO extends DBHelper{
 	}
 	
 	
-	public List<OrderItemDTO> selectOrderItems(int pg) {
+	public List<OrderItemDTO> selectOrderItems(int start) {
 		List<OrderItemDTO> orderitems = new ArrayList<OrderItemDTO>();
 		try {
 			conn = getConnection();
 			pstmt=conn.prepareStatement(PRODUCTSQL.SELECT_ORDERITEMS);
-			pstmt.setInt(1, pg);
+			pstmt.setInt(1, start);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

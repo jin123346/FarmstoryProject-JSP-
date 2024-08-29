@@ -1,6 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ include file="../_header.jsp" %>
+<script>
+
+
+</script>
 
 <div class="section list">
     <section>
@@ -47,14 +51,19 @@
                         <a href="#"  class="deletebtn">선택삭제</a>
                         <a href="/FarmStory/product/register.do"  class="insertbtn">상품등록</a>
                 </div><!--btn_group end-->
-
+                
+                
                 <div class="pages">
-                    <ul>
-                     <li><a href="#">&nbsp;[1]</a></li>
-                     <li><a href="#">[2]</a></li>
-                     <li><a href="#">[3]</a></li>
-                     <li><a href="#">[4]</a></li>
-                     <li><a href="#">[5]&nbsp;</a></li>
+                	<ul>
+                	<c:if test="${pageGroup.start > 1}">
+                    	<li><a href="/FarmStory/admin/product/list.do?pg=${pageGroup.start-1}" class="prev">이전</a></li>
+                    </c:if>
+                    <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
+                    	<li><a href="/FarmStory/admin/product/list.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a></li>
+                    </c:forEach>
+                    <c:if test="${pageGroup.end < lastPageNum}">
+                    	<li><a href="/FarmStory/admin/product/list.do?pg=${pageGroup.end+1}" class="next">다음</a></li>
+                    </c:if>
                     </ul>
                 </div>
                

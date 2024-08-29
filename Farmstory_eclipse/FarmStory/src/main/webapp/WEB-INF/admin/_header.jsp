@@ -54,7 +54,7 @@
                                 </li>
                                 <li>회원관리
                                     <ul>
-                                        <li><a href="#">회원목록</a></li>
+                                        <li><a href="/FarmStory//admin/user/list.do">회원목록</a></li>
                                     </ul>
                                 </li>
                             </ul>

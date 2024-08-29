@@ -16,13 +16,15 @@ public class OrderItemDTO {
 	
 	
 	
-	public int getOrderItemTotal() {
-		return OrderItemTotal;
-	}
 	public void setOrderItemTotal() {
-		
 		OrderItemTotal = itemPrice*itemQty;
 	}
+
+	public int getOrderItemTotal() {
+		
+		return OrderItemTotal;
+	}
+
 	public String getpName() {
 		return pName;
 	}
@@ -69,6 +71,9 @@ public class OrderItemDTO {
 	}
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
+	}
+	public void setSubStringOrderDate(String orderDate) {
+		this.orderDate = orderDate.substring(0,10);
 	}
 	public int getItemPrice() {
 		return itemPrice;

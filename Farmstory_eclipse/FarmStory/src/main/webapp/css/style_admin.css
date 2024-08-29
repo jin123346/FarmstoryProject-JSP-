@@ -334,13 +334,10 @@ main .section{
     text-align: center;
 }
 
-.pages ul li:first-child::before{
-    content: "<";    
-}
 
-.pages ul li:nth-child(5)::after{
-    content: '>';
-}
+
+
+
 
 
 

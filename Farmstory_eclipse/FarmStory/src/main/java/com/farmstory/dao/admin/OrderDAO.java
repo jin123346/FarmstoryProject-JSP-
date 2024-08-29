@@ -143,6 +143,49 @@ public class OrderDAO extends DBHelper{
 		
 	}
 	
+	
+	public List<OrderItemDTO> selectOrderItems() {
+		List<OrderItemDTO> orderitems = new ArrayList<OrderItemDTO>();
+		try {
+			conn = getConnection();
+			pstmt=conn.prepareStatement(PRODUCTSQL.SELECT_ORDERITEMS_MAIN);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				OrderItemDTO dto = new OrderItemDTO();
+				dto.setOrderItemNo(rs.getInt(1));
+				dto.setOrderNo(rs.getInt(2));
+				dto.setItemPrice(rs.getInt(3));
+				dto.setpName(rs.getString(4));
+				dto.setItemQty(rs.getInt(5));
+				dto.setO_delivery(rs.getInt(6));
+				dto.setO_discount(rs.getInt(7));
+				dto.setName(rs.getString(8));
+				dto.setSubStringOrderDate(rs.getString(9));
+				dto.setpNo(rs.getInt(10));
+				dto.setItemDiscountPrice(dto.getItemPrice());
+				dto.setOrderItemTotal();
+				orderitems.add(dto);
+				
+			}
+			
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error("SELECT_ORDERITEMS"+e.getMessage());
+
+			}
+		}
+		
+		
+		return orderitems;
+		
+	}
+	
 	public void insertOrder() {	}
 	public void selectOrder() {	}
 	public void selectOrders() {	}

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <%@ include file="./_header.jsp" %>
 
                 
@@ -9,7 +11,7 @@
                             <div class="status_table">
                                 <div class="tbname">
                                     <span>상품현황</span>
-                                    <span>더보기</span>
+                                    <span><a href="/FarmStory/admin/product/list.do">더보기</a></span>
                                 </div>
                                 <table class="product">
                                     <thead>
@@ -23,30 +25,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1011</td>
-                                            <td>사과500g</td>
-                                            <td>과일</td>
-                                            <td>4,000원</td>
-                                            <td>100</td>
-                                            <td>2023-01-01</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1011</td>
-                                            <td>사과500g</td>
-                                            <td>과일</td>
-                                            <td>4,000원</td>
-                                            <td>100</td>
-                                            <td>2023-01-01</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1011</td>
-                                            <td>사과500g</td>
-                                            <td>과일</td>
-                                            <td>4,000원</td>
-                                            <td>100</td>
-                                            <td>2023-01-01</td>
-                                        </tr>
+                                    	<c:if test="${products ==null }">
+                                    	<tr>
+                                    		<td>등록된 상품이 없습니다.</td>
+                                    	</tr>
+                                    	</c:if>
+                                    	<c:forEach var="product" items="${products }">
+                                    		<tr>
+	                                            <td>${product.pNo }</td>
+	                                            <td>${product.pName }</td>
+	                                            <td>${product.prodCateNo }</td>
+	                                            <td>${product.price }</td>
+	                                            <td>${product.stock }</td>
+	                                            <td>${product.rdate }</td>
+                                        	</tr>
+                                    	</c:forEach>
+  
                                     </tbody>
                                   
                                 </table>
@@ -54,7 +48,7 @@
                             <div class="status_table">
                                 <div class="tbname">
                                     <span>주문현황</span>
-                                    <span>더보기</span>
+                                    <span><a href="/FarmStory/admin/order/list.do">더보기</a></span>
                                 </div>
                                 <table class="order">
                                    
@@ -71,43 +65,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                   	  <c:if test="${orderitems == null }">
+                                    	<tr>
+                                    		<td>등록된 상품이 없습니다.</td>
+                                    	</tr>
+                                   	  </c:if>
+                                      <c:forEach var="orderitem" items="${orderitems }">
                                         <tr>
-                                            <td>1011</td>
-                                            <td>사과500g</td>
-                                            <td>4,000원</td>
-                                            <td>2개</td>
-                                            <td>3000원</td>
-                                            <td>8000원</td>
-                                            <td>홍길동</td>
-                                            <td>2023-01-01</td>
+                                            <td>${orderitem.OrderNo }</td>
+                                            <td>${orderitem.pName }</td>
+                                            <td>${orderitem.itemPrice }</td>
+                                            <td>${orderitem.itemQty }</td>
+                                            <td>${orderitem.o_delivery }</td>
+                                            <td>${orderitem.OrderItemTotal }</td>
+                                            <td>${orderitem.name }</td>
+                                            <td>${orderitem.rdate }</td>
                                         </tr>
-                                        <tr>
-                                            <td>1011</td>
-                                            <td>사과500g</td>
-                                            <td>4,000원</td>
-                                            <td>2개</td>
-                                            <td>3000원</td>
-                                            <td>8000원</td>
-                                            <td>홍길동</td>
-                                            <td>2023-01-01</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1011</td>
-                                            <td>사과500g</td>
-                                            <td>4,000원</td>
-                                            <td>2개</td>
-                                            <td>3000원</td>
-                                            <td>8000원</td>
-                                            <td>홍길동</td>
-                                            <td>2023-01-01</td>
-                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="status_table">
                                 <div class="tbname">
                                     <span>회원현황</span>
-                                    <span>더보기</span>
+                                    <span><a href="/FarmStory/admin/user/list.do">더보기</a></span>
                                 </div>
                                 <table class="customer">
                                     <thead>
@@ -122,33 +103,22 @@
                                          </tr>
                                     </thead>
                                     <tbody>
+                                     <c:if test="${userDto == null }">
+                                    	<tr>
+                                    		<td>등록된 회원이 없습니다.</td>
+                                    	</tr>
+                                   	  </c:if>
+                                     <c:forEach var="userDto" items="${userDto}">
                                         <tr>
-                                            <td>a101</td>
-                                            <td>김유신</td>
-                                            <td>유신123</td>
-                                            <td>010-1234-1001</td>
-                                            <td>yushin123@naver.com</td>
-                                            <td>2</td>
-                                            <td>2023-01-01 </td>
+                                           <td>${userDto.uid}</td>
+				                            <td>${userDto.name}</td>
+				                            <td>${userDto.nick}</td>
+				                            <td>${userDto.email}</td>
+				                            <td>${userDto.hp}</td>
+				                            <td>${userDto.gradeNo }</td>
+				                            <td>${userDto.regDate}</td>
                                         </tr>
-                                        <tr>
-                                            <td>a101</td>
-                                            <td>김유신</td>
-                                            <td>유신123</td>
-                                            <td>010-1234-1001</td>
-                                            <td>yushin123@naver.com</td>
-                                            <td>2</td>
-                                            <td>2023-01-01 </td>
-                                        </tr>    
-                                        <tr>
-                                            <td>a101</td>
-                                            <td>김유신</td>
-                                            <td>유신123</td>
-                                            <td>010-1234-1001</td>
-                                            <td>yushin123@naver.com</td>
-                                            <td>2</td>
-                                            <td>2023-01-01 </td>
-                                        </tr>
+                                      </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

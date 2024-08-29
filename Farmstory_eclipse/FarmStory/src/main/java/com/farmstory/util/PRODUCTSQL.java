@@ -38,7 +38,24 @@ public class PRODUCTSQL {
 										            + "JOIN `product` AS c ON c.pNo = a.pNo "
 										            + "JOIN `user` AS u ON u.uid = b.o_uid "
 										            + "ORDER BY a.orderNo DESC "
-										            + "LIMIT 0, 10;";
+										            + "LIMIT ?, 10;";
+	
+	
+	public final static String SELECT_ORDERITEMS_MAIN = "SELECT a.orderItemNo, "
+						            + "a.orderNo, "
+						            + "a.itemPrice, "
+						            + "c.pName, "
+						            + "a.itemQty, "
+						            + "b.o_delivery, "
+						            + "u.`name`, "
+						            + "a.orderDate, "
+						            + "a.pNo "
+						            + "FROM `orderitem` AS a "
+						            + "JOIN `order` AS b ON a.orderNo = b.orderNo "
+						            + "JOIN `product` AS c ON c.pNo = a.pNo "
+						            + "JOIN `user` AS u ON u.uid = b.o_uid "
+						            + "ORDER BY a.orderNo DESC "
+						            + "LIMIT ?, 3;";
 
 	
 	

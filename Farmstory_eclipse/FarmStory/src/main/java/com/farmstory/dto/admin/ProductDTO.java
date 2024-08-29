@@ -161,6 +161,7 @@ public class ProductDTO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
+	
 	public void setRdateSubString(String rdate) {
 		this.rdate = rdate.substring(0, 10);
 	}

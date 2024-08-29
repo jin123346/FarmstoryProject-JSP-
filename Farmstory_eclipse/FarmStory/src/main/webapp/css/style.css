@@ -24,25 +24,7 @@
 .utill{
 
 }
-.headerIn .utill{
-    box-sizing: border-box;
-    width: 980px;
-    height: 14px;
-    margin-right: 3px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    position: absolute;
-    top: 14px;
-    margin: 0 auto;
 
-
-
-}
 .utill li{}
 .utill li a{margin-left: 1px;}
 
@@ -213,17 +195,28 @@ main .main_banner .bannertxt{
     
 }
 
-.market article{
-    display: inline-block;
-    width: 155px;
+.market article:nth-of-type(1),
+.market article:nth-of-type(2),
+.market article:nth-of-type(3),
+.market article:nth-of-type(4),
+.market article:nth-of-type(5){
+    display: flex;
+    float: left;
+    width: 155.33px;
     height: 236px;
     border: 1px solid #EEEEEE;
     text-align: center;
     box-sizing: border-box;
+    margin-right: 12px;
 }
 
-.market article:last-child{
-    margin-right: 0px;
+.market article > a {
+    margin: 0 auto;
+    margin-top: 11px
+}
+
+.last{
+    margin-right: 0;
 }
 
 .market article img{
@@ -246,11 +239,33 @@ main .main_banner .bannertxt{
 
 }
 
-.mxtx .prodname{
+.prodname{
     margin-top: 11px;
     font-size: 12px;
+font-family: Inter;
+    font-size: 11.06px;
+    font-weight: 400;
+    line-height: 13.39px;
+    text-align: center;
+
 }
 
+.del {
+    font-family: Inter;
+    font-size: 6px;
+    font-weight: 400;
+    line-height: 7.26px;
+    text-align: center;
+}
+
+.price > strong {
+    font-family: Inter;
+    font-size: 10.13px;
+    font-weight: 700;
+    line-height: 12.25px;
+    text-align: center;
+
+}
 
 
 

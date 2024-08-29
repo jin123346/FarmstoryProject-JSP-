@@ -37,6 +37,11 @@ public class ViewController extends HttpServlet{
 		String boardNo = req.getParameter("boardNo");
 		String pg = req.getParameter("pg");
 		
+		String group = req.getParameter("group");
+		String cate = req.getParameter("cate");
+		req.setAttribute("cate", cate);
+		req.setAttribute("group", group);
+		
 		// 조회수 증가 
 		boardService.update_board_hit(boardNo);
 		

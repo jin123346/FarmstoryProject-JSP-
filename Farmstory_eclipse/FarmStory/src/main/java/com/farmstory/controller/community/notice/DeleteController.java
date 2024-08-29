@@ -35,6 +35,8 @@ public class DeleteController extends HttpServlet{
 		
 		
 		String boardNo = req.getParameter("boardNo");
+		String cate = req.getParameter("cate");
+		String group = req.getParameter("group");
 		
 		// 데이터 조회
 		BoardDTO boardDTO = boardService.selectBoard(boardNo);
@@ -51,7 +53,7 @@ public class DeleteController extends HttpServlet{
 		// 게시물 삭제 
 		boardService.deleteBoard(boardNo);
 		
-		resp.sendRedirect("/FarmStory/community/notice/list.do");
+		resp.sendRedirect("/FarmStory/community/notice/list.do?group="+group+"&cate="+cate);
 		
 	}
 	

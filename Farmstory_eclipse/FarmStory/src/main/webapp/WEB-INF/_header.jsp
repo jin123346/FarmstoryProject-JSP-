@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/FarmStory/css/footer.css">
     <link rel="stylesheet" href="FarmStory/css/introduction/introduction.css">
     <link rel="stylesheet" href="../css/introduction/direction.css">
-    <link rel="stylesheet" href="../css/community.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <title>FarmStroy</title> -->
     

@@ -82,7 +82,7 @@
 
                         </a>
                     </article>
-                    <article>
+                    <article class="last">
                         <a href="">
                             <img src="/FarmStory/images/market_item1.jpg" alt="과일 샘플 이미지">
                             <div class="mtxt">

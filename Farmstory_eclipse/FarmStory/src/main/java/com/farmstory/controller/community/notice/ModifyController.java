@@ -33,6 +33,10 @@ public class ModifyController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String boardNo = req.getParameter("boardNo");
+		String group = req.getParameter("group");
+		String cate = req.getParameter("cate");
+		req.setAttribute("cate", cate);
+		req.setAttribute("group", group);
 		
 		// 데이터 조회
 		BoardDTO boardDTO = boardService.selectBoard(boardNo);
@@ -55,6 +59,8 @@ public class ModifyController extends HttpServlet{
 		String b_writer = req.getParameter("b_writer"); // session 값 hidden
 		String b_regip = req.getRemoteAddr();
 		String boardNo = req.getParameter("boardNo");
+		String b_cateNo = req.getParameter("b_cateNo");
+		String group = req.getParameter("group");
 		
 		logger.debug("title : " + title);
 		logger.debug("b_contents : " + b_contents);
@@ -82,7 +88,7 @@ public class ModifyController extends HttpServlet{
 			boardFileService.insertBoardFile(boardFileDTO);
 		}
 		
-		resp.sendRedirect("/FarmStory/community/notice/list.do");
+		resp.sendRedirect("/FarmStory/community/notice/list.do?group="+group+"&cate="+b_cateNo);
 
 	}
 	

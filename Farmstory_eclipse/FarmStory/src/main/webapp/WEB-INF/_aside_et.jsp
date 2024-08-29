@@ -13,7 +13,7 @@
                         </div><!-- .aside_cate -->
                         <div class="aside_bg">
                             <ul class="cate_lnb1">
-                                <li><a href="/FarmStory/event/info.do" class="lnb1">이벤트</a></li>
+                                <li><a href="/FarmStory/community/notice/list.do?group=event&cate=b301" class="lnb1">이벤트</a></li>
                             </ul><!-- .cate_lnb -->
                         </div><!-- .aside_bg -->
                     </div><!-- .sidebar -->

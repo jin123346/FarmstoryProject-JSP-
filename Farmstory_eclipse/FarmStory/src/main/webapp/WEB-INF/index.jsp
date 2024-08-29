@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
-
-		
-                
+<title>farmStory</title>
+<link rel="stylesheet" href="/FarmStory/css/style.css">
         <main id="main ">
             <section class="sub_bg">
                 <article>

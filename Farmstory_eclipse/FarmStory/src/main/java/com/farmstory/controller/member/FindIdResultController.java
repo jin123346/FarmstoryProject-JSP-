@@ -42,7 +42,8 @@ public class FindIdResultController extends HttpServlet {
 		req.setAttribute("user", user);
 		
 		
-		resp.sendRedirect("/FarmStory/member/findIdResult.do");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/user/findIdresult.jsp");
+	     dispatcher.forward(req, resp);
 		
 		
 		

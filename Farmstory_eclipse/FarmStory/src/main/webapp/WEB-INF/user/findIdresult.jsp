@@ -7,7 +7,7 @@
 <script>
 
 </script>
-        <main>
+        <main id="main" class="cf">
             <div class="mainIn">
           <div class="container">
             <form>
@@ -15,7 +15,7 @@
                 <div class="top_txt">
                     <span>아이디 찾기 결과</span>
                 </div>
-           		<c:if test="${!empty user}">
+           		<c:if test="${not empty user}">
 	                <table>
 	                    <tr>
 	                        <td>이름</td>
@@ -38,7 +38,7 @@
 	                    <tr>
 	                        <td>가입일</td>
 	                        <td>
-	                            <p><span>${user.regdate }</span></p>
+	                            <p><span>${user.regDate }</span></p>
 	                        </td>
 	                    </tr>
 	                </table>

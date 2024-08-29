@@ -94,7 +94,7 @@ window.onload = function() {
 
 
 
-        <main>
+        <main id="main" class="cf">
             <div class="mainIn">
             <div class="container">
 		            <form action="/FarmStory/member/findIdResult.do" method="post" enctype="multipart/form-data">

@@ -76,6 +76,14 @@ public class USERSQL {
 	public static final String UPDATE_USER_PASS = "update `user` set pass=sha2(?,256) where uid=?";
 	
 	
-
+	public static final String UPDATE_USER_MYINFO = "update `user` set"
+														+ "`name`=?, "
+														+ "`nick`=?, "
+														+ "`email`=?, "
+														+ "`hp`=?, "
+														+ "`zip`=?, "
+														+ "`addr1`=?, "
+														+ "`addr2`=? "
+														+ "where uid=?" ;
 
 }

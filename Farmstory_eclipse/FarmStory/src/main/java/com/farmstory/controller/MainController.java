@@ -51,6 +51,8 @@ public class MainController extends HttpServlet{
 		logger.debug("notice : "+notice);
 		
 		
+		String success = req.getParameter("success");		
+		req.setAttribute("success", success);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
 		logger.debug(dispatcher+"");

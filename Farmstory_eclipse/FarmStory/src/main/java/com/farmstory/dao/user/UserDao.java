@@ -69,7 +69,7 @@ public class UserDao extends DBHelper{
 			pstmt= conn.prepareStatement(USERSQL.UPDATE_USER_PASS);
 			pstmt.setString(1, pass);
 			pstmt.setString(2, uid);
-			pstmt.executeUpdate();
+			result=pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -336,18 +336,46 @@ public class UserDao extends DBHelper{
 	
 	
 	
-	public void updateUser(UserDTO dto) {
+	public int updateUser(UserDTO dto) {
+		int result=0;
+		String UPDATE_USER_MYINFO = "update `user` set"
+				+ "`name`=?, "
+				+ "`nick`=?, "
+				+ "`email`=?, "
+				+ "`hp`=?, "
+				+ "`zip`=?, "
+				+ "`addr1`=?, "
+				+ "`addr2`=? "
+				+ "where uid=?" ;
 		
 		try {
 			conn = getConnection();
+			pstmt = conn.prepareStatement(USERSQL.UPDATE_USER_MYINFO);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getNick());
+			pstmt.setString(3, dto.getEmail());
+			pstmt.setString(4, dto.getHp());
+			pstmt.setString(5, dto.getZip());
+			pstmt.setString(6, dto.getAddr1());
+			pstmt.setString(7, dto.getAddr2());
+			pstmt.setString(8, dto.getUid());
+
+			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				logger.error(e1.getMessage());
+			}
 		} finally {
 			try {
 				closeAll();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}		}
+		
+		return result;
 	}
 	
 	public void deleteUser(String uid) {

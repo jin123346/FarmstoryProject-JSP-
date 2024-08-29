@@ -17,6 +17,8 @@
     
     <script>
     const  grade = '${requestScope.grade}';
+    const success='${success}';
+    const sessUid= '${sessUser.uid}'
    
      window.onload = function(){
     	 	const login= document.getElementById('login');
@@ -32,7 +34,11 @@
     	        login.innerText="로그아웃";
     	        login.href="/FarmStory/member/logout.do";
     	        register.innerText="마이페이지";
-    	        register.href="/FarmStory/main.do";
+    	        register.href="/FarmStory/member/myInfo.do?uid="+sessUid;
+    	    }
+    	    
+    	    if(success=='300'){
+    	    	alert('개인정보가 수정되었습니다.')
     	    }
      }
 </script>

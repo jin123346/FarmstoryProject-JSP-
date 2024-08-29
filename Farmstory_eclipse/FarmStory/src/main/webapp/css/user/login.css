@@ -56,3 +56,11 @@
 .login > div > a {
     float: right;
 }
+
+.login > div > a:after{
+	content :' | ';
+}
+
+.login > div >a:first-child:after{
+	content :'';
+}

@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/common.css">
+    
     <link rel="stylesheet" href="../css/user/login.css">
     <link rel="stylesheet" href="../css/user/register.css">
 	  <link rel="stylesheet" href="../css/user/terms.css">
     <link rel="stylesheet" href="../css/footer.css">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
     <!-- 
         작업내용 
         2024/08/26  하진희 login html, css update

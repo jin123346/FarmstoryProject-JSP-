@@ -20,12 +20,13 @@
   
     <script>
     const  grade = '${requestScope.grade}';
+    const  sessUser = '${sessUser}'
    
      window.onload = function(){
     	 	const login= document.getElementById('login');
     	    const register= document.getElementById('register');
     	    console.log(login);
-    	 
+    	 	
     	    if(grade ==='admin'){
     	        login.innerText="로그아웃";
     	        login.href="/FarmStory/member/logout.do";
@@ -35,7 +36,7 @@
     	        login.innerText="로그아웃";
     	        login.href="/FarmStory/member/logout.do";
     	        register.innerText="마이페이지";
-    	        register.href="/FarmStory/main.do";
+    	        register.href="/FarmStory/member/myInfo.do";
     	    }
      }
 </script>

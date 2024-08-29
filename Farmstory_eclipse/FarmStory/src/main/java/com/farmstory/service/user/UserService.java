@@ -160,7 +160,7 @@ public String sendEmailCode(String email) {
 	public List<UserDTO> selectOrderItems(int pg){return dao.selectUsers(pg);}
 
 
-	public void updateUser(UserDTO dto) {dao.updateUser(dto);	}
+	public int updateUser(UserDTO dto) { return dao.updateUser(dto);	}
 	public void deleteUser(String uid) {	dao.deleteUser(uid);}
 
 

@@ -10,7 +10,7 @@
         const commentList= document.getElementsByClassName('commentList')[0];
         const commentRemove = document.getElementsByClassName('commentRemove');
         const commentModify = document.getElementsByClassName('commentModify');
-        const btndelete = document.querySelector('.btnDelete');
+       /*  const btndelete = document.querySelector('.btnDelete'); */
         let originalText='';
         
         
@@ -19,11 +19,11 @@
         
         	
         	//삭제 
-        	 if (e.target.classList.contains('btnDelete')) {
+        	 /* if (e.target.classList.contains('btnDelete')) {
         		console.log('e.target.dataset :' + e.target.dataset);
 		        const articleNo = e.target.dataset.articleNo;
 		        console.log(articleNo);
-		    }
+		    } */
         	
         	//수정완료
         	if(e.target.classList == 'commentUpdate'){
@@ -34,11 +34,13 @@
 			
 				
 				const no = e.target.dataset.no;
-			
+				console.log('no : ' + no);
+				
         		const comment = textarea.value;
         		const formData = new FormData();
         		formData.append("comment",comment);
         		formData.append("no",no);
+				console.log('formData : ' + formData);
         		
         		
         		fetch('/FarmStory/comment/modify.do',{
@@ -110,34 +112,42 @@
         	if(e.target.classList == 'commentRemove'){
 				e.preventDefault();
 			
-					//삭제여부 확인 
-					if(!confirm('정말 삭제하시겠습니까?')){
-						return;
-					}
-					
-					const article = e.target.closest('article');
-					const no = e.target.dataset.no; // a태그 data-no 속성값 가져오기
-					console.log(no);
-	
-					fetch('/FarmStory/comment/delete.do?no='+no)
-						.then(resp => resp.json())
-						.then(data => {
-							console.log(data);
-							
-							if(data.result > 0){
-								alert('댓글이 삭제되었습니다.');
-								
-								// 동적 삭제 처리
-								article.remove();
-								
-							}else{
-								alert('댓글이 삭제가 실패했습니다.');
-							}
-							
-						})
-						.catch(err => {
-							console.log(err);
-						});
+				  // 삭제 여부 확인 
+		        if (!confirm('정말 삭제하시겠습니까?')) {
+		            return;
+		        }
+
+		        const article = e.target.closest('article');
+		        const no = e.target.dataset.no; // a태그 data-no 속성값 가져오기
+		        console.log('no :' + no);
+
+		        fetch('/FarmStory/comment/delete.do?no=' + no)
+		            .then(resp => resp.json())
+		            .then(data => {
+		                console.log(data);
+
+		                if (data.result > 0) {
+		                    alert('댓글이 삭제되었습니다.');
+		                    
+		                    // 동적 삭제 처리
+		                    article.remove();
+
+		                    // 남아있는 댓글이 있는지 확인
+		                    const remainingComments = document.querySelectorAll('.commentList article.comment');
+		                    
+		                    // 댓글이 없으면 "등록된 댓글이 없습니다." 메시지 추가
+		                    if (remainingComments.length === 0) {
+		                        const emptyMessage = `<p class="empty">등록된 댓글이 없습니다.</p>`;
+		                        commentList.insertAdjacentHTML('beforeend', emptyMessage);
+		                    }
+		                } else {
+		                    alert('댓글 삭제에 실패했습니다.');
+		                }
+
+		            })
+		            .catch(err => {
+		                console.log(err);
+		            });
 					
 	        	}
 	        });
@@ -195,6 +205,12 @@
 						                    </article>`;	
 						commentList.insertAdjacentHTML('beforeend', commentArticle);
 						
+						// "등록된 댓글이 없습니다." 메시지가 있다면 제거
+					    const emptyMessage = document.querySelector('.commentList .empty');
+					    if (emptyMessage) {
+					        emptyMessage.remove();
+					    }
+					    
 						commentForm.reset();
 						
 					}else{
@@ -242,9 +258,12 @@
 					</tr>
 				</table>
 				 <div>
-                    <a href="#" class="btnDelete" data-articleNo="${boardDTO.boardNo}">삭제</a>
-                    <a href="#" class="btnModify" data-articleNo="${boardDTO.boardNo}">수정</a>
-                    <a href="/FarmStory/community/notice/list.do" class="btnList">목록</a>
+					 <c:if test="${sessUser.uid eq boardDTO.b_writer}">
+	                    <a href="/FarmStory/community/notice/delete.do?boardNo=${boardDTO.boardNo}" class="btnDelete"">삭제</a>
+	                    <a href="/FarmStory/community/notice/modify.do?boardNo=${boardDTO.boardNo}" class="btnModify"">수정</a>
+                     </c:if>
+	                    <a href="/FarmStory/community/notice/list.do?pg=${pg}" class="btnList">목록</a>
+	                 
                 </div>  
 
 				 <!-- 댓글리스트 -->

@@ -83,6 +83,11 @@ public enum BoardService {
 		return dao.selectBoards(start);
 	}
 	
+	// 카테고리별 글 목록 
+	public List<BoardDTO> selectBoardsCate(int start, String cate) {
+		return dao.selectBoardsCate(start, cate);
+	}
+	
 	// 글 수정
 	public void updateBoard(BoardDTO dto) {
 		dao.updateBoard(dto);

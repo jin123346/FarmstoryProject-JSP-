@@ -71,7 +71,8 @@ public class CommentDTO {
 	@Override
 	public String toString() {
 		return "CommentDTO [comNo=" + comNo + ", com_parent=" + com_parent + ", com_content=" + com_content
-				+ ", com_writer=" + com_writer + ", com_regip=" + com_regip + ", com_rdate=" + com_rdate + "]";
+				+ ", com_writer=" + com_writer + ", com_regip=" + com_regip + ", com_rdate=" + com_rdate + ", nick="
+				+ nick + "]";
 	} 
 	
 }

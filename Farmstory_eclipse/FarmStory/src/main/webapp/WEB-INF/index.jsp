@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
-
-		
-                
+<title>farmStory</title>
+<link rel="stylesheet" href="/FarmStory/css/style.css">
         <main id="main ">
             <section class="sub_bg">
                 <article>
@@ -82,7 +81,7 @@
 
                         </a>
                     </article>
-                    <article>
+                    <article class="last">
                         <a href="">
                             <img src="/FarmStory/images/market_item1.jpg" alt="과일 샘플 이미지">
                             <div class="mtxt">

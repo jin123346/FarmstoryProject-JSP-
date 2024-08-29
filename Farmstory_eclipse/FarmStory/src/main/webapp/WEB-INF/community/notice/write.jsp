@@ -2,7 +2,17 @@
 <%@ include file="../../_header.jsp" %>
 <title>글쓰기</title>
 <link rel="stylesheet" href="../../css/community.css">
-<%@ include file="../../_aside_cm.jsp" %>
+<c:choose>
+	<c:when test="${group eq 'croptalk'}">
+		<%@ include file="../../_aside_ct.jsp" %>
+		<link rel="stylesheet" href="../../css/croptalk.css">
+	</c:when>
+	<c:when test="${group eq 'event'}">
+		<%@ include file="../../_aside_et.jsp" %>
+		<link rel="stylesheet" href="../../css/event.css">
+	</c:when>
+	<c:otherwise><%@ include file="../../_aside_cm.jsp" %></c:otherwise>
+</c:choose> 
                 <section class="write">
                 	<h3>글쓰기</h3>
                 	<article>
@@ -11,7 +21,8 @@
                         <table>
                             <tr>
                                 <td>제목</td>
-                                <input type="hidden" name="b_cateNo" value="${b_cateNo}"/>
+                                <input type="hidden" name="b_cateNo" value="${cate}"/>
+                                <input type="hidden" name="group" value="${group}"/>
                                 <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
                             </tr>
                             <tr>
@@ -32,7 +43,7 @@
                             </tr>
                         </table>
                         <div>
-                            <a href="/FarmStory/community/notice/list.do" class="btnCancel">취소</a>
+                            <a href="/FarmStory/community/notice/list.do?group=${group}&cate=${cate}" class="btnCancel">취소</a>
                             <input type="submit"  class="btnWrite" value="작성완료">
                         </div>
                     </form>

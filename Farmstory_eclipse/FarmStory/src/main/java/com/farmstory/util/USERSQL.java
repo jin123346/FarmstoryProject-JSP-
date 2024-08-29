@@ -71,6 +71,9 @@ public class USERSQL {
 
 	public static final String DELETE_USER = " delete from `user` where `uid` =?";
 
+	public static final String UPDATE_USER_PASS = "update `user` set pass=sha2(?,256) where uid=?";
+	
+	
 
 
 }

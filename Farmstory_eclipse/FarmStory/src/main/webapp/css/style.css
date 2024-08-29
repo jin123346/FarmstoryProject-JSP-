@@ -152,21 +152,21 @@ main .main_banner{
 main .main_banner .bannerimg{
     box-sizing: border-box;
     position: absolute;
-    bottom: -28px;
+    bottom: 2px;
     left: 10px;
 }
 
 main .main_banner .bannertit{
     box-sizing: border-box;
     position: absolute;
-    top: 60px;
+    top: 34px;
     left: 10px;
 } 
 
 main .main_banner .bannertxt{
     box-sizing: border-box;
     position: absolute;
-    top: 43px;
+    top: 11px;
     right: 10px;
 }
 
@@ -340,6 +340,18 @@ font-family: Inter;
     margin-right: 14.84px;
     margin-top: 4px;
 }
+
+.txt_line {
+	letter-spacing: -0.75px; 
+	width:70px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    line-height: 15px;
+}
+
+ table {
+    }
 
 
 /* notice section */

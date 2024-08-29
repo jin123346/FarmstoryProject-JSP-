@@ -29,7 +29,10 @@ public class BOARDSQL {
 											    + "WHERE a.b_cateNo= ? "
 											    +"ORDER BY `boardNo` DESC "
 										    	+"LIMIT ?, 10";
-
+	public static final String SELECT_BOARDS_CATE_MAIN = "SELECT boardNo, b_cateNo, title, b_fNo, b_writer, b_rdate FROM `board` "
+														+ "WHERE b_cateNo=? "
+														+ "ORDER BY `boardNo` DESC";					
+	
 	public static final String SELECT_BOARD = "select * from `board` AS a "
 												+ "LEFT JOIN `boardfile` AS b ON a.`boardNo` = b.b_pNo "
 												+ "WHERE `boardNo`=?";

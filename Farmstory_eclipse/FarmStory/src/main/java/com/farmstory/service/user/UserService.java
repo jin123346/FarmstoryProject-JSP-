@@ -30,7 +30,10 @@ public enum UserService {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private UserDao dao = UserDao.getInstance();
 
-	public String sendEmailCode(String email) {
+
+public UserDTO selectNameEmail(String name, String email) {return dao.selectNameEmail(name,  email);}
+public String sendEmailCode(String email) {
+		
 
 		// 인증코드 생성
 		int code = ThreadLocalRandom.current().nextInt(100000, 1000000);
@@ -129,6 +132,13 @@ public enum UserService {
 	}
 
 
+	
+
+
+	public int updateUserPass(String uid,String pass) {
+		return dao.updateUserPass(uid,pass);
+	}
+	
 
 	public int selectCountUser (String type,String value) {
 		return dao.selectCountUser(type, value);

@@ -11,7 +11,6 @@ import com.farmstory.dto.community.BoardDTO;
 import com.farmstory.dto.community.BoardFileDTO;
 import com.farmstory.util.BOARDSQL;
 import com.farmstory.util.DBHelper;
-import com.farmstory.util.SQL;
 
 public class BoardDAO extends DBHelper {
 
@@ -81,6 +80,34 @@ public class BoardDAO extends DBHelper {
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(BOARDSQL.SELECT_COUNT_TOTAL);
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return total;
+	}
+	
+	//	전체 게시물 카테고리별 갯수 구하기
+	public int selectCountTotalCate(String b_cateNo) {
+		
+		int total = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(BOARDSQL.SELECT_COUNT_TOTAL_CATE);
+			pstmt.setString(1, b_cateNo);
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				total = rs.getInt(1);
@@ -237,6 +264,44 @@ public class BoardDAO extends DBHelper {
 		}
 		
 		return boards;
+	}
+	
+	// 메인페이지 카테고리별 글 목록
+	public List<BoardDTO> selectBoardsCateMain(String cate) {
+		
+		List<BoardDTO> boardcates = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(BOARDSQL.SELECT_BOARDS_CATE_MAIN);
+			pstmt.setString(1, cate);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				BoardDTO dto = new BoardDTO();
+				dto.setBoardNo(rs.getInt(1));
+				dto.setB_cateNo(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setB_fNo(rs.getInt(4));
+				dto.setB_writer(rs.getString(5));
+				dto.setB_rdateSubString(rs.getString(6));
+				
+				boardcates.add(dto);
+			}
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return boardcates;
 	}
 	
 	// 글 수정

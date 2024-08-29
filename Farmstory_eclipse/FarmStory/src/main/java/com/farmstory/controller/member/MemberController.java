@@ -3,6 +3,8 @@ package com.farmstory.controller.member;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -18,31 +20,28 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-@WebServlet("/member/checkUser.do")
-public class CheckUserController extends HttpServlet{
 
+@WebServlet("/member/checkid.do")
+public class MemberController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	private UserService service = UserService.INSTANCE;
-	
-	@Override
+
+    private UserService service = UserService.INSTANCE;
+    @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String type = req.getParameter("type");
 		String value = req.getParameter("value");
 		
 		int result = service.selectCountUser(type, value);
 		
-
-		if(type.equals("email") && result == 0) {
-			// 이메일 인증번호 발송하기
+		if( type.equals("email") && result>0) {
 			String code = service.sendEmailCode(value);
-			
 			// 세션 저장
 			HttpSession session = req.getSession();
 			session.setAttribute("authCode", code);
 		}
+		
 		
 		// json 생성
 		JsonObject json = new JsonObject();
@@ -92,4 +91,5 @@ public class CheckUserController extends HttpServlet{
 		writer.print(json);
 		
 	}
+
 }

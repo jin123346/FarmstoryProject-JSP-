@@ -3,6 +3,64 @@
 <title>장바구니</title>
 <link rel="stylesheet" href="../css/style_cart.css">
 
+<script>
+	window.onload = function(){
+	let setDelete = new Set();
+	const btnSd = document.getElementsByClassName('btnSD')[0];
+
+	let chkboxes = document.querySelectorAll('.checkbox');
+
+	chkboxes.forEach(function(checkbox) {
+	    checkbox.addEventListener('click', function() {
+	        if(this.checked){
+	        	setDelete.add(this.value);
+	        	alert("hi");
+	        }else{
+	        	setDelete.delete(this.value);
+	        }
+	    });
+	});
+	
+	
+	btnSd.addEventListener('click',function(e){
+		e.preventDefault();
+		
+		let arr = [];
+		setDelete.forEach(value => {
+		    arr.push(value);
+		});
+		
+		let formData = new FormData();
+		
+		arr.forEach(val => {
+		    formData.append("pk", val);
+		});
+		// for (let key of formData.keys()) {
+		// 	  console.log(key);
+		// 	}
+		formData.append("action", "delete");
+		fetch('/FarmStory/market/cart.do', {
+			method: 'POST',
+			body: formData
+	})
+	.then(resp=>resp.json())
+	.then(data=>{
+		console.log(data);
+		if(data.result > 0){
+			alert('삭제되었습니다!');
+		}else{
+			alert('실패하였습니다!');
+		}
+		
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+	
+	});
+	}
+</script>
+
 <!-- #main -->
 <main id="main" class="cf">
 	<section class="mainIn cf">
@@ -57,42 +115,24 @@
                             <th>가격</th>
                             <th>소계</th>
                         </tr>
+                        <c:if test="${prodCartDto eq null}">
                         <tr>
                             <td colspan="9" class="td_first">장바구니에 상품이 없습니다.</td>
                         </tr>
+                        </c:if>
+                        <c:forEach var="prodCartDto" items="${prodCartDto}">
                         <tr>
-                            <td><input type="checkbox" class="checkbox"/></td>
+                            <td><input type="checkbox" class="checkbox" onclick=""  value="${prodCartDto.cartNo}"/></td>
                             <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
-                            <td>과일</td>
-                            <td>사과 500g</td>
-                            <td>1</td>
-                            <td>10%</td>
-                            <td>40p</td>
-                            <td>4,000</td>
-                            <td><strong>3,600</strong>원</td>
+                            <td>${prodCartDto.prodCateName}</td>
+                            <td>${prodCartDto.prodName}</td>
+                            <td>${prodCartDto.prodQty}</td>
+                            <td>${prodCartDto.discount}%</td>
+                            <td>${prodCartDto.point}p</td>
+                            <td>${prodCartDto.price}</td>
+                            <td><strong>${service.total(prodCartDto)}</strong>원</td>
                         </tr>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td><img src="../images/market_item1.jpg" alt="사과 샘플"/></td>
-                            <td>과일</td>
-                            <td>사과 500g</td>
-                            <td>1</td>
-                            <td>10%</td>
-                            <td>40p</td>
-                            <td>4,000</td>
-                            <td><strong>3,600</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
-                            <td>과일</td>
-                            <td>사과 500g</td>
-                            <td>1</td>
-                            <td>10%</td>
-                            <td>40p</td>
-                            <td>4,000</td>
-                            <td><strong>3,600</strong>원</td>
-                        </tr>
+                       </c:forEach>
                     </table><!-- .tb1 -->
                     <button class="btnSD"><a href="#">선택삭제</a></button>
                     <div class="order_final">
@@ -102,27 +142,27 @@
                             </tr>
                             <tr>
                                 <td>상품수</td>
-                                <td>1</td>
+                                <td>${service.totalQty(prodCartDto)}개</td>
                             </tr>
                             <tr>
                                 <td>상품금액</td>
-                                <td>27,000</td>
+                                <td>${service.totalPrice(prodCartDto)}원</td>
                             </tr>
                             <tr>
                                 <td>할인금액</td>
-                                <td>5,0000원</td>
+                                <td>${service.totalDiscount(prodCartDto)}원</td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
-                                <td>5,0000원</td>
+                                <td>${service.totalDelivery(prodCartDto)}원</td>
                             </tr>
                             <tr>
                                 <td>포인트</td>
-                                <td>4,000원</td>
+                                <td>${service.totalPoint(prodCartDto)}p</td>
                             </tr>
                             <tr>
                                 <td>전체주문금액</td>
-                                <td>22,000</td>
+                                <td>${service.realtotal(prodCartDto)}원</td>
                             </tr>
                         </table><!-- .tb2 -->
                         <button class="btn_order"><a href="#">주문하기</a></button>

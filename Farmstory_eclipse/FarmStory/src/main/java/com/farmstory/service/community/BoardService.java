@@ -1,10 +1,12 @@
 package com.farmstory.service.community;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.farmstory.dao.community.BoardDAO;
 import com.farmstory.dto.community.BoardDTO;
 import com.farmstory.dto.community.PageGroupDTO;
+import com.farmstory.util.BOARDSQL;
 
 public enum BoardService {
 
@@ -36,7 +38,7 @@ public enum BoardService {
 		
 		int currentPage = 1; // 처음 들어왔을때 파라미터 pg가 null이라서 첫페이지가 조회됨
 		
-		if(pg != null) {
+		if(pg != null ) {
 			currentPage = Integer.parseInt(pg);
 		}
 		
@@ -68,6 +70,12 @@ public enum BoardService {
 		return dao.selectCountTotal();
 	}
 	
+	
+//	전체 게시물 카테고리별 갯수 구하기
+	public int selectCountTotalCate(String b_cateNo) {
+		return dao.selectCountTotalCate(b_cateNo);
+	}
+	
 	// 글 등록
 	public int insertBoard(BoardDTO dto) {
 		return dao.insertBoard(dto);
@@ -87,6 +95,13 @@ public enum BoardService {
 	public List<BoardDTO> selectBoardsCate(int start, String cate) {
 		return dao.selectBoardsCate(start, cate);
 	}
+	
+	// 메인페이지 카테고리별 글 목록
+	public List<BoardDTO> selectBoardsCateMain(String cate) {
+		return dao.selectBoardsCateMain(cate);
+	}
+	
+	
 	
 	// 글 수정
 	public void updateBoard(BoardDTO dto) {

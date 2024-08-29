@@ -3,6 +3,9 @@ package com.farmstory.controller.community.notice;
 import java.io.IOException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.farmstory.dto.community.BoardDTO;
 import com.farmstory.dto.community.PageGroupDTO;
 import com.farmstory.service.community.BoardService;
@@ -20,6 +23,8 @@ public class ListController extends HttpServlet{
 
 	private BoardService service = BoardService.INSTANCE;
 	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -29,9 +34,10 @@ public class ListController extends HttpServlet{
 		
 		// 현재 페이지 번호 구하기
 		int currentPage = service.getCurrentPage(pg); 
-		
+		logger.debug("currentPage : "+currentPage);
+
 		// 전체 게시물 갯수 구하기
-		int total = service.selectCountTotal();
+		int total = service.selectCountTotalCate(cate);
 				
 		// 마지막 페이지 번호 구하기
 		int lastPageNum = service.getLastPageNum(total);
@@ -44,10 +50,11 @@ public class ListController extends HttpServlet{
 		 
 		// 페이지 시작 번호 구하기(목록에서 순서번호로 활용)
 		int pageStartNum = service.getPageStartNum(total, currentPage);
+		logger.debug("pageStartNum : "+pageStartNum);
 		
 		// 데이터 조회하기
-		List<BoardDTO> boards = service.selectBoards(start);
-		
+		List<BoardDTO> boards = service.selectBoardsCate(start, cate);
+		logger.debug("boards : "+boards);
 		
 		// 데이터 공유 참조(View에서 데이터 출력)
 		req.setAttribute("boards", boards);

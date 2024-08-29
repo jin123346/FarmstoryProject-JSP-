@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
-
-		
-                
+<title>farmStory</title>
+<link rel="stylesheet" href="/FarmStory/css/style.css">
         <main id="main ">
             <section class="sub_bg">
                 <article>
@@ -82,7 +81,7 @@
 
                         </a>
                     </article>
-                    <article>
+                    <article class="last">
                         <a href="">
                             <img src="/FarmStory/images/market_item1.jpg" alt="과일 샘플 이미지">
                             <div class="mtxt">
@@ -97,10 +96,10 @@
                 </section><!-- .market section end-->
                 <section class="ad">
                     <article class="ad1">
-                        <a href="#"><img src="/FarmStory/images/main_banner_sub1_tit.png" alt="팜스토리 오늘의 식단"></a>
+                        <a href="/FarmStory/community/notice/list.do?group=community&cate=b102"><img src="/FarmStory/images/main_banner_sub1_tit.png" alt="팜스토리 오늘의 식단"></a>
                     </article>
                     <article class="ad2">
-                        <a href="#"><img src="/FarmStory/images/main_banner_sub2_tit.png" alt="팜스토리 나도 요리사"></a>
+                        <a href="/FarmStory/community/notice/list.do?group=community&cate=b103"><img src="/FarmStory/images/main_banner_sub2_tit.png" alt="팜스토리 나도 요리사"></a>
                     </article>
                 </section> <!-- .ad end-->
 
@@ -109,94 +108,48 @@
                         <a href="#"><img src="/FarmStory/images/main_latest1_tit.png" alt="텃밭가꾸기"></a>
                         <img src="/FarmStory/images/main_latest1_img.jpg" alt="텃밭가꾸기">
                         <table>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                        </table>
+						    <c:forEach var="garden" items="${garden}" varStatus="status">
+						        <c:if test="${status.count <= 5}">
+						            <tr>
+						                <th>></th>
+						                <td class="txt_line"><a href="/FarmStory/community/notice/view.do?boardNo=${garden.boardNo}&group=croptalk&cate=${garden.b_cateNo}">${garden.title}</a></td>
+						                <td>${garden.b_rdate}</td>
+						            </tr>
+						        </c:if>
+						    </c:forEach>
+						</table>
                     </article>
                     <article class="returnfarm">
                         <a href="#"><img src="/FarmStory/images/main_latest2_tit.png" alt="귀농학교"></a>
                         <img src="/FarmStory/images/main_latest2_img.jpg" alt="귀농학교">
                         <table>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                        </table>
+						    <c:forEach var="returnfarm" items="${returnfarm}" varStatus="status">
+						        <c:if test="${status.count <= 5}">
+						            <tr>
+						                <th>></th>
+						                <td class="txt_line"><a href="/FarmStory/community/notice/view.do?boardNo=${returnfarm.boardNo}&group=croptalk&cate=${returnfarm.b_cateNo}">${returnfarm.title}</a></td>
+						                <td>${returnfarm.b_rdate}</td>
+						            </tr>
+						        </c:if>
+						    </c:forEach>
+						</table>
                     </article>
                     <article class="croptalk">
                         <a href="#"><img src="/FarmStory/images/main_latest3_tit.png" alt="농작물이야기"></a>
                         <img src="/FarmStory/images/main_latest3_img.jpg" alt="농작물 이야기">
+                            <input type="hidden" name="b_cateNo" value="${cate}"/>
+                       		<input type="hidden" name="group" value="${group}"/>
                         <table>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                            <tr>
-                                <th>></th>
-                                <td>토마토! 건강하게 길러…</td>
-                                <td>20-12-22</td>
-                            </tr>
-                        </table>
+						    <c:forEach var="croptalk" items="${croptalk}" varStatus="status">
+						        <c:if test="${status.count <= 5}">
+						            <tr>
+						                <th>></th>
+						                <td class="txt_line"><a href="/FarmStory/community/notice/view.do?boardNo=${croptalk.boardNo}&group=croptalk&cate=${croptalk.b_cateNo}">${croptalk.title}</a></td>
+						                <td>${croptalk.b_rdate}</td>
+						            </tr>
+						        </c:if>
+						    </c:forEach>
+						</table>
                     </article>
                 </section>
                 <section class="notice">
@@ -216,8 +169,8 @@
                             </p>
                         </div>
                         <div class="cslink">
-                            <a href="#"><img src="/FarmStory/images/main_sub2_cs_bt1.png" alt="1:1고객문의"></a>
-                            <a href="#"><img src="/FarmStory/images/main_sub2_cs_bt2.png" alt="자주묻는 질문"></a>
+                            <a href="/FarmStory/community/notice/list.do?group=community&cate=b104"><img src="/FarmStory/images/main_sub2_cs_bt1.png" alt="1:1고객문의"></a>
+                            <a href="/FarmStory/community/notice/list.do?group=community&cate=b105"><img src="/FarmStory/images/main_sub2_cs_bt2.png" alt="자주묻는 질문"></a>
                             <a href="#"><img src="/FarmStory/images/main_sub2_cs_bt3.png" alt="배송 조회"></a>
                         </div>
 
@@ -243,32 +196,16 @@
                         </div>
                         <div class="ntable">
                             <table class="ntable">
-                                <tr>
-                                    <th>·</th>
-                                    <td>안녕하세요. 홈페이지 오픈 기념 이벤트를 … </td>
-                                    <td>20-12-22</td>
-                                </tr>
-                                <tr>
-                                    <th>·</th>
-                                    <td>안녕하세요. 홈페이지 오픈 기념 이벤트를 … </td>
-                                    <td>20-12-22</td>
-                                </tr>
-                                <tr>
-                                    <th>·</th>
-                                    <td>안녕하세요. 홈페이지 오픈 기념 이벤트를 … </td>
-                                    <td>20-12-22</td>
-                                </tr>
-                                <tr>
-                                    <th>·</th>
-                                    <td>안녕하세요. 홈페이지 오픈 기념 이벤트를 … </td>
-                                    <td>20-12-22</td>
-                                </tr>
-                                <tr>
-                                    <th>·</th>
-                                    <td>안녕하세요. 홈페이지 오픈 기념 이벤트를 … </td>
-                                    <td>20-12-22</td>
-                                </tr>
-                            </table>
+						    <c:forEach var="notice" items="${notice}" varStatus="status">
+						        <c:if test="${status.count <= 5}">
+						            <tr>
+						                <th>·</th>
+						                <td class="txt_line"><a href="/FarmStory/community/notice/view.do?boardNo=${notice.boardNo}&group=community&cate=${notice.b_cateNo}">${notice.title}</a></td>
+						                <td>${notice.b_rdate}</td>
+						            </tr>
+						        </c:if>
+						    </c:forEach>
+						</table>
                         </div>
                     </article>
 

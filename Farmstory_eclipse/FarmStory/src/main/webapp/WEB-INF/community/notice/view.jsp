@@ -2,7 +2,17 @@
 <%@ include file="../../_header.jsp" %>
 <title>글보기</title>
 <link rel="stylesheet" href="../../css/community.css">
-<%@ include file="../../_aside_cm.jsp" %>
+<c:choose>
+	<c:when test="${group eq 'croptalk'}">
+		<%@ include file="../../_aside_ct.jsp" %>
+		<link rel="stylesheet" href="../../css/croptalk.css">
+	</c:when>
+	<c:when test="${group eq 'event'}">
+		<%@ include file="../../_aside_et.jsp" %>
+		<link rel="stylesheet" href="../../css/event.css">
+	</c:when>
+	<c:otherwise><%@ include file="../../_aside_cm.jsp" %></c:otherwise>
+</c:choose> 
    <script>
 	window.onload = function(){
 		
@@ -233,6 +243,8 @@
 				<table>
 					<tr>
 						<td>제목</td>
+						<input type="hidden" name="b_cateNo" value="${cate}"/>
+                       	<input type="hidden" name="group" value="${group}"/>
 						<td><input type="text" name="title"
 							value="${boardDTO.title}" readonly /></td>
 					</tr>
@@ -259,10 +271,10 @@
 				</table>
 				 <div>
 					 <c:if test="${sessUser.uid eq boardDTO.b_writer}">
-	                    <a href="/FarmStory/community/notice/delete.do?boardNo=${boardDTO.boardNo}" class="btnDelete"">삭제</a>
-	                    <a href="/FarmStory/community/notice/modify.do?boardNo=${boardDTO.boardNo}" class="btnModify"">수정</a>
+	                    <a href="/FarmStory/community/notice/delete.do?boardNo=${boardDTO.boardNo}&group=${group}&cate=${cate}" class="btnDelete"">삭제</a>
+	                    <a href="/FarmStory/community/notice/modify.do?boardNo=${boardDTO.boardNo}&group=${group}&cate=${cate}" class="btnModify"">수정</a>
                      </c:if>
-	                    <a href="/FarmStory/community/notice/list.do?pg=${pg}" class="btnList">목록</a>
+	                    <a href="/FarmStory/community/notice/list.do?pg=${pg}&group=${group}&cate=${cate}" class="btnList">목록</a>
 	                 
                 </div>  
 

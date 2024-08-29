@@ -64,6 +64,9 @@ public class USERSQL {
 	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
 	
 	
+	
+	public static final String SELECT_USER_NAME_EMAIL = "select uid, pass, name, email,hp,regdate,gradeNo from `user` where name=? and email=?";
+	
 
 
 }

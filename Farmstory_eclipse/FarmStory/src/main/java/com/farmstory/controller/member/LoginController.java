@@ -49,10 +49,12 @@ public class LoginController extends HttpServlet{
 			//회원이 맞을 경우 -> 세션처리 후 
 			HttpSession session = req.getSession();
 			session.setAttribute("sessUser", user);
-			if(user.getGradeNo().equals("00")) {
+			if(user.getGradeNo() ==null) {
+				resp.sendRedirect("/FarmStory/main.do");
+			}else if(user.getGradeNo().equals("00")) {
 				resp.sendRedirect("/FarmStory/main.do?grade=admin");
 			}else {
-				resp.sendRedirect("/FarmStory/main.do?grade=none");
+				resp.sendRedirect("/FarmStory/main.do?grade=user");
 			}
 	
 		}else {

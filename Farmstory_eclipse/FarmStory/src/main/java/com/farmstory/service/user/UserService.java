@@ -28,6 +28,7 @@ public enum UserService {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private UserDao dao = UserDao.getInstance();
 
+public UserDTO selectNameEmail(String name, String email) {return dao.selectNameEmail(name,  email);}
 public String sendEmailCode(String email) {
 		
 		// 인증코드 생성

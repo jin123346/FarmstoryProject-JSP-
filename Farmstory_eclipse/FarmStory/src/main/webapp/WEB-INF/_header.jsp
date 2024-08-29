@@ -28,7 +28,7 @@
     	        login.href="/FarmStory/member/logout.do";
     	        register.innerText="관리자";
     	        register.href="/FarmStory/admin/index.do";
-    	    }else{
+    	    }else if(grade ==='user'){
     	        login.innerText="로그아웃";
     	        login.href="/FarmStory/member/logout.do";
     	        register.innerText="마이페이지";

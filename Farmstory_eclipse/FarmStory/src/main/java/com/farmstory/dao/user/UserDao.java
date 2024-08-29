@@ -24,6 +24,43 @@ public class UserDao extends DBHelper{
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	public UserDTO selectNameEmail(String name, String email) {
+		UserDTO user =null;
+		try {
+			conn =getConnection();
+			pstmt=conn.prepareStatement(USERSQL.SELECT_USER_NAME_EMAIL);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				user = new UserDTO();
+				user.setUid(rs.getString(1));
+				user.setPass(rs.getString(2));
+				user.setName(rs.getString(3));
+				user.setEmail(rs.getString(4));
+				user.setHp(rs.getString(5));
+				user.setRegDate(rs.getString(6));
+				user.setGradeNo(rs.getString(7));
+				
+			}
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error(e.getMessage());
+
+			}
+		}
+		
+		
+		return user ;
+	}
+	
+	
 	public int selectCountUser(String type,String value) {
 
 		

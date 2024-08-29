@@ -26,8 +26,12 @@
             <article class="article"><!-- .article start-->
               <div class="articleIn"><!-- .articleIn start-->
                     <nav>
+	                    <c:set var="h2_cate" value="" />
+	                    <c:if test="${name eq '홍길동'}">    
+	                    <c:out value="${str}" />
+	                    </c:if>
                         <h2>
-                            <img src="/FarmStory/images/sub_nav_tit_cate5_tit3.png" alt="나도 요리사">
+                            <img src="/FarmStory/images/sub_nav_tit_cate5_tit1.png" alt="공지사항">
                         </h2>
                         <p class="location">
                             <img src="/FarmStory/images/sub_page_nav_ico.gif" alt="메뉴">

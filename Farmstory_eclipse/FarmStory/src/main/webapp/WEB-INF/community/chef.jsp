@@ -3,7 +3,6 @@
 <title>나도요리사</title>
 <link rel="stylesheet" href="../css/community.css">
 <%@ include file="../_aside_cm.jsp" %>
-                        
                         <section class="list">
                             <h3>글목록</h3>
                             <article>

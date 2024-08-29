@@ -9,7 +9,7 @@
 
 /* 서브 이미지 */
 .sub_bg{position: relative; width: 980px; height: 184px; background: url('../images/sub_top_bg.jpg') no-repeat center;}
-.sub_bg .sub_tit{position: absolute; top: 137px; left: 10px; width: 186px; height: 37px;}
+.sub_bg .sub_tit{position: absolute; top: 137px; left: 10px; height: 37px;}
 
 /* aside 영역 (왼쪽) -------------------------------------------------- */
 .aside{position: relative; float: left; width: 179px; box-sizing: border-box;

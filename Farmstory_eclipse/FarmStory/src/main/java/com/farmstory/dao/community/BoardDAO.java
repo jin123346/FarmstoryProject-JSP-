@@ -41,6 +41,7 @@ public class BoardDAO extends DBHelper {
 			pstmt.setInt(3, dto.getB_fNo());
 			pstmt.setString(4, dto.getB_regip());
 			pstmt.setString(5, dto.getB_writer());
+			pstmt.setString(6, dto.getB_cateNo());
 			pstmt.executeUpdate();
 			
 			rs = stmt.executeQuery(BOARDSQL.SELECT_MAX_BOARD_NO);  // no의 auto-increment를 이용하여 가장 최신글은 no값이 가장 큰 것을 이용해서 글 번호를 가져옴

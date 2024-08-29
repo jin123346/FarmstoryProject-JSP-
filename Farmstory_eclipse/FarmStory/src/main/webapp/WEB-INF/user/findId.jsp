@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
-<title>아이디찾기</title>
+<title>아이디 찾기</title>
  <link rel="stylesheet" href="../css/user/findid.css">
 
         <main>
@@ -11,7 +11,6 @@
 		                    <div class="headtxt">
 		                        <span>아이디 찾기</span>
 		                    </div>
-		                    
 		                        <table>
 		                            <tr>
 		                                <td>이름</td>

@@ -102,7 +102,7 @@
 	                    <table class="password">
 	                        <tbody>
 	                            <tr>
-	                                <th>
+	                                <th class="input_id" style="border-right: 1px solid #E9E9E9;">
 	                                    <label>아이디</label>
 	                                </th>
 	                                <td>

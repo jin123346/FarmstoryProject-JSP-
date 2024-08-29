@@ -194,6 +194,50 @@ public class BoardDAO extends DBHelper {
 		return boards;
 	}
 	
+	// 카테고리별 글 목록 
+	public List<BoardDTO> selectBoardsCate(int start, String cate) {
+		
+		List<BoardDTO> boards = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(BOARDSQL.SELECT_BOARDS_CATE);
+			pstmt.setString(1, cate);
+			pstmt.setInt(2, start);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				BoardDTO dto = new BoardDTO();
+				dto.setBoardNo(rs.getInt(1));
+				dto.setB_cateNo(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setB_contents(rs.getString(4));
+				dto.setB_comNo(rs.getInt(5));
+				dto.setB_fNo(rs.getInt(6));
+				dto.setB_hit(rs.getInt(7));
+				dto.setB_regip(rs.getString(8));
+				dto.setB_writer(rs.getString(9));
+				dto.setB_rdateSubString(rs.getString(10));
+				dto.setNick(rs.getString(11));
+				dto.setCommentCount(rs.getInt(12));
+				
+				boards.add(dto);
+			}
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return boards;
+	}
+	
 	// 글 수정
 	public void updateBoard(BoardDTO dto) {
 		

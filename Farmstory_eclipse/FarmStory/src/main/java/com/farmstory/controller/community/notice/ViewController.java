@@ -35,6 +35,7 @@ public class ViewController extends HttpServlet{
 		
 		
 		String boardNo = req.getParameter("boardNo");
+		String pg = req.getParameter("pg");
 		
 		// 조회수 증가 
 		boardService.update_board_hit(boardNo);
@@ -47,6 +48,7 @@ public class ViewController extends HttpServlet{
 				
 		// 공유 참조
 		req.setAttribute("boardDTO", boardDTO);
+		req.setAttribute("pg",pg );
 		req.setAttribute("comments", comments);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/view.jsp");

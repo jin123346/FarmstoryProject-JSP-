@@ -20,6 +20,13 @@ public class BOARDSQL {
 											    "JOIN `user` AS b ON a.b_writer = b.uid " +
 											    "ORDER BY `boardNo` DESC " +
 											    "LIMIT ?, 10";
+	public static final String SELECT_BOARDS_CATE = "SELECT a.*, b.nick, " +
+											    "(SELECT COUNT(*) FROM `comment` c WHERE c.com_parent = a.boardNo) AS commentCount " +
+											    "FROM `board` AS a " +
+											    "JOIN `user` AS b ON a.b_writer = b.uid "
+											    + "WHERE a.b_cateNo= ? "
+											    +"ORDER BY `boardNo` DESC "
+										    	+"LIMIT ?, 10";
 
 	public static final String SELECT_BOARD = "select * from `board` AS a "
 												+ "LEFT JOIN `boardfile` AS b ON a.`boardNo` = b.b_pNo "

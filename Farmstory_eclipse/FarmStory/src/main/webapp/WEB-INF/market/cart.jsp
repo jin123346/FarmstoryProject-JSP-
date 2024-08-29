@@ -57,42 +57,24 @@
                             <th>가격</th>
                             <th>소계</th>
                         </tr>
+                        <c:if test="${prodCartDto eq null}">
                         <tr>
                             <td colspan="9" class="td_first">장바구니에 상품이 없습니다.</td>
                         </tr>
+                        </c:if>
+                        <c:forEach var="prodCartDto" items="${prodCartDto}">
                         <tr>
                             <td><input type="checkbox" class="checkbox"/></td>
                             <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
-                            <td>과일</td>
-                            <td>사과 500g</td>
-                            <td>1</td>
-                            <td>10%</td>
-                            <td>40p</td>
-                            <td>4,000</td>
-                            <td><strong>3,600</strong>원</td>
+                            <td>${prodCartDto.prodCateName}</td>
+                            <td>${prodCartDto.prodName}</td>
+                            <td>${prodCartDto.prodQty}</td>
+                            <td>${prodCartDto.discount}%</td>
+                            <td>${prodCartDto.point}p</td>
+                            <td>${prodCartDto.price}</td>
+                            <td><strong>${service.total(prodCartDto)}</strong>원</td>
                         </tr>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td><img src="../images/market_item1.jpg" alt="사과 샘플"/></td>
-                            <td>과일</td>
-                            <td>사과 500g</td>
-                            <td>1</td>
-                            <td>10%</td>
-                            <td>40p</td>
-                            <td>4,000</td>
-                            <td><strong>3,600</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
-                            <td>과일</td>
-                            <td>사과 500g</td>
-                            <td>1</td>
-                            <td>10%</td>
-                            <td>40p</td>
-                            <td>4,000</td>
-                            <td><strong>3,600</strong>원</td>
-                        </tr>
+                       </c:forEach>
                     </table><!-- .tb1 -->
                     <button class="btnSD"><a href="#">선택삭제</a></button>
                     <div class="order_final">

@@ -1,10 +1,14 @@
 package com.farmstory.dao.market;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.market.CartDTO;
+import com.farmstory.dto.product.ProductCartDTO;
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.MARKETSQL;
 
@@ -39,6 +43,33 @@ public class MarketDAO extends DBHelper{
 		
 		return result;
 		
+	}
+	
+	public List<ProductCartDTO> selectCarts(String uid) {
+		List<ProductCartDTO> carts = new ArrayList<>();
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(MARKETSQL.SELECT_CARTS);
+			pstmt.setString(1, uid);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductCartDTO dto = new ProductCartDTO();
+				dto.setpList_sName(rs.getString(1));
+				dto.setProdCateName(rs.getString(2));
+				dto.setProdName(rs.getString(3));
+				dto.setProdQty(rs.getInt(4));
+				dto.setDiscount(rs.getInt(5));
+				dto.setPoint(rs.getInt(6));
+				dto.setPrice(rs.getInt(7));
+				carts.add(dto);
+			}
+			closeAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return carts;
 	}
 	
 }

@@ -36,6 +36,10 @@ public class ListController extends HttpServlet{
 		
 		if(cateName == null){
 			int currentPage = service.getCurrentPage(pg);
+			
+			if(currentPage < 1) {
+				currentPage += 1;
+			}
 			logger.debug("current : " + currentPage);
 			
 			// 현제 페이지 그룹 구하기

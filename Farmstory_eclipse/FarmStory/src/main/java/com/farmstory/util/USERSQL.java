@@ -62,7 +62,7 @@ public class USERSQL {
 
 	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
 	
-	
+	public static final String DELETE_USER = " delete from `user` where `uid` =?";
 
 
 }

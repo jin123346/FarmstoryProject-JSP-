@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.user.UserDTO;
+import com.farmstory.util.BOARDSQL;
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.SQL;
 import com.farmstory.util.USERSQL;
@@ -84,6 +85,37 @@ public class UserDao extends DBHelper{
 		}
 	}
 	
+	
+	
+	public int selectCountTotal() {
+		
+		int total = 0;
+		
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(BOARDSQL.SELECT_COUNT_TOTAL);
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return total;
+	}
+	
+	
+	
+	
 	public UserDTO selectUser(String uid,String pass) {
 		
 			UserDTO user =null;
@@ -154,6 +186,39 @@ public class UserDao extends DBHelper{
 		
 		return users;
 	}
+	
+	
+	public List<UserDTO> selectUsers(int start) {
+		List<UserDTO> users = new ArrayList<UserDTO>();
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(USERSQL.SELECT_USERS);
+			
+			while(rs.next()) {
+				UserDTO dto = new UserDTO();
+				dto.setUid(rs.getString(1));
+				System.out.println(rs.getString(3));
+				dto.setName(rs.getString(3));
+				dto.setNick(rs.getString(4));
+				dto.setEmail(rs.getString(5));
+				dto.setHp(rs.getString(6));
+				dto.setRegDate(rs.getString(10));
+				dto.setGradeNo(rs.getString(11));
+				users.add(dto);
+			}
+			
+			closeAll();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return users;
+	}
+	
+	
 	
 	public void updateUser(UserDTO dto) {
 		

@@ -71,6 +71,9 @@ public String sendEmailCode(String email) {
 		}
 		return ""+code;
 	}
+
+
+
 	
 	public int selectCountUser (String type,String value) {
 		return dao.selectCountUser(type, value);

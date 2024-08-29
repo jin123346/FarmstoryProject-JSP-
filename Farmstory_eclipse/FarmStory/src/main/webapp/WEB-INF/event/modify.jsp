@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ include file="./_header.jsp" %>
-
+<title>글수정</title>
+<link rel="stylesheet" href="../css/event.css">
+<%@ include file="../_aside_et.jsp" %>
   <section class="modify">
                 <h3>글수정</h3>
                 <article>

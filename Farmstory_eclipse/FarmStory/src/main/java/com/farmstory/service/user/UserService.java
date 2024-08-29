@@ -2,6 +2,7 @@ package com.farmstory.service.user;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
@@ -82,6 +83,9 @@ public String sendEmailCode(String email) {
 	public void insertUser(UserDTO dto) { dao.insertUser(dto);	}
 	public UserDTO selectUser(String uid,String pass) {	
 		return dao.selectUser(uid, pass);
+	}
+	public UserDTO selectUserCart(String uid) {	
+		return dao.selectUserCart(uid);
 	}
 	public List<UserDTO> selectUsers() {	
 		return dao.selectUsers();

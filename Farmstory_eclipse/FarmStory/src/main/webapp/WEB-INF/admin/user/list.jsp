@@ -30,13 +30,14 @@
                             <td>${userDto.email}</td>
                             <td>${userDto.hp}</td>
                             <td>
-                            <select name="grade" id="grade">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            
-                            ${userDto.gradeNo}</td>
+                             <select name="grade" id="grade">
+						        <option value="11" ${userDto.gradeNo == 11 ? 'selected="selected"' : ''}>1</option>
+						        <option value="22" ${userDto.gradeNo == 22 ? 'selected="selected"' : ''}>2</option>
+						        <option value="33" ${userDto.gradeNo == 33 ? 'selected="selected"' : ''}>3</option>
+						        <option value="44" ${userDto.gradeNo == 44 ? 'selected="selected"' : ''}>4</option>
+						        <option value="55" ${userDto.gradeNo == 55 ? 'selected="selected"' : ''}>5</option>
+						        <option value="00" ${userDto.gradeNo == 00 ? 'selected="selected"' : ''}>0</option>
+						    </select>
                             <td>${userDto.regDate}</td>
                             <td><a href="#">[상세확인]</a></td>
                         </tr>

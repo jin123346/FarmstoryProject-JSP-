@@ -1,16 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항</title>
-    <link rel="shortcut icon" href="../../images/fav.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/header.css">
-    <link rel="stylesheet" href="../../css/community.css">
-    <link rel="stylesheet" href="../../css/footer.css">
+<%@ include file="../../_header.jsp" %>
+<title>글보기</title>
+<link rel="stylesheet" href="../../css/community.css">
+<%@ include file="../../_aside_cm.jsp" %>
    <script>
 	window.onload = function(){
 		
@@ -18,7 +10,7 @@
         const commentList= document.getElementsByClassName('commentList')[0];
         const commentRemove = document.getElementsByClassName('commentRemove');
         const commentModify = document.getElementsByClassName('commentModify');
-        const btndelete = document.querySelector('.btnDelete');
+       /*  const btndelete = document.querySelector('.btnDelete'); */
         let originalText='';
         
         
@@ -27,11 +19,11 @@
         
         	
         	//삭제 
-        	 if (e.target.classList.contains('btnDelete')) {
+        	 /* if (e.target.classList.contains('btnDelete')) {
         		console.log('e.target.dataset :' + e.target.dataset);
 		        const articleNo = e.target.dataset.articleNo;
 		        console.log(articleNo);
-		    }
+		    } */
         	
         	//수정완료
         	if(e.target.classList == 'commentUpdate'){
@@ -42,11 +34,13 @@
 			
 				
 				const no = e.target.dataset.no;
-			
+				console.log('no : ' + no);
+				
         		const comment = textarea.value;
         		const formData = new FormData();
         		formData.append("comment",comment);
         		formData.append("no",no);
+				console.log('formData : ' + formData);
         		
         		
         		fetch('/FarmStory/comment/modify.do',{
@@ -118,34 +112,42 @@
         	if(e.target.classList == 'commentRemove'){
 				e.preventDefault();
 			
-					//삭제여부 확인 
-					if(!confirm('정말 삭제하시겠습니까?')){
-						return;
-					}
-					
-					const article = e.target.closest('article');
-					const no = e.target.dataset.no; // a태그 data-no 속성값 가져오기
-					console.log(no);
-	
-					fetch('/FarmStory/comment/delete.do?no='+no)
-						.then(resp => resp.json())
-						.then(data => {
-							console.log(data);
-							
-							if(data.result > 0){
-								alert('댓글이 삭제되었습니다.');
-								
-								// 동적 삭제 처리
-								article.remove();
-								
-							}else{
-								alert('댓글이 삭제가 실패했습니다.');
-							}
-							
-						})
-						.catch(err => {
-							console.log(err);
-						});
+				  // 삭제 여부 확인 
+		        if (!confirm('정말 삭제하시겠습니까?')) {
+		            return;
+		        }
+
+		        const article = e.target.closest('article');
+		        const no = e.target.dataset.no; // a태그 data-no 속성값 가져오기
+		        console.log('no :' + no);
+
+		        fetch('/FarmStory/comment/delete.do?no=' + no)
+		            .then(resp => resp.json())
+		            .then(data => {
+		                console.log(data);
+
+		                if (data.result > 0) {
+		                    alert('댓글이 삭제되었습니다.');
+		                    
+		                    // 동적 삭제 처리
+		                    article.remove();
+
+		                    // 남아있는 댓글이 있는지 확인
+		                    const remainingComments = document.querySelectorAll('.commentList article.comment');
+		                    
+		                    // 댓글이 없으면 "등록된 댓글이 없습니다." 메시지 추가
+		                    if (remainingComments.length === 0) {
+		                        const emptyMessage = `<p class="empty">등록된 댓글이 없습니다.</p>`;
+		                        commentList.insertAdjacentHTML('beforeend', emptyMessage);
+		                    }
+		                } else {
+		                    alert('댓글 삭제에 실패했습니다.');
+		                }
+
+		            })
+		            .catch(err => {
+		                console.log(err);
+		            });
 					
 	        	}
 	        });
@@ -203,6 +205,12 @@
 						                    </article>`;	
 						commentList.insertAdjacentHTML('beforeend', commentArticle);
 						
+						// "등록된 댓글이 없습니다." 메시지가 있다면 제거
+					    const emptyMessage = document.querySelector('.commentList .empty');
+					    if (emptyMessage) {
+					        emptyMessage.remove();
+					    }
+					    
 						commentForm.reset();
 						
 					}else{
@@ -220,78 +228,6 @@
 	}
 	
 	</script>
-</head>
-<body>
-    <div id="wrapper">
-    
-        <header id="header">
-            <div class="headerIn">
-                <div class="topline">
-                    <img src="../../images/head_top_line.png" alt="topline"/>
-                </div><!-- .topLine -->
-                <div class="logo">
-                    <a href="#"><img src="../../images/logo.png" alt="farmStory logo"></a>
-                </div><!-- .logo -->
-                 <ul class="utill">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul><!-- .utill -->
-                <div class="h_txt">
-                    <img src="../../images/head_txt_img.png" alt="3만원이상 무료배송·팜카드 10%적립">
-                </div><!-- .h_txt -->
-                <nav class="gnb_wrap">
-                    <ul class="gnb">
-                        <li><a href="#"><img src="../../images/head_menu1.png" alt="팜스토리소개"></a></li>
-                        <li><a href="#">
-                            <img src="../../images/head_menu_badge.png" alt="30%" class="discount"/>
-                            <img src="../../images/head_menu2.png" alt="장보기">
-                        </a></li>
-                        <li><a href="#"><img src="../../images/head_menu3.png" alt="농작물이야기"></a></li>
-                        <li><a href="#"><img src="../../images/head_menu4.png" alt="이벤트"></a></li>
-                        <li><a href="#"><img src="../../images/head_menu5.png" alt="커뮤니티"></a></li>
-                    </ul><!-- .gnb -->
-                </nav><!-- .gnb_wrap -->
-            </div><!-- .headerIn -->
-        </header><!-- #header -->
-
-        <!-- #main -->
-        <main id="main cf">
-            <section class="mainIn cf">
-                <div class="sub_bg">
-                    <img src="../../images/sub_top_tit5.png" alt="COMMUNITY" class="sub_tit">
-                </div>
-                <aside class="aside">
-                    <div class="sidebar">
-                        <div class="aside_cate">
-                            <img src="../../images/sub_aside_cate5_tit.png" alt="커뮤니티">
-                        </div><!-- .aside_cate -->
-                        <div class="aside_bg">
-                            <ul class="cate_lnb">
-                                <li> <a href="#">공지사항</a></li>
-                                <li> <a href="#">오늘의식단</a></li>
-                                <li> <a href="#">나도요리사</a></li>
-                                <li> <a href="#">1:1고객문의</a></li>
-                                <li> <a href="#">자주묻는질문</a></li>
-                            </ul><!-- .cate_lnb -->
-                        </div><!-- .aside_bg -->
-                    </div><!-- .sidebar -->
-                </aside><!-- .aside -->
-                
-                <article class="article">
-                    <div class="articleIn">
-                        <nav>
-                            <h2>
-                                <img src="../../images/sub_nav_tit_cate5_tit1.png" alt="공지사항">
-                            </h2>
-                            <p class="location">
-                                <img src="../../images/sub_page_nav_ico.gif" alt="메뉴">
-                                <span>HOME </span>
-                                <span>커뮤니티 </span>
-                                <strong>나도요리사</strong> 
-                            </p>
-                        </nav>
                  	<section class="view">
 				<h3>글보기</h3>
 				<table>
@@ -322,9 +258,12 @@
 					</tr>
 				</table>
 				 <div>
-                    <a href="#" class="btnDelete" data-articleNo="${boardDTO.boardNo}">삭제</a>
-                    <a href="#" class="btnModify" data-articleNo="${boardDTO.boardNo}">수정</a>
-                    <a href="/FarmStory/community/notice/list.do" class="btnList">목록</a>
+					 <c:if test="${sessUser.uid eq boardDTO.b_writer}">
+	                    <a href="/FarmStory/community/notice/delete.do?boardNo=${boardDTO.boardNo}" class="btnDelete"">삭제</a>
+	                    <a href="/FarmStory/community/notice/modify.do?boardNo=${boardDTO.boardNo}" class="btnModify"">수정</a>
+                     </c:if>
+	                    <a href="/FarmStory/community/notice/list.do?pg=${pg}" class="btnList">목록</a>
+	                 
                 </div>  
 
 				 <!-- 댓글리스트 -->
@@ -369,22 +308,4 @@
 			</section>
         </main><!-- #main -->
         <!-- footer -->
-        <footer id="footer">
-
-            <div class="footerIn cf">
-            <img src="../../images/footer_logo.png" alt="farmStory footer" class="flogo">
-            <div class="finfo">
-                <span class="tel">(주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br>
-                    등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동 <br>
-                    대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01&#41; 234-5678 / 경기도 성남시 잘한다구 신난다동 345
-                </span><!-- .tel -->
-                <p class="fcopy">Copyright(C)홍길동 All rights reserved.</p><!-- .fcopy -->
-            </div><!-- .finfo -->
-            
-        
-        </div><!-- .footerIn -->
-        </footer><!-- footer -->
-
-    </div><!-- #wrapper -->
-</body>
-</html>
+<%@ include file="../../_footer.jsp" %>

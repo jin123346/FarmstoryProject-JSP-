@@ -52,14 +52,14 @@ public class SQL {
 	
 
 	
-	
+	public static final String SELECT_USER_CART = "select * from `user` where uid=?";
 
 	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
 	
 	
 	// admin 
 	// product list
-	public static final String SELECT_PRODUCT_LIST = "SELECT p.pNo, p.pName, p.prodCateNo, p.price, p.stock, p.rdate , b.pList_sName  from product as p left join  plistimgfile as b on b.pList_fNo = p.pList_FNo order by pNo desc";
+	public static final String SELECT_PRODUCT_LIST = "SELECT p.pNo, p.pName, p.prodCateNo, p.price, p.stock, p.rdate , b.pList_sName  from product as p left join  plistimgfile as b on b.pList_fNo = p.pList_FNo order by pNo desc ";
 	public static final String SELECT_PRODUCT_LIST_START = "SELECT p.pNo, p.pName, p.prodCateNo, p.price, p.stock, p.rdate , b.pList_sName  from product as p left join  plistimgfile as b on b.pList_fNo = p.pList_FNo order by pNo desc LIMIT ?,5";
 										
 	public static final String INSERT_PRODUCT_LIST = "insert into `product` set "
@@ -70,6 +70,9 @@ public class SQL {
 												   + "`price`=?,"
 												   + "`stock`=?,"
 												   + "`rdate`=?";
+	
+	public static final String SELECT_PRODUCT_LIST_MAIN = "SELECT p.pNo, p.pName, p.prodCateNo, p.price, p.stock, p.rdate , b.pList_sName  from product as p left join  plistimgfile as b on b.pList_fNo = p.pList_FNo order by pNo desc limit 0,3";
+
 
 	
 	

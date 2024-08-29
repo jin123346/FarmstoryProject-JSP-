@@ -1,38 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
-    <!-- #main -->
-    <main id="main cf">
-        <section class="mainIn cf">
-            <div class="sub_bg">
-                <img src="../images/sub_top_tit3.png" alt="Croptalk" class="sub_tit">
-            </div>
-            <aside class="aside">
-                <div class="sidebar">
-                    <div class="aside_cate">
-                        <img src="../images/sub_aside_cate3_tit.png" alt="Croptalk 농작물이야기">
-                    </div><!-- .aside_cate -->
-                    <div class="aside_bg">
-                        <ul class="cate_lnb1">
-                            <li> <a href="/FarmStory/croptalk/story.do" class="lnb1" >농작물이야기</a></li>
-	                        <li> <a href="/FarmStory/croptalk/garden.do" class="lnb2" >텃밭가꾸기</a></li>
-	                        <li> <a href="/FarmStory/croptalk/returnfarm.do" class="lnb3" >귀농학교</a></li>
-                        </ul><!-- .cate_lnb -->
-                    </div><!-- .aside_bg -->
-                </div><!-- .sidebar -->
-            </aside><!-- .aside -->
-            <article class="article">
-                <div class="articleIn">
-                    <nav>
-                        <h2>
-                            <img src="../images/sub_nav_tit_cate3_tit2.png" alt="텃밭가꾸기">
-                        </h2>
-                        <p class="location">
-                            <img src="../images/sub_page_nav_ico.gif" alt="메뉴">
-                            <span>HOME </span>
-                            <span>농작물이야기 </span>
-                            <strong>텃밭가꾸기</strong> 
-                        </p>
-                    </nav>
+<title>텃밭가꾸기</title>
+<link rel="stylesheet" href="../css/croptalk.css">
+<%@ include file="../_aside_ct.jsp" %>
+                    
                     <div id="container">
                         <section class="list">
                             <h3>글목록</h3>
@@ -68,25 +39,8 @@
                             <a href="#" class="btnWrite">글쓰기</a>
                         </section>
                      </div>
-                </div><!-- .articleIn -->
-            </article><!-- .article -->
+                </div><!-- .articleIn end-->
+            </article><!-- .article end-->
         </section>
     </main><!-- #main -->
-     <footer id="footer">
-
-            <div class="footerIn cf">
-            <img src="../images/footer_logo.png" alt="farmStory footer" class="flogo">
-            <div class="finfo">
-                <span class="tel">(주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br>
-                    등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동 <br>
-                    대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01&#41; 234-5678 / 경기도 성남시 잘한다구 신난다동 345
-                </span><!-- .tel -->
-                <p class="fcopy">Copyright(C)홍길동 All rights reserved.</p><!-- .fcopy -->
-            </div><!-- .finfo -->
-            
-
-        </div><!-- .footerIn -->
-        </footer><!-- footer -->
-
-</body>
-</html>
+<%@ include file="../_footer.jsp" %>

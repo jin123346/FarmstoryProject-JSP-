@@ -1,6 +1,6 @@
 package com.farmstory.util;
 
-public class USERSQL {
+public class MARKETSQL {
 
 
 	// board
@@ -27,7 +27,11 @@ public class USERSQL {
 	
 
 		//cart	
-		
+		public static final String INSERT_CART = "insert into `cart` set"
+												+ "`c_uid`=?, "
+												+ "`prodNo`=?, "
+												+ "`cartProdQty`=?, "
+												+ "`cartProdDate`=NOW()";
 		//point	
 		
 		//order	
@@ -50,7 +54,6 @@ public class USERSQL {
 												+ "`regDate`= NOW()";
 		
 		public static final String SELECT_USERS = "select * from `user`";
-		public static final String SELECT_USERS_MAIN = "select * from `user` order by `uid` limit 0,3";
 
 		public static final String SELECT_COUNT_USER = "SELECT COUNT(*) FROM `user`";
 		public static final String WHERE_UID = "WHERE `uid`=?";
@@ -63,7 +66,7 @@ public class USERSQL {
 
 	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
 	
-	public static final String DELETE_USER = " delete from `user` where `uid` =?";
+	
 
 
 }

@@ -28,11 +28,11 @@ public class DeleteController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String comNo = req.getParameter("comNo");
-		logger.debug("comNo : "+ comNo);
+		String no = req.getParameter("no");
+		logger.debug("no : "+ no);
 		
 		// 댓글 삭제
-		int result = service.deleteComment(comNo);
+		int result = service.deleteComment(no);
 		logger.debug(result+"");
 		
 		// JSON 생성/출력

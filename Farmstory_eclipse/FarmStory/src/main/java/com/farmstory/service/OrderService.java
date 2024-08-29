@@ -66,7 +66,8 @@ public enum OrderService {
 		return dao.selectOrderItemCountTotal();
 	}
 	
-	
+	public List<OrderItemDTO> selectOrderItems(){ return dao.selectOrderItems();}
+
 	public List<OrderItemDTO> selectOrderItems(int pg){return dao.selectOrderItems(pg);}
 	public void insertOrder() {	}
 	public void selectOrder() {	}

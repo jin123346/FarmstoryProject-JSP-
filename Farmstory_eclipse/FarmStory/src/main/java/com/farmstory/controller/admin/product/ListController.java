@@ -37,16 +37,17 @@ public class ListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-String pg = req.getParameter("pg");
+		String pg = req.getParameter("pg");
 		
 		// 현재 페이지 번호 구하기
 		int currentPage = pservice.getCurrentPage(pg); 
 		
 		// 전체 게시물 갯수 구하기
 		int total = service.selectCountTotal();
-				
+		logger.debug("total"+total);		
 		// 마지막 페이지 번호 구하기
 		int lastPageNum = pservice.getLastPageNum5(total);
+		logger.debug("lastPageNum " +lastPageNum);
 				
 		// 현재 페이지 그룹 구하기
 		PageGroupDTO pageGroup = pservice.getCurrentPageGroup5(currentPage, lastPageNum);
@@ -56,7 +57,7 @@ String pg = req.getParameter("pg");
 		 
 		// 페이지 시작 번호 구하기(목록에서 순서번호로 활용)
 		int pageStartNum = pservice.getPageStartNum5(total, currentPage);
-		
+		logger.debug("pageStartNum " +pageStartNum);
 		// 데이터 조회하기
 		List<ProductDTO> products  = service.selectProducts(start);
 		
@@ -77,7 +78,6 @@ String pg = req.getParameter("pg");
 		
 		// 데이터 조회
 	
-		logger.debug(products.toString());
 
 
 		// 요청 파라미터 추출

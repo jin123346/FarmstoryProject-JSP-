@@ -189,7 +189,7 @@ public class ProductDAO extends DBHelper {
 		try {
 			conn = getConnection();
 			stmt =conn.createStatement();
-			rs=stmt.executeQuery(SQL.SELECT_PRODUCT_LIST);
+			rs=stmt.executeQuery(SQL.SELECT_PRODUCT_LIST_MAIN);
 			logger.debug(SQL.SELECT_PRODUCT_LIST);
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();

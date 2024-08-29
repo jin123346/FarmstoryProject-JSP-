@@ -126,7 +126,7 @@ h2::after{display: block; content: ""; clear: both; width: 762px; height: 1px; b
 }
 .list > .btnWrite {
     position: absolute;
-    bottom: 14px;
+ /*    bottom: 14px; */
     right: 0;
 }
 

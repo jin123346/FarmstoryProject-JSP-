@@ -1,64 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 <title>장바구니</title>
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>장바구니</title>
-    <link rel="shortcut icon" href="../images/fav.ico" type="image/x-icon"> 
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/style_cart.css">
-</head>
-<body>
-    <!-- #header -->
-    <header id="header">
-        <div class="headerIn">
-            <div class="topline">
-                <img src="../images/head_top_line.png" alt="topline"/>
-            </div><!-- .topLine -->
-            <div class="logo">
-                <a href="#"><img src="../images/logo.png" alt="farmStory logo"></a>
-            </div><!-- .logo -->
-             <ul class="utill">
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
-                <li><a href="#">고객센터</a></li>
-            </ul><!-- .utill -->
-            <div class="h_txt">
-                <img src="../images/head_txt_img.png" alt="3만원이상 무료배송·팜카드 10%적립">
-            </div><!-- .h_txt -->
-            <nav class="gnb_wrap">
-                <ul class="gnb">
-                    <li><a href="#"><img src="../images/head_menu1.png" alt="팜스토리소개"></a></li>
-                    <li>
-                        <a href="#"><img src="../images/head_menu2.png" alt="장보기"></a>
-                        <img src="../images/head_menu_badge.png" alt="30%">
-                    </li>
-                    <li><a href="#"><img src="../images/head_menu3.png" alt="농작물이야기"></a></li>
-                    <li><a href="#"><img src="../images/head_menu4.png" alt="이벤트"></a></li>
-                    <li><a href="#"><img src="../images/head_menu5.png" alt="커뮤니티"></a></li>
-                </ul><!-- .gnb -->
-            </nav><!-- .gnb_wrap -->
-        </div><!-- #headerIn -->
-    </header><!-- #header end -->
+<link rel="stylesheet" href="../css/style_cart.css">
 
 <!-- #main -->
 <main id="main" class="cf">
 	<section class="mainIn cf">
             <div class="sub_bg">
-                <img src="../images/sub_top_tit2.png" alt="MARKET" class="sub_tit">
+                <img src="/FarmStory/images/sub_top_tit2.png" alt="MARKET" class="sub_tit">
             </div><!-- .sub_bg -->
             <aside class="aside">
                 <div class="sidebar">
                     <div class="aside_cate">
-                        <img src="../images/sub_aside_cate2_tit.png" alt="Buying in the Market 장보기">
+                        <img src="/FarmStory/images/sub_aside_cate2_tit.png" alt="Buying in the Market 장보기">
                     </div><!-- .aside_cate -->
                     <div class="aside_bg">
                         <ul class="cate_lnb">
@@ -70,9 +24,9 @@
             <article class="article">
                 <div class="articleIn cf">
                     <nav>
-                        <h2><img src="../images/sub_nav_tit_cate2_tit1.png" alt="장보기"></h2>
+                        <h2><img src="/FarmStory/images/sub_nav_tit_cate2_tit1.png" alt="장보기"></h2>
                         <p class="location">
-                            <img src="../images/sub_page_nav_ico.gif" alt="메뉴">
+                            <img src="/FarmStory/images/sub_page_nav_ico.gif" alt="메뉴">
                             <span>HOME </span>
                             <span>장보기 </span>
                             <strong>장보기</strong> 
@@ -108,7 +62,7 @@
                         </tr>
                         <tr>
                             <td><input type="checkbox" class="checkbox"/></td>
-                            <td><img src="../images/market_item1.jpg" alt="사과 샘플"/></td>
+                            <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
                             <td>과일</td>
                             <td>사과 500g</td>
                             <td>1</td>
@@ -130,7 +84,7 @@
                         </tr>
                         <tr>
                             <td><input type="checkbox"/></td>
-                            <td><img src="../images/market_item1.jpg" alt="사과 샘플"/></td>
+                            <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
                             <td>과일</td>
                             <td>사과 500g</td>
                             <td>1</td>

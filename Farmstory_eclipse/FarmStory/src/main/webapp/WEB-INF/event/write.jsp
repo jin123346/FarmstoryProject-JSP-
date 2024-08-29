@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<title>글쓰기</title>
+<link rel="stylesheet" href="../css/event.css">
+<%@ include file="../_aside_et.jsp" %>
        <main>
          <div id="container">
             <section class="write">
@@ -38,4 +41,4 @@
                 </article>
             </section>
         </main>
-        <%@ include file="./_footer.jsp" %>
+<%@ include file="./_footer.jsp" %>

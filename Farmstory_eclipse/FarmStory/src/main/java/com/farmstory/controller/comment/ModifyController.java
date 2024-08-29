@@ -29,7 +29,7 @@ public class ModifyController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/write.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/modify.jsp");
 		dispatcher.forward(req, resp);
 		
 	} 
@@ -37,11 +37,13 @@ public class ModifyController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String comNo = req.getParameter("comNo");
+		String no = req.getParameter("no");
 		String comment = req.getParameter("comment");
 		
+		logger.debug("no : "+no+", comment : "+comment);
+		
 		CommentDTO dto = new CommentDTO();
-		dto.setComNo(comNo);
+		dto.setComNo(no);
 		dto.setCom_content(comment);
 		logger.debug(dto.toString());
 		

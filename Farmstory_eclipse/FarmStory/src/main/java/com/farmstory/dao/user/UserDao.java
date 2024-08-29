@@ -84,7 +84,7 @@ public class UserDao extends DBHelper{
 			}
 		}
 	}
-	
+
 	
 	
 	public int selectCountTotal() {
@@ -115,7 +115,33 @@ public class UserDao extends DBHelper{
 	
 	
 	
+
+	public UserDTO selectUserCart(String uid) {
+		UserDTO user = null;
+		
+		try {
+			conn=getConnection();
+			pstmt = conn.prepareStatement(SQL.SELECT_USER_CART);
+			pstmt.setString(1, uid);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				user = new UserDTO();
+				
+				user.setName(rs.getString(3));
+				user.setHp(rs.getString(6));
+				System.out.println("rs: " + rs.getString(3));
+			}
+			closeAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return user;
+	}
 	
+
 	public UserDTO selectUser(String uid,String pass) {
 		
 			UserDTO user =null;
@@ -163,7 +189,7 @@ public class UserDao extends DBHelper{
 			conn = getConnection();
 			stmt = conn.createStatement();
 			
-			rs = stmt.executeQuery(USERSQL.SELECT_USERS);
+			rs = stmt.executeQuery(USERSQL.SELECT_USERS_MAIN);
 			
 			while(rs.next()) {
 				UserDTO dto = new UserDTO();

@@ -96,7 +96,7 @@
                                     <c:forEach var="board" items="${boards}">
 	                                    <tr>
 	                                        <td>${pageStartNum}</td>
-	                                        <td><a href="/FarmStory/community/notice/view.do?boardNo=${board.boardNo}">${board.title}</a>&nbsp;[${board.commentCount}]</td>
+	                                        <td><a href="/FarmStory/community/notice/view.do?boardNo=${board.boardNo}&pg=${currentPage}">${board.title}</a>&nbsp;[${board.commentCount}]</td>
 	                                        <td>${board.nick}</td>
 	                                        <td>${board.b_rdate}</td>
 	                                        <td>${board.b_hit}</td>

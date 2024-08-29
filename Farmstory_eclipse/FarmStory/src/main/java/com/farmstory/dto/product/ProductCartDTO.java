@@ -9,7 +9,15 @@ public class ProductCartDTO {
 	private int point;
 	private int price;
 	private String pList_sName;
-
+	private int delivery;
+	private int cartNo;
+	
+	public int getCartNo() {
+		return cartNo;
+	}
+	public void setCartNo(int cartNo) {
+		this.cartNo = cartNo;
+	}
 	public String getProdCateName() {
 		return prodCateName;
 	}
@@ -52,11 +60,17 @@ public class ProductCartDTO {
 	public void setpList_sName(String pList_sName) {
 		this.pList_sName = pList_sName;
 	}
+	public int getDelivery() {
+		return delivery;
+	}
+	public void setDelivery(int delivery) {
+		this.delivery = delivery;
+	}
 	@Override
 	public String toString() {
 		return "ProductCartDTO [prodCateName=" + prodCateName + ", prodName=" + prodName + ", prodQty=" + prodQty
 				+ ", discount=" + discount + ", point=" + point + ", price=" + price + ", pList_sName=" + pList_sName
-				+ "]";
+				+ ", delivery=" + delivery + ", cartNo=" + cartNo + "]";
 	}
-	
+
 }

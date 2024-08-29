@@ -63,6 +63,8 @@ public class MarketDAO extends DBHelper{
 				dto.setDiscount(rs.getInt(5));
 				dto.setPoint(rs.getInt(6));
 				dto.setPrice(rs.getInt(7));
+				dto.setDelivery(rs.getInt(8));
+				dto.setCartNo(rs.getInt(9));
 				carts.add(dto);
 			}
 			closeAll();
@@ -70,6 +72,20 @@ public class MarketDAO extends DBHelper{
 			logger.error(e.getMessage());
 		}
 		return carts;
+	}
+	
+	public int deleteCart(String cartNo) {
+		int result = 0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(MARKETSQL.DELETE_CART);
+			pstmt.setString(1, cartNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
 	}
 	
 }

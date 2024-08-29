@@ -52,6 +52,7 @@ public class WriteController extends HttpServlet{
 		
 		// 방금 등록한 댓글 조회
 		CommentDTO commentDTO = service.selectComment(pk);
+		logger.debug(commentDTO.toString());
 		
 		// JSON 생성 및 출력
 		Gson gson = new Gson();

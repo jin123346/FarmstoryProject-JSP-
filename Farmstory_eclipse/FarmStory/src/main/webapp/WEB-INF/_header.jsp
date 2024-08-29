@@ -46,7 +46,7 @@
         <header id="header">
             <div class="headerIn">
             	<div class="topline">
-                    <img src="../../images/head_top_line.png" alt="topline"/>
+                    <img src="/FarmStory/images/head_top_line.png" alt="topline"/>
                 </div><!-- .topLine -->
                 <div class="logo">
                     <a href="/FarmStory/main.do"><img src="/FarmStory/images/logo.png" alt="farmStory logo"></a>

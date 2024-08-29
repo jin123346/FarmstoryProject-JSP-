@@ -19,8 +19,10 @@ public enum CommentService {
 		return dao.selectComment(comNo);
 	}
 	
-	public List<CommentDTO> selectComments(int com_parent){
-		return dao.selectComments(com_parent);
+	//해당 게시글 comment 전체 조회
+	public List<CommentDTO> selectComments(int parent) {	
+		List<CommentDTO> comments  = dao.selectComments(parent);
+		return comments;
 	}
 	
 	public int updateComment(CommentDTO dto) {

@@ -1,20 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 
+		
+                
         <main id="main ">
             <section class="sub_bg">
                 <article>
-                    
-                            <img src="/FarmStory/images/main_slide_img1.jpg" alt="main slid image">
-                            <img src="/FarmStory/images/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리 건강한 흙과 친환경만을 연구합니다." class="mainbntit">
-                            <img src="/FarmStory/images/main_banner_bg.jpg" alt="grand open" class="bannerbg">
-                            
-                            <div class="main_banner">
-                              <img src="/FarmStory/images/main_banner_img.png" alt="사과배 사진" class="bannerimg">
-                            <img src="/FarmStory/images/main_banner_tit.png" alt="팜스토리오픝기념 30%할인 이벤트" class="bannertit">
-                            <img src="/FarmStory/images/main_banner_txt.png" alt="grand open" class="bannertxt">
-                            </div>
-                   
+                     <img src="/FarmStory/images/main_slide_img1.jpg" alt="main slid image">
+                     <img src="/FarmStory/images/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리 건강한 흙과 친환경만을 연구합니다." class="mainbntit">
+                     <img src="/FarmStory/images/main_banner_bg.jpg" alt="grand open" class="bannerbg">
+                     <div class="main_banner">
+	                    <img src="/FarmStory/images/main_banner_img.png" alt="사과배 사진" class="bannerimg">
+	                    <img src="/FarmStory/images/main_banner_tit.png" alt="팜스토리오픝기념 30%할인 이벤트" class="bannertit">
+	                    <img src="/FarmStory/images/main_banner_txt.png" alt="grand open" class="bannertxt">
+                     </div>
                 </article>
             </section>
             <section class="mainIn ">
@@ -271,12 +270,9 @@
                                 </tr>
                             </table>
                         </div>
-
                     </article>
 
                 </section><!--.notice end-->
-
-
 
             </section><!--.mainin end-->
         </main ><!-- #main -->

@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ include file="./_header.jsp" %>
-  						    <main>
+<title>글목록</title>
+<link rel="stylesheet" href="../css/event.css">
+<%@ include file="../_aside_et.jsp" %>
   						<div id="container">
                             <section class="list">
                                 <h3>글목록</h3>

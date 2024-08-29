@@ -52,7 +52,7 @@ public class SQL {
 	
 
 	
-	
+	public static final String SELECT_USER_CART = "select * from `user` where uid=?";
 
 	public static final String SELECT_USER=  "select * from `user` where uid=? and pass=sha2(?,256)";
 	

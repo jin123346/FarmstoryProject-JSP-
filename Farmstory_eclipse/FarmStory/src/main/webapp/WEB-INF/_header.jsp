@@ -66,7 +66,7 @@
                 <nav class="gnb_wrap">
                     <ul class="gnb">
                         <li><a href="/FarmStory/intro/introduction.do"><img src="/FarmStory/images/head_menu1.png" alt="팜스토리소개"></a></li>
-                        <li><a href="/FarmStory/market/list.do">
+                        <li><a href="/FarmStory/market/list.do?uid=${sessUser.uid}">
                             <img src="/FarmStory/images/head_menu_badge.png" alt="30%" class="discount"/>
                             <img src="/FarmStory/images/head_menu2.png" alt="장보기">
                         </a></li>

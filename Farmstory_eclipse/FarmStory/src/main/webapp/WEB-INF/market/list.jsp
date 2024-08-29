@@ -63,7 +63,7 @@
                                 <tr>
                                     <td class="pic"><img src="../images/market_item1.jpg" alt="사과 500g"></td>
                                     <td class="type">${productDto.prodCateName}</td>
-                                    <td class="pro_name"><a href="/FarmStory/market/view.do?pNo=${productDto.pNo}">${productDto.pName}</a></td>
+                                    <td class="pro_name"><a href="/FarmStory/market/view.do?pNo=${productDto.pNo}&&uid=${sessUser.uid}">${productDto.pName}</a></td>
                                     <td class="sale">${productDto.discount}%</td>
                                     <td class="point">${productDto.point}p</td>
                                     <td class="price"><strong>${(productDto.price) - service.disPrice(productDto)}원</strong><span class="original_price">${productDto.price}원</span></td>

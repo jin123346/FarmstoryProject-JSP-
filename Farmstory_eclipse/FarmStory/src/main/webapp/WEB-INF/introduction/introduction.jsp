@@ -26,13 +26,13 @@
                 <div class="articleIn">
                     <nav>
                         <h2>    
-                            <img src="../images/sub_nav_tit_cate2_tit1.png" alt="장보기">
+                            <img src="../images/sub_nav_tit_cate1_tit1.png" alt="장보기">
                         </h2>
                         <p class="location">
                             <img src="../images/sub_page_nav_ico.gif" alt="메뉴">
                             <span>HOME </span>
                             <span>팜스토리소개 </span>
-                            <strong>인삿말</strong> 
+                            <strong>인사말</strong> 
                         </p>
                     </nav>
                     <a href="#"><img src="../images/sub_page1_article_txt.png" alt="건강한 먹거리"class="content"></a>

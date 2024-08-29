@@ -24,6 +24,12 @@ public class MainController extends HttpServlet{
 		String grade = req.getParameter("grade");
 		req.setAttribute("grade", grade);
 		
+		String group = req.getParameter("group");
+		String cate = req.getParameter("cate");
+		req.setAttribute("cate", cate);
+		req.setAttribute("group", group);
+		
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
 		logger.debug(dispatcher+"");
 		dispatcher.forward(req, resp);
@@ -31,6 +37,9 @@ public class MainController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		
 		
 	}
 

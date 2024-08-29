@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
-
-		
-                
+<title>farmStory</title>
+<link rel="stylesheet" href="/FarmStory/css/style.css">
         <main id="main ">
             <section class="sub_bg">
                 <article>
@@ -82,7 +81,7 @@
 
                         </a>
                     </article>
-                    <article>
+                    <article class="last">
                         <a href="">
                             <img src="/FarmStory/images/market_item1.jpg" alt="과일 샘플 이미지">
                             <div class="mtxt">
@@ -172,6 +171,8 @@
                         <img src="/FarmStory/images/main_latest3_img.jpg" alt="농작물 이야기">
                         <table>
                             <tr>
+                            <input type="hidden" name="b_cateNo" value="${cate}"/>
+                       		<input type="hidden" name="group" value="${group}"/>
                                 <th>></th>
                                 <td>토마토! 건강하게 길러…</td>
                                 <td>20-12-22</td>
@@ -216,8 +217,8 @@
                             </p>
                         </div>
                         <div class="cslink">
-                            <a href="#"><img src="/FarmStory/images/main_sub2_cs_bt1.png" alt="1:1고객문의"></a>
-                            <a href="#"><img src="/FarmStory/images/main_sub2_cs_bt2.png" alt="자주묻는 질문"></a>
+                            <a href="/FarmStory/community/notice/list.do?group=community&cate=b104"><img src="/FarmStory/images/main_sub2_cs_bt1.png" alt="1:1고객문의"></a>
+                            <a href="/FarmStory/community/notice/list.do?group=community&cate=b105"><img src="/FarmStory/images/main_sub2_cs_bt2.png" alt="자주묻는 질문"></a>
                             <a href="#"><img src="/FarmStory/images/main_sub2_cs_bt3.png" alt="배송 조회"></a>
                         </div>
 

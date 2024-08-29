@@ -5,6 +5,7 @@ public class BOARDSQL {
 
 	// board
 	public static final String SELECT_COUNT_TOTAL = "select count(*) from `board`";
+	public static final String SELECT_COUNT_TOTAL_CATE = "select count(*) from `board` where b_cateNo=?";
 	public static final String INSERT_BOARD = "insert into `board` set "
 											   + "`title`=?,"
 											   + "`b_contents`=?,"

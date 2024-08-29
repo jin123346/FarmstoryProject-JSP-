@@ -1,12 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 <title>찾아오시는길</title>
+<link rel="stylesheet" href="../../css/introduction/direction.css">
 <main id="main cf">
     <section class="mainIn cf">
         <div class="sub_bg">
             <span class="sub_tit"><img src="../images/sub_top_tit1.png" alt=""></span><!-- .sub_tit -->
         </div>
-        <aside class="aside">
+         <aside class="aside">
             <div class="sidebar">
                 <div class="aside_cate">
                     <img src="../images/sub_aside_cate1_tit.png" alt="커뮤니티">

@@ -1,16 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../images/fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/common.css">
-    
     <link rel="stylesheet" href="../css/user/login.css">
     <link rel="stylesheet" href="../css/user/register.css">
-	  <link rel="stylesheet" href="../css/user/terms.css">
+  	<link rel="stylesheet" href="../css/user/terms.css">
     <link rel="stylesheet" href="../css/footer.css">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

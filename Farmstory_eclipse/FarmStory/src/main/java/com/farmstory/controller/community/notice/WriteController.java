@@ -35,6 +35,7 @@ public class WriteController extends HttpServlet{
 		String group = req.getParameter("group");
 		String cate = req.getParameter("cate");
 		req.setAttribute("cate", cate);
+		req.setAttribute("group", group);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/write.jsp");
 		dispatcher.forward(req, resp);
@@ -50,6 +51,9 @@ public class WriteController extends HttpServlet{
 		String b_writer = req.getParameter("b_writer"); // session 값 hidden
 		String b_regip = req.getRemoteAddr();
 		String b_cateNo = req.getParameter("b_cateNo");
+		String group = req.getParameter("group");
+		
+		logger.debug("b_cateNo : " + b_cateNo);
 		
 		// 파일 업로드
 		List<BoardFileDTO> boardFiles = boardFileService.boardFileUpload(req);
@@ -73,7 +77,7 @@ public class WriteController extends HttpServlet{
 		}
 		
 		
-		resp.sendRedirect("/FarmStory/community/notice/list.do");
+		resp.sendRedirect("/FarmStory/community/notice/list.do?group="+group+"&cate="+b_cateNo);
 
 	}
 	

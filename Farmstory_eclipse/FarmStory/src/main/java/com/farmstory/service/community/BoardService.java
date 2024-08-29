@@ -1,10 +1,12 @@
 package com.farmstory.service.community;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.farmstory.dao.community.BoardDAO;
 import com.farmstory.dto.community.BoardDTO;
 import com.farmstory.dto.community.PageGroupDTO;
+import com.farmstory.util.BOARDSQL;
 
 public enum BoardService {
 
@@ -66,6 +68,12 @@ public enum BoardService {
 	
 	public int selectCountTotal() {
 		return dao.selectCountTotal();
+	}
+	
+	
+//	전체 게시물 카테고리별 갯수 구하기
+	public int selectCountTotalCate(String b_cateNo) {
+		return dao.selectCountTotalCate(b_cateNo);
 	}
 	
 	// 글 등록

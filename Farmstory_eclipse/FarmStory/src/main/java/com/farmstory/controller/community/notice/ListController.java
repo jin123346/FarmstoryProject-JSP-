@@ -31,7 +31,7 @@ public class ListController extends HttpServlet{
 		int currentPage = service.getCurrentPage(pg); 
 		
 		// 전체 게시물 갯수 구하기
-		int total = service.selectCountTotal();
+		int total = service.selectCountTotalCate(cate);
 				
 		// 마지막 페이지 번호 구하기
 		int lastPageNum = service.getLastPageNum(total);
@@ -46,7 +46,7 @@ public class ListController extends HttpServlet{
 		int pageStartNum = service.getPageStartNum(total, currentPage);
 		
 		// 데이터 조회하기
-		List<BoardDTO> boards = service.selectBoards(start);
+		List<BoardDTO> boards = service.selectBoardsCate(start, cate);
 		
 		
 		// 데이터 공유 참조(View에서 데이터 출력)

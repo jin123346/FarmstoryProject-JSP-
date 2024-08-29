@@ -75,7 +75,11 @@ public String sendEmailCode(String email) {
 	}
 
 
+	
 
+	public int updateUserPass(String uid,String pass) {
+		return dao.updateUserPass(uid,pass);
+	}
 	
 	public int selectCountUser (String type,String value) {
 		return dao.selectCountUser(type, value);

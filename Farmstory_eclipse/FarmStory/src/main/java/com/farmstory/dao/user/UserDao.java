@@ -60,6 +60,30 @@ public class UserDao extends DBHelper{
 		return user ;
 	}
 	
+	public int updateUserPass(String uid, String pass) {
+		int result=0;
+		try {
+			conn= getConnection();
+			pstmt= conn.prepareStatement(USERSQL.UPDATE_USER_PASS);
+			pstmt.setString(1, pass);
+			pstmt.setString(2, uid);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error(e.getMessage());
+
+			}
+		}
+		
+		
+		return result;
+		
+	}
 	
 	public int selectCountUser(String type,String value) {
 

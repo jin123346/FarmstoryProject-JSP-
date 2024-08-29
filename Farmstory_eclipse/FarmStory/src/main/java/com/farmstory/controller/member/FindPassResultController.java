@@ -31,6 +31,10 @@ public class FindPassResultController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String uid= req.getParameter("uid");
+		String pass = req.getParameter("pass1");
+		
+		int result = service.updateUserPass(uid, pass);
 		
 		
 		

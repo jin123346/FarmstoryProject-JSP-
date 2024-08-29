@@ -38,7 +38,7 @@ public enum BoardService {
 		
 		int currentPage = 1; // 처음 들어왔을때 파라미터 pg가 null이라서 첫페이지가 조회됨
 		
-		if(pg != null) {
+		if(pg != null ) {
 			currentPage = Integer.parseInt(pg);
 		}
 		
@@ -95,6 +95,13 @@ public enum BoardService {
 	public List<BoardDTO> selectBoardsCate(int start, String cate) {
 		return dao.selectBoardsCate(start, cate);
 	}
+	
+	// 메인페이지 카테고리별 글 목록
+	public List<BoardDTO> selectBoardsCateMain(String cate) {
+		return dao.selectBoardsCateMain(cate);
+	}
+	
+	
 	
 	// 글 수정
 	public void updateBoard(BoardDTO dto) {

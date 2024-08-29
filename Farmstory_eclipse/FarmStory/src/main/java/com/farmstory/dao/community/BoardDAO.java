@@ -266,6 +266,44 @@ public class BoardDAO extends DBHelper {
 		return boards;
 	}
 	
+	// 메인페이지 카테고리별 글 목록
+	public List<BoardDTO> selectBoardsCateMain(String cate) {
+		
+		List<BoardDTO> boardcates = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(BOARDSQL.SELECT_BOARDS_CATE_MAIN);
+			pstmt.setString(1, cate);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				BoardDTO dto = new BoardDTO();
+				dto.setBoardNo(rs.getInt(1));
+				dto.setB_cateNo(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setB_fNo(rs.getInt(4));
+				dto.setB_writer(rs.getString(5));
+				dto.setB_rdateSubString(rs.getString(6));
+				
+				boardcates.add(dto);
+			}
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return boardcates;
+	}
+	
 	// 글 수정
 	public void updateBoard(BoardDTO dto) {
 		

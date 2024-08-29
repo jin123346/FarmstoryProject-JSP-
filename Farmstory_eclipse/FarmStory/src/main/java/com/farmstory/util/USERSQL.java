@@ -50,6 +50,7 @@ public class USERSQL {
 												+ "`regDate`= NOW()";
 		
 		public static final String SELECT_USERS = "select * from `user`";
+		public static final String SELECT_USERS_MAIN = "select * from `user` order by `uid` limit 0,3";
 
 		public static final String SELECT_COUNT_USER = "SELECT COUNT(*) FROM `user`";
 		public static final String WHERE_UID = "WHERE `uid`=?";

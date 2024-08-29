@@ -1,0 +1,192 @@
+.container {
+    margin: 0 auto;
+    width: 600px;
+    height: 286px;
+    margin-top: 65px;
+    padding-top: 16px;
+    padding-bottom: 20px
+    }
+form{
+    width: 600px;
+    height: 286px;
+    box-sizing: border-box;
+}
+.container section{
+   height: 161px;
+}
+.headtxt {
+    text-align: left;
+    font-size:12px;
+    font-weight: 400;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #222121;
+}
+
+.headtxt > span  {
+    width: 63.2px;
+    height: 14px;
+    box-sizing: border-box;
+}
+table {
+   
+    width: 600px;
+    height: 138px;
+    border-collapse: collapse;
+    
+}
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+tr{
+    width: auto;
+}
+
+
+tr:nth-child(2) td:nth-child(2){
+   padding-top: 18px;
+   padding-left:12.42px;
+   padding-bottom: 14px;
+}
+
+tr:nth-child(1){
+    height: 49px;
+}
+tr:nth-child(2){
+    height: 87px;
+}
+
+
+table td:nth-child(1){
+    width: 120px;
+    box-sizing: border-box;
+}
+table td:nth-child(2){
+    width: auto;
+    box-sizing: border-box;
+}
+table td:nth-child(3){
+    width: 120px;
+    box-sizing: border-box;
+}
+
+
+input {
+    width: 164px;
+    height: 24px;
+    box-sizing: border-box;
+    border: 1px solid #E4EAEC;
+    line-height: 24px;
+    background: #F7F7F7;
+}
+
+input::placeholder{
+    text-indent: 6px;
+} /* 텍스트 들여쓰기 */
+
+input#code {
+    
+    margin-bottom: 1px;
+}
+button {
+    border: 1px solid #BEBEBE;
+    height: 27px;
+    background-color: #EFEFEF;
+}
+.form_group{
+    height: 27px;
+    box-sizing: border-box;
+    /* margin-bottom: 5px; */
+}
+
+.form_group > div > *{
+
+    box-sizing: border-box;
+    display: inline-flex;
+    text-align: center;
+    justify-content: center;
+    
+} 
+
+.form_group:nth-child(1){
+    margin-bottom: 4px;
+}
+
+ .btn_auth{
+    box-sizing: border-box;
+    width: 85px;
+    font-size: 12px;
+    line-height : 26.5px;
+    font-size: 12px;
+    text-align: center;
+} 
+
+
+.btn_confim{
+    box-sizing: border-box;
+    width: 34px;
+    height: 27px;
+    text-align: center;
+    align-items: center;
+    line-height : 26.5px;
+    font-size: 12px;
+    
+
+}
+
+
+
+.findnote {
+    text-align: left;
+    width: auto;
+    height: 40px;
+    white-space: nowrap;
+  
+
+}
+
+.findnote > p{
+    box-sizing: border-box;
+    font-size:12px;
+    font-weight: 400;
+    color: #555;
+    margin-top: 18px;
+    line-height: 20px;
+    width: 456.2px;
+    max-width: max-content;
+   
+
+}
+.btns {
+    text-align: right;
+    margin-top: 32px;
+}
+
+.btns > button{
+    border: 1px solid #BEBEBE;  
+    background-color: #FFFFFF;
+}
+
+.btns >.btn_cancel{
+    
+    width: 42px;
+    height: 35px;
+    margin-right: 1px;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    text-align: center;
+    margin: 0px;
+
+}
+.btns >.btn_next{
+    width: 42px;
+    height: 35px;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    text-align: center;
+
+}

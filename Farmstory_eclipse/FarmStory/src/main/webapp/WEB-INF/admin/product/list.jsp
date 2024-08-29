@@ -24,11 +24,18 @@
                    	<c:forEach var="product" items="${products}">
                         <tr>
                             <td><input type="checkbox" name="product_list_checkbox" id="plcheck"></td>
-                            <td><img src="${product.pListimgPath}" alt="${product.pName}" width="60" height="60" /></td>
+                            <c:choose>
+					            <c:when test="${product.sName == null}">
+					                <td><img src="/FarmStory/images/no_image.jpg" alt="no image" width="60" height="60" /></td>
+					            </c:when>
+					            <c:otherwise>
+					                <td><img src="/FarmStory/thumbs/product/${product.sName }" alt="${product.pName}" width="60" height="60" /></td>
+					            </c:otherwise>
+					        </c:choose>
                             <!-- <td><img src="../images/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td> -->
                             <td>${product.pNo}</td>
                             <td>${product.pName}</td>
-                            <td>${product.prodCateName}</td>
+                            <td>${product.prodCateNo}</td>
                             <td>${product.price}</td>
                             <td>${product.stock}</td>
                             <td>${product.rdate}</td>
@@ -40,14 +47,19 @@
                         <a href="#"  class="deletebtn">선택삭제</a>
                         <a href="/FarmStory/product/register.do"  class="insertbtn">상품등록</a>
                 </div><!--btn_group end-->
-
+                
+                
                 <div class="pages">
-                    <ul>
-                     <li><a href="#">&nbsp;[1]</a></li>
-                     <li><a href="#">[2]</a></li>
-                     <li><a href="#">[3]</a></li>
-                     <li><a href="#">[4]</a></li>
-                     <li><a href="#">[5]&nbsp;</a></li>
+                	<ul>
+                	<c:if test="${pageGroup.start > 1}">
+                    	<li><a href="/FarmStory/admin/product/list.do?pg=${pageGroup.start-1}" class="prev">이전</a></li>
+                    </c:if>
+                    <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
+                    	<li><a href="/FarmStory/admin/product/list.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a></li>
+                    </c:forEach>
+                    <c:if test="${pageGroup.end < lastPageNum}">
+                    	<li><a href="/FarmStory/admin/product/list.do?pg=${pageGroup.end+1}" class="next">다음</a></li>
+                    </c:if>
                     </ul>
                 </div>
                

@@ -26,7 +26,6 @@ public enum FileService {
 		
 	
 
-
 	public List<FileDTO> fileUpload(HttpServletRequest req ){
 			List<FileDTO> files = new ArrayList<FileDTO>();
 			
@@ -35,6 +34,11 @@ public enum FileService {
 			ServletContext ctx = req.getServletContext();
 			String uploadPath = ctx.getRealPath("/thumbs/product");
 			logger.debug(uploadPath);
+			
+			File uploadDir = new File(uploadPath);
+			if (!uploadDir.exists()) {
+			    uploadDir.mkdirs(); 
+			}
 			
 			
 			try {

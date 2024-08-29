@@ -32,6 +32,10 @@ public class WriteController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String group = req.getParameter("group");
+		String cate = req.getParameter("cate");
+		req.setAttribute("cate", cate);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/write.jsp");
 		dispatcher.forward(req, resp);
 		
@@ -45,6 +49,7 @@ public class WriteController extends HttpServlet{
 		String b_contents = req.getParameter("b_contents");
 		String b_writer = req.getParameter("b_writer"); // session 값 hidden
 		String b_regip = req.getRemoteAddr();
+		String b_cateNo = req.getParameter("b_cateNo");
 		
 		// 파일 업로드
 		List<BoardFileDTO> boardFiles = boardFileService.boardFileUpload(req);
@@ -55,6 +60,7 @@ public class WriteController extends HttpServlet{
 		dto.setB_fNo(boardFiles.size());
 		dto.setB_writer(b_writer);
 		dto.setB_regip(b_regip);
+		dto.setB_cateNo(b_cateNo);
 		
 		logger.debug("dto : " + dto);
 		

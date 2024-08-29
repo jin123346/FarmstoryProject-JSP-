@@ -38,7 +38,24 @@ public class PRODUCTSQL {
 										            + "JOIN `product` AS c ON c.pNo = a.pNo "
 										            + "JOIN `user` AS u ON u.uid = b.o_uid "
 										            + "ORDER BY a.orderNo DESC "
-										            + "LIMIT 0, 10;";
+										            + "LIMIT ?, 10;";
+	
+	
+	public final static String SELECT_ORDERITEMS_MAIN = "SELECT a.orderItemNo, "
+						            + "a.orderNo, "
+						            + "a.itemPrice, "
+						            + "c.pName, "
+						            + "a.itemQty, "
+						            + "b.o_delivery, "
+						            + "u.`name`, "
+						            + "a.orderDate, "
+						            + "a.pNo "
+						            + "FROM `orderitem` AS a "
+						            + "JOIN `order` AS b ON a.orderNo = b.orderNo "
+						            + "JOIN `product` AS c ON c.pNo = a.pNo "
+						            + "JOIN `user` AS u ON u.uid = b.o_uid "
+						            + "ORDER BY a.orderNo DESC "
+						            + "LIMIT ?, 3;";
 
 	
 	
@@ -47,10 +64,10 @@ public class PRODUCTSQL {
 	
 	//file
 	
-	public final static String Select_List_File_fno = "select pList_fNo from pListimgfile where pno=?";
+	public final static String Select_List_File_fno = "select pList_fNo from pListimgfile where pNo=?";
 	
-	public final static String Select_basic_File_fno = "select pBasic_fNo from pBasicimgfile where pno=?";
-  public final static String Select_Desc_File_fno = "select pDesc_fNo from pDescimgfile where pno=?";
+	public final static String Select_basic_File_fno = "select pBasic_fNo from pBasicimgfile where pNo=?";
+  public final static String Select_Desc_File_fno = "select pDesc_fNo from pDescimgfile where pNo=?";
 
   
 	//product
@@ -78,4 +95,8 @@ public class PRODUCTSQL {
 
 	public static final String SELECT_PRODUCT = "select * from `product` where `pNo` = ?";
 	
+	
+	
+	
+
 }

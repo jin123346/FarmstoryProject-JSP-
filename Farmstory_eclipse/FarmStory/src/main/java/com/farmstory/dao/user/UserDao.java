@@ -156,7 +156,7 @@ public class UserDao extends DBHelper{
 			conn = getConnection();
 			stmt = conn.createStatement();
 			
-			rs = stmt.executeQuery(USERSQL.SELECT_USERS);
+			rs = stmt.executeQuery(USERSQL.SELECT_USERS_MAIN);
 			
 			while(rs.next()) {
 				UserDTO dto = new UserDTO();

@@ -23,6 +23,8 @@ public class ListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String group = req.getParameter("group");
+		String cate = req.getParameter("cate");
 		String pg = req.getParameter("pg");
 		
 		// 현재 페이지 번호 구하기
@@ -53,6 +55,8 @@ public class ListController extends HttpServlet{
 		req.setAttribute("pageGroup", pageGroup);
 		req.setAttribute("pageStartNum", pageStartNum);
 		req.setAttribute("currentPage", currentPage);
+		req.setAttribute("group", group);
+		req.setAttribute("cate", cate);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/community/notice/list.jsp");
 		dispatcher.forward(req, resp);

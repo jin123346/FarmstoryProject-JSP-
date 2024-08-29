@@ -37,7 +37,7 @@
 					console.log(data);
 					if(data.result > 0){
 						alert('장바구니에 추가되었습니다!');
-						
+						location.href="/FarmStory/market/cart.do?uid=${sessUser.uid}";
 					}else{
 						alert('장바구니 추가에 실패하였습니다!');
 					}
@@ -115,7 +115,7 @@
                                 </tr>
                             </table>
                              <div class="buttons">
-                                <a href="#" type="button" class="add_to_cart">장바구니</a>
+                                <a href="/FarmStory/market/order.do?uid=${sessUser.uid}" type="button" class="add_to_cart">장바구니</a>
                                 <a href="/FarmStory/market/order.do?pNo=${productDto.pNo}&&uid=${sessUser.uid}"  type="button" class="buy_now">바로구매</a>
                             </div> <!-- .buttons -->
                         </div> <!-- .product_info -->

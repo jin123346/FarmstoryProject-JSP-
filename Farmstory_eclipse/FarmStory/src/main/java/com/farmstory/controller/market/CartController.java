@@ -2,11 +2,13 @@ package com.farmstory.controller.market;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.market.CartDTO;
+import com.farmstory.dto.product.ProductCartDTO;
 import com.farmstory.service.market.CartService;
 import com.google.gson.JsonObject;
 
@@ -26,6 +28,14 @@ public class CartController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String uid = req.getParameter("uid");
+		
+		List<ProductCartDTO> prodCartDto = service.selectCarts(uid);
+		
+		req.setAttribute("prodCartDto", prodCartDto);
+		req.setAttribute("service", service);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/market/cart.jsp");
 		dispatcher.forward(req, resp);
 	}

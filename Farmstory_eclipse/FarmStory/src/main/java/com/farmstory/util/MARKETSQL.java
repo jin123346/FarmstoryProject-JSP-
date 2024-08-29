@@ -3,27 +3,6 @@ package com.farmstory.util;
 public class MARKETSQL {
 
 
-	// board
-	public static final String INSERT_BOARD = "insert into `board` set "
-											   + "`title`=?,"
-											   + "`b_contents`=?,"
-											   + "`b_fNo`=?,"
-											   + "`b_regip`=?,"
-											   + "`b_writer`=?,"
-											   + "`b_rdate`=NOW()";
-	public static final String SELECT_MAX_BOARD_NO = "select MAX(`boardNo`) from `board`";
-	
-	
-	// file
-	public static final String SELECT_BOARD_FILE = "select * from boardfile where b_fNo=?";
-	public static final String INSERT_BOARD_FILE = "insert into boardfile set "
-													+ "`b_pNo`=?,"
-													+ "`b_oName`=?,"
-													+ "`b_sName`=?,"
-													+ "`b_rdate`=NOW()";
-	public static final String UPDATE_BOARD_FILE_DOWNLOAD_COUNT = "update boardfile set `download` = `download` + 1 where `fno`=?";
-	
-	
 	
 
 		//cart	
@@ -32,8 +11,13 @@ public class MARKETSQL {
 												+ "`prodNo`=?, "
 												+ "`cartProdQty`=?, "
 												+ "`cartProdDate`=NOW()";
-		//point	
 		
+		public static final String SELECT_CARTS = "SELECT b.pList_fno, a.prodCateName, b.pName, c.cartProdQty, b.discount, b.point, b.price "
+												+ "FROM prodcate AS a JOIN product AS b USING(`prodCateNo`) "
+												+ "JOIN cart AS c ON c.prodNo = b.pNo "
+												+ "left JOIN plistimgfile AS d ON b.pNo = d.pNo "
+												+ "WHERE `c_uid` = ?";
+		//point	
 		//order	
 		
 		//file	

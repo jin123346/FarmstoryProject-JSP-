@@ -26,13 +26,12 @@ public class MarketDAO extends DBHelper{
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(MARKETSQL.INSERT_CART);
-			pstmt.setInt(1, dto.getCartNo());
-			pstmt.setString(2, dto.getC_uid());
-			pstmt.setInt(3, dto.getProdNo());
-			pstmt.setInt(4, dto.getCartProdQty());
-			pstmt.setString(5, dto.getCartProdDate());
+			pstmt.setString(1, dto.getC_uid());
+			pstmt.setInt(2, dto.getProdNo());
+			pstmt.setInt(3, dto.getCartProdQty());
 			
 			result = pstmt.executeUpdate();
+			
 			closeAll();
 		} catch (Exception e) {
 			logger.error(e.getMessage());

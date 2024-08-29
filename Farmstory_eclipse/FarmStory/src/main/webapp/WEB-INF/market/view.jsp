@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -19,6 +18,8 @@
 			
 		const numberInput = document.getElementById('numberInput');
 		const totalPrice = document.getElementById('totalPrice');
+		const cart = document.getElementsByClassName('add_to_cart')[0];
+		const buyNow = document.getElementsByClassName('buy_now')[0];
 		
 		numberInput.addEventListener('input', () => {
 			
@@ -27,24 +28,20 @@
 		totalPrice.innerText = inNum * ${productDto.price};
 		});
 		
-		
-		const cart = document.getElementsByClassName('add_to_cart')[0];
-		const buyNow = document.getElementsByClassName('buy_now')[0];
-		
+			
 		cart.addEventListener('click', function(e){
-				e.preventDefault();
-		
+			e.preventDefault();
+			
+			let qty = document.getElementById('qty');
+			qty.value = numberInput.value;
+			const form = document.getElementById('formData');
+			const formData = new FormData(form);
+				console.log(formData);
 				
-				const inNum = numberInput.value;
-				
-				fetch('/FarmStory/market/view.do', {
+				fetch('/FarmStory/market/cart.do', {
 						method: 'POST',
-						headers: {'content-Type': 'application/json'},
-						body: JSON.stringify({
-							uid: '${sessUser.uid}',
-							prodNo: ${productDto.pNo},
-							cartProdQty: inNum
-						})
+						body: formData
+				
 				})
 				.then(resp=>resp.json())
 				.then(data=>{
@@ -56,14 +53,11 @@
 						alert('장바구니 추가에 실패하였습니다!');
 					}
 					
-					
 				})
 				.catch(err=>{
 					console.log(err);
 				});
-				
-			
-		});
+		})
 		}
 	
 	</script>
@@ -102,7 +96,6 @@
             </div><!-- #headerIn -->
         </header><!-- #header -->
 
-
         <!-- #main -->
         <main id="main" class="cf">
             <section class="mainIn cf">
@@ -112,7 +105,7 @@
                 <aside class="aside">
                     <div class="sidebar">
                         <div class="aside_cate">
-                            <img src="/FarmStory/images/sub_aside_cate2_tit.png" alt="Buying in the Market 장보기">
+                            <img src="../images/sub_aside_cate2_tit.png" alt="Buying in the Market 장보기">
                         </div><!-- .aside_cate -->
                         <div class="aside_bg">
                             <ul class="cate_lnb">
@@ -125,10 +118,10 @@
                     <div class="articleIn">
                     <nav>
                         <h2>
-                            <img src="/FarmStory/images/sub_nav_tit_cate2_tit1.png" alt="장보기">
+                            <img src="../images/sub_nav_tit_cate2_tit1.png" alt="장보기">
                         </h2>
                         <p class="location">
-                            <img src="/FarmStory/images/sub_page_nav_ico.gif" alt="메뉴">
+                            <img src="../images/sub_page_nav_ico.gif" alt="메뉴">
                             <span>HOME </span>
                             <span>장보기 </span>
                             <strong>장보기</strong> 
@@ -136,7 +129,7 @@
                     </nav>
                     <h3>기본정보</h3>
                     <div class="product_info">
-                            <img src="/FarmStory/images/market_item_thumb.jpg" alt="30%세일 무농약재배" />
+                            <img src="../images/market_item_thumb.jpg" alt="30%세일 무농약재배" />
                          <div class="product_details">
                             <table>
                                 <tr>
@@ -172,8 +165,15 @@
                             </div> <!-- .buttons -->
                         </div> <!-- .product_info -->
                     </div>
+                    
+						<form id="formData">
+							<input type="hidden" name="prodNo" value="${productDto.pNo}">
+							<input type="hidden" name="uid" value="${sessUser.uid}">
+							<input type="hidden" name="qty" value="" id="qty">
+						</form>
+						                    
                     <h3>상품설명</h3>
-                    <div class="sample"><img src="/FarmStory/images/market_detail_sample.jpg" alt="IMAGE SAMPLE"></div>
+                    <div class="sample"><img src="../images/market_detail_sample.jpg" alt="IMAGE SAMPLE"></div>
                     <h3>배송정보</h3>
                     <p class="sms">입금하신 이후 택배송장번호는 SMS(문자서비스)를 통해 고객님께 안내해드립니다.</p>
                     <h3>교환/반품</h3>
@@ -204,7 +204,6 @@
                 </article><!-- .article -->
             </section>
         </main><!-- #main -->
-
         <footer id="footer">
             <div class="footerIn cf">
             <img src="../images/footer_logo.png" alt="farmStory footer" class="flogo">
@@ -221,4 +220,3 @@
     </div><!-- #wrapper -->
 </body>
 </html>
-

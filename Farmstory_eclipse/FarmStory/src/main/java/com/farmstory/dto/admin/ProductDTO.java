@@ -1,6 +1,6 @@
 package com.farmstory.dto.admin;
 
-import java.util.List;
+import jakarta.servlet.ServletContext;
 
 public class ProductDTO {
 	private int pNo;
@@ -19,12 +19,20 @@ public class ProductDTO {
 	private String pDesc;
 	private String sName;
 	private FileListDTO filelistdto;
+	private String imgPath;
 	
 	
-	public String sName() {
+	
+	public String getImgPath() {
+		return imgPath;
+	}
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+	public String getsName() {
 		return sName;
 	}
-	public void setpListimgPath(String sName) {
+	public void setsName(String sName) {
 		this.sName = sName;
 	}
 	

@@ -24,11 +24,18 @@
                    	<c:forEach var="product" items="${products}">
                         <tr>
                             <td><input type="checkbox" name="product_list_checkbox" id="plcheck"></td>
-                            <td><img src="${product.pListimgPath}" alt="${product.pName}" width="60" height="60" /></td>
+                            <c:choose>
+					            <c:when test="${product.sName == null}">
+					                <td><img src="/FarmStory/images/no_image.jpg" alt="no image" width="60" height="60" /></td>
+					            </c:when>
+					            <c:otherwise>
+					                <td><img src="/FarmStory/thumbs/product/${product.sName }" alt="${product.pName}" width="60" height="60" /></td>
+					            </c:otherwise>
+					        </c:choose>
                             <!-- <td><img src="../images/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td> -->
                             <td>${product.pNo}</td>
                             <td>${product.pName}</td>
-                            <td>${product.prodCateName}</td>
+                            <td>${product.prodCateNo}</td>
                             <td>${product.price}</td>
                             <td>${product.stock}</td>
                             <td>${product.rdate}</td>

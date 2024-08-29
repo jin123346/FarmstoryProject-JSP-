@@ -47,10 +47,10 @@ public class PRODUCTSQL {
 	
 	//file
 	
-	public final static String Select_List_File_fno = "select pList_fNo from pListimgfile where pno=?";
+	public final static String Select_List_File_fno = "select pList_fNo from pListimgfile where pNo=?";
 	
-	public final static String Select_basic_File_fno = "select pBasic_fNo from pBasicimgfile where pno=?";
-  public final static String Select_Desc_File_fno = "select pDesc_fNo from pDescimgfile where pno=?";
+	public final static String Select_basic_File_fno = "select pBasic_fNo from pBasicimgfile where pNo=?";
+  public final static String Select_Desc_File_fno = "select pDesc_fNo from pDescimgfile where pNo=?";
 
   
 	//product
@@ -78,4 +78,8 @@ public class PRODUCTSQL {
 
 	public static final String SELECT_PRODUCT = "select * from `product` where `pNo` = ?";
 	
+	
+	
+	
+
 }

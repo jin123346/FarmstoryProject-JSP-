@@ -73,12 +73,12 @@ public class FileDAO extends DBHelper {
 			conn  = getConnection();
 			pstmt = conn.prepareStatement(PRODUCTSQL.Select_List_File_fno);
 			pstmt.setInt(1, pno);
-			
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
 				fno = rs.getInt(1);
-				
+				logger.debug("list_fno : "+fno);
+
 			}
 			
 		} catch (Exception e) {

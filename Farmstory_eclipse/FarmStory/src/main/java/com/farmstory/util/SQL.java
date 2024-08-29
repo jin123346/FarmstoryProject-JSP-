@@ -59,7 +59,8 @@ public class SQL {
 	
 	// admin 
 	// product list
-	public static final String SELECT_PRODUCT_LIST = "SELECT * FROM product AS p JOIN plistimgfile AS l ON p.pNo=l.pNo";
+	public static final String SELECT_PRODUCT_LIST = "SELECT p.pNo, p.pName, p.prodCateNo, p.price, p.stock, p.rdate , b.pList_sName  from product as p left join  plistimgfile as b on b.pList_fNo = p.pList_FNo order by pNo desc";
+	public static final String SELECT_PRODUCT_LIST_START = "SELECT p.pNo, p.pName, p.prodCateNo, p.price, p.stock, p.rdate , b.pList_sName  from product as p left join  plistimgfile as b on b.pList_fNo = p.pList_FNo order by pNo desc LIMIT ?,5";
 										
 	public static final String INSERT_PRODUCT_LIST = "insert into `product` set "
 												   + "`pList_oName`=?,"

@@ -9,12 +9,14 @@ import javax.naming.NamingException;
 
 import com.farmstory.dao.admin.ProductDAO;
 import com.farmstory.dto.admin.ProductDTO;
+import com.farmstory.dto.community.BoardDTO;
 
 
 public enum ProductService {
 	INSTANCE;
 	
 	private ProductDAO dao = ProductDAO.getInstance();
+	
 	
 	public int insertProduct(ProductDTO dto) {
 		
@@ -39,7 +41,14 @@ public enum ProductService {
 	public void deleteProduct(int pNo) {
 		dao.deleteProduct(pNo);
 	}
+	
+	public int selectCountTotal() {
+		return dao.selectCountTotal();
+	}
 
+	public List<ProductDTO> selectProducts(int start) {
+		return dao.selectProducts(start);
+	}
 
 }
 

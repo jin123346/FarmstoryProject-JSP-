@@ -49,13 +49,14 @@ public class RegisterController extends HttpServlet{
 		String pDesc = req.getParameter("pDesc");
 		logger.debug(pName);
 		logger.debug("pname "+pName+"price"+price+"stock"+stock+"prodCateNo"+prodCateNo+"delivery"+delivery);
-		
-		
-		List<FileDTO> files = fileservice.fileUpload(req);
-		logger.debug(files.toString());
 		int pList_fNo=0;
 		int pDesc_fNo=0;
 		int pBasic_fNo=0;
+		
+		List<FileDTO> files = fileservice.fileUpload(req);
+		logger.debug(files.toString());
+		
+		
 		
 		int point = (int) Math.ceil(Double.parseDouble(price)*0.01);
 		ProductDTO product = new ProductDTO();
@@ -73,7 +74,7 @@ public class RegisterController extends HttpServlet{
 		
 		int pno = productservice.insertProduct(product);
 		
-		logger.debug(pno+"");
+		logger.debug("pno ; "+pno+"");
 		
 		for(FileDTO filedto : files) {
 			
@@ -86,6 +87,11 @@ public class RegisterController extends HttpServlet{
 		pList_fNo = fileservice.selectListFile_fNo(pno);
 		pDesc_fNo = fileservice.selectDescFile_fNo(pno);
 		pBasic_fNo=fileservice.selectBasicFile_fNo(pno);
+		logger.debug("pList_fNo : "+pList_fNo);
+		logger.debug("pDesc_fNo : "+pDesc_fNo);
+		logger.debug("pDesc_fNo : "+pDesc_fNo);
+
+		
 		
 		
 		productservice.updateProductFno(pList_fNo,pDesc_fNo,pBasic_fNo,pno);

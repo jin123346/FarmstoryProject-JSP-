@@ -11,6 +11,7 @@
                         <table>
                             <tr>
                                 <td>제목</td>
+                                <input type="hidden" name="b_cateNo" value="${b_cateNo}"/>
                                 <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
                             </tr>
                             <tr>

@@ -2,7 +2,17 @@
 <%@ include file="../../_header.jsp" %>
 <title>글목록</title>
 <link rel="stylesheet" href="../../css/community.css">
-<%@ include file="../../_aside_cm.jsp" %>
+<c:choose>
+	<c:when test="${group eq 'croptalk'}">
+		<%@ include file="../../_aside_ct.jsp" %>
+		<link rel="stylesheet" href="../../css/croptalk.css">
+	</c:when>
+	<c:when test="${group eq 'event'}">
+		<%@ include file="../../_aside_et.jsp" %>
+		<link rel="stylesheet" href="../../css/event.css">
+	</c:when>
+	<c:otherwise><%@ include file="../../_aside_cm.jsp" %></c:otherwise>
+</c:choose> 
                         <section class="list">
                             <h3>글목록</h3>
                             <article>
@@ -14,6 +24,11 @@
                                         <th>날짜</th>
                                         <th>조회</th>
                                     </tr>
+                                    <c:if test="${empty boards}">
+						                <tr>
+						                    <td colspan="5" class="td_first">게시물이 없습니다.</td>
+						                </tr>
+						            </c:if>
                                     <c:forEach var="board" items="${boards}">
 	                                    <tr>
 	                                        <td>${pageStartNum}</td>
@@ -48,7 +63,7 @@
 							    </c:if>
 							</div>
                             <!-- 글쓰기 버튼 -->
-                            <a href="/FarmStory/community/notice/write.do" class="btnWrite">글쓰기</a>
+                            <a href="/FarmStory/community/notice/write.do?group=${group}&cate=${cate}" class="btnWrite">글쓰기</a>
                         </section>
                     </div><!-- .articleIn -->
                 </article><!-- .article -->

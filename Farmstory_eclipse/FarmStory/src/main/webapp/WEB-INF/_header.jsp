@@ -70,9 +70,9 @@
                             <img src="/FarmStory/images/head_menu_badge.png" alt="30%" class="discount"/>
                             <img src="/FarmStory/images/head_menu2.png" alt="장보기">
                         </a></li>
-                        <li><a href="/FarmStory/croptalk/story.do?"><img src="/FarmStory/images/head_menu3.png" alt="농작물이야기"></a></li>
-                        <li><a href="/FarmStory/event/info.do"><img src="/FarmStory/images/head_menu4.png" alt="이벤트"></a></li>
-                        <li><a href="/FarmStory/community/notice/list.do"><img src="/FarmStory/images/head_menu5.png" alt="커뮤니티"></a></li>
+                        <li><a href="/FarmStory/community/notice/list.do?group=croptalk&cate=b201"><img src="/FarmStory/images/head_menu3.png" alt="농작물이야기"></a></li>
+                        <li><a href="/FarmStory/community/notice/list.do?group=event&cate=b301"><img src="/FarmStory/images/head_menu4.png" alt="이벤트"></a></li>
+                        <li><a href="/FarmStory/community/notice/list.do?group=community&cate=b101"><img src="/FarmStory/images/head_menu5.png" alt="커뮤니티"></a></li>
                     </ul><!-- .gnb -->
                 </nav><!-- .gnb_wrap -->
                 

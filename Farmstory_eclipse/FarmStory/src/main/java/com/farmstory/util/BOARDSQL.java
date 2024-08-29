@@ -11,6 +11,7 @@ public class BOARDSQL {
 											   + "`b_fNo`=?,"
 											   + "`b_regip`=?,"
 											   + "`b_writer`=?,"
+											   + "`b_cateNo`=?,"
 											   + "`b_rdate`=NOW()";
 	public static final String SELECT_MAX_BOARD_NO = "select MAX(`boardNo`) from `board`";
 	// 글목록 & 글쓴이를 닉네임으로 조회

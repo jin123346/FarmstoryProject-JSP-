@@ -23,8 +23,9 @@
 			
 			let qty = document.getElementById('qty');
 			qty.value = numberInput.value;
-			const form = document.getElementById('formData');
-			const formData = new FormData(form);
+			let form = document.getElementById('formData');
+			let formData = new FormData(form);
+			formData.append("action","insert");
 				console.log(formData);
 				
 				fetch('/FarmStory/market/cart.do', {

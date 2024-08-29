@@ -97,7 +97,7 @@
         <main>
             <div class="mainIn">
 	              <section>
-	                <form action="/FarmStory/member/findpass.do" method="post" enctype="multipart/form-data">
+	                <form action="/FarmStory/member/findPass.do" method="post" enctype="multipart/form-data">
 	                    <h1 class="tit">비밀번호 찾기</h1>
 	                    <table class="password">
 	                        <tbody>

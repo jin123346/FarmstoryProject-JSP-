@@ -3,6 +3,64 @@
 <title>장바구니</title>
 <link rel="stylesheet" href="../css/style_cart.css">
 
+<script>
+	window.onload = function(){
+	let setDelete = new Set();
+	const btnSd = document.getElementsByClassName('btnSD')[0];
+
+	let chkboxes = document.querySelectorAll('.checkbox');
+
+	chkboxes.forEach(function(checkbox) {
+	    checkbox.addEventListener('click', function() {
+	        if(this.checked){
+	        	setDelete.add(this.value);
+	        	alert("hi");
+	        }else{
+	        	setDelete.delete(this.value);
+	        }
+	    });
+	});
+	
+	
+	btnSd.addEventListener('click',function(e){
+		e.preventDefault();
+		
+		let arr = [];
+		setDelete.forEach(value => {
+		    arr.push(value);
+		});
+		
+		let formData = new FormData();
+		
+		arr.forEach(val => {
+		    formData.append("pk", val);
+		});
+		// for (let key of formData.keys()) {
+		// 	  console.log(key);
+		// 	}
+		formData.append("action", "delete");
+		fetch('/FarmStory/market/cart.do', {
+			method: 'POST',
+			body: formData
+	})
+	.then(resp=>resp.json())
+	.then(data=>{
+		console.log(data);
+		if(data.result > 0){
+			alert('삭제되었습니다!');
+		}else{
+			alert('실패하였습니다!');
+		}
+		
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+	
+	});
+	}
+</script>
+
 <!-- #main -->
 <main id="main" class="cf">
 	<section class="mainIn cf">
@@ -64,7 +122,7 @@
                         </c:if>
                         <c:forEach var="prodCartDto" items="${prodCartDto}">
                         <tr>
-                            <td><input type="checkbox" class="checkbox"/></td>
+                            <td><input type="checkbox" class="checkbox" onclick=""  value="${prodCartDto.cartNo}"/></td>
                             <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
                             <td>${prodCartDto.prodCateName}</td>
                             <td>${prodCartDto.prodName}</td>
@@ -84,27 +142,27 @@
                             </tr>
                             <tr>
                                 <td>상품수</td>
-                                <td>1</td>
+                                <td>${service.totalQty(prodCartDto)}개</td>
                             </tr>
                             <tr>
                                 <td>상품금액</td>
-                                <td>27,000</td>
+                                <td>${service.totalPrice(prodCartDto)}원</td>
                             </tr>
                             <tr>
                                 <td>할인금액</td>
-                                <td>5,0000원</td>
+                                <td>${service.totalDiscount(prodCartDto)}원</td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
-                                <td>5,0000원</td>
+                                <td>${service.totalDelivery(prodCartDto)}원</td>
                             </tr>
                             <tr>
                                 <td>포인트</td>
-                                <td>4,000원</td>
+                                <td>${service.totalPoint(prodCartDto)}p</td>
                             </tr>
                             <tr>
                                 <td>전체주문금액</td>
-                                <td>22,000</td>
+                                <td>${service.realtotal(prodCartDto)}원</td>
                             </tr>
                         </table><!-- .tb2 -->
                         <button class="btn_order"><a href="#">주문하기</a></button>

@@ -30,19 +30,22 @@ public class FindIdResultController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String name = req.getParameter("name");
-		String email = req.getParameter("email");
-		logger.debug("email : "+email);
-		logger.debug("name : "+name);
+		String uid = req.getParameter("uid");
+		String pass = req.getParameter("pass");
+		logger.debug("uid : "+uid);
+		logger.debug("pass : "+pass);
 		
 		
 		
-		UserDTO user = service.selectNameEmail(name,email);
-		logger.debug(user.toString());
-		req.setAttribute("user", user);
+		int result = service.updateUserPass(uid,pass);
+	
+		if(result>0) {
+			resp.sendRedirect("/FarmStory/member/login.do");
+		}else {
+			resp.sendRedirect("/FarmStory/member/findpassResult.do?uid="+uid);
+		}
 		
 		
-		resp.sendRedirect("/FarmStory/member/findIdResult.do");
 		
 		
 		

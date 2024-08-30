@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/member/checkid.do")
-public class MemberController extends HttpServlet{
+public class MemberController extends HttpServlet{  //checkid , checknick , 확인
 	private static final long serialVersionUID = 1L;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -32,7 +32,7 @@ public class MemberController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String type = req.getParameter("type");
 		String value = req.getParameter("value");
-		
+		 
 		int result = service.selectCountUser(type, value);
 		
 		if( type.equals("email") && result>0) {

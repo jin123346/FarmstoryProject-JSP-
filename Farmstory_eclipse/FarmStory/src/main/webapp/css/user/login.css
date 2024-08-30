@@ -61,6 +61,11 @@
 	content :' | ';
 }
 
+.join_mem:after{
+	display: none;
+}
+
+
 .login > div >a:first-child:after{
 	content :'';
 }

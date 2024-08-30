@@ -57,6 +57,9 @@ public class MainController extends HttpServlet{
 		req.setAttribute("product", product);
 		logger.debug("product : "+product);
 		
+		String success = req.getParameter("success");		
+		req.setAttribute("success", success);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
 		logger.debug(dispatcher+"");
 		dispatcher.forward(req, resp);

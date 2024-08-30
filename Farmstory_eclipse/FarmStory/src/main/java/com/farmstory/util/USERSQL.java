@@ -53,6 +53,8 @@ public class USERSQL {
 		public static final String SELECT_USERS_MAIN = "select * from `user` order by `uid` limit 0,3";
 
 		public static final String SELECT_COUNT_USER = "SELECT COUNT(*) FROM `user`";
+		public static final String SELECT_COUNT_USERS = "SELECT * FROM `user` LIMIT ?,10";
+		
 		public static final String WHERE_UID = "WHERE `uid`=?";
 		public static final String WHERE_NICK = "WHERE `nick`=?";
 		public static final String WHERE_EMAIL = "WHERE `email`=?";
@@ -74,6 +76,14 @@ public class USERSQL {
 	public static final String UPDATE_USER_PASS = "update `user` set pass=sha2(?,256) where uid=?";
 	
 	
-
+	public static final String UPDATE_USER_MYINFO = "update `user` set"
+														+ "`name`=?, "
+														+ "`nick`=?, "
+														+ "`email`=?, "
+														+ "`hp`=?, "
+														+ "`zip`=?, "
+														+ "`addr1`=?, "
+														+ "`addr2`=? "
+														+ "where uid=?" ;
 
 }

@@ -1,0 +1,276 @@
+.form span {
+    display: block;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: bold;
+    
+}
+
+main input{
+    width: 162px;
+    height: 24px;
+     text-indent: 6px;
+    
+}
+table tr:nth-of-type(1){
+    border-top: 2px solid #E9E9E9;
+
+}
+
+
+.infotable {
+    width: 600px;
+    height: 578px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+.form{
+    height: 507px;
+    box-sizing: border-box;
+}
+table > tr {
+    box-sizing: border-box;
+}
+table, th, td {
+    box-sizing: border-box;
+    border-left: 1px solid #E9E9E9;
+    border-right:1px solid #E9E9E9;;
+   border-bottom: 1px solid #E9E9E9;;
+}
+
+table, th{
+    line-height: 14.52px;
+}
+
+.form_group {
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+gap:0px; 
+
+}
+.form_group > .address{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    flex-direction: row;    
+}
+#input-nickname {
+    flex: 1;
+    margin-right: 8px; /* Space between input and button */
+}
+
+.form table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.form table:nth-of-type(1){
+    box-sizing: border-box;
+    height: 139px;
+}
+.form table:nth-of-type(2){
+    box-sizing: border-box;
+    height: 306px;
+}
+
+.form th, .form td{
+    padding-left: 12.5px;
+
+}
+.form td {
+   box-sizing: border-box;
+    padding-left: 12.5px;
+    padding-top: 6.5px;
+    padding-bottom: 6.5px;
+    line-height: 14px;
+}
+
+.form th{
+    text-align: left;
+    width: 105px;
+    background-color: #F5F8F9;
+}
+
+table:nth-child(2){
+    box-sizing: border-box;
+}
+
+.form input {
+    background: #F7F7F7;
+    border:1px solid #E4EAEC;
+    box-sizing: border-box;
+
+}
+.form span {
+	line-height : 24px;
+}
+#zip {
+    width: 162px;
+    height: 24px;
+    box-sizing: border-box;
+
+}
+
+.input_address {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3px;
+    width: 362px;
+    
+
+}
+button{
+    margin-left: 10px;
+    
+}
+.btn_modifty{
+    width: 85px;
+    height: 27px;
+    border: 1px solid #E9E9E9;
+    background-color: #2E658A;
+    color: FFFFFF;
+    margin-top: 0px;
+}
+
+.btn_modifty > p{
+    color: #FFFFFF;
+}
+
+.form_group li{
+    display: flex;
+
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.form_group li:nth-child(1){
+    margin-bottom: 8px;
+}
+.btn_duplicate {
+    flex-shrink: 0;
+    /* display: inline-flex; */
+    width: auto;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 12px;
+    justify-content: center;
+    background-color: white; /* Ensure background color matches design */
+    height: 18px;
+}
+
+.btn_duplicate .icon {
+    margin-right: 0px; /* Space between the icon and text */
+    width: 58px; /* Adjust the size as needed */
+    height: 18px;
+    left: 10px;
+}
+
+.btn_send{
+    display: inline-flex;
+    width: auto;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 12px;
+    justify-content: center;
+    background-color: white;
+}
+.auth{
+	margin-top:3px;
+}                              
+
+.btn_auth .icon {
+    margin-right: 0px; /* Space between the icon and text */
+    width: 80px; /* Adjust the size as needed */
+    height: 18px;
+    
+}
+
+
+.btnZip{
+    display: flex;
+    width: auto;
+    height: 18px;
+    align-self: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 12px;
+    justify-content: center;
+    background-color: white;
+    margin-bottom: 3px;
+}
+
+.btn_duplicate .icon {
+    margin-right: 0px; /* Space between the icon and text */
+    width: 58px; /* Adjust the size as needed */
+    height: 18px;
+    left: 10px;
+}
+
+.btnZip .icon {
+    margin-right: 0px; /* Space between the icon and text */
+    width: 80px; /* Adjust the size as needed */
+    height: 18px;
+    left: 10px;
+    
+}
+
+
+.btn_quit{
+    width: 58px;
+    height: 27px;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 14.52px;
+    justify-content: center;
+    background-color: #ED2F2F;
+    margin: 0;
+
+}
+.btn_quit > p{
+    color: #FFFFFF;
+}
+
+
+.address-input {
+    width: calc(100% - 12px); /* Adjust the width as needed */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.button_container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px; /* Space above the buttons */
+}
+
+.button_container button {
+    padding: 8px 16px;
+    margin-left: 10px; /* Space between buttons */
+}
+
+.button_container .btn-cancel {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.button_container .btn_submit {
+    background-color: #ccc;
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.button_container button:hover {
+    opacity: 0.8;
+}

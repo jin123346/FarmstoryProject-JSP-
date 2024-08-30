@@ -35,7 +35,7 @@
                             아직 회원이 아니시면 회원으로 가입하세요.
                         </p>
 
-                        <a href="/FarmStory/member/terms.do">&nbsp회원가입</a>
+                        <a href="/FarmStory/member/terms.do" class="join_mem">&nbsp회원가입</a>
                         <a href="/FarmStory/member/findPass.do">&nbsp비밀번호찾기</a>
                         <a href="/FarmStory/member/findId.do">아이디찾기</a>
 

@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.farmstory.dto.user.UserDTO;
 import com.farmstory.service.user.UserService;
 
 import jakarta.servlet.RequestDispatcher;
@@ -15,7 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/findpassResult.do")
+@WebServlet("/member/findPassResult.do")
 public class FindPassResultController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -24,6 +23,9 @@ public class FindPassResultController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String uid= req.getParameter("uid");
+		req.setAttribute("uid", uid);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/user/findPassResult.jsp");
 	     dispatcher.forward(req, resp);
 	}
@@ -36,6 +38,13 @@ public class FindPassResultController extends HttpServlet {
 		
 		int result = service.updateUserPass(uid, pass);
 		
+		if(result>0) {
+			resp.sendRedirect("/FarmStory/member/login.do");
+		}else {
+			req.setAttribute("uid", uid);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/user/findPassResult.jsp");
+		     dispatcher.forward(req, resp);
+		}
 		
 		
 

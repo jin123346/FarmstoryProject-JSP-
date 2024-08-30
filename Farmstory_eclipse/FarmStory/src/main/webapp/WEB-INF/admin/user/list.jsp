@@ -59,30 +59,31 @@
 				</div><!--btn_group end-->
 				
 				<!-- 페이지 네비게이션 -->
-				
-				
-				<div class="pages">
-                    <c:if test="${pageGroup.start > 1}">
-                       <a href="/FarmStory/admin/user/list.do?pg=${pageGroup.start - 1}" class="prev">이전</a>
-                   </c:if>
-                   <c:choose>
-                      <c:when test="${pageGroup.end >= pageLastNum}">
-                         <c:forEach var="i" begin="${pageGroup.start}" end="${pageLastNum}">
-                             <a href="/FarmStory/admin/user/list.do?pg=${i}" class="num ${currentPageNum == i ? 'current':'off'}">${i}</a>                
-                          </c:forEach>
-                      </c:when>
-                      <c:otherwise>
-                          <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
-                             <a href="/FarmStory/admin/user/list.do?pg=${i}" class="num ${currentPageNum == i ? 'current':'off'}">${i}</a>                
-                         
-                          <c:if test="${pagegroup.end+1 < lastPageNum}">
-	               		<a href="/FarmStory/admin/user/list.do?pg=${pagegroup.end +1}" class="next">다음</a>
-                       </c:forEach>
-                      </c:otherwise>
-                       
-	                </c:if>
-                  </c:choose>
-                </div>
+				    <div class="pages">
+                	<ul>
+                	<c:if test="${pageGroup.start > 1}">
+                    	<li><a href="/FarmStory/admin/user/list.do?pg=${pageGroup.start-1}" class="prev">이전</a></li>
+                    </c:if>
+                        <c:choose>
+                     <c:when test="${pageGroup.end > pageLastNum}">
+                    
+                    <c:forEach var="i" begin="${pageGroup.start}" end="${lastPageNum}">
+                    	<li><a href="/FarmStory/admin/user/list.do?pg=${i}" class="num ${currentPageNum == i ? 'current':'off'}">${i}</a></li>
+                    </c:forEach>
+                    </c:when>
+                     <c:otherwise>
+                       <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
+                      <li> <a href="/FarmStory/admin/user/list.do?pg=${i}" class="num ${currentPageNum == i ? 'current':'off'}">${i}</a></li>
+                         </c:forEach>
+                    	<li><a href="/FarmStory/admin/user/list.do?pg=${pageGroup.end+1}" class="next"></a></li>
+                       </c:otherwise>
+                     </c:choose>  
+                     </ul>
+                </div><!--pages-->
+                
+                
+
+                
 				
 				   
 			<!--status-table end-->

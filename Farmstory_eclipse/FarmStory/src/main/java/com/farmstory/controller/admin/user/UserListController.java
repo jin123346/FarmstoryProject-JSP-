@@ -38,8 +38,6 @@ public class UserListController extends HttpServlet{
 
 
 		String pg = req.getParameter("pg");
-		String no = req.getParameter("no");
-		
 	
 
 		// 현재 페이지 번호 구하기
@@ -60,13 +58,13 @@ public class UserListController extends HttpServlet{
 		
 		
 		// Limit용 시작 번호 구하기
-		int start = pageservice.getStartNum(currentPage);
+		int start = service.getStartNum(currentPage);
 		logger.debug("start : " + start);
 
 		
 		
 		// 페이지 시작 번호 구하기(목록에서 순서번호로 활용)
-		int pageStartNum = pageservice.getPageStartNum(total, currentPage);
+		int pageStartNum = service.getPageStartNum(total, currentPage);
 		logger.debug("pageStartNum : " + pageStartNum);
 
 		
@@ -75,7 +73,7 @@ public class UserListController extends HttpServlet{
 
 		req.setAttribute("users", users);
 		req.setAttribute("lastPageNum", lastPageNum);
-		req.setAttribute("pagegroup", pageGroup);
+		req.setAttribute("pageGroup", pageGroup);
 		req.setAttribute("pageStartNum", pageStartNum);
 	
 

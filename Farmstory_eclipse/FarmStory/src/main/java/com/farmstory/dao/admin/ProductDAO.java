@@ -17,6 +17,7 @@ import com.farmstory.dto.admin.FileListDTO;
 import com.farmstory.dto.admin.ProductDTO;
 import com.farmstory.util.BOARDSQL;
 import com.farmstory.util.DBHelper;
+import com.farmstory.util.MARKETSQL;
 import com.farmstory.util.PRODUCTSQL;
 import com.farmstory.util.SQL;
 
@@ -200,6 +201,7 @@ public class ProductDAO extends DBHelper {
 				dto.setStock(rs.getInt(5)); 
 				dto.setRdateSubString(rs.getString(6));
 				dto.setsName(rs.getString(7));
+				dto.setProdCateName(rs.getString(8));
 				logger.debug(dto.getsName());
 				products.add(dto);
 				logger.debug(""+dto.toString());
@@ -234,6 +236,7 @@ public class ProductDAO extends DBHelper {
 				dto.setStock(rs.getInt(5)); 
 				dto.setRdateSubString(rs.getString(6));
 				dto.setsName(rs.getString(7));
+				dto.setProdCateName(rs.getString(8));
 				logger.debug(dto.getsName());
 				products.add(dto);
 				logger.debug("listdto :"+dto.toString());
@@ -255,6 +258,19 @@ public class ProductDAO extends DBHelper {
 	public void updateProduct(ProductDTO dto) {}
 	public void deleteProduct(int pNo) {}
 
+	public int deleteProduct(String pNo) {
+		int result = 0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(SQL.DELETE_PRODUCT);
+			pstmt.setString(1, pNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
 }
 	
 	

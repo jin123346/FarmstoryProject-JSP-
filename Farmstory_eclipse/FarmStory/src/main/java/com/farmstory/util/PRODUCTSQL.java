@@ -82,8 +82,10 @@ public class PRODUCTSQL {
 												+ "join `prodcate` as b on a.prodCateNo = b.prodCateNo"
 												+ " ORDER BY `pNo` desc limit ?, 5";
 
-	public static final String SELECT_PRODUCTS_MAIN = "SELECT a.pNo, a.prodCateNo, a.pName, a.price, a.discount, a.pList_fNo, a.pBasic_fNo, a.pDesc_fNo, b.prodCateName FROM `product` as a "
-														+ "join `prodcate` as b on a.prodCateNo = b.prodCateNo order by `pNo` desc";
+	public static final String SELECT_PRODUCTS_MAIN = "SELECT a.pNo, a.prodCateNo, a.pName, a.price, a.discount, a.pList_fNo, a.pBasic_fNo, a.pDesc_fNo, b.prodCateName,c.pList_sName FROM `product` as a "
+														+ "join `prodcate` as b on a.prodCateNo = b.prodCateNo "
+														+ "join plistimgfile AS c ON c.pList_fNo = a.pList_fNo "
+														+ "order by a.pNo desc";
 
 	public final static String INSERT_LIST_IMG_FILE= "insert into `pListImgFile` set pno=?, pList_oName =? , pList_sName=?, rdate = now()";
 	public final static String INSERT_BASIC_IMG_FILE= "insert into `pBasicImgFile` set pno=?, pBasic_oName =? , pBasic_sName=?, rdate = now()";

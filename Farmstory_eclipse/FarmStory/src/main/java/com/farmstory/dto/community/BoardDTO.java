@@ -113,7 +113,8 @@ public class BoardDTO {
 	public String toString() {
 		return "BoardDTO [boardNo=" + boardNo + ", b_cateNo=" + b_cateNo + ", title=" + title + ", b_contents="
 				+ b_contents + ", b_comNo=" + b_comNo + ", b_fNo=" + b_fNo + ", b_hit=" + b_hit + ", b_regip=" + b_regip
-				+ ", b_writer=" + b_writer + ", b_rdate=" + b_rdate + "]";
+				+ ", b_writer=" + b_writer + ", b_rdate=" + b_rdate + ", nick=" + nick + ", boardFiles=" + boardFiles
+				+ ", commentCount=" + commentCount + "]";
 	}
 	
 	

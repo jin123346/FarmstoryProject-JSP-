@@ -14,8 +14,16 @@ public class ProductDTO {
 	private int pDesc_fNo;
 	private String prodCateName;
 	private String pListimgPath;
+	private String sName;
 	
 	
+	
+	public String getsName() {
+		return sName;
+	}
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
 	public String getpListimgPath() {
 		return pListimgPath;
 	}

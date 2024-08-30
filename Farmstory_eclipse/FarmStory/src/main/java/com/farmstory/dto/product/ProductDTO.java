@@ -15,7 +15,22 @@ public class ProductDTO {
 	private String prodCateName;
 	private String pListimgPath;
 	private String sName;
+	private String sNameB;
+	private String sNameD;
 	
+	
+	public String getsNameB() {
+		return sNameB;
+	}
+	public void setsNameB(String sNameB) {
+		this.sNameB = sNameB;
+	}
+	public String getsNameD() {
+		return sNameD;
+	}
+	public void setsNameD(String sNameD) {
+		this.sNameD = sNameD;
+	}
 	
 	
 	public String getsName() {
@@ -105,9 +120,11 @@ public class ProductDTO {
 
 	@Override
 	public String toString() {
-		return "ProductDTO [pNo=" + pNo + ", prodCateNo=" + prodCateNo + ", pName=" + pName + ", price=" + price
-				+ ", point=" + point + ", discount=" + discount + ", delivery=" + delivery + ", pList_fNo=" + pList_fNo
-				+ ", pBasic_fNo=" + pBasic_fNo + ", pDesc_fNo=" + pDesc_fNo + "]";
+		return "ProductDTO [row=" + row + ", pNo=" + pNo + ", prodCateNo=" + prodCateNo + ", pName=" + pName
+				+ ", price=" + price + ", point=" + point + ", discount=" + discount + ", delivery=" + delivery
+				+ ", pList_fNo=" + pList_fNo + ", pBasic_fNo=" + pBasic_fNo + ", pDesc_fNo=" + pDesc_fNo
+				+ ", prodCateName=" + prodCateName + ", pListimgPath=" + pListimgPath + ", sName=" + sName + ", sNameB="
+				+ sNameB + ", sNameD=" + sNameD + "]";
 	}
 	
 }

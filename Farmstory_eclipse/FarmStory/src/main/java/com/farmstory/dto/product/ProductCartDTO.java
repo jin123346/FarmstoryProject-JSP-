@@ -11,7 +11,14 @@ public class ProductCartDTO {
 	private String pList_sName;
 	private int delivery;
 	private int cartNo;
+	private String sName;
 	
+	public String getsName() {
+		return sName;
+	}
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
 	public int getCartNo() {
 		return cartNo;
 	}
@@ -70,7 +77,7 @@ public class ProductCartDTO {
 	public String toString() {
 		return "ProductCartDTO [prodCateName=" + prodCateName + ", prodName=" + prodName + ", prodQty=" + prodQty
 				+ ", discount=" + discount + ", point=" + point + ", price=" + price + ", pList_sName=" + pList_sName
-				+ ", delivery=" + delivery + ", cartNo=" + cartNo + "]";
+				+ ", delivery=" + delivery + ", cartNo=" + cartNo + ", sName=" + sName + "]";
 	}
 
 }

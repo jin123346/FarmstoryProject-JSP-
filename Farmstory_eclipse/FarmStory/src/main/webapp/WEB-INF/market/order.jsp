@@ -2,7 +2,153 @@
 <%@ include file="../_header.jsp" %>
 <title>주문하기</title>
 <link rel="stylesheet" href="../css/order.css">  
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
 
+function postcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                // 조합된 참고항목을 해당 필드에 넣는다.
+                //document.getElementById("sample6_extraAddress").value = extraAddr;
+            
+            } else {
+                document.getElementById("sample6_extraAddress").value = '';
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('zip').value = data.zonecode;
+            document.getElementById("addr1").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("addr2").focus();
+        }
+    }).open();
+} // end of kakaozip
+
+window.onload = function(){
+	
+	const point = document.getElementsByClassName('point')[0];
+	const pointUse = document.getElementById('pointUse');
+	const cart = document.getElementsByClassName('add_to_cart')[0];
+	const buyNow = document.getElementsByClassName('buy_now')[0];
+	
+	const point_btn = document.getElementsByClassName('point_btn')[0];
+	const btn_order = document.getElementsByClassName('btn_order')[0];
+
+	// 포인트 사용 클릭시 버튼 들어가기
+	point_btn.addEventListener('click', (e) => {
+		e.preventDefault();
+		
+	const inNum = point.value;
+		
+	if(${userDto.point} < inNum){
+		alert('포인트가 모자랍니다!');		
+	}else{
+		pointUse.innerText = inNum + "p";	
+	}
+	});
+	
+	
+	btn_order.addEventListener('click', function(e){
+		e.preventDefault();
+	// input 이벤트 용도
+	let recepit = document.getElementsByClassName('recepit')[0];
+	let recHp = document.getElementsByClassName('rec_hp')[0];
+	let recZip = document.getElementsByClassName('post_sch')[0];
+	let recAddr1 = document.getElementsByClassName('addr1')[0];
+	let recAddr2 = document.getElementsByClassName('addr2')[0];
+	let payment = document.querySelector('input[name="pay"]:checked'); 
+	const orderDesc = document.getElementsByClassName('etc')[0];
+	
+	console.log(payment.value);
+	console.log(orderDesc.value);
+
+	// 값 집어넣기
+	let recepitV = document.getElementById('recepit');
+	let recHpV = document.getElementById('recHp');
+	let recZipV = document.getElementById('recZip');
+	let recAddr1V = document.getElementById('recAddr1');
+	let recAddr2V = document.getElementById('recAddr2');
+	let paymentV = document.getElementById('payment');
+	let orderDescV = document.getElementById('orderDesc');
+	
+		// 받는사람
+			
+			recepitV.value = recepit.value;
+		// 전화번호
+			
+			recHpV.value = recHp.value;
+		// 우편번호
+			
+			recZipV.value = recZip.value;
+		// 주소 1
+			
+			recAddr1V.value = recAddr1.value;
+		// 주소 2
+			
+			recAddr2V.value = recAddr2.value;
+		// 결제방법
+			paymentV.value =  payment.value;
+		// 주문 기타 정보
+
+		orderDescV.value = orderDesc.value;
+		
+		
+		let form = document.getElementById('formData');
+		let formData = new FormData(form);
+		formData.append("action","insert");
+			console.log(formData);
+			
+			fetch('/FarmStory/market/order.do', {
+					method: 'POST',
+					body: formData
+			
+			})
+			.then(resp=>resp.json())
+			.then(data=>{
+				console.log(data);
+				if(data.result > 0){
+					alert('결제 정보가 등록되었습니다!');
+				}else{
+					alert('결제 정보 등록에 실패하였습니다');
+				}
+				
+			})
+			.catch(err=>{
+				console.log(err);
+			});
+	})
+	}
+
+</script>
     <!-- #main -->
     <main id="main" class="cf">
         <section class="mainIn cf">
@@ -57,7 +203,7 @@
                         </tr>
                         <c:forEach var="prodCartDto" items="${prodCartDto}">
 	                        <tr>
-	                            <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
+	                            <td><img src="/FarmStory/thumbs/product/${prodCartDto.sName}" alt="사과 샘플"/></td>
 	                            <td>${prodCartDto.prodCateName}</td>
 	                            <td>${prodCartDto.prodName}</td>
 	                            <td>${prodCartDto.prodQty}</td>
@@ -92,42 +238,42 @@
                             <tr class="use cf">
                                 <th>포인트사용</th>
                                 <td class="use_point cf">
-                                    <input type="text" class="point" placeholder="">
+                                    <input type="text" class="point" placeholder="${userDto.point}p 만큼 사용 가능합니다.">
                                     <a href="#" class="point_btn">사용하기</a><br>
                                     <div></div>
                                 </td>
                             </tr>
                             <tr>
                                 <th>받는분</th>
-                                <td><input type="text" class="" placeholder=""></td>
+                                <td><input type="text" class="recepit"  placeholder=""></td>
                             </tr>
                             <tr>
                                 <th>연락처</th>
-                                <td><input type="text" class="" placeholder=""></td>
+                                <td><input type="text" class="rec_hp" placeholder=""></td>
                             </tr>
                             <tr>
                                 <th class="delivery_addr">배송주소</th>
                                 <td class="cf">
-                                    <input type="text" class="post_sch" placeholder="" title="우편번호 검색칸">
-                                    <a href="#"><img src="../images/btn_post_search.gif" alt="우편번호 검색" class="post_sch_btn"></a>
-                                    <input type="text" class="addr1" placeholder="기본주소 검색">
-                                    <input type="text" class="addr2" placeholder="상세주소 입력">
+                                    <input type="text" name="zip" id="zip" class="post_sch" placeholder="우편번호" title="우편번호 검색칸"  readonly/>
+                                    <a href="#" class="btnZip" onclick="postcode()"><img src="../images/btn_post_search.gif" alt="우편번호 검색" class="post_sch_btn"></a>
+                                    <input type="text" class="addr1" id="addr1" placeholder="기본주소 검색">
+                                    <input type="text" class="addr2" id="addr2" placeholder="상세주소 입력">
+                                    
                                 </td>
                             </tr>
                             <tr>
                                 <th>결제방법</th>
-                                <td>
-                                    <input type="checkbox" id="check"><label for="check"></label>
+                                <td class="chkboxes" >
+                                    <input type="radio" name="pay" id="check" value="1"><label for="check"></label>
                                     계좌이체
-                                    <!-- <input type="checkbox" class="" placeholder="" value="">계좌이체 -->
-                                    <input type="checkbox" class="" placeholder="" value="">신용카드
-                                    <input type="checkbox" class="" placeholder="" value="">체크카드
-                                    <input type="checkbox" class="" placeholder="" value="">휴대폰
+                                    <input type="radio" name="pay" class="" placeholder="" value="2">신용카드
+                                    <input type="radio" name="pay" class="" placeholder="" value="3">체크카드
+                                    <input type="radio" name="pay" class="" placeholder="" value="4">휴대폰
                                 </td>
                             </tr> 
                             <tr>
-                                <th class="etc">기타</th>
-                                <td><input type="textarea" class="" placeholder=""></td>
+                                <th >기타</th>
+                                <td ><input type="textarea" placeholder="" class="etc"></td>
                             </tr>
                         </table>
                     </div> <!-- .order_info -->
@@ -151,7 +297,7 @@
                             </tr>
                             <tr>
                                 <td>포인트 사용</td>
-                                <td>${userDto.point}p</td>
+                                <td id="pointUse">0p</td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
@@ -167,6 +313,18 @@
                             </tr>
                         </table><!-- .tb2 -->
                         <button class="btn_order"><a href="#">주문하기</a></button>
+                        
+                        <form id="formData">
+							<input type="hidden" name="uid" value="${userDto.uid}" id="uid">
+							<input type="hidden" name="recepit" value="" id="recepit">
+							<input type="hidden" name="recHp" value="" id="recHp">
+							<input type="hidden" name="recZip" value="" id="recZip">
+							<input type="hidden" name="recAddr1" value="" id="recAddr1">
+							<input type="hidden" name="recAddr2" value="" id="recAddr2">
+							<input type="hidden" name="payment" value="" id="payment">
+							<input type="hidden" name="orderDesc" value="" id="orderDesc">
+						</form>
+                        
                     </div><!-- .order_final -->
 
                 </div><!-- .articleIn -->

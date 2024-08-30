@@ -63,7 +63,6 @@ public class CartController extends HttpServlet{
 			CartDTO dto = new CartDTO();
 			
 			
-			
 			logger.debug(uid);
 			logger.debug(qty);
 			logger.debug(prodNo);

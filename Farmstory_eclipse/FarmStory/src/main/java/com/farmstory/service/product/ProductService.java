@@ -30,7 +30,7 @@ public enum ProductService {
 	public int disPrice(ProductDTO dto) {
 		int disPrice = 0;
 		
-		disPrice = (int) dto.getPrice() / dto.getDiscount();
+		disPrice = (int) dto.getPrice() - (dto.getPrice() / dto.getDiscount());
 		
 		return disPrice;
 	}

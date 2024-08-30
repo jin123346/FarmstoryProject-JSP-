@@ -1,6 +1,7 @@
 package com.farmstory.controller.admin.product;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -13,9 +14,11 @@ import com.farmstory.dto.admin.FileListDTO;
 import com.farmstory.dto.admin.ProductDTO;
 import com.farmstory.dto.community.BoardDTO;
 import com.farmstory.dto.community.PageGroupDTO;
+import com.farmstory.dto.market.CartDTO;
 import com.farmstory.service.Pagegroupservice;
 import com.farmstory.service.admin.FileService;
 import com.farmstory.service.admin.ProductService;
+import com.google.gson.JsonObject;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -60,6 +63,7 @@ public class ListController extends HttpServlet{
 		logger.debug("pageStartNum " +pageStartNum);
 		// 데이터 조회하기
 		List<ProductDTO> products  = service.selectProducts(start);
+		logger.debug("products " +products);
 		
 	
 		
@@ -96,6 +100,29 @@ public class ListController extends HttpServlet{
 	}
 	
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String action = req.getParameter("action");
+		JsonObject json = new JsonObject();
+		int result = 0;
+		logger.debug("action : "+action);
+		
+		if("delete".equals(action)) {
+			// 여 기 에 delete 작 업 
+			String[] pk = req.getParameterValues("pk"); // 이 런 식 으 로 꺼 내 면 배 열 로 나 옴 
+			
+			for(String pk1 : pk) {
+
+				result = service.deleteProduct(pk1);
+				json.addProperty("result", result);
+			}
+		}
+			
+		PrintWriter writer = resp.getWriter();
+		writer.print(json);
+	
+	}
 
 	
 	

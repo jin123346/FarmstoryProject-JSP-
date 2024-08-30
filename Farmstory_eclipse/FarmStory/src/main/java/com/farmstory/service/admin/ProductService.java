@@ -50,6 +50,12 @@ public enum ProductService {
 		return dao.selectProducts(start);
 	}
 
+	public int deleteProduct(String pk) {
+		int result = 0;
+		result = dao.deleteProduct(pk);
+		return result;
+	}
+	
 }
 
 	

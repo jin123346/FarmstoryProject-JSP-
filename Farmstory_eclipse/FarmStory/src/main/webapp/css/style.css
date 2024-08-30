@@ -251,11 +251,9 @@ font-family: Inter;
 }
 
 .del {
-    font-family: Inter;
-    font-size: 6px;
-    font-weight: 400;
-    line-height: 7.26px;
-    text-align: center;
+    font: 400 6px/7.26px 'Inter' !important;
+    text-align: center !important;
+    text-decoration: line-through !important; 
 }
 
 .price > strong {
@@ -350,8 +348,33 @@ font-family: Inter;
     line-height: 15px;
 }
 
- table {
-    }
+.discount {
+	color: #EB000A !important;
+	font-family: Inter;
+	font-size: 6px !important;
+	font-weight: 400;
+	line-height: 7.26px;
+	text-align: center;
+}
+
+.ellipsis {
+	letter-spacing: -0.75px; 
+    display: inline-block;
+    width: 113px; /* 제목이 표시될 최대 너비를 설정 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.ellipsis_notice {
+    display: inline-block;
+    width: 200px; /* 제목이 표시될 최대 너비를 설정 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
 
 
 /* notice section */

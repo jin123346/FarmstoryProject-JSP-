@@ -1,5 +1,6 @@
 package com.farmstory.dao.product;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.product.ProductDTO;
+import com.farmstory.util.BOARDSQL;
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.PRODUCTSQL;
 
@@ -159,6 +161,45 @@ public class ProductDAO extends DBHelper{
 		
 		return products;
 	}
+	
+	// 메인 장보기 리스트 출력
+	public List<ProductDTO> selectProductsMain() {
+		
+		List<ProductDTO> products = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(PRODUCTSQL.SELECT_PRODUCTS_MAIN);
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setpNo(rs.getInt(1));
+				dto.setProdCateNo(rs.getString(2));
+				dto.setpName(rs.getString(3));
+				dto.setPrice(rs.getInt(4));
+				dto.setDiscount(rs.getInt(5));
+				dto.setpList_fNo(rs.getInt(6));
+				dto.setpBasic_fNo(rs.getInt(7));
+				dto.setpDesc_fNo(rs.getInt(8));
+				dto.setProdCateName(rs.getString(9));
+				products.add(dto);
+				
+			}
+			
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return products;
+	}
+	
 	public void updateProduct() {}
 	public void deleteProduct() {}
 	

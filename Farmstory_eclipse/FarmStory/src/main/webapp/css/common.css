@@ -25,12 +25,12 @@
 .aside_bg .cate_lnb{}
 .aside_bg .cate_lnb li{} 
 
-.aside_bg .cate_lnb li a{
+.aside_bg .cate_lnb_real li a{
     position: absolute; left: 0; top:107px; 
     text-indent: -9999px; display: block; width: 176px; height: 29px; 
     background: url('../images/sub_cate2_lnb1.png') no-repeat; 
 }
-.aside_bg .cate_lnb li a:hover{background: url('../images/sub_cate2_lnb1_ov.png') no-repeat; }
+.aside_bg .cate_lnb_real li a:hover{background: url('../images/sub_cate2_lnb1_ov.png') no-repeat; }
 
 /* article 영역 (오른쪽)  ---------------------------------------------- */
 .article{position: relative; float:left; width: 802px; height: auto;}

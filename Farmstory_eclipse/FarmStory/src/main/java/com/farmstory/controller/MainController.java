@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farmstory.dto.community.BoardDTO;
+import com.farmstory.dto.product.ProductDTO;
 import com.farmstory.service.community.BoardService;
+import com.farmstory.service.product.ProductService;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -21,6 +23,7 @@ public class MainController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	private BoardService service = BoardService.INSTANCE;
+	private ProductService productService = ProductService.INSTANCE;
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -50,7 +53,9 @@ public class MainController extends HttpServlet{
 		req.setAttribute("notice", notice);
 		logger.debug("notice : "+notice);
 		
-		
+		List<ProductDTO> product = productService.selectProductsMain();
+		req.setAttribute("product", product);
+		logger.debug("product : "+product);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
 		logger.debug(dispatcher+"");

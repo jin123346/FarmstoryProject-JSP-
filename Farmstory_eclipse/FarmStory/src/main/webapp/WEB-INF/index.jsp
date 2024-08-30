@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="./_header.jsp" %>
 <title>farmStory</title>
 <link rel="stylesheet" href="/FarmStory/css/style.css">
@@ -19,81 +20,30 @@
                 <div class="maintit">
                     <img src="/FarmStory/images/main_market_tit.png" alt="장보기 베스트 상품을 소개합니다.">
                 </div><!-- .maintit end -->
-
                 <section class="market">
-                    <article>
-                        <a href="">
-                            <img src="/FarmStory/images/market_item6.jpg" alt="과일 샘플 이미지">
-                            <div class="mtxt">
-                                <span>과일</span>
-                                <p class="prodname">사과 500g</p>
-                                <p class="del">4,000</p>
-                                <p class="price"><strong>3,600원</strong></p>
-                            </div>
+				    <c:forEach var="product" items="${product}" varStatus="status">
+				     	<c:if test="${status.count <= 6}">
+					        <article>
+					            <a href="">
+					                <img src="/FarmStory/images/market_item1.jpg" alt="과일 샘플 이미지">
+					                <div class="mtxt">
+					                    <span>${product.prodCateName}</span>
+					                    <p class="prodname">${product.pName}</p>
+					                    <p>
+										  <span class="del">4,000</span><span class="discount"> ${product.discount}%↓</span>
+										</p>
+					                    <p class="price">
+										 <strong>
+				                            <fmt:formatNumber value="${product.price}" type="number" groupingUsed="true"/>원
+				                        </strong>
+										</p>
+					                </div>
+					            </a>
+					        </article>
+				        </c:if>
+				    </c:forEach>
+				</section><!-- .market section end-->
 
-                        </a>
-                    </article>
-                    <article>
-                        <a href="">
-                            <img src="/FarmStory/images/market_item5.jpg" alt="과일 샘플 이미지">
-                            <div class="mtxt">
-                                <span>과일</span>
-                                <p class="prodname">사과 500g</p>
-                                <p class="del">4,000</p>
-                                <p class="price"><strong>3,600원</strong></p>
-                            </div>
-
-                        </a>
-                    </article>
-                    <article>
-                        <a href="">
-                            <img src="/FarmStory/images/market_item4.jpg" alt="과일 샘플 이미지">
-                            <div class="mtxt">
-                                <span>과일</span>
-                                <p class="prodname">사과 500g</p>
-                                <p class="del">4,000</p>
-                                <p class="price"><strong>3,600원</strong></p>
-                            </div>
-
-                        </a>
-                    </article>
-                    <article>
-                        <a href="">
-                            <img src="/FarmStory/images/market_item3.jpg" alt="과일 샘플 이미지">
-                            <div class="mtxt">
-                                <span>과일</span>
-                                <p class="prodname">사과 500g</p>
-                                <p class="del">4,000</p>
-                                <p class="price"><strong>3,600원</strong></p>
-                            </div>
-
-                        </a>
-                    </article>
-                    <article>
-                        <a href="">
-                            <img src="/FarmStory/images/market_item2.jpg" alt="과일 샘플 이미지">
-                            <div class="mtxt">
-                                <span>과일</span>
-                                <p class="prodname">사과 500g</p>
-                                <p class="del">4,000</p>
-                                <p class="price"><strong>3,600원</strong></p>
-                            </div>
-
-                        </a>
-                    </article>
-                    <article class="last">
-                        <a href="">
-                            <img src="/FarmStory/images/market_item1.jpg" alt="과일 샘플 이미지">
-                            <div class="mtxt">
-                                <span>과일</span>
-                                <p class="prodname">사과 500g</p>
-                                <p class="del">4,000</p>
-                                <p class="price"><strong>3,600원</strong></p>
-                            </div>
-
-                        </a>
-                    </article>
-                </section><!-- .market section end-->
                 <section class="ad">
                     <article class="ad1">
                         <a href="/FarmStory/community/notice/list.do?group=community&cate=b102"><img src="/FarmStory/images/main_banner_sub1_tit.png" alt="팜스토리 오늘의 식단"></a>
@@ -105,52 +55,93 @@
 
                 <section class="crop">
                     <article class="garden">
-                        <a href="#"><img src="/FarmStory/images/main_latest1_tit.png" alt="텃밭가꾸기"></a>
-                        <img src="/FarmStory/images/main_latest1_img.jpg" alt="텃밭가꾸기">
-                        <table>
-						    <c:forEach var="garden" items="${garden}" varStatus="status">
-						        <c:if test="${status.count <= 5}">
-						            <tr>
-						                <th>></th>
-						                <td class="txt_line"><a href="/FarmStory/community/notice/view.do?boardNo=${garden.boardNo}&group=croptalk&cate=${garden.b_cateNo}">${garden.title}</a></td>
-						                <td>${garden.b_rdate}</td>
-						            </tr>
-						        </c:if>
-						    </c:forEach>
-						</table>
-                    </article>
+					    <a href="#"><img src="/FarmStory/images/main_latest1_tit.png" alt="텃밭가꾸기"></a>
+					    <img src="/FarmStory/images/main_latest1_img.jpg" alt="텃밭가꾸기">
+					    <table>
+					        <c:choose>
+					            <c:when test="${empty garden}">
+					                <tr>
+					                    <td colspan="3">등록된 게시물이 없습니다.</td>
+					                </tr>
+					            </c:when>
+					            <c:otherwise>
+					                <c:forEach var="garden" items="${garden}" varStatus="status">
+					                    <c:if test="${status.count <= 5}">
+					                        <tr>
+					                            <th>></th>
+					                            <td>
+					                                <a href="/FarmStory/community/notice/view.do?boardNo=${garden.boardNo}&group=croptalk&cate=${garden.b_cateNo}" class="ellipsis">
+					                                    ${garden.title}
+					                                </a>
+					                            </td>
+					                            <td>${garden.b_rdate}</td>
+					                        </tr>
+					                    </c:if>
+					                </c:forEach>
+					            </c:otherwise>
+					        </c:choose>
+					    </table>
+					</article>
                     <article class="returnfarm">
-                        <a href="#"><img src="/FarmStory/images/main_latest2_tit.png" alt="귀농학교"></a>
-                        <img src="/FarmStory/images/main_latest2_img.jpg" alt="귀농학교">
-                        <table>
-						    <c:forEach var="returnfarm" items="${returnfarm}" varStatus="status">
-						        <c:if test="${status.count <= 5}">
-						            <tr>
-						                <th>></th>
-						                <td class="txt_line"><a href="/FarmStory/community/notice/view.do?boardNo=${returnfarm.boardNo}&group=croptalk&cate=${returnfarm.b_cateNo}">${returnfarm.title}</a></td>
-						                <td>${returnfarm.b_rdate}</td>
-						            </tr>
-						        </c:if>
-						    </c:forEach>
-						</table>
-                    </article>
-                    <article class="croptalk">
-                        <a href="#"><img src="/FarmStory/images/main_latest3_tit.png" alt="농작물이야기"></a>
-                        <img src="/FarmStory/images/main_latest3_img.jpg" alt="농작물 이야기">
-                            <input type="hidden" name="b_cateNo" value="${cate}"/>
-                       		<input type="hidden" name="group" value="${group}"/>
-                        <table>
-						    <c:forEach var="croptalk" items="${croptalk}" varStatus="status">
-						        <c:if test="${status.count <= 5}">
-						            <tr>
-						                <th>></th>
-						                <td class="txt_line"><a href="/FarmStory/community/notice/view.do?boardNo=${croptalk.boardNo}&group=croptalk&cate=${croptalk.b_cateNo}">${croptalk.title}</a></td>
-						                <td>${croptalk.b_rdate}</td>
-						            </tr>
-						        </c:if>
-						    </c:forEach>
-						</table>
-                    </article>
+				    <a href="#"><img src="/FarmStory/images/main_latest2_tit.png" alt="귀농학교"></a>
+				    <img src="/FarmStory/images/main_latest2_img.jpg" alt="귀농학교">
+				    <table>
+				        <c:choose>
+				            <c:when test="${empty returnfarm}">
+				                <tr>
+				                    <td colspan="3">등록된 게시물이 없습니다.</td>
+				                </tr>
+				            </c:when>
+				            <c:otherwise>
+				                <c:forEach var="returnfarm" items="${returnfarm}" varStatus="status">
+				                    <c:if test="${status.count <= 5}">
+				                        <tr>
+				                            <th>></th>
+				                            <td>
+				                                <a href="/FarmStory/community/notice/view.do?boardNo=${returnfarm.boardNo}&group=croptalk&cate=${returnfarm.b_cateNo}" class="ellipsis">
+				                                    ${returnfarm.title}
+				                                </a>
+				                            </td>
+				                            <td>${returnfarm.b_rdate}</td>
+				                        </tr>
+				                    </c:if>
+				                </c:forEach>
+				            </c:otherwise>
+				        </c:choose>
+				    </table>
+				</article>
+
+                   <article class="croptalk">
+					    <a href="#"><img src="/FarmStory/images/main_latest3_tit.png" alt="농작물이야기"></a>
+					    <img src="/FarmStory/images/main_latest3_img.jpg" alt="농작물 이야기">
+					    <input type="hidden" name="b_cateNo" value="${cate}"/>
+					    <input type="hidden" name="group" value="${group}"/>
+				    	<table>
+					        <c:choose>
+					            <c:when test="${empty croptalk}">
+					                <tr>
+					                    <td colspan="3">등록된 게시물이 없습니다.</td>
+					                </tr>
+					            </c:when>
+					            <c:otherwise>
+					                <c:forEach var="croptalk" items="${croptalk}" varStatus="status">
+					                    <c:if test="${status.count <= 5}">
+					                        <tr>
+					                            <th>></th>
+					                            <td>
+					                                <a href="/FarmStory/community/notice/view.do?boardNo=${croptalk.boardNo}&group=croptalk&cate=${croptalk.b_cateNo}" class="ellipsis">
+					                                    ${croptalk.title}
+					                                </a>
+					                            </td>
+					                            <td>${croptalk.b_rdate}</td>
+					                        </tr>
+					                    </c:if>
+					                </c:forEach>
+					            </c:otherwise>
+					        </c:choose>
+					    </table>
+					</article>
+
                 </section>
                 <section class="notice">
                     <article class="cs">
@@ -191,23 +182,23 @@
 
                     </article>
                     <article class="announcement">
-                        <div class="ntitle">
-                            <img src="/FarmStory/images/main_sub2_notice_tit.png" alt="공지사항">
-                        </div>
-                        <div class="ntable">
-                            <table class="ntable">
-						    <c:forEach var="notice" items="${notice}" varStatus="status">
-						        <c:if test="${status.count <= 5}">
-						            <tr>
-						                <th>·</th>
-						                <td class="txt_line"><a href="/FarmStory/community/notice/view.do?boardNo=${notice.boardNo}&group=community&cate=${notice.b_cateNo}">${notice.title}</a></td>
-						                <td>${notice.b_rdate}</td>
-						            </tr>
-						        </c:if>
-						    </c:forEach>
-						</table>
-                        </div>
-                    </article>
+					    <div class="ntitle">
+					        <img src="/FarmStory/images/main_sub2_notice_tit.png" alt="공지사항">
+					    </div>
+					    <div class="ntable">
+					        <table class="ntable">
+					            <c:forEach var="notice" items="${notice}" varStatus="status">
+					                <c:if test="${status.count <= 5}">
+					                    <tr>
+					                        <th>·</th>
+					                        <td><a href="/FarmStory/community/notice/view.do?boardNo=${notice.boardNo}&group=community&cate=${notice.b_cateNo}" class="ellipsis_notice">${notice.title}</a></td>
+					                        <td>${notice.b_rdate}</td>
+					                    </tr>
+					                </c:if>
+					            </c:forEach>
+					        </table>
+					    </div>
+					</article>
 
                 </section><!--.notice end-->
 

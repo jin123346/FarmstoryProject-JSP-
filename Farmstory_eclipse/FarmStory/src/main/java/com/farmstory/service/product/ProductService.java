@@ -1,11 +1,14 @@
 package com.farmstory.service.product;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
 import com.farmstory.dao.product.ProductDAO;
 import com.farmstory.dto.community.PageGroupDTO;
 import com.farmstory.dto.product.ProductDTO;
+import com.farmstory.util.PRODUCTSQL;
 
 public enum ProductService {
 	INSTANCE;
@@ -74,6 +77,11 @@ public enum ProductService {
 	}
 	public List<ProductDTO> selectProductsA(int start, String cateName) {
 		return dao.selectProductsA(start, cateName);
+	}
+	
+	// 메인 장보기 리스트 출력
+	public List<ProductDTO> selectProductsMain() {
+		return dao.selectProductsMain();
 	}
 	public void updateProduct() {}
 	public void deleteProduct() {}

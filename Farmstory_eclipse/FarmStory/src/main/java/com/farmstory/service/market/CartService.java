@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.farmstory.dao.market.MarketDAO;
 import com.farmstory.dto.market.CartDTO;
+import com.farmstory.dto.market.OrderDTO;
 import com.farmstory.dto.product.ProductCartDTO;
 
 public enum CartService {
@@ -107,6 +108,10 @@ public enum CartService {
 	
 	public void insertPoint(String uid,int point) {
 		dao.insertPoint(uid, point);
+	}
+	
+	public int insertOrder(OrderDTO dto) {
+		return dao.insertOrder(dto);
 	}
 	
 }

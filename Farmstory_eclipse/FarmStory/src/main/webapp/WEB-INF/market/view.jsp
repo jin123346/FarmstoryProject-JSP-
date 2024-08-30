@@ -85,7 +85,7 @@
                     </nav>
                     <h3>기본정보</h3>
                     <div class="product_info">
-                            <img src="../images/market_item_thumb.jpg" alt="30%세일 무농약재배" />
+                            <img src="/FarmStory/thumbs/product/${productDto.sNameB}" alt="30%세일 무농약재배" />
                          <div class="product_details">
                             <table>
                                 <tr>
@@ -102,7 +102,7 @@
                                 </tr>
                                 <tr>
                                     <th>판매가격</th>
-                                    <td class="sell_price">${productDto.price}</td>
+                                    <td class="sell_price">${productDto.price}원</td>
                                 </tr>
                                 <tr>
                                     <th>구매수량</th>
@@ -129,7 +129,7 @@
 						</form>
 						                    
                     <h3>상품설명</h3>
-                    <div class="sample"><img src="../images/market_detail_sample.jpg" alt="IMAGE SAMPLE"></div>
+                    <div class="sample"><img src="/FarmStory/thumbs/product/${productDto.sNameD}" alt="IMAGE SAMPLE"></div>
                     <h3>배송정보</h3>
                     <p class="sms">입금하신 이후 택배송장번호는 SMS(문자서비스)를 통해 고객님께 안내해드립니다.</p>
                     <h3>교환/반품</h3>

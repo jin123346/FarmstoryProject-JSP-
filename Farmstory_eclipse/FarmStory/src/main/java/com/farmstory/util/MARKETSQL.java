@@ -14,7 +14,7 @@ public class MARKETSQL {
 		
 		public static final String DELETE_CART = "delete from `cart` where `cartNo` = ?";
 		
-		public static final String SELECT_CARTS = "SELECT b.pList_fno, a.prodCateName, b.pName, c.cartProdQty, b.discount, b.point, b.price, b.delivery, c.cartNo "
+		public static final String SELECT_CARTS = "SELECT  a.prodCateName, b.pName, c.cartProdQty, b.discount, b.point, b.price, b.delivery, c.cartNo, d.pList_sName "
 												+ "FROM prodcate AS a JOIN product AS b USING(`prodCateNo`) "
 												+ "JOIN cart AS c ON c.prodNo = b.pNo "
 												+ "left JOIN plistimgfile AS d ON b.pNo = d.pNo "
@@ -25,7 +25,19 @@ public class MARKETSQL {
 		
 		//point	
 		//order	
-		
+		public static final String INSERT_ORDER = "insert into `order` set"
+												+ "`orderDate`= NOW(), "
+												+ "`o_totalPrice`= ?, "
+												+ "`totalQty`= ?, "
+												+ "`o_uid`= ?, "
+												+ "`receipt`= ?, "
+												+ "`o_delivery`= ?, "
+												+ "`recHp`= ?, "
+												+ "`recZip`= ?, "
+												+ "`recAddr1`= ?, "
+												+ "`recAddr2`= ?, "
+												+ "`payment`= ?, "
+												+ "`orderDesc`= ? ";
 		//file	
 		
 		//terms

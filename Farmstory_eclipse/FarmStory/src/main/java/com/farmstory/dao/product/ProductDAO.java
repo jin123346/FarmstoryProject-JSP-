@@ -1,6 +1,7 @@
 package com.farmstory.dao.product;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,8 @@ public class ProductDAO extends DBHelper{
 				dto.setpName(rs.getString(3));
 				dto.setPrice(rs.getInt(4));
 				dto.setDelivery(rs.getInt(8));
-				dto.setpBasic_fNo(rs.getInt(10));
+				dto.setsNameB(rs.getString(14));
+				dto.setsNameD(rs.getString(15));
 			}
 			closeAll();
 		} catch (Exception e) {
@@ -113,6 +115,7 @@ public class ProductDAO extends DBHelper{
 				dto.setpBasic_fNo(rs.getInt(11));
 				dto.setpDesc_fNo(rs.getInt(12));
 				dto.setProdCateName(rs.getString(15));
+				dto.setsName(rs.getString(16));
 				products.add(dto);
 				
 				
@@ -150,6 +153,7 @@ public class ProductDAO extends DBHelper{
 				dto.setpBasic_fNo(rs.getInt(11));
 				dto.setpDesc_fNo(rs.getInt(12));
 				dto.setProdCateName(rs.getString(15));
+				dto.setsName(rs.getString(16));
 				products.add(dto);
 				
 				

@@ -78,8 +78,9 @@ public class PRODUCTSQL {
 														+ " where `prodCateName`=?";
 	
 	public static final String SELECT_PRODUCTS = "SELECT ROW_NUMBER() OVER(ORDER BY `pNo` DESC)"
-												+ ", a.*, b.prodCateName FROM `product` as a "
-												+ "join `prodcate` as b on a.prodCateNo = b.prodCateNo"
+												+ ", a.*, b.prodCateName, c.`pList_sName` FROM `product` as a "
+												+ "join `prodcate` as b on a.prodCateNo = b.prodCateNo "
+												+ "join `plistimgfile` as c on a.pNo = c.pNo "
 												+ " ORDER BY `pNo` desc limit ?, 5";
 
 	public static final String SELECT_PRODUCTS_MAIN = "SELECT a.pNo, a.prodCateNo, a.pName, a.price, a.discount, a.pList_fNo, a.pBasic_fNo, a.pDesc_fNo, b.prodCateName FROM `product` as a "
@@ -90,12 +91,13 @@ public class PRODUCTSQL {
 	public final static String INSERT_DESC_IMG_FILE= "insert into `pDescImgFile` set pno=?, pDesc_oName =? , pDesc_sName=?, rdate = now()";
 	
 	public static final String SELECT_PRODUCTSA = "SELECT ROW_NUMBER() OVER(ORDER BY `pNo` DESC)"
-												+ ", a.*, b.prodCateName FROM `product` as a "
+												+ ", a.*, b.prodCateName, c.`pList_sName` FROM `product` as a "
 												+ "join `prodcate` as b on a.prodCateNo = b.prodCateNo "
+												+ "join `plistimgfile` as c on a.pNo = c.pNo "
 												+ "where `prodCateName` = ? "
 												+ "ORDER BY `pNo` desc limit ?, 5 ";
 
-	public static final String SELECT_PRODUCT = "select * from `product` where `pNo` = ?";
+	public static final String SELECT_PRODUCT = "select a.*, b.`pBasic_sName`, c.`pDesc_sName` from `product` as a left join `pbasicimgfile` as b on a.pNo = b.pNo left join `pdescimgfile` as c on a.pNo = c.pNo where a.`pNo` = ?";
 	
 	
 	

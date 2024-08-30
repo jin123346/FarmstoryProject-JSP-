@@ -123,7 +123,7 @@
                         <c:forEach var="prodCartDto" items="${prodCartDto}">
                         <tr>
                             <td><input type="checkbox" class="checkbox" onclick=""  value="${prodCartDto.cartNo}"/></td>
-                            <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
+                            <td><img src="/FarmStory/thumbs/product/${prodCartDto.sName}" alt="사과 샘플"/></td>
                             <td>${prodCartDto.prodCateName}</td>
                             <td>${prodCartDto.prodName}</td>
                             <td>${prodCartDto.prodQty}</td>

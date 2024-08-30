@@ -411,9 +411,10 @@ public class UserDao extends DBHelper{
 			
 			if(rs.next()) {
 				user = new UserDTO();
-				
+				user.setUid(rs.getString(1));
 				user.setName(rs.getString(3));
 				user.setHp(rs.getString(6));
+				user.setPoint(rs.getInt(12));
 				System.out.println("rs: " + rs.getString(3));
 			}
 			closeAll();

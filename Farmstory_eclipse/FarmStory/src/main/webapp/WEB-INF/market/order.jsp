@@ -33,7 +33,7 @@
                         </p><!-- .location -->
                     </nav>
                     
-                    <h3 class="tb_tit">주문상춤 전체(10)</h3><!-- .tb_tit -->
+                    <h3 class="tb_tit">주문상춤 전체</h3><!-- .tb_tit -->
                     <table class="tb1">
                         <colgroup>
                             <col style="width: 10%">
@@ -55,17 +55,18 @@
                             <th>가격</th>
                             <th>소계</th>
                         </tr>
-                        <tr>
-                            <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
-                            <td>과일</td>
-                            <td>사과 500g</td>
-                            <td>1</td>
-                            <td>10%</td>
-                            <td>40p</td>
-                            <td>4,000</td>
-                            <td><strong>3,600</strong>원</td>
-                        </tr>
-
+                        <c:forEach var="prodCartDto" items="${prodCartDto}">
+	                        <tr>
+	                            <td><img src="/FarmStory/images/market_item1.jpg" alt="사과 샘플"/></td>
+	                            <td>${prodCartDto.prodCateName}</td>
+	                            <td>${prodCartDto.prodName}</td>
+	                            <td>${prodCartDto.prodQty}</td>
+	                            <td>${prodCartDto.discount}%</td>
+	                            <td>${prodCartDto.point}p</td>
+	                            <td>${prodCartDto.price}</td>
+	                            <td><strong>${service.total(prodCartDto)}</strong>원</td>
+	                        </tr>
+						</c:forEach>
                     </table><!-- .tb1 -->
 
                     
@@ -138,27 +139,31 @@
                             </tr>
                             <tr>
                                 <td>상품수</td>
-                                <td>1</td>
+                                <td>${service.totalQty(prodCartDto)}개</td>
                             </tr>
                             <tr>
                                 <td>상품금액</td>
-                                <td>27,000</td>
+                                <td>${service.totalPrice(prodCartDto)}원</td>
                             </tr>
                             <tr>
                                 <td>할인금액</td>
-                                <td>5,0000원</td>
+                                <td>${service.totalDiscount(prodCartDto)}원</td>
+                            </tr>
+                            <tr>
+                                <td>포인트 사용</td>
+                                <td>p</td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
-                                <td>5,0000원</td>
+                                <td>${service.totalDelivery(prodCartDto)}원</td>
                             </tr>
                             <tr>
-                                <td>포인트</td>
-                                <td>4,000원</td>
+                                <td>포인트 적립</td>
+                                <td>${service.totalPoint(prodCartDto)}p</td>
                             </tr>
                             <tr>
                                 <td>전체주문금액</td>
-                                <td>22,000</td>
+                                <td>${service.realtotal(prodCartDto)}원</td>
                             </tr>
                         </table><!-- .tb2 -->
                         <button class="btn_order"><a href="#">주문하기</a></button>

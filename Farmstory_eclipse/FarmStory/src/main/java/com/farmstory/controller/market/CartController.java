@@ -32,8 +32,11 @@ public class CartController extends HttpServlet{
 		String uid = req.getParameter("uid");
 		
 		
-		
 		List<ProductCartDTO> prodCartDto = service.selectCarts(uid);
+		
+		int point = service.totalPoint(prodCartDto);
+		
+		service.insertPoint(uid, point);
 		
 		req.setAttribute("prodCartDto", prodCartDto);
 		req.setAttribute("service", service);
@@ -64,7 +67,7 @@ public class CartController extends HttpServlet{
 			logger.debug(uid);
 			logger.debug(qty);
 			logger.debug(prodNo);
-			
+			logger.debug(action);
 			
 			dto.setC_uid(uid);
 			dto.setProdNo(Integer.parseInt(prodNo));
@@ -76,7 +79,11 @@ public class CartController extends HttpServlet{
 			// 여 기 에 delete 작 업 
 			String[] pk = req.getParameterValues("pk"); // 이 런 식 으 로 꺼 내 면 배 열 로 나 옴 
 			
-				result = service.deleteCart(pk);
+			for(String pk1 : pk) {
+
+				result = service.deleteCart(pk1);
+				json.addProperty("result", result);
+			}
 		}
 			
 		PrintWriter writer = resp.getWriter();

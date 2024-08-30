@@ -12,13 +12,17 @@ public class MARKETSQL {
 												+ "`cartProdQty`=?, "
 												+ "`cartProdDate`=NOW()";
 		
-		public static final String DELETE_CART = "delete from `cart` where `cartNo` in (?)";
+		public static final String DELETE_CART = "delete from `cart` where `cartNo` = ?";
 		
 		public static final String SELECT_CARTS = "SELECT b.pList_fno, a.prodCateName, b.pName, c.cartProdQty, b.discount, b.point, b.price, b.delivery, c.cartNo "
 												+ "FROM prodcate AS a JOIN product AS b USING(`prodCateNo`) "
 												+ "JOIN cart AS c ON c.prodNo = b.pNo "
 												+ "left JOIN plistimgfile AS d ON b.pNo = d.pNo "
 												+ "WHERE `c_uid` = ?";
+		
+		public static final String INSERT_POINT = "update `user` set `point` = ? where `uid` = ? ";
+		
+		
 		//point	
 		//order	
 		

@@ -163,5 +163,8 @@ public String sendEmailCode(String email) {
 	public void updateUser(UserDTO dto) {dao.updateUser(dto);	}
 	public void deleteUser(String uid) {	dao.deleteUser(uid);}
 
+	public UserDTO selectUserCart(String uid) {	
+		return dao.selectUserCart(uid);
+	}
 
 }

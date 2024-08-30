@@ -55,6 +55,7 @@ public class MainController extends HttpServlet{
 		
 		List<ProductDTO> product = productService.selectProductsMain();
 		req.setAttribute("product", product);
+		req.setAttribute("service", productService);
 		logger.debug("product : "+product);
 		
 		String success = req.getParameter("success");		

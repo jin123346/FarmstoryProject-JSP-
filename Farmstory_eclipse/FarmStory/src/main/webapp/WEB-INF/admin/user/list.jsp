@@ -1,7 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<script>
+function checkAll(source) {
+	var checkboxes =  document.getElementById("allCheck", "plcheck");
+	for(var i = 0; i < checkboxs.length; i++) {
+		checkboxes[i].checked = source.checked;
+	}
+}
 
+</script>
 <div class="section list">
 	<section>
 		<div class="main_container">
@@ -12,8 +20,7 @@
 				<table class="user">
 					<thead>
 						<tr>
-							<th><input type="checkbox" name="user_list_checkbox"
-								id="plcheck"></th>
+							<th><input type="checkbox" name="user_list_checkbox" id="allCheck" onchange="checkAll(this)"></th>
 							<th>아이디</th>
 							<th>이름</th>
 							<th>별명</th>
@@ -25,10 +32,9 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="userDto" items="${userDto}">
+						<c:forEach var="userDto" items="${users}">
 							<tr>
-								<td><input type="checkbox" name="uid_list_checkbox"
-									id="plcheck"></td>
+								<td><input type="checkbox" name="uid_list_checkbox"	id="plcheck"></td>
 								<td>${userDto.uid}</td>
 								<td>${userDto.name}</td>
 								<td>${userDto.nick}</td>
@@ -59,32 +65,29 @@
 				</div><!--btn_group end-->
 				
 				<!-- 페이지 네비게이션 -->
-				
-				
-				<div class="pages">
-                    <c:if test="${pageGroup.start > 1}">
-                       <a href="/FarmStory/admin/user/list.do?pg=${pageGroup.start - 1}" class="prev">이전</a>
-                   </c:if>
-                   <c:choose>
-                      <c:when test="${pageGroup.end >= pageLastNum}">
-                         <c:forEach var="i" begin="${pageGroup.start}" end="${pageLastNum}">
-                             <a href="/FarmStory/admin/user/list.do?pg=${i}" class="num ${currentPageNum == i ? 'current':'off'}">${i}</a>                
-                          </c:forEach>
-                      </c:when>
-                      <c:otherwise>
-                          <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
-                             <a href="/FarmStory/admin/user/list.do?pg=${i}" class="num ${currentPageNum == i ? 'current':'off'}">${i}</a>                
-                         
-                          <c:if test="${pagegroup.end+1 < lastPageNum}">
-	               		<a href="/FarmStory/admin/user/list.do?pg=${pagegroup.end +1}" class="next">다음</a>
-                       </c:forEach>
-                      </c:otherwise>
-                       
-	                </c:if>
-                  </c:choose>
-                </div>
-				
-				   
+			<div class="pages">
+    	<ul>
+        <c:if test="${pageGroup.start > 1}">
+            <li><a href="/FarmStory/admin/user/list.do?pg=${pageGroup.start-1}" class="prev">이전</a></li>
+        </c:if>
+        <c:choose>
+            <c:when test="${pageGroup.end > pageLastNum}">
+                <c:forEach var="i" begin="${pageGroup.start}" end="${lastPageNum}">
+                    <li><a href="/FarmStory/admin/user/list.do?pg=${i}" class="num ${currentPageNum == i ? 'current':'off'}">${i}</a></li>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
+                    <li><a href="/FarmStory/admin/user/list.do?pg=${i}" class="num ${currentPageNum == i ? 'current':'off'}">${i}</a></li>
+                </c:forEach>
+                <c:if test="${pageGroup.end < pageLastNum}">
+                    <li><a href="/FarmStory/admin/user/list.do?pg=${pageGroup.end+1}" class="next">다음</a></li>
+                </c:if>
+            </c:otherwise>
+        </c:choose>
+    	</ul>
+
+                </div><!--pages-->
 			<!--status-table end-->
 		</div>
 		<!--main-container-->

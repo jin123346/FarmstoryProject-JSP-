@@ -24,18 +24,21 @@
 				    <c:forEach var="product" items="${product}" varStatus="status">
 				     	<c:if test="${status.count <= 6}">
 					        <article>
-					            <a href="">
-					                <img src="/FarmStory/images/market_item1.jpg" alt="과일 샘플 이미지">
+					            <a href="/FarmStory/market/view.do?pNo=${product.pNo}">
+					                <img src="/FarmStory/thumbs/product/${product.sName }" alt="과일 샘플 이미지">
 					                <div class="mtxt">
 					                    <span>${product.prodCateName}</span>
 					                    <p class="prodname">${product.pName}</p>
 					                    <p>
-										  <span class="del">4,000</span><span class="discount"> ${product.discount}%↓</span>
+										  <span class="del">
+										  	<fmt:formatNumber value="${product.price}" type="number" groupingUsed="true"/>
+										  </span>
+										  <span class="discount">  ${product.discount}%↓</span>
 										</p>
 					                    <p class="price">
-										 <strong>
-				                            <fmt:formatNumber value="${product.price}" type="number" groupingUsed="true"/>원
-				                        </strong>
+										 <%-- <strong>
+				                            ${service.disPrice(product)}원
+				                        </strong> --%>
 										</p>
 					                </div>
 					            </a>

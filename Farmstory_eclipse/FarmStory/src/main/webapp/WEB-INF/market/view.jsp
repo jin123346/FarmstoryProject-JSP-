@@ -64,7 +64,7 @@
                             <img src="../images/sub_aside_cate2_tit.png" alt="Buying in the Market 장보기">
                         </div><!-- .aside_cate -->
                         <div class="aside_bg">
-                            <ul class="cate_lnb">
+                            <ul class="cate_lnb_real">
                                 <li> <a href="#">장보기</a></li>
                             </ul><!-- .cate_lnb -->
                         </div><!-- .aside_bg -->
@@ -98,11 +98,15 @@
                                 </tr>
                                 <tr>
                                     <th>배송비</th>
-                                    <td class="deliver">${productDto.delivery}원  <span>3만원 이상 무료배송</span></td>
+                                    <td class="deliver">
+										<fmt:formatNumber value="${productDto.delivery}" type="number" groupingUsed="true"/>원<span>&nbsp3만원 이상 무료배송</span>
+									</td>
                                 </tr>
                                 <tr>
                                     <th>판매가격</th>
-                                    <td class="sell_price">${productDto.price}원</td>
+                                    <td class="sell_price">
+                                    	<fmt:formatNumber value="${productDto.price}" type="number" groupingUsed="true"/>원
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>구매수량</th>
@@ -112,7 +116,9 @@
                                 </tr>
                                 <tr>
                                     <th>합계</th>
-                                    <td class="sum" id="totalPrice">${productDto.price}</td>
+                                    <td class="sum" id="totalPrice">
+                                    	<fmt:formatNumber value="${productDto.price}" type="number" groupingUsed="true"/>원
+                                    </td>
                                 </tr>
                             </table>
                              <div class="buttons">

@@ -67,7 +67,14 @@
                                     <td class="pro_name"><a href="/FarmStory/market/view.do?pNo=${productDto.pNo}&&uid=${sessUser.uid}">${productDto.pName}</a></td>
                                     <td class="sale">${productDto.discount}%</td>
                                     <td class="point">${productDto.point}p</td>
-                                   <td class="price"><strong>${service.disPrice(productDto)}원</strong><span class="original_price">${productDto.price}원</span></td>
+                                   <td class="price">
+									    <strong>
+									        <fmt:formatNumber value="${service.disPrice(productDto)}" pattern="#,###"/>원
+									    </strong>
+									    <span class="original_price">
+									        <fmt:formatNumber value="${productDto.price}" pattern="#,###"/>원
+									    </span>
+									</td>
                                 </tr>
                            	</c:forEach>
                             </tbody>

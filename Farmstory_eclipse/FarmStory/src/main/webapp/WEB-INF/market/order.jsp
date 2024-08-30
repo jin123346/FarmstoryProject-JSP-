@@ -161,7 +161,7 @@ window.onload = function(){
                         <img src="/FarmStory/images/sub_aside_cate2_tit.png" alt="Buying in the Market 장보기">
                     </div><!-- .aside_cate -->
                     <div class="aside_bg">
-                        <ul class="cate_lnb">
+                        <ul class="cate_lnb_real">
                             <li> <a href="#">장보기</a></li>
                         </ul><!-- .cate_lnb -->
                     </div><!-- .aside_bg -->

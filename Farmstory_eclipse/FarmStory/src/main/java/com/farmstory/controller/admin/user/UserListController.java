@@ -8,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farmstory.dao.user.UserDao;
+import com.farmstory.dto.admin.OrderItemDTO;
 import com.farmstory.dto.community.PageGroupDTO;
+import com.farmstory.dto.market.CartDTO;
 import com.farmstory.dto.user.UserDTO;
 import com.farmstory.service.Pagegroupservice;
 import com.farmstory.service.user.UserService;
@@ -38,9 +40,6 @@ public class UserListController extends HttpServlet{
 
 
 		String pg = req.getParameter("pg");
-		String no = req.getParameter("no");
-		
-	
 
 		// 현재 페이지 번호 구하기
 		int currentPage = service.getCurrentPage(pg);
@@ -57,40 +56,42 @@ public class UserListController extends HttpServlet{
 		// 현재 페이지 그룹 구하기
 		PageGroupDTO pageGroup = service.getCurrentPageGroup(currentPage, lastPageNum);
 		logger.debug("pageGroup : " + pageGroup);
-		
-		
+
+
 		// Limit용 시작 번호 구하기
-		int start = pageservice.getStartNum(currentPage);
+		int start = service.getStartNum(currentPage);
 		logger.debug("start : " + start);
 
-		
-		
+
 		// 페이지 시작 번호 구하기(목록에서 순서번호로 활용)
-		int pageStartNum = pageservice.getPageStartNum(total, currentPage);
+		int pageStartNum = service.getPageStartNum(total, currentPage);
 		logger.debug("pageStartNum : " + pageStartNum);
 
-		
+
 		// 데이터 조회하기
 		List<UserDTO> users = service.selectUsers(start);
 
 		req.setAttribute("users", users);
+		logger.debug("users : " + users);
 		req.setAttribute("lastPageNum", lastPageNum);
-		req.setAttribute("pagegroup", pageGroup);
+		req.setAttribute("pageGroup", pageGroup);
 		req.setAttribute("pageStartNum", pageStartNum);
-	
 
-		RequestDispatcher  dispatcher = req.getRequestDispatcher("/WEB-INF/admin/user/list.jsp");
+
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/admin/user/list.jsp");
 		dispatcher.forward(req, resp);
 	}
 
-		@Override
-		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			// TODO Auto-generated method stub
-			super.doPost(req, resp);
-		}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+
+	}
+
+
+
 }
-
-
-
 
 

@@ -1,6 +1,63 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="../_header.jsp" %>
+<script>
+	window.onload = function() {
+	let setDelete = new Set();
+	const delBtn = document.getElementsByClassName('deletebtn')[0];    
+	
+	let chkboxes = document.querySelectorAll('.checkbox'); 
+			
+	chkboxes.forEach(function(checkbox) {
+	    checkbox.addEventListener('click', function() {
+	        if(this.checked){
+	        	setDelete.add(this.value);
+	        }else{
+	        	setDelete.delete(this.value);
+	        }
+	    });
+	});	
+		
+	delBtn.addEventListener('click',function(e){
+		e.preventDefault();
+		
+		let arr = [];
+		setDelete.forEach(value => {
+		    arr.push(value);
+		});
+		
+		let formData = new FormData();
+		
+		arr.forEach(val => {
+		    formData.append("pk", val);
+		});
+		// for (let key of formData.keys()) {
+		// 	  console.log(key);
+		// 	}
+		formData.append("action", "delete");
+		fetch('/FarmStory/admin/product/list.do', {
+			method: 'POST',
+			body: formData
+	})
+	.then(resp=>resp.json())
+	.then(data=>{
+		console.log(data);
+		if(data.result > 0){
+			alert('삭제되었습니다!');
+			location.reload();
+		}else{
+			alert('실패하였습니다!');
+		}
+		
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+	
+	});
+}
+</script>
 
 <div class="section list">
     <section>
@@ -23,7 +80,7 @@
                     <tbody>
                    	<c:forEach var="product" items="${products}">
                         <tr>
-                            <td><input type="checkbox" name="product_list_checkbox" id="plcheck"></td>
+                            <td><input type="checkbox" name="product_list_checkbox" id="plcheck" value="${product.pNo}"></td>
                             <c:choose>
 					            <c:when test="${product.sName == null}">
 					                <td><img src="/FarmStory/images/no_image.jpg" alt="no image" width="60" height="60" /></td>
@@ -35,8 +92,8 @@
                             <!-- <td><img src="../images/sample_item1.jpg" id="product_img1" alt="샘플 이미지"></td> -->
                             <td>${product.pNo}</td>
                             <td>${product.pName}</td>
-                            <td>${product.prodCateNo}</td>
-                            <td>${product.price}</td>
+                            <td>${product.prodCateName}</td>
+                            <td><fmt:formatNumber value="${product.price}" pattern="#,###"/>원</td>
                             <td>${product.stock}</td>
                             <td>${product.rdate}</td>
                         </tr>
@@ -45,7 +102,7 @@
                 </table>
                 <div class="btn_group">
                         <a href="#"  class="deletebtn">선택삭제</a>
-                        <a href="/FarmStory/product/register.do"  class="insertbtn">상품등록</a>
+                        <a href="/FarmStory/admin/product/register.do"  class="insertbtn">상품등록</a>
                 </div><!--btn_group end-->
                 
                 

@@ -187,7 +187,10 @@ public class ProductDAO extends DBHelper{
 				dto.setpBasic_fNo(rs.getInt(7));
 				dto.setpDesc_fNo(rs.getInt(8));
 				dto.setProdCateName(rs.getString(9));
+				dto.setsName(rs.getString(10));
 				products.add(dto);
+				
+				logger.debug(dto.getsName());
 				
 			}
 			

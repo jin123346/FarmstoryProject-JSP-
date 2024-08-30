@@ -207,7 +207,18 @@ main .main_banner .bannertxt{
     border: 1px solid #EEEEEE;
     text-align: center;
     box-sizing: border-box;
-    margin-right: 12px;
+    margin-right:9px;
+}
+
+.market article:nth-of-type(6){
+	margin-right: 0;
+	display: flex;
+    float: left;
+    width: 155.33px;
+    height: 236px;
+    border: 1px solid #EEEEEE;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .market article > a {
@@ -327,10 +338,20 @@ font-family: Inter;
     height: 186px;
 }
 
+
+.garden > a:nth-child(1){
+	margin-bottom:16px;
+}
+.returnfarm > a:nth-child(1){
+	margin-bottom:16px;
+}
+
+.croptalk > a:nth-child(1){
+	margin-bottom:16px;
+}
 .crop a{
     display: block;
-    margin-top: 16px;
-    margin-bottom: 17px;
+    
 }
 
 .crop > article > img {
@@ -487,7 +508,8 @@ font-family: Inter;
 }
 .announcement .ntable{
     font-size: 11px;
-    margin-left: 8px;
+    margin-left: 4px;
+    margin-top: -4px;
     width: 305px;
     height: 88px;
     

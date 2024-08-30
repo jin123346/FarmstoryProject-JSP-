@@ -31,6 +31,8 @@ public class ProductDTO {
 	public void setsNameD(String sNameD) {
 		this.sNameD = sNameD;
 	}
+	
+	
 	public String getsName() {
 		return sName;
 	}

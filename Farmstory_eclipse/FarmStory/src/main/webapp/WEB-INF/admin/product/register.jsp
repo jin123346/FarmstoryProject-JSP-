@@ -1,6 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
+<script>
+window.onload = function(){
+	function showFileName(input, targetId) {
+	    const fileName = input.files.length > 0 ? input.files[0].name : "No file chosen";
+	    document.getElementById(targetId).textContent = fileName;
+	}
+}
 
+</script>
 <div class="section list">
     <section>
         <div class="main_container">
@@ -25,11 +33,11 @@
 	                    </tr>
 	                    <tr>
 	                        <th>가격</th>
-	                        <td><input type="text" name="price" ></td>
+	                        <td><input type="text" name="price" class="price" ></td>
 	                    </tr>
 	                    <tr>
 	                        <th>포인트</th>
-	                        <td><input type="number" name="point" placeholder="100" readonly>포인트 가격의 1%</td>
+	                        <td> <input type="number" name="point" id="pointInput" placeholder="" >포인트 가격의 1%</td>
 	                    </tr>
 	                    <tr>
 	                        <th>할인</th>
@@ -69,32 +77,34 @@
 	                    <tr class="file_upload_tr">
 	                        <th>상품이미지</th>
 	                        <td>   
-	                            <div class="file_upload_form">
-	                                <div class="file_group">
-	                                    <label for="product_list_image">상품목록 이미지(약 120 × 120)</label>
-	                                    <div class="cf_input">
-	                                        <input type="file" class="ci" id="product_list_image" name="product_list_image">
-	                                        <span>Choose File</span><p id="product_list_image_name">No file chosen</p>
-	                                    </div>
-	                                </div>
-	                        
-	                                <div class="file_group">
-	                                    <label for="basic_info_image">기본정보 이미지(약 240 × 240)</label>
-	                                    <div class="cf_input">
-	                                        <input type="file" id="basic_info_image" name="basic_info_image">
-	                                        <span>Choose File</span><p id="basic_info_image_name">No file chosen</p>
-	                                    </div>
-	                                </div>
-	                        
-	                                <div class="file_group">
-	                                    <label for="product_description_image">상품설명 이미지(약 750 × Auto)</label>
-	                                    <div class="cf_input">
-	                                        <input type="file" id="product_description_image" name="product_description_image">
-	                                        <span>Choose File</span><p id="product_description_image_name">No file chosen</p>
-
-	                                    </div>
-	                                </div>
-	                            </div>
+	                             <div class="file_upload_form">
+					                <div class="file_group">
+					                    <label for="product_list_image">상품목록 이미지(약 120 × 120)</label>
+					                    <div class="cf_input">
+					                        <input type="file" class="ci" id="product_list_image" name="product_list_image" onchange="showFileName(this, 'product_list_image_name')">
+					                        <span>Choose File</span>
+					                        <p id="product_list_image_name">No file chosen</p>
+					                    </div>
+					                </div>
+					                
+					                <div class="file_group">
+					                    <label for="basic_info_image">기본정보 이미지(약 240 × 240)</label>
+					                    <div class="cf_input">
+					                        <input type="file" id="basic_info_image" name="basic_info_image" onchange="showFileName(this, 'basic_info_image_name')">
+					                        <span>Choose File</span>
+					                        <p id="basic_info_image_name">No file chosen</p>
+					                    </div>
+					                </div>
+					                
+					                <div class="file_group">
+					                    <label for="product_description_image">상품설명 이미지(약 750 × Auto)</label>
+					                    <div class="cf_input">
+					                        <input type="file" id="product_description_image" name="product_description_image" onchange="showFileName(this, 'product_description_image_name')">
+					                        <span>Choose File</span>
+					                        <p id="product_description_image_name">No file chosen</p>
+					                    </div>
+					                </div>
+					          </div>
 	                        </td>
 	                    </tr>
 						<script>
@@ -106,7 +116,7 @@
 	                </table>
 	                <div class="btn_group_register"> 
 	                        <button type="submit" class="insertbtn">상품등록</button>
-	                        <a href="#"  class="cancelbtn">취소</a>
+	                        <a href="/FarmStory/admin/product/list.do"  class="cancelbtn">취소</a>
 	                </div><!--btn_group end-->
                
             	</div><!--status-table end-->

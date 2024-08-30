@@ -78,9 +78,6 @@ public String sendEmailCode(String email) {
 		return ""+code;
 	}
 
-	public int selectUserCountTotal() {
-		return dao.selectCountTotal();
-	}
 	//전체 게시물 갯수에서 마지막 페이지 번호 구하기 
 	public int getLastPageNum(int total) {
 
@@ -131,9 +128,10 @@ public String sendEmailCode(String email) {
 		return total - start;
 	}
 
-
+	public int selectUserCountTotal() {
+		return dao.selectCountTotal();
+	}
 	
-
 
 	public int updateUserPass(String uid,String pass) {
 		return dao.updateUserPass(uid,pass);
@@ -145,6 +143,7 @@ public String sendEmailCode(String email) {
 	}
 
 	public void insertUser(UserDTO dto) { dao.insertUser(dto);	}
+	
 	public UserDTO selectUser(String uid,String pass) {	
 		return dao.selectUser(uid, pass);
 	}
@@ -154,7 +153,7 @@ public String sendEmailCode(String email) {
 	}
 
 	public List<UserDTO> selectUsers(int start) {	
-		return dao.selectUsers();
+		return dao.selectUsers(start); 
 	}
 
 	public List<UserDTO> selectOrderItems(int pg){return dao.selectUsers(pg);}

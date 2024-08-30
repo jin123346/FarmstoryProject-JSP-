@@ -49,6 +49,8 @@ public class LoginController extends HttpServlet{
 			//회원이 맞을 경우 -> 세션처리 후 
 			HttpSession session = req.getSession();
 			session.setAttribute("sessUser", user);
+			//세션 유지기간 1시간
+			session.setMaxInactiveInterval(60 * 60);
 			if(user.getGradeNo() ==null) {
 				resp.sendRedirect("/FarmStory/main.do");
 			}else if(user.getGradeNo().equals("00")) {

@@ -12,6 +12,7 @@ import com.farmstory.dto.product.ProductDTO;
 import com.farmstory.util.BOARDSQL;
 import com.farmstory.util.DBHelper;
 import com.farmstory.util.PRODUCTSQL;
+import com.farmstory.util.SQL;
 
 public class ProductDAO extends DBHelper{
 	private static ProductDAO instance = new ProductDAO();
@@ -90,6 +91,41 @@ public class ProductDAO extends DBHelper{
 		
 		return total;
 	}
+	public List<com.farmstory.dto.admin.ProductDTO> selectProducts_admin(int start ) {
+		List<com.farmstory.dto.admin.ProductDTO> products = new ArrayList<>();
+		try {
+			conn = getConnection();
+			pstmt =conn.prepareStatement(SQL.SELECT_PRODUCT_LIST_START);
+			pstmt.setInt(1, start);
+			rs=pstmt.executeQuery();
+			logger.debug(SQL.SELECT_PRODUCT_LIST);
+			while(rs.next()) {
+				com.farmstory.dto.admin.ProductDTO dto = new com.farmstory.dto.admin.ProductDTO();
+				dto.setpNo(rs.getInt(1));
+				dto.setpName(rs.getString(2));
+				dto.setProdCateNo(rs.getString(3)); 
+				dto.setPrice(rs.getInt(4));
+				dto.setStock(rs.getInt(5)); 
+				dto.setRdateSubString(rs.getString(6));
+				dto.setsName(rs.getString(7));
+				logger.debug(dto.getsName());
+				products.add(dto);
+				logger.debug("listdto :"+dto.toString());
+			}
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+				try {
+					closeAll();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+		}
+		return products;
+	}
+	
+	
 	
 	public List<ProductDTO> selectProducts(int start) {
 		

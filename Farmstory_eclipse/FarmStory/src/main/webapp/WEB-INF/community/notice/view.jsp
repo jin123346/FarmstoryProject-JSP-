@@ -263,7 +263,7 @@
 						</tr>
 					</c:if>
 					<tr>
-						<td>내용</td>
+						<td>내용${boardDTO.b_fNo }</td>
 						<td>
 							<textarea name="b_contents" readonly>${boardDTO.b_contents}</textarea>
 						</td>

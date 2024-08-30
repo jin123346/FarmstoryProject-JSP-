@@ -78,10 +78,6 @@ public String sendEmailCode(String email) {
 		return ""+code;
 	}
 
-
-
-
-
 	//전체 게시물 갯수에서 마지막 페이지 번호 구하기 
 	public int getLastPageNum(int total) {
 
@@ -137,7 +133,6 @@ public String sendEmailCode(String email) {
 	}
 	
 
-
 	public int updateUserPass(String uid,String pass) {
 		return dao.updateUserPass(uid,pass);
 	}
@@ -158,7 +153,7 @@ public String sendEmailCode(String email) {
 	}
 
 	public List<UserDTO> selectUsers(int start) {	
-		return dao.selectUsers(); 
+		return dao.selectUsers(start); 
 	}
 
 	public List<UserDTO> selectOrderItems(int pg){return dao.selectUsers(pg);}

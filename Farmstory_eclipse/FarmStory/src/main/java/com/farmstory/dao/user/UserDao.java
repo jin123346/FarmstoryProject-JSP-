@@ -212,6 +212,41 @@ public class UserDao extends DBHelper{
 			return user;
 	}
 	
+	public List<UserDTO> selectUsers(int start) {
+		List<UserDTO> users = new ArrayList<UserDTO>();
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(USERSQL.SELECT_COUNT_USERS);
+			pstmt.setInt(1, start);
+			rs = pstmt.executeQuery();
+			
+		
+			while(rs.next()) {
+				UserDTO dto = new UserDTO();
+				dto.setUid(rs.getString(1));
+				dto.setName(rs.getString(3));
+				dto.setNick(rs.getString(4));
+				dto.setEmail(rs.getString(5));
+				dto.setHp(rs.getString(6));
+				dto.setRegDate(rs.getString(10));
+				dto.setGradeNo(rs.getString(11));
+				users.add(dto);
+			}
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} finally {
+			try {
+				closeAll();
+			} catch (SQLException e) {
+				logger.error(e.getMessage());
+			}
+		}
+		return users;
+	}
+	
+	
+	
 	public List<UserDTO> selectUsers() {
 		List<UserDTO> users = new ArrayList<UserDTO>();
 		try {
@@ -236,50 +271,6 @@ public class UserDao extends DBHelper{
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-		}
-		
-		return users;
-	}
-	
-	
-	
-
-		
-		
-	
-	
-	
-	
-	public List<UserDTO> selectUsers(int start) {
-		List<UserDTO> users = new ArrayList<>();
-		try {
-			conn = getConnection();
-			pstmt = conn.prepareStatement(USERSQL.SELECT_COUNT_USERS);
-			pstmt.setInt(1, start);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				UserDTO dto = new UserDTO();
-				dto.setUid(rs.getString(1));
-				dto.setName(rs.getString(3));
-				dto.setNick(rs.getString(4));
-				dto.setEmail(rs.getString(5));
-				dto.setHp(rs.getString(6));
-				dto.setRegDate(rs.getString(10));
-				dto.setGradeNo(rs.getString(11));
-				users.add(dto);
-			}
-			
-		
-			
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		} finally {
-			try {
-				closeAll();
-			} catch (SQLException e) {
-				logger.error(e.getMessage());
-			}
 		}
 		
 		return users;

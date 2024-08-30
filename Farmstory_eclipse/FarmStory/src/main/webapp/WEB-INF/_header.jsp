@@ -20,31 +20,12 @@
     const success='${success}';
     const sessUid= '${sessUser.uid}'
    
-     window.onload = function(){
-    	 	const login= document.getElementById('login');
-    	    const register= document.getElementById('register');
-    	    console.log(login);
-    	 
-    	    if(grade ==='admin'){
-    	        login.innerText="로그아웃";
-    	        login.href="/FarmStory/member/logout.do";
-    	        register.innerText="관리자";
-    	        register.href="/FarmStory/admin/index.do";
-    	    }else if(grade ==='user'){
-    	        login.innerText="로그아웃";
-    	        login.href="/FarmStory/member/logout.do";
-    	        register.innerText="마이페이지";
-    	        register.href="/FarmStory/member/myInfo.do?uid="+sessUid;
-    	    }
-    	    
-    	    if(success=='300'){
-    	    	alert('개인정보가 수정되었습니다.')
-    	    }
-     }
+   
 </script>
 
 </head>
 <body>
+
     <div id="wrapper">
 
         <header id="header">
@@ -58,9 +39,24 @@
                 
                  <ul class="utill">
                     <li><a href="/FarmStory/main.do" id="home">HOME</a></li>
-                    <li><a href="/FarmStory/member/login.do" id="login">로그인</a></li>
-                    <li><a href="/FarmStory/member/terms.do" id="register">회원가입</a></li>
-                    <li><a href="/FarmStory/community/cs.do" id="cs">고객센터</a></li>
+                   <c:choose>
+                     <c:when test="${not empty sessUser}">
+                            <li><a href="/FarmStory/member/logout.do" id="login">로그아웃</a></li>
+                            <c:choose>
+                                <c:when test="${sessUser.gradeNo == '00'}">
+                                    <li><a href="/FarmStory/admin/index.do" id="register">관리자</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="/FarmStory/member/myInfo.do?uid=${sessUser.uid}" id="register">마이페이지</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="/FarmStory/member/login.do" id="login">로그인</a></li>
+                            <li><a href="/FarmStory/member/terms.do" id="register">회원가입</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                    <li><a href="/FarmStory/community/notice/list.do?group=community&cate=b104" id="cs">고객센터</a></li>
                 </ul><!-- .utill -->
                 
                 <div class="h_txt">

@@ -15,8 +15,6 @@
     <!-- wrapper -->
     <div id="wrapper">
         <header>
-
-       
             <div class="headerIn">
                 <div class="top">
                     <img src="/FarmStory/images/admin/admin_logo.jpg" alt="">
@@ -25,7 +23,7 @@
                     <ul>
                         <li><a href="/FarmStory/admin/index.do" class="util_home">HOME</a></li>
                         <li><a href="/FarmStory/member/logout.do" class="util_logout">로그아웃</a></li>
-                        <li><a href="#" class="util_cs">고객센터</a></li>
+                        <li><a href="/FarmStory/community/notice/list.do?group=community&cate=b104" class="util_cs">고객센터</a></li>
                     </ul>
                 </div>
             </div><!--headerIn end-->

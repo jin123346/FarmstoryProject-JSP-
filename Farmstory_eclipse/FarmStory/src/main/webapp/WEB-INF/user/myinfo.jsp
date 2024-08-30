@@ -4,25 +4,21 @@
 <%@ include file="./_header.jsp" %>
     <title>MyInfo</title>
   <link rel="stylesheet" href="../css/user/myinfo.css">
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  
   <script>
+  const rePass  = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{5,16}$/;
+  const reNick  = /^[a-zA-Zㄱ-힣0-9][a-zA-Zㄱ-힣0-9]*$/;
+  const reEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+  const reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
+
   window.onload = function() {
-	    // 비밀번호 입력 필드와 버튼을 가져옴
-	    const login= document.getElementById('login');
-   	    const register= document.getElementById('register');
+	    const login = document.getElementById('login');
+   	    const register = document.getElementById('register');
 	    const inputPassword = document.getElementById('input_password');
-	    const inputPasswordConfirm = document.getElementById('input_password_confirm'); // 추가된 비밀번호 확인 필드 ID
+	    const inputPasswordConfirm = document.getElementById('input_password_confirm');
 	    const btnModify = document.querySelector('.btn_modifty');
 	    const resultPass = document.getElementsByClassName('resultPass')[0];
-	    const sessUid = "${sessUser.uid}";
-	    if(!${sessUser}){
-	    	alert("세션이 만료되었습니다.")
-	    	window.location.href = "/FarmStory/member/login.do";
-	    }else{
-	    	login.innerText="로그아웃";
-	        login.href="/FarmStory/member/logout.do";
-	        register.innerText="마이페이지";
-	        register.href="/FarmStory/member/myInfo.do?uid="+sessUid;
-	    }
 	    
 	    
 	    async function sha256(message) {
@@ -32,145 +28,100 @@
 	        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 	        return hashHex;
 	    }
-	    
-	    
-	    // 비밀번호 일치 여부 확인 함수
+
 	    const sessPass = '${sessUser.pass}';
 	    async function checkPasswordMatch() {
 	        const pass1 = inputPassword.value;
 	        const pass2 = inputPasswordConfirm.value;
 
-	        if (pass1 === pass2) {
+	        if (pass1.match(rePass) && pass1 === pass2) {
 	            const pass1Hash = await sha256(pass1);
 	            if (pass1Hash === sessPass) {
-	            	resultPass.innertext = "비밀번호가 일치합니다.";
-	            	resultPass.style.color='green';
-
-	                enableEditing();
+	            	resultPass.innerText = "비밀번호가 일치합니다.";
+	            	resultPass.style.color = 'green';
 	                return true;
 	            } else {
 	            	resultPass.innerText = "비밀번호가 유효하지 않습니다.";
-	    			resultPass.style.color='red';
-	                disableEditing();
+	    			resultPass.style.color = 'red';
 	                return false;
 	            }
 	        } else {
-	        	resultPass.innertext = "비밀번호가 일치하지 않습니다.";
-            	resultPass.style.color='red';
-	            disableEditing();
+	        	resultPass.innerText = "비밀번호가 일치하지 않거나 유효하지 않습니다.";
+            	resultPass.style.color = 'red';
 	            return false;
 	        }
 	    }
 
-	    inputPasswordConfirm.addEventListener('input', async function() {
+	    inputPasswordConfirm.addEventListener('focusout', async function() {
 	        await checkPasswordMatch();
 	    });
 
-	    
-	    
-	 // 개인정보 수정 필드들 가져오기
-	    const inputName = document.getElementById('input name');
-	    const inputNick = document.getElementById('input nickname');
-	    const inputEmail = document.getElementById('input email');
-	    const inputZip = document.getElementById('search_address');
+	    const inputName = document.getElementById('input_name');
+	    const inputNick = document.getElementById('input_nickname');
+	    const inputEmail = document.getElementById('input_email');
+	    const inputHp = document.getElementById('input_tel');
+	    const inputZip = document.getElementById('zip');
 	    const inputAddr1 = document.getElementById('input_address1');
 	    const inputAddr2 = document.getElementById('input_address2');
 
-	    // 서버에서 전달된 UID 값
-	   
-	   
-	   
-	 	// 비밀번호 수정 버튼 클릭 시 이벤트 처리
 	    btnModify.addEventListener('click', async function() {
 		    if (await checkPasswordMatch()) {
-		        const uid = '${sessUser.uid}'; // JSP에서 `sessUser.uid`를 가져옵니다
-		
+		        const uid = '${sessUser.uid}';
 		        const form = document.createElement('form');
-		        form.method = 'get'; // 또는 'get'
+		        form.method = 'post';
 		        form.action = '/FarmStory/member/findPassResult.do';
-		
-		        // Hidden input을 추가합니다
 		        const inputUid = document.createElement('input');
 		        inputUid.type = 'hidden';
 		        inputUid.name = 'uid';
 		        inputUid.value = uid;
-		
 		        form.appendChild(inputUid);
-		
-		        // Form을 body에 추가하고 제출합니다
 		        document.body.appendChild(form);
 		        form.submit();
 		    }
 		});
 
-	    // 수정 가능하게 만드는 함수
-	    function enableEditing() {
-	        inputName.removeAttribute('readonly');
-	        inputNick.removeAttribute('readonly');
-	        inputEmail.removeAttribute('readonly');
-	        inputAddr2.removeAttribute('readonly');
-	    }
-
-	    // 수정 불가능하게 만드는 함수
-	    function disableEditing() {
-	        inputName.setAttribute('readonly', true);
-	        inputNick.setAttribute('readonly', true);
-	        inputEmail.setAttribute('readonly', true);
-	        inputAddr2.setAttribute('readonly', true);
-	    }
-
 	    
-	    // 닉네임 중복 체크 함수
+
 	    function checkNickDuplicate() {
 	        const nick = inputNick.value;
 	        
-	        if (!nick) {
-	            alert("별명을 입력해 주세요.");
+	        if (!nick.match(reNick)) {
+	            alert("별명이 유효하지 않습니다.");
 	            return;
 	        }
 
-	        // AJAX 요청으로 서버에 중복 체크 요청
 	        fetch("/FarmStory/member/checkUser.do?type=nick&value="+nick)
 	            .then(response => response.json())
 	            .then(data => {
-	                if (data.result >0) {
-	                    alert("이미 사용 중인 별명입니다. 다른 별명을 선택해 주세요.");
+	                if (data.result > 0) {
+	                    alert("이미 사용 중인 별명입니다.");
 	                    inputNick.focus();
 	                } else {
 	                    alert("사용 가능한 별명입니다.");
-	                    inputNick.removeAttribute('readonly'); // 중복이 없으면 수정 가능하게
+	                    inputNick.removeAttribute('readonly');
 	                }
 	            })
 	            .catch(error => console.error('Error:', error));
 	    }
 
-	    
-	    // 중복 체크 버튼 클릭 시 이벤트 처리
-	   // btnDuplicateNick.addEventListener('click', checkNickDuplicate);
-	    
-	 // 회원탈퇴 버튼 클릭 시 이벤트 처리
+	    document.querySelector('.btn_duplicate').addEventListener('click', checkNickDuplicate);
+
 	    document.querySelector('.btn_quit').addEventListener('click', function() {
 	        if (!checkPasswordMatch()) {
-	        	alert('비밀번호를 입력해주세요!')	
+	        	alert('비밀번호를 입력해주세요!');
 	        	return false;
 	        }
 	        const confirmQuit = confirm("정말로 회원탈퇴를 하시겠습니까?");
-
 	        if (confirmQuit) {
 	            window.location.href = "/FarmStory/member/delete.do";
 	        }
 	    });
 
-	 // 개인정보 수정 필드들 가져오기
-	    
 	    const btnSubmit = document.querySelector('.btn_submit');
 
-	    // 개인정보 수정 버튼 클릭 시 이벤트 처리
 	    btnSubmit.addEventListener('click', function(event) {
-	        // 폼 전송 막기
 	        event.preventDefault();
 
-	        // 입력된 정보를 가져옴
 	        const name = inputName.value;
 	        const nick = inputNick.value;
 	        const email = inputEmail.value;
@@ -179,7 +130,6 @@
 	        const addr1 = inputAddr1.value;
 	        const addr2 = inputAddr2.value;
 
-	        // 입력된 정보를 alert에 표시
 	        const message = 
 	            `다음의 정보로 수정하시겠습니까?\n\n` +
 	            `이름: ${name}\n` +
@@ -191,42 +141,29 @@
 	            `주소2: ${addr2}`;
 
 	        if (confirm(message)) {
-	            // 사용자가 확인을 누르면 폼을 제출
 	            document.querySelector('form').submit();
 	        } else {
-	            // 취소를 누르면 아무것도 하지 않음
 	            return false;
 	        }
 	    });
 
-	    // 비밀번호 확인 버튼 클릭 시 이벤트 처리
-	    btnModify.addEventListener('click', function() {
-	        checkPasswordMatch();
-	    });
-	    
-	    
-	    
 	    let preventDblClick = false;
 		
-		btnSendEmail.onclick = async function(){
-			
-			const email = registerForm.email.value;
-			// 이중 클릭 방지
-			if(preventDblClick){
+		document.getElementById('btnSendEmail').onclick = async function() {
+			const email = inputEmail.value;
+
+			if (preventDblClick) {
 				return;
 			}
-			
-			// 이메일 유효성 검사
-			if(!email.match(reEmail)){
+
+			if (!email.match(reEmail)) {
 				resultEmail.innerText = "유효한 이메일이 아닙니다.";
 				resultEmail.style.color = "red";
-				
 				return;
 			}
-			
+
 			try {
 				preventDblClick = true;
-				
 				const response = await fetch('/FarmStory/member/checkUser.do?type=email&value='+email);
 				const data = await response.json();
 				console.log(data);	
@@ -241,48 +178,37 @@
 					
 					auth.style.display = "inline";
 				}
-				
 			} catch (e) {
-				console.log(e);				
+				console.log(e);
 			}
-			
-		}// end email
-		
-		btnAuthEmail.onclick = function(){
+		};
 
-			const code = registerForm.auth.value;
-			
+		document.getElementById('btnAuthEmail').onclick = function() {
+			const code = document.querySelector('input[name="auth"]').value;
+
 			fetch('/FarmStory/member/checkUser.do', {
 				method: 'POST',
 				body: JSON.stringify({"code":code})
-				})
-				.then(resp=>resp.json())
-				.then(data=>{
-					console.log(data);
-					
-					if(data.result > 0){
-						resultEmail.innerText = '이메일이 인증되었습니다.';
-						resultEmail.style.color = 'green';
-						isEmailOk = true;
-						
-					} else {
-						resultEmail.innerText = '유효한 인증코드가 아닙니다.';
-						resultEmail.style.color = 'red';
-						isEmailOk = false;
-					}
-					
-				})
-				.catch(err=>{
-					console.log(err);
-				});
-			
-		}
-	    
+			})
+			.then(resp => resp.json())
+			.then(data => {
+				if (data.result > 0) {
+					resultEmail.innerText = '이메일이 인증되었습니다.';
+					resultEmail.style.color = 'green';
+				} else {
+					resultEmail.innerText = '유효한 인증코드가 아닙니다.';
+					resultEmail.style.color = 'red';
+				}
+			})
+			.catch(err => {
+				console.log(err);
+			});
+		};
 
-	   
-	    
-	    
-	}
+		
+ 
+  }
+  
   function postcode() {
       new daum.Postcode({
           oncomplete: function(data) {
@@ -330,10 +256,7 @@
           }
       }).open();
   }
-
-  
-  </script>
- 
+</script> 
         <main>
             <div class="mainIn">
                <section class="infotable">
@@ -369,20 +292,22 @@
                     </table>
 
                     <span>개인정보 수정</span>
-                    <form  action="/FarmStory/member/myInfo.do" method="post" enctype="multipart/form-data" >
+                    <form id="myForm" action="/FarmStory/member/myInfo.do" method="post" enctype="multipart/form-data">
+   
 	                    <table>
-	                        <tr>
-	                            <th>이름</th>
-	                            <td class="form_group"><input type="text" id="input name" name="name" placeholder="${sessUser.name }" readonly></td>
-	                        </tr>
+	                       <tr>
+					            <th>이름</th>
+					            <td class="form_group"><input type="text" id="input_name" name="name" placeholder="홍길동" readonly></td>
+			        		</tr>
 	                        <tr>
 	                            <th>별명</th>
 	                            <td class="form_group">
 	                                <ul>
 	                                    <li><p>공백없는 한글, 영문, 숫자 입력</p></li>
 	                                    <li>
-	                                        <input type="text" id="input nickname" name="nick" placeholder="${sessUser.nick }" readonly>
+	                                        <input type="text" id="input nickname" name="nick" placeholder="${sessUser.nick }" >
 	                                        <button type="button" class="btn_duplicate" placeholder="별명 입력"> <img src="../images/chk_id.gif" alt="Duplicate Check" class="icon"></button>
+	                                    	<span class="resultNick"></span>
 	                                    </li>
 	                                </ul>
 	                            </td>
@@ -390,12 +315,13 @@
 	                        <tr>
 	                            <th>이메일</th>
 	                            <td class="form_group">
-	                            	 <input type="email" name="email"  id="input email" placeholder="${sessUser.email }" readonly/>
+	                            	 <input type="email" name="email"  id="input email" placeholder="${sessUser.email }" />
 			                        <button type="button" id="btnSendEmail"  class="btn_send"><img src="../images/chk_auth.gif" alt="인증번호 받기"/></button>
 			                        <span class="resultEmail"></span>
 			                        <div class="auth" style="display:none">
 			                            <input type="text" name="auth" placeholder="인증번호 입력" />
 			                            <button type="button" id="btnAuthEmail"  class="btn_auth" ><img src="../images/chk_confirm.gif" alt="확인"/></button>
+			                        	<span class="resultEmail"></span>
 			                        </div>	                            	
 	                            </td>
 	                        </tr>
@@ -410,13 +336,13 @@
 	                            <td class="form_group">
 	                                <div class="address">
                                         <input type="text" name="zip" id="zip" placeholder="${sessUser.zip }" readonly/>                                
-	                                    <button type="button" class="btnZip"> <img src="../images/chk_post.gif" alt="Postal check" class="icon" alt="우편번호 버튼"></button>
+	                                    <button type="button" class="btnZip" onclick="postcode()"> <img src="../images/chk_post.gif" alt="Postal check" class="icon" alt="우편번호 버튼"></button>
                                     </div>                            
                                     <div class="address">
-	                                    <input type="text" id="input_address1" class="input_address" name="addr1" placeholder="${sessUser.addr1 }" readonly>
+	                                    <input type="text" id="input_address1" class="input_address" name="addr1" placeholder="${sessUser.addr1 }" >
 	                                </div>
 	                                <div class="address">
-	                                    <input type="text" id="input_address2" class="input_address" name="addr2" placeholder="${sessUser.addr2 }" readonly>
+	                                    <input type="text" id="input_address2" class="input_address" name="addr2" placeholder="${sessUser.addr2 }" >
 	                                </div>
 	                            </td>
 	                        </tr>
@@ -428,11 +354,12 @@
 	                        </tr>
 	                    </table>
 		                </div>
-		                <div class="button_container">
-		                    <button type="button" class="btn-cancel">취소</button>
-		                    <button type="submit" class="btn_submit">회원정보 수정</button>
-		                </div>
-               		</form>
+		                </table>
+					    <div class="button_container">
+					        <button type="button" class="btn-cancel">취소</button>
+					        <button type="submit" class="btn_submit">회원정보 수정</button>
+					    </div>
+					</form>
             </section>
             </div>
         </main>

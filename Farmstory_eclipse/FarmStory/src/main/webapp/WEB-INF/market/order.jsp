@@ -94,7 +94,7 @@
                                 <td class="use_point cf">
                                     <input type="text" class="point" placeholder="">
                                     <a href="#" class="point_btn">사용하기</a><br>
-                                    <div>사용가능 2,000</div>
+                                    <div></div>
                                 </td>
                             </tr>
                             <tr>
@@ -151,7 +151,7 @@
                             </tr>
                             <tr>
                                 <td>포인트 사용</td>
-                                <td>p</td>
+                                <td>${userDto.point}p</td>
                             </tr>
                             <tr>
                                 <td>배송비</td>

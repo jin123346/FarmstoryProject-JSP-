@@ -88,4 +88,19 @@ public class MarketDAO extends DBHelper{
 		return result;
 	}
 	
+	public void insertPoint(String uid ,int point) {
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(MARKETSQL.INSERT_POINT);
+			pstmt.setInt(1, point);
+			pstmt.setString(2, uid);
+			
+			pstmt.executeUpdate();
+			
+			closeAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
 }

@@ -14,7 +14,6 @@
 	    checkbox.addEventListener('click', function() {
 	        if(this.checked){
 	        	setDelete.add(this.value);
-	        	alert("hi");
 	        }else{
 	        	setDelete.delete(this.value);
 	        }
@@ -48,6 +47,7 @@
 		console.log(data);
 		if(data.result > 0){
 			alert('삭제되었습니다!');
+			location.reload();
 		}else{
 			alert('실패하였습니다!');
 		}
@@ -91,7 +91,7 @@
                         </p><!-- .location -->
                     </nav>
                     
-                    <h3 class="tb_tit">장바구니 전체(10)</h3><!-- .tb_tit -->
+                    <h3 class="tb_tit">장바구니 전체</h3><!-- .tb_tit -->
                     <table class="tb1">
                         <colgroup>
                             <col style="width: 11%">
@@ -157,7 +157,7 @@
                                 <td>${service.totalDelivery(prodCartDto)}원</td>
                             </tr>
                             <tr>
-                                <td>포인트</td>
+                                <td>포인트 적립</td>
                                 <td>${service.totalPoint(prodCartDto)}p</td>
                             </tr>
                             <tr>
@@ -165,7 +165,7 @@
                                 <td>${service.realtotal(prodCartDto)}원</td>
                             </tr>
                         </table><!-- .tb2 -->
-                        <button class="btn_order"><a href="#">주문하기</a></button>
+                        <button class="btn_order"><a href="/FarmStory/market/order.do?uid=${sessUser.uid}">주문하기</a></button>
                     </div><!-- .order_final -->
 
                 </div><!-- .articleIn -->

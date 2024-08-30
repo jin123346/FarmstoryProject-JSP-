@@ -99,12 +99,14 @@ public enum CartService {
 		return dao.selectCarts(uid);
 	}
 	
-	public int deleteCart(String[] pk) {
+	public int deleteCart(String pk) {
 		int result = 0;
-		
-		String pk1 = String.join(",", pk);
-		dao.deleteCart(pk1);
+		result = dao.deleteCart(pk);
 		return result;
+	}
+	
+	public void insertPoint(String uid,int point) {
+		dao.insertPoint(uid, point);
 	}
 	
 }

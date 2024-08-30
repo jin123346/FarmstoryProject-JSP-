@@ -13,7 +13,16 @@ public class UserDTO {
 	private String addr2;
 	private String regDate;
 	private String gradeNo;
+	private int point;
+	
+	
 
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
 	public String getUid() {
 		return uid;
 	}
@@ -84,7 +93,7 @@ public class UserDTO {
 	public String toString() {
 		return "UserDTO [uid=" + uid + ", pass=" + pass + ", name=" + name + ", nick=" + nick + ", email=" + email
 				+ ", hp=" + hp + ", zip=" + zip + ", addr1=" + addr1 + ", addr2=" + addr2 + ", regDate=" + regDate
-				+ ", gradeNo=" + gradeNo + "]";
+				+ ", gradeNo=" + gradeNo + ", point=" + point + "]";
 	}
 	
 

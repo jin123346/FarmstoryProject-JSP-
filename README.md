@@ -38,7 +38,7 @@
 - **플랫폼**: 웹
 
 ### 개발 환경
-- **1차 개발**: JSP MVC
-- **2차 개발**: Spring Framework (Spring Boot)
+- JSP MVC
+
 
 
